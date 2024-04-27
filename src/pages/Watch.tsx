@@ -43,13 +43,11 @@ export default function Watch() {
   }
 
   function getSource() {
-    let url = `https://vidsrc.to/embed/${type}/${id}`;
-
-    url += `?v=https://vidsrc.to&n=https://vidsrc.to`;
+    let url = `https://vidsrc.to/embed/`;
 
     if (window.location.origin) url += `&o=${encodeURIComponent(window.location.origin)}`;
-    if (type === 'series') url += `${season}/${episode}`;
-
+    if (type === 'series') url += `${type}/${id}/${season}/${episode}`;
+    if (type === 'movie') url += `${type}/${id}`;
     return url;
   }
 
