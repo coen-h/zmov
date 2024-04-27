@@ -1,0 +1,48 @@
+.page {
+  padding: 85px 60px 30px;
+}
+
+.page-title {
+  font-size: 25px;
+  font-weight: 600;
+}
+
+.page-cards {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-gap: 20px 15px;
+
+  margin-top: 20px;
+}
+
+@media (max-width: 1200px) {
+  .page-cards {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+@media (max-width: 1000px) {
+  .page {
+    padding: 85px 40px 30px;
+  }
+
+  .page-cards {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 700px) {
+  .page {
+    padding: 85px 30px 30px;
+  }
+
+  .page-cards {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 500px) {
+  .page-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

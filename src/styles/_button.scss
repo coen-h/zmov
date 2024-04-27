@@ -1,0 +1,53 @@
+.button {
+  padding: 12px 30px;
+
+  border: none;
+  border-radius: 5px;
+
+  color: #000;
+  background-color: #fff;
+
+  font-size: 18px;
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+.button i {
+  margin-right: 10px;
+
+  font-size: 22px;
+
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+.button.secondary {
+  color: #fff;
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+@media (max-width: 1000px) {
+  .button {
+    padding: 10px 25px;
+
+    font-size: 16px;
+  }
+
+  .button i {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 700px) {
+  .button {
+    padding: 10px 20px;
+
+    font-size: 14px;
+  }
+
+  .button i {
+    font-size: 18px;
+  }
+}

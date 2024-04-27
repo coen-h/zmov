@@ -1,0 +1,130 @@
+.collections {
+  display: flex;
+  flex-direction: column;
+
+  margin: 85px 0 0;
+  padding: 0 60px 30px;
+
+  &.overlap {
+    position: relative;
+
+    margin-top: -10vh;
+
+    z-index: 1;
+  }
+}
+
+.collection {
+  margin-top: 60px;
+
+  &:first-child,
+  &:first-of-type {
+    margin-top: 0;
+  }
+}
+
+.collection-title {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.collection-slider {
+  position: relative;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  margin: 15px -60px 0;
+  padding: 0 60px;
+
+  overflow-x: clip;
+}
+
+.collection-cards {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  column-gap: 15px;
+
+  width: 100%;
+
+  transition: transform 300ms ease-in-out;
+}
+
+.collection-cards .media-card {
+  min-width: calc(16.67% - 13px);
+  max-width: calc(16.67% - 13px);
+}
+
+.collection-arrow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  height: 100%;
+  width: 45px;
+
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.7), transparent);
+
+  cursor: pointer;
+
+  &.right {
+    left: auto;
+    right: 0;
+
+    background: linear-gradient(to left, rgba(0, 0, 0, 0.7), transparent);
+  }
+}
+
+@media (max-width: 1200px) {
+  .collection-cards .media-card {
+    min-width: calc(20% - 13px);
+    max-width: calc(20% - 13px);
+  }
+}
+
+@media (max-width: 1000px) {
+  .collections {
+    padding: 0 40px 30px;
+  }
+
+  .collection-slider {
+    margin: 15px -40px 0;
+    padding: 0 40px;
+  }
+
+  .collection-cards .media-card {
+    min-width: calc(25% - 13px);
+    max-width: calc(25% - 13px);
+  }
+}
+
+@media (max-width: 700px) {
+  .collections {
+    padding: 0 30px 30px;
+  }
+
+  .collection-slider {
+    margin: 15px -30px 0;
+    padding: 0 30px;
+  }
+
+  .collection-cards .media-card {
+    min-width: calc(33.33% - 13px);
+    max-width: calc(33.33% - 13px);
+  }
+}
+
+@media (max-width: 500px) {
+  .collection-cards .media-card {
+    min-width: calc(50% - 13px);
+    max-width: calc(50% - 13px);
+  }
+}
