@@ -1,0 +1,44 @@
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  position: fixed;
+
+  top: 0;
+  left: 0;
+
+  height: 100%;
+  width: 100%;
+
+  padding: 30px;
+
+  background: linear-gradient(to bottom, $background-color 0%, #090909 100%);
+
+  font-size: 35px;
+  font-weight: 700;
+
+  z-index: $loading-index;
+}
+
+.loading img {
+  display: block;
+
+  max-width: 200px;
+
+  animation: loading_pulse 2s ease-in-out infinite forwards;
+}
+
+@keyframes loading_pulse {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.7;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}

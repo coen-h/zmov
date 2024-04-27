@@ -1,0 +1,185 @@
+.top-bar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  position: fixed;
+
+  top: 0;
+  left: 0;
+
+  height: 65px;
+  width: 100%;
+
+  padding: 0 60px;
+
+  transition: background 200ms ease-in-out;
+
+  z-index: $top-bar-index;
+
+  &::before {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), transparent);
+
+    content: '';
+
+    z-index: 0;
+  }
+
+  &.scrolled {
+    background-color: $background-color;
+  }
+}
+
+.top-bar-logo {
+  position: relative;
+
+  max-width: 95px;
+
+  z-index: 0;
+}
+
+.top-bar-logo img {
+  display: block;
+
+  max-height: 100%;
+  max-width: 100%;
+}
+
+.top-bar-links {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  column-gap: 20px;
+
+  position: relative;
+
+  margin: 0 30px;
+
+  z-index: 0;
+}
+
+.top-bar-links a {
+  color: $text-two;
+
+  font-size: 13px;
+  font-weight: 500;
+
+  &.active {
+    color: #fff;
+  }
+}
+
+.top-bar-links .mobile {
+  display: none;
+
+  font-size: 16px;
+
+  cursor: pointer;
+}
+
+.top-bar-search {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  column-gap: 20px;
+
+  position: relative;
+
+  margin-left: auto;
+
+  z-index: 0;
+}
+
+.top-bar-search .action {
+  font-size: 18px;
+
+  cursor: pointer;
+}
+
+.top-bar-input {
+  position: relative;
+}
+
+.top-bar-input input {
+  width: 250px;
+
+  padding: 10px 10px 10px 40px;
+
+  color: #fff;
+  background-color: #000;
+  border: 1px solid #fff;
+  outline: none;
+
+  animation: input-width 100ms ease-out forwards;
+
+  &:focus {
+    border-color: #fff;
+  }
+}
+
+.top-bar-input i {
+  position: absolute;
+
+  top: 50%;
+  left: 10px;
+
+  transform: translateY(-50%);
+
+  font-size: 20px;
+}
+
+@keyframes input-width {
+  from {
+    width: 40px;
+  }
+  to {
+    width: 250px;
+  }
+}
+
+@media (max-width: 1000px) {
+  .top-bar {
+    padding: 0 40px;
+  }
+}
+
+@media (max-width: 700px) {
+  .top-bar {
+    padding: 0 30px;
+  }
+
+  .top-bar-links {
+    margin: 0 36px 0 auto;
+
+    a:not(.mobile) {
+      display: none;
+    }
+
+    .mobile {
+      display: block;
+    }
+  }
+
+  .top-bar-search {
+    position: absolute;
+
+    top: 50%;
+    right: 30px;
+
+    margin-left: 0;
+
+    transform: translateY(-50%);
+  }
+
+  .top-bar-search .action {
+    font-size: 16px;
+  }
+}
