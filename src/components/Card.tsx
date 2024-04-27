@@ -109,7 +109,7 @@ export default function Card({ id, poster, title, type, Ref }: CardProps) {
     <Link
       ref={Ref || ref}
       className={`media-card ${active ? 'active' : ''}`}
-      to={`/watch/${id}${type === 'series' ? `?s=${season}&e=${episode}&me=${maxEpisodes}` : ''}`}
+      to={`/watch/${id}${type === 'series' ? `?s=${season}&e=${episode}` : ''}`}
       onClick={onCardClick}
       onMouseOver={onCardHover}
       onMouseLeave={onCardLeave}
