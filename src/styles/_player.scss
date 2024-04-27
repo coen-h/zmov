@@ -26,8 +26,8 @@
   position: fixed;
 
   top: 30px;
-  left: 35px;
-  right: 35px;
+  left: 50px;
+  right: 50px;
 
   z-index: 1;
 }
@@ -79,7 +79,7 @@
 @media (max-width: 768px) {
   .player-controls {
     top: 20px;
-    left: 40px;
+    left: 20px;
     right: 20px;
   }
 
