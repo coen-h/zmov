@@ -46,8 +46,8 @@ export default function Watch() {
     let url = `https://vidsrc.to/embed/`;
 
     if (window.location.origin) url += `&o=${encodeURIComponent(window.location.origin)}`;
-    if (type === 'series') url += `${type}/${id}/${season}/${episode}`;
-    if (type === 'movie') url += `${type}/${id}`;
+    if (type === 'series') url += `tv/${id}/${season}/${episode}`;
+    if (type === 'movie') url += `movie/${id}`;
     return url;
   }
 
