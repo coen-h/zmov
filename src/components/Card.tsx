@@ -14,10 +14,8 @@ interface CardProps extends MediaShort {
 export default function Card({ id, poster, title, type, Ref }: CardProps) {
   const ref = useRef<HTMLAnchorElement>(null);
 
-  const nav = useNavigate();
-
   const [active, setActive] = useState(false);
-  const [wished, setWished] = useState(false);
+  const [setWished] = useState(false);
 
   const [episode, setEpisode] = useState(1);
   const [season, setSeason] = useState(1);
