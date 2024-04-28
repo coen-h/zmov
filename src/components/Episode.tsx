@@ -8,7 +8,7 @@ interface EpisodeProps extends EpisodeT {
   maxEpisodes: number;
 }
 
-export default function Episode({ id, season, number, image, title, description, runtime, maxEpisodes }: EpisodeProps) {
+export default function Episode({ id, season, number, image, title, description, runtime }: EpisodeProps) {
   function getLength(runtime: number) {
     const hours = Math.floor(runtime / 60);
     const minutes = runtime % 60;
