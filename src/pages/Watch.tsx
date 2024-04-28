@@ -160,7 +160,7 @@ export default function Watch() {
         <div className="player-controls">
           <i className="fa-regular fa-arrow-left" onClick={() => nav(`/${type}/${id}${type === "series" ? `?s=${season}&e=${episode}` : ""}`)}></i>
 
-          {type === 'series' && episode < maxEpisodes && <i className="fa-regular fa-forward-step right" onClick={() => nav(`/watch/${id}?s=${season}&e=${episode + 1}&me=${maxEpisodes}`)}></i>}
+          {type === 'series' && episode < maxEpisodes && <i className="fa-regular fa-forward-step right" onClick={() => nav(`/watch/${id}?s=${season}&e=${episode + 1}`)}></i>}
         </div>
 
         <iframe allowFullScreen referrerPolicy="origin" title={getTitle()} src={getSource()}></iframe>
