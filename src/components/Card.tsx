@@ -62,22 +62,6 @@ export default function Card({ id, poster, title, type, Ref }: CardProps) {
   }
 
   useEffect(() => {
-    getContinue();
-
-    setWished(Wishlist.has(id, type));
-
-    function onWishlistChange() {
-      setWished(Wishlist.has(id, type));
-    }
-
-    Wishlist.on(id, type, onWishlistChange);
-
-    return () => {
-      Wishlist.off(id, type, onWishlistChange);
-    };
-  }, []);
-
-  useEffect(() => {
     window.addEventListener('click', onWindowClick);
 
     return () => {
