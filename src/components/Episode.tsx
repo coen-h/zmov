@@ -8,7 +8,7 @@ interface EpisodeProps extends EpisodeT {
   maxEpisodes: number;
 }
 
-export default function Episode({ id, season, number, image, title, description, runtime }: EpisodeProps) {
+export default function Episode({ id, season, number, image, title, description, runtime, maxEpisodes }: EpisodeProps) {
   function getLength(runtime: number) {
     const hours = Math.floor(runtime / 60);
     const minutes = runtime % 60;
@@ -21,7 +21,7 @@ export default function Episode({ id, season, number, image, title, description,
   }
 
   return (
-    <Link className="episode" to={`/watch/${id}?s=${season}&e=${number}`}>
+    <Link className="episode" to={`/watch/${id}?s=${season}&e=${number}&me=${maxEpisodes}`}>
       <h2 className="episode-number">{number}</h2>
 
       <img className="episode-image" src={image} alt="" />
