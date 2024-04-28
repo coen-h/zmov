@@ -115,6 +115,26 @@ export default function Card({ id, poster, title, type, Ref }: CardProps) {
       onMouseLeave={onCardLeave}
     >
       <img src={poster} alt={title} loading="lazy" />
+
+      <div className="media-card-actions">
+        <button className="button">
+          <i className="fa-solid fa-play"></i>
+        </button>
+
+        {wished ? (
+          <button className="button" onClick={onCheckClick}>
+            <i className="fa-solid fa-check"></i>
+          </button>
+        ) : (
+          <button className="button secondary" onClick={onPlusClick}>
+            <i className="fa-solid fa-plus"></i>
+          </button>
+        )}
+
+        <button className="button secondary right" onClick={onChevronClick}>
+          <i className="fa-solid fa-chevron-down"></i>
+        </button>
+      </div>
     </Link>
   );
 }
