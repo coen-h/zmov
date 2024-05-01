@@ -121,6 +121,7 @@ export default function Card({ id, poster, title, type, Ref }: CardProps) {
           <i className="fa-solid fa-play"></i>
           <span>{type === 'series' ? `S${season} E${episode}` : 'Play'}</span>
         </Link>
+      </div>
 
         {wished ? (
           <button className="button" onClick={onCheckClick}>
