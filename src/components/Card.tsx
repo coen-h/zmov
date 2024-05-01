@@ -118,7 +118,10 @@ export default function Card({ id, poster, title, type, Ref }: CardProps) {
 
       <div className="media-card-actions">
         <button className="button">
-          <i className="fa-solid fa-play"></i>
+          <Link className="button" to={`/watch/${id}${type === 'series' ? `?s=${season}&e=${episode}` : ''}`}>
+            <i className="fa-solid fa-play"></i>
+            <span>{type === 'series' ? `S${season} E${episode}` : 'Play'}</span>
+          </Link>
         </button>
 
         {wished ? (
