@@ -117,9 +117,10 @@ export default function Card({ id, poster, title, type, Ref }: CardProps) {
       <img src={poster} alt={title} loading="lazy" />
 
       <div className="media-card-actions">
-        <button className="button">
-          <i className="fa-solid fa-play"></i>
-        </button>
+        <Link className="button" to={`/watch/${id}${type === 'series' ? `?s=${season}&e=${episode}` : ''}`}>
+          <i className="fa-solid fa-play" style={{ marginLeft: '12px' }}></i>
+          <span>{type === 'series' && `S${season} E${episode}`}</span>
+        </Link>
 
         {wished ? (
           <button className="button" onClick={onCheckClick}>
