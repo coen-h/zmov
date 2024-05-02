@@ -15,13 +15,13 @@ export default function Collection({ title, items }: CollectionT) {
   function onBack() {
     if (index <= 0) return;
 
-    setIndex(index - 1);
+    setIndex(index - 3);
   }
 
   function onNext() {
     if (index >= indexMax) return;
 
-    setIndex(index + 1);
+    setIndex(index + 3);
   }
 
   function onResize() {
