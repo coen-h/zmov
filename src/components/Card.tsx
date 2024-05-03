@@ -120,7 +120,6 @@ export default function Card({ id, poster, title, type, Ref }: CardProps) {
         <button className="button">
           <Link className="button" to={`/watch/${id}${type === 'series' ? `?s=${season}&e=${episode}` : ''}`}>
             <i className="fa-solid fa-play"></i>
-            <span>{type === 'series' && `S${season} E${episode}`}</span>
           </Link>
         </button>
 
