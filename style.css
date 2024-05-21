@@ -1,0 +1,163 @@
+* {
+    font-family: "Manrope", sans-serif;
+}
+body {
+    margin: 0;
+    background-color: black;
+}
+p {
+    margin: 0;
+    padding: 0;
+}
+
+
+/* HEADER */
+
+
+#header {
+    display: flex;
+    position: fixed;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 3rem 1rem 3rem;
+    height: 50px;
+    width: 100vw;
+    background: linear-gradient(to bottom, rgba(15, 15, 15, 1) 0%, rgba(0, 0, 0, 0) 100%);
+    backdrop-filter: blur(3px);
+    z-index: 1111;
+}
+#header-button {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+#header-left {
+    display: flex;
+    gap: 20px;
+}
+#header-right {
+    display: flex;
+    gap: 15px;
+}
+#header-logo {
+    width: 100px;
+}
+
+
+/* HERO */
+
+
+#hero {
+    display: flex;
+}
+#hero-content {
+    display: flex;
+    flex-direction: column;
+    color: white;
+    margin: 15rem 3rem 10rem 3rem;
+    z-index: 1;
+}
+#hero-title {
+    font-size: 4rem;
+    margin-top: 3rem;
+    font-weight: bold;
+}
+#hero-desc {
+    font-size: 1.1rem;
+    width: 45vw;
+    margin-top: 1rem;
+}
+#hero-buttons {
+    display: flex;
+    flex-direction: row;
+    margin-top: 1rem;
+    gap: 20px;
+}
+#hero-button {
+    width: 100px;
+    height: 50px;
+    color: white;
+    background-color: rgba(255,255,255,0.3);
+    border-radius: 10px;
+}
+#hero-button:hover {
+    background-color: rgba(255,255,255,0.5);
+}
+#hero-image {
+    position: absolute;
+    z-index: -1;
+    width: 100vw;
+    opacity: 0.3;
+}
+
+
+/* DISCOVER */
+
+
+#discover {
+    display: flex;
+    flex-direction: column;
+    color: white;
+    background: linear-gradient(to top, rgba(0, 0, 0, 1) 90%, rgba(0, 0, 0, 0) 100%);
+    z-index: 2;
+}
+#discover-section {
+    display: flex;
+    flex-direction: column;
+    margin: 1rem 3rem 1rem 3rem;
+}
+#discover-title {
+    font-size: 2rem;
+    margin: 0.5rem;
+    font-weight: bold;
+}
+.discover-card {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    overflow: scroll;
+}
+.card {
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-size: 0.5rem;
+    background-color: rgba(255, 255, 255, 0.021);
+}
+.card-content {
+    text-align: center;
+}
+.card img {
+    width: 150px;
+    height: auto;
+    border-radius: 8px;
+}
+
+
+/* FOOTER */
+
+
+#footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(to top, rgb(27, 17, 16) 0%, rgba(0, 0, 0, 0) 100%);
+    color: white;
+    padding: 2rem 3rem 2rem 3rem;
+}
+#footer-left {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+#footer-right {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+#welcome {
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+#copyright {
+    font-size: 0.8rem;
+}
