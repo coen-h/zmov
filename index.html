@@ -12,17 +12,25 @@
 </head>
 <body>
     <div id="header">
-        <div id="header-left">
-            <img src="public/logo.png" id="header-logo"></img>
-            <div id="header-button">
-                <div id="header-browse"><a href="index.html">Browse</a></div>
-                <div id="header-movies"><a href="pages/movies.html">Movies</a></div>
-                <div id="header-shows"><a href="pages/series.html">Series</a></div>
+        <div id="header-section">
+            <div id="header-left">
+                <a href="index.html">
+                    <img src="public/logo.png" id="header-logo"></img>
+                </a>
             </div>
-        </div>
-        <div id="header-right">
-            <div id="header-settings"><a href="pages/settings.html">Settings</a></div>
-            <div id="header-search"><a>search</a></div>
+            <div id="header-right">
+                <button id="settings">
+                    <a href="./pages/settings.html">
+                        <img id="settings-icon" src="./public/settings.png">
+                    </a>
+                </button>
+                <div id="search">
+                    <input type="text" name="text" class="input" required="" placeholder="Type to search...">
+                    <div class="icon">
+                        <img id="search-icon" src="public/search.png">
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <div id="hero"></div>
@@ -72,6 +80,6 @@
             <div id="github">Github</div>
         </div>
     </div>
-    <script src="script.js"></script>
+    <script src="script.js" type="module"></script>
 </body>
 </html>
