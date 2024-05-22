@@ -11,6 +11,7 @@
     <link rel="icon" type="image/x-icon" href="/public/icon.png">
 </head>
 <body>
+    <!-- <div id="iframe-container"></div> -->
     <div id="header">
         <div id="header-section">
             <div id="header-left">
@@ -25,7 +26,7 @@
                     </a>
                 </button>
                 <div id="search">
-                    <input type="text" name="text" class="input" required="" placeholder="Type to search...">
+                    <input type="text" name="text" id="search-input" required="" placeholder="Type to search...">
                     <div class="icon">
                         <img id="search-icon" src="public/search.png">
                     </div>
@@ -70,16 +71,18 @@
     </div>
     <div id="footer">
         <div id="footer-left">
-            <div id="welcome"><p>Welcome to zmov!</p></div>
+            <div id="welcome"><p>Welcome to</p>
+                <div id="footer-logo"><img src="./public/logo.png" style="width: 100px"></div>
+            </div>
             <div id="message"><p>This site does not store any files on our server, we only link to the media which is hosted on 3rd party services.</p></div>
             <div id="copyright">Copyright © zmov 2024</div>
         </div>
         <div id="footer-right">
-            <div id="dmca">DMCA</div>
-            <div id="discord">Discord</div>
-            <div id="github">Github</div>
+            <a href="./pages/dmca.html" id="dmca">DMCA</a>
+            <a target=”_blank” href="mailto:me@coen.ovh" rel=noopener noreferrer><img src="./public/email.png" id="mail"></img></a>
+            <a target=”_blank” href="https://github.com/coen-h" rel=noopener noreferrer><img src="./public/github-mark-white.png" id="github"></img></a>
         </div>
     </div>
-    <script src="script.js" type="module"></script>
+    <script src="./scripts/script.js" type="module"></script>
 </body>
 </html>
