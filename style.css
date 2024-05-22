@@ -3,12 +3,35 @@
 }
 body {
     margin: 0;
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(30, 20, 20, 1), rgba(0, 0, 0, 1));
+    background-color: black;
 }
 p {
     margin: 0;
     padding: 0;
 }
+a {
+    color: white;
+}
+/* .hidden {
+    display: none;
+}
+
+#iframe-container {
+    display: none;
+    width: 100vw;
+    height: 100vh;
+}
+
+.show-iframe #iframe-container {
+    display: flex;
+}
+
+.show-iframe #header,
+.show-iframe #hero,
+.show-iframe #discover,
+.show-iframe #footer {
+    display: none;
+} */
 
 
 /* HEADER */
@@ -43,7 +66,7 @@ p {
     --size-button: 40px;
     color: white;
 }
-.input {
+#search-input {
     padding-left: var(--size-button);
     height: var(--size-button);
     font-size: 15px;
@@ -52,19 +75,19 @@ p {
     outline: none;
     width: 0px;
     transition: all ease 0.3s;
-    background-color: #191A1E;
+    background-color: rgba(255,255,255,.15);
     box-shadow: 1.5px 1.5px 3px #0e0e0e, -1.5px -1.5px 3px rgb(95 94 94 / 25%), inset 0px 0px 0px #0e0e0e, inset 0px -0px 0px #5f5e5e;
     border-radius: 50px;
     cursor: pointer;
 }
-.input:focus,
-.input:not(:invalid) {
+#search-input:focus,
+#search-input:not(:invalid) {
     width: 200px;
     cursor: text;
     box-shadow: 0px 0px 0px #0e0e0e, 0px 0px 0px rgb(95 94 94 / 25%), inset 1.5px 1.5px 3px #0e0e0e, inset -1.5px -1.5px 3px #5f5e5e;
 }
-.input:focus + .icon,
-.input:not(:invalid) + .icon {
+#search-input:focus + .icon,
+#search-input:not(:invalid) + .icon {
     pointer-events: all;
     cursor: pointer;
 }
@@ -83,16 +106,17 @@ p {
 #settings {
     width: 42px;
     height: 42px;
-    background-color: #191A1E;
+    background-color: rgba(255,255,255,.15);
     border: none;
     border-radius: 50%;
     padding-top: 5px;
+    box-shadow: 1px 1px 1.5px #0e0e0e, -1px -1px 1.5px rgb(95 94 94 / 25%), inset 0px 0px 0px #0e0e0e, inset 0px -0px 0px #5f5e5e;
 }
 #settings-icon {
     width: 30px;
 }
 #settings:hover {
-    rotate: 30deg;
+    rotate: 15deg;
 }
 
 
@@ -117,7 +141,7 @@ p {
 #hero-desc {
     font-size: 1.1rem;
     width: 45vw;
-    margin-top: 1rem;
+    margin-top: 0.5rem;
 }
 #hero-buttons {
     display: flex;
@@ -139,7 +163,7 @@ p {
     position: absolute;
     z-index: -1;
     width: 100vw;
-    opacity: 0.3;
+    opacity: 0.5;
 }
 
 
@@ -151,6 +175,7 @@ p {
     flex-direction: column;
     color: white;
     z-index: 2;
+    background: linear-gradient(to top, rgba(0, 0, 0, 1) 0%, rgb(39, 23, 16) 50%, rgba(0, 0, 0, 1) 95%, rgba(0, 0, 0, 0) 100%);
 }
 #discover-section {
     display: flex;
@@ -170,9 +195,9 @@ p {
 }
 .card {
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, .8);
     font-size: 0.5rem;
-    background-color: rgba(255, 255, 255, 0.021);
+    background-color: rgba(255, 255, 255, .04);
 }
 .card-content {
     text-align: center;
@@ -196,7 +221,7 @@ p {
     align-items: center;
     background: linear-gradient(to top, rgb(43, 27, 25) 0%, rgba(0, 0, 0, 0) 100%);
     color: white;
-    padding: 2rem 3rem 2rem 3rem;
+    padding: 2rem 3rem 1rem 3rem;
 }
 #footer-left {
     display: flex;
@@ -206,12 +231,114 @@ p {
 #footer-right {
     display: flex;
     flex-direction: row;
-    gap: 10px;
+    align-items: center;
+    gap: 20px;
 }
 #welcome {
+    display: flex;
     font-size: 1.25rem;
     font-weight: bold;
+    gap: 3px;
 }
 #copyright {
     font-size: 0.8rem;
+}
+#github {
+    width: 50px;
+    opacity: 0.5;
+}
+#github:hover {
+    opacity: 1;
+    scale: 1.05;
+}
+#mail {
+    width: 50px;
+    opacity: 0.5;
+}
+#mail:hover {
+    scale: 1.05;
+    opacity: 1;
+}
+#dmca {
+    font-size: 1.2rem;
+    font-weight: bold;
+    opacity: 0.5;
+    text-decoration: none;
+}
+
+
+/* SEARCH */
+
+
+#search-section {
+    min-height: 85.1vh;
+    min-width: 100vw;
+}
+#search-results {
+    display: flex;
+    padding-top: 7rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.search-card {
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-size: 0.5rem;
+    background-color: rgba(255, 255, 255, 0.021);
+}
+.search-card-content {
+    text-align: center;
+    color: white;
+}
+.search-card img {
+    width: 200px;
+    height: auto;
+    border-radius: 8px;
+}
+.search-card img:hover {
+    opacity: 0.6;
+}
+#search-none {
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    color: white;
+}
+
+
+/* DMCA */
+
+
+#dmca-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+}
+#dmca-content {
+    display: flex;
+    flex-direction: column;
+    min-height: 85.1vh;
+    max-width: 80vw;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+}
+#dmca-email {
+    font-size: 1.25rem;
+}
+
+
+/* SETTINGS */
+
+
+#settings-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 85.1vh;
+    max-width: 100vw;
+    color: white;
+    font-size: 3rem;
 }

@@ -6,44 +6,60 @@ async function fetchMoviesAndSeries() {
         const heroItem = data.data.hero;
 
         const trendingMovies = data.data.collections.find(collection => collection.title === 'Trending movies this week').items.map(item => ({
-            type: 'trendmovie',
+            conType: 'trendmovie',
             title: item.title,
-            poster: item.poster
+            poster: item.poster,
+            type: "movie",
+            id: item.id,
         }));
         const trendingSeries = data.data.collections.find(collection => collection.title === 'Trending series this week').items.map(item => ({
-            type: 'trendseries',
+            conType: 'trendseries',
             title: item.title,
-            poster: item.poster
+            poster: item.poster,
+            type: "series",
+            id: item.id,
         }));
         const popularMovies = data.data.collections.find(collection => collection.title === 'Popular movies').items.map(item => ({
-            type: 'popmovie',
+            conType: 'popmovie',
             title: item.title,
-            poster: item.poster
+            poster: item.poster,
+            type: "movie",
+            id: item.id,
         }));
         const popularSeries = data.data.collections.find(collection => collection.title === 'Popular series').items.map(item => ({
-            type: 'popseries',
+            conType: 'popseries',
             title: item.title,
-            poster: item.poster
+            poster: item.poster,
+            type: "series",
+            id: item.id,
         }));
         const topMovies = data.data.collections.find(collection => collection.title === 'Top rated movies').items.map(item => ({
-            type: 'topmovie',
+            conType: 'topmovie',
             title: item.title,
-            poster: item.poster
+            poster: item.poster,
+            type: "movie",
+            id: item.id,
         }));
         const topSeries = data.data.collections.find(collection => collection.title === 'Top rated series').items.map(item => ({
-            type: 'topseries',
+            conType: 'topseries',
             title: item.title,
-            poster: item.poster
+            poster: item.poster,
+            type: "series",
+            id: item.id,
         }));
         const upMovies = data.data.collections.find(collection => collection.title === 'Upcoming movies').items.map(item => ({
-            type: 'upmovie',
+            conType: 'upmovie',
             title: item.title,
-            poster: item.poster
+            poster: item.poster,
+            type: "movie",
+            id: item.id,
         }));
         const onSeries = data.data.collections.find(collection => collection.title === 'On the air series').items.map(item => ({
-            type: 'onseries',
+            conType: 'onseries',
             title: item.title,
-            poster: item.poster
+            poster: item.poster,
+            type: "series",
+            id: item.id,
         }));
 
         return { items: [...trendingMovies, ...trendingSeries, ...popularMovies, ...popularSeries, ...topMovies, ...topSeries, ...upMovies, ...onSeries], heroItem };
@@ -77,7 +93,7 @@ function displayMoviesAndSeries({ items, heroItem }) {
     if (heroItem) {
         heroContainer.innerHTML = `
             <div class="hero-card">
-                <img id="hero-image" src="${heroItem.images.backdrop}" alt="${heroItem.title}">
+            <img id="hero-image" src="${heroItem.images.backdrop}" alt="${heroItem.title}">
                 <div id="hero-content">
                     <div id="hero-title"><img src="${heroItem.images.logo}"></div>
                     <div id="hero-desc"><p>${heroItem.description}</p></div>
@@ -94,30 +110,78 @@ function displayMoviesAndSeries({ items, heroItem }) {
         const itemElement = document.createElement('div');
         itemElement.classList.add('card');
         itemElement.innerHTML = `
-            <img src="https://image.tmdb.org/t/p/w500${item.poster}" alt="${item.title}">
+            <img src="https://image.tmdb.org/t/p/w500${item.poster}" alt="${item.title}" data-id="${item.id}" data-type="${item.type}">
             <div class="card-content">
                 <h2>${item.title}</h2>
             </div>
         `;
         
-        if (item.type === 'trendmovie') {
+        if (item.conType === 'trendmovie') {
             trendMoviesContainer.appendChild(itemElement);
-        } else if (item.type === 'trendseries') {
+        } else if (item.conType === 'trendseries') {
             trendSeriesContainer.appendChild(itemElement);
-        } else if (item.type === 'popmovie') {
+        } else if (item.conType === 'popmovie') {
             popMoviesContainer.appendChild(itemElement);
-        } else if (item.type === 'popseries') {
+        } else if (item.conType === 'popseries') {
             popSeriesContainer.appendChild(itemElement);
-        } else if (item.type === 'topmovie') {
+        } else if (item.conType === 'topmovie') {
             topMoviesContainer.appendChild(itemElement);
-        } else if (item.type === 'topseries') {
+        } else if (item.conType === 'topseries') {
             topSeriesContainer.appendChild(itemElement);
-        } else if (item.type === 'upmovie') {
+        } else if (item.conType === 'upmovie') {
             upMoviesContainer.appendChild(itemElement);
-        } else if (item.type === 'onseries') {
+        } else if (item.conType === 'onseries') {
             onSeriesContainer.appendChild(itemElement);
         }
     });
 }
+
+function handleSearch() {
+    const query = document.getElementById('search-input').value;
+    if (query) {
+        window.location.href = `./pages/search.html?q=${query}`;
+    }
+}
+
+document.getElementById('search-icon').addEventListener('click', handleSearch);
+document.getElementById('search-input').addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') {
+        handleSearch();
+    }
+});
+
+// document.addEventListener('DOMContentLoaded', function() {
+//     const discoverCards = document.querySelectorAll('.discover-card');
+
+//     discoverCards.forEach(card => {
+//         card.addEventListener('click', function(event) {
+//             const img = event.target.closest('.discover-card').querySelector('img');
+//             const id = img.dataset.id;
+//             const type = img.dataset.type;
+
+//             const iframeContainer = document.getElementById('iframe-container');
+//             iframeContainer.innerHTML = '';
+
+//             const iframe = document.createElement('iframe');
+//             iframe.setAttribute('src', getEmbedUrl(type, id));
+//             iframe.setAttribute('width', '100%');
+//             iframe.setAttribute('height', '100%');
+//             iframe.setAttribute('frameborder', '0');
+//             iframe.setAttribute('allowfullscreen', true);
+
+//             iframeContainer.appendChild(iframe);
+//             document.body.classList.add('show-iframe');
+//         });
+//     });
+// });
+
+// function getEmbedUrl(type, id) {
+//     if (type === 'movie') {
+//         return `https://vidsrc.pro/embed/movie/${id}`;
+//     } else if (type === 'series') {
+//         return `https://vidsrc.pro/embed/tv/${id}/1/1`;
+//     }
+//     return '';
+// }
 
 fetchMoviesAndSeries().then(displayMoviesAndSeries);
