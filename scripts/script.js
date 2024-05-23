@@ -139,7 +139,7 @@ function displayMoviesAndSeries({ items, heroItem }) {
         }
 
         itemElement.addEventListener('click', () => {
-            window.location.href = `./pages/player.html?type=${item.type}&id=${item.id}`;
+            window.location.href = `./pages/info.html?type=${item.type}&id=${item.id}`;
         });
     });
 }

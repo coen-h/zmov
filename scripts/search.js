@@ -37,7 +37,7 @@ function displaySearchResults(results) {
         searchResultsContainer.appendChild(resultElement);
 
         resultElement.addEventListener('click', () => {
-            window.location.href = `../pages/player.html?type=${result.type}&id=${result.id}`;
+            window.location.href = `/pages/info.html?type=${result.type}&id=${result.id}`;
         });
     });
 }
