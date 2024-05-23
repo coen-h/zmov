@@ -5,6 +5,8 @@ async function fetchSearchResults(query) {
         return data.data.map(item => ({
             title: item.title,
             poster: item.poster,
+            type: item.type,
+            id: item.id
         }));
     } catch (error) {
         console.error('Error fetching search results:', error);
@@ -28,10 +30,15 @@ function displaySearchResults(results) {
             <img src="${result.poster}" alt="${result.title}">
             <div class="search-card-content">
                 <h2>${result.title}</h2>
+                <p id="search-type">${result.type}</p>
             </div>
         `;
 
         searchResultsContainer.appendChild(resultElement);
+
+        resultElement.addEventListener('click', () => {
+            window.location.href = `../pages/player.html?type=${result.type}&id=${result.id}`;
+        });
     });
 }
 

@@ -104,13 +104,17 @@ function displayMoviesAndSeries({ items, heroItem }) {
                 </div>
             </div>
         `;
+
+        document.getElementById('hero-watch').addEventListener('click', () => {
+            window.location.href = `./pages/player.html?type=${heroItem.type}&id=${heroItem.id}`;
+        });
     }
 
     items.forEach(item => {
         const itemElement = document.createElement('div');
         itemElement.classList.add('card');
         itemElement.innerHTML = `
-            <img src="https://image.tmdb.org/t/p/w500${item.poster}" alt="${item.title}" data-id="${item.id}" data-type="${item.type}">
+            <img src="https://image.tmdb.org/t/p/w500${item.poster}" alt="${item.title}">
             <div class="card-content">
                 <h2>${item.title}</h2>
             </div>
@@ -133,8 +137,13 @@ function displayMoviesAndSeries({ items, heroItem }) {
         } else if (item.conType === 'onseries') {
             onSeriesContainer.appendChild(itemElement);
         }
+
+        itemElement.addEventListener('click', () => {
+            window.location.href = `./pages/player.html?type=${item.type}&id=${item.id}`;
+        });
     });
 }
+
 
 function handleSearch() {
     const query = document.getElementById('search-input').value;
@@ -150,38 +159,32 @@ document.getElementById('search-input').addEventListener('keypress', (e) => {
     }
 });
 
-// document.addEventListener('DOMContentLoaded', function() {
-//     const discoverCards = document.querySelectorAll('.discover-card');
+document.addEventListener('DOMContentLoaded', function() {
+    const carouselButtons = document.querySelectorAll('.carousel-btn');
 
-//     discoverCards.forEach(card => {
-//         card.addEventListener('click', function(event) {
-//             const img = event.target.closest('.discover-card').querySelector('img');
-//             const id = img.dataset.id;
-//             const type = img.dataset.type;
+    carouselButtons.forEach(button => {
+        button.addEventListener('click', function(event) {
+            const targetId = button.getAttribute('data-target');
+            const carousel = document.querySelector(targetId);
+            const cards = carousel.querySelectorAll('.card');
+            const cardWidth = cards[0].offsetWidth;
 
-//             const iframeContainer = document.getElementById('iframe-container');
-//             iframeContainer.innerHTML = '';
+            if (button.classList.contains('prev-btn')) {
+                const newPosition = carousel.scrollLeft - (3 * cardWidth);
+                carousel.scrollTo({
+                    left: newPosition,
+                    behavior: 'smooth'
+                });
+            } else if (button.classList.contains('next-btn')) {
+                const newPosition = carousel.scrollLeft + (3 * cardWidth);
+                carousel.scrollTo({
+                    left: newPosition,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+});
 
-//             const iframe = document.createElement('iframe');
-//             iframe.setAttribute('src', getEmbedUrl(type, id));
-//             iframe.setAttribute('width', '100%');
-//             iframe.setAttribute('height', '100%');
-//             iframe.setAttribute('frameborder', '0');
-//             iframe.setAttribute('allowfullscreen', true);
-
-//             iframeContainer.appendChild(iframe);
-//             document.body.classList.add('show-iframe');
-//         });
-//     });
-// });
-
-// function getEmbedUrl(type, id) {
-//     if (type === 'movie') {
-//         return `https://vidsrc.pro/embed/movie/${id}`;
-//     } else if (type === 'series') {
-//         return `https://vidsrc.pro/embed/tv/${id}/1/1`;
-//     }
-//     return '';
-// }
 
 fetchMoviesAndSeries().then(displayMoviesAndSeries);
