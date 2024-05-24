@@ -133,7 +133,7 @@ a {
 }
 #hero-desc {
     font-size: 1.1rem;
-    width: 60vw;
+    width: 50vw;
     margin-top: 0.5rem;
 }
 #hero-buttons {
@@ -162,6 +162,7 @@ a {
     z-index: -1;
     width: 100vw;
     opacity: 0.5;
+    filter: blur(2.5px);
 }
 
 
@@ -289,7 +290,7 @@ a {
 
 #search-section {
     min-height: 100vh;
-    min-width: 100vw;
+    margin: 0rem 10rem 0rem 10rem;
 }
 #search-results {
     display: flex;
@@ -451,7 +452,6 @@ a {
     width: 600px;
     gap: 15px;
     z-index: 11;
-    
 }
 #info-poster {
     width: 300px;
@@ -483,6 +483,10 @@ a {
     z-index: -2;
     width: 100vw;
     opacity: 0.3;
+    filter: blur(5px);
+}
+#info-bottom {
+    background: linear-gradient(to top, rgba(0, 0, 0, 1) 0%, rgb(22, 15, 11) 50%, rgba(0, 0, 0, 1) 98%, rgba(0, 0, 0, 0) 100%);
 }
 #play-button {
     width: 100px;
@@ -517,14 +521,6 @@ a {
     color: white;
     gap: 15px;
     z-index: 10;
-    background-color: transparent;
-}
-#suggested-blur {
-    position: absolute;
-    z-index: -1;
-    width: 100vw;
-    height: 100vh;
-    background: linear-gradient(to top, rgba(0, 0, 0, 1) 90%, rgba(0, 0, 0, 0) 100%);
 }
 .suggested-card {
     width: 250px;
@@ -553,7 +549,7 @@ a {
 #season-container {
     display: flex;
     justify-content: flex-start;
-    padding-left: 13rem;
+    padding-left: 20rem;
     margin-top: 2rem;
 }
 #season-selector {
@@ -569,7 +565,7 @@ a {
 }
 #season-selector:focus,
 #season-selector:active {
-    background-color: rgb(30, 30, 30);
+    background-color: rgb(48, 48, 48);
 }
 #episodes-container {
     display: flex;
@@ -577,7 +573,7 @@ a {
     gap: 25px;
     overflow-y: scroll;
     height: 50vh;
-    margin: 1rem 13rem 2rem 13rem;
+    margin: 1rem 20rem 2rem 20rem;
     border: 1px solid rgba(255, 255, 255, 0.3);
     border-radius: 8px;
     padding: 0.5rem;
@@ -604,5 +600,5 @@ a {
     font-size: 1rem;
 }
 .hidden {
-    display: none;
+    display: none !important;
 }
