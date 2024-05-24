@@ -437,7 +437,7 @@ a {
     align-items: center;
     flex-direction: row;
     width: 100vw;
-    height: 80vh;
+    height: 100vh;
     color: white;
     gap: 50px;
     text-align: center;
@@ -449,21 +449,46 @@ a {
     align-items: center;
     height: 450px;
     width: 600px;
-    gap: 20px;
+    gap: 15px;
+    z-index: 11;
+    
 }
 #info-poster {
     width: 300px;
     border-radius: 12px;
+    z-index: 12;
+    box-shadow: 5px 5px 20px black;
 }
 #info-title {
     font-size: 2.5rem;
     font-weight: bold;
 }
+#info-star {
+    width: 12px;
+    height: 12px;
+}
+#info-genres {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+.genre-box {
+    padding: 5px;
+    border-radius: 5px;
+    background-color: rgba(255,255,255,0.3);
+    color: rgba(255,255,255,1);
+}
+#info-backdrop {
+    position: absolute;
+    z-index: -2;
+    width: 100vw;
+    opacity: 0.3;
+}
 #play-button {
     width: 100px;
     height: 50px;
     color: white;
-    background-color: rgba(255,255,255,0.1);
+    background-color: rgba(255,255,255,0.2);
     border-radius: 10px;
     font-size: 1.2rem;
     font-weight: bold;
@@ -471,13 +496,17 @@ a {
     transition: all 150ms ease;
 }
 #play-button:hover {
-    background-color: rgba(255,255,255,.08);
-    scale: 0.95;
+    background-color: rgba(255,255,255,.4);
+    scale: 1.05;
 }
 #info-bar {
     display: flex;
     flex-direction: row;
-    gap: 20px;
+    align-items: center;
+    gap: 3px;
+}
+#info-date {
+    margin-left: 10px;
 }
 #suggested-container {
     display: flex; 
@@ -487,6 +516,15 @@ a {
     margin: 16px 150px 32px 150px;
     color: white;
     gap: 15px;
+    z-index: 10;
+    background-color: transparent;
+}
+#suggested-blur {
+    position: absolute;
+    z-index: -1;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(to top, rgba(0, 0, 0, 1) 90%, rgba(0, 0, 0, 0) 100%);
 }
 .suggested-card {
     width: 250px;
@@ -511,4 +549,60 @@ a {
 #suggested-card-title {
     padding: 10px;
     text-align: center;
+}
+#season-container {
+    display: flex;
+    justify-content: flex-start;
+    padding-left: 13rem;
+    margin-top: 2rem;
+}
+#season-selector {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    border: 0;
+    color: white;
+    text-align: left;
+    padding-left: 1rem;
+    font-size: 1.5rem;
+    width: 208px;
+    height: 50px;
+}
+#season-selector:focus,
+#season-selector:active {
+    background-color: rgb(30, 30, 30);
+}
+#episodes-container {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    overflow-y: scroll;
+    height: 50vh;
+    margin: 1rem 13rem 2rem 13rem;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 8px;
+    padding: 0.5rem;
+}
+.episode-box {
+    display: flex;
+    cursor: pointer;
+    align-items: center;
+    border-radius: 8px;
+}
+.episode-content {
+    color: white;
+    margin-left: 1.5rem;
+}
+#episode-image {
+    width: 200px;
+    border-radius: 8px;
+}
+#episode-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+#episode-desc {
+    font-size: 1rem;
+}
+.hidden {
+    display: none;
 }

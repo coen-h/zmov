@@ -108,6 +108,9 @@ function displayMoviesAndSeries({ items, heroItem }) {
         document.getElementById('hero-watch').addEventListener('click', () => {
             window.location.href = `./pages/player.html?type=${heroItem.type}&id=${heroItem.id}`;
         });
+        document.getElementById('hero-more').addEventListener('click', () => {
+            window.location.href = `./pages/info.html?type=${heroItem.type}&id=${heroItem.id}`;
+        });
     }
 
     items.forEach(item => {
