@@ -30,7 +30,6 @@ function displaySearchResults(results) {
             <img src="${result.poster}" alt="${result.title}">
             <div class="search-card-content">
                 <h2>${result.title}</h2>
-                <p id="search-type">${result.type}</p>
             </div>
         `;
 
