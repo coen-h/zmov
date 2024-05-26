@@ -117,10 +117,9 @@ function displayMoviesAndSeries({ items, heroItem }) {
         const itemElement = document.createElement('div');
         itemElement.classList.add('card');
         itemElement.innerHTML = `
-            <img src="https://image.tmdb.org/t/p/w500${item.poster}" alt="${item.title}">
-            <div class="card-content">
-                <h2>${item.title}</h2>
-            </div>
+            <img class="lazy" src="../public/black.jpg" data-src="${item.poster}" alt="${item.title}">
+            <div class="card-play"><img class="play-icon" src="../public/play.png"></div>
+            <p class="card-content">${item.title}</p>
         `;
         
         if (item.conType === 'trendmovie') {
@@ -145,8 +144,61 @@ function displayMoviesAndSeries({ items, heroItem }) {
             window.location.href = `./pages/info.html?type=${item.type}&id=${item.id}`;
         });
     });
+
+    initializeLazyLoading();
+
+    const image = document.getElementById('hero-image');
+    function fadeInImage() {
+    image.classList.add('hero-animation');
+    }
+    image.onload = fadeInImage;
 }
 
+function initializeLazyLoading() {
+    const lazyImages = document.querySelectorAll('.lazy');
+    
+    if ("IntersectionObserver" in window) {
+        let lazyImageObserver = new IntersectionObserver(function(entries, observer) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    let lazyImage = entry.target;
+                    lazyImage.src = lazyImage.dataset.src;
+                    lazyImage.onload = () => {
+                        lazyImage.classList.remove('lazy');
+                        lazyImage.classList.add('loaded');
+                    }
+                    lazyImageObserver.unobserve(lazyImage);
+                }
+            });
+        });
+
+        lazyImages.forEach(function(lazyImage) {
+            lazyImageObserver.observe(lazyImage);
+        });
+    } else {
+        let lazyLoad = function() {
+            lazyImages.forEach(function(lazyImage) {
+                if (lazyImage.getBoundingClientRect().top < window.innerHeight && lazyImage.getBoundingClientRect().bottom > 0 && getComputedStyle(lazyImage).display !== "none") {
+                    lazyImage.src = lazyImage.dataset.src;
+                    lazyImage.onload = () => {
+                        lazyImage.classList.remove('lazy');
+                        lazyImage.classList.add('loaded');
+                    }
+                }
+            });
+
+            if (lazyImages.length == 0) {
+                document.removeEventListener("scroll", lazyLoad);
+                window.removeEventListener("resize", lazyLoad);
+                window.removeEventListener("orientationchange", lazyLoad);
+            }
+        };
+
+        document.addEventListener("scroll", lazyLoad);
+        window.addEventListener("resize", lazyLoad);
+        window.addEventListener("orientationchange", lazyLoad);
+    }
+}
 
 function handleSearch() {
     const query = document.getElementById('search-input').value;

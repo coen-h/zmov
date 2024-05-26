@@ -25,12 +25,11 @@ function displaySearchResults(results) {
 
     results.forEach(result => {
         const resultElement = document.createElement('div');
-        resultElement.classList.add('search-card');
+        resultElement.classList.add('card');
         resultElement.innerHTML = `
-            <img src="${result.poster}" alt="${result.title}">
-            <div class="search-card-content">
-                <h2>${result.title}</h2>
-            </div>
+            <img class="lazy" src="../public/black.jpg" data-src="${result.poster}" alt="${result.title}">
+            <div class="card-play"><img class="play-icon" src="../public/play.png"></div>
+            <p class="card-content">${result.title}</p>
         `;
 
         searchResultsContainer.appendChild(resultElement);
@@ -39,6 +38,54 @@ function displaySearchResults(results) {
             window.location.href = `/pages/info.html?type=${result.type}&id=${result.id}`;
         });
     });
+
+    initializeLazyLoading()
+}
+
+function initializeLazyLoading() {
+    const lazyImages = document.querySelectorAll('.lazy');
+    
+    if ("IntersectionObserver" in window) {
+        let lazyImageObserver = new IntersectionObserver(function(entries, observer) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    let lazyImage = entry.target;
+                    lazyImage.src = lazyImage.dataset.src;
+                    lazyImage.onload = () => {
+                        lazyImage.classList.remove('lazy');
+                        lazyImage.classList.add('loaded');
+                    }
+                    lazyImageObserver.unobserve(lazyImage);
+                }
+            });
+        });
+
+        lazyImages.forEach(function(lazyImage) {
+            lazyImageObserver.observe(lazyImage);
+        });
+    } else {
+        let lazyLoad = function() {
+            lazyImages.forEach(function(lazyImage) {
+                if (lazyImage.getBoundingClientRect().top < window.innerHeight && lazyImage.getBoundingClientRect().bottom > 0 && getComputedStyle(lazyImage).display !== "none") {
+                    lazyImage.src = lazyImage.dataset.src;
+                    lazyImage.onload = () => {
+                        lazyImage.classList.remove('lazy');
+                        lazyImage.classList.add('loaded');
+                    }
+                }
+            });
+
+            if (lazyImages.length == 0) {
+                document.removeEventListener("scroll", lazyLoad);
+                window.removeEventListener("resize", lazyLoad);
+                window.removeEventListener("orientationchange", lazyLoad);
+            }
+        };
+
+        document.addEventListener("scroll", lazyLoad);
+        window.addEventListener("resize", lazyLoad);
+        window.addEventListener("orientationchange", lazyLoad);
+    }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
