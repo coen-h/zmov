@@ -51,12 +51,11 @@ function displayInfo(info, type) {
 
     info.suggested.forEach(suggestedItem => {
         const suggestedElement = document.createElement('div');
-        suggestedElement.classList.add('suggested-card');
+        suggestedElement.classList.add('card');
         suggestedElement.innerHTML = `
-            <img src="${suggestedItem.poster}" alt="${suggestedItem.title}" id="suggested-poster">
-            <div class="suggested-content">
-                <p id="suggested-card-title">${suggestedItem.title}</p>
-            </div>
+            <img class="lazy" src="../public/black.jpg" data-src="${suggestedItem.poster}" alt="${suggestedItem.title}" id="suggested-image">
+            <div class="card-play"><img class="play-icon" src="../public/play.png"></div>
+            <p class="card-content">${suggestedItem.title}</p>
         `;
         suggestedContainer.appendChild(suggestedElement);
 
@@ -79,6 +78,54 @@ function displayInfo(info, type) {
         seasonContainer.classList.add('hidden');
         seasonSelector.classList.add('hidden');
         episodesContainer.classList.add('hidden');
+    }
+
+    initializeLazyLoading();
+}
+
+function initializeLazyLoading() {
+    const lazyImages = document.querySelectorAll('.lazy');
+    
+    if ("IntersectionObserver" in window) {
+        let lazyImageObserver = new IntersectionObserver(function(entries, observer) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    let lazyImage = entry.target;
+                    lazyImage.src = lazyImage.dataset.src;
+                    lazyImage.onload = () => {
+                        lazyImage.classList.remove('lazy');
+                        lazyImage.classList.add('loaded');
+                    }
+                    lazyImageObserver.unobserve(lazyImage);
+                }
+            });
+        });
+
+        lazyImages.forEach(function(lazyImage) {
+            lazyImageObserver.observe(lazyImage);
+        });
+    } else {
+        let lazyLoad = function() {
+            lazyImages.forEach(function(lazyImage) {
+                if (lazyImage.getBoundingClientRect().top < window.innerHeight && lazyImage.getBoundingClientRect().bottom > 0 && getComputedStyle(lazyImage).display !== "none") {
+                    lazyImage.src = lazyImage.dataset.src;
+                    lazyImage.onload = () => {
+                        lazyImage.classList.remove('lazy');
+                        lazyImage.classList.add('loaded');
+                    }
+                }
+            });
+
+            if (lazyImages.length == 0) {
+                document.removeEventListener("scroll", lazyLoad);
+                window.removeEventListener("resize", lazyLoad);
+                window.removeEventListener("orientationchange", lazyLoad);
+            }
+        };
+
+        document.addEventListener("scroll", lazyLoad);
+        window.addEventListener("resize", lazyLoad);
+        window.addEventListener("orientationchange", lazyLoad);
     }
 }
 
@@ -106,7 +153,7 @@ function displayEpisodes(episodes, showId, seasonNumber) {
         const episodeElement = document.createElement('div');
         episodeElement.classList.add('episode-box');
         episodeElement.innerHTML = `
-            <img id="episode-image" src="${episode.image}" alt="${episode.title}">
+            <img id="episode-image" src="${episode.image}">
             <div class="episode-content">
                 <p id="episode-title">${episode.title}</p>
                 <p id="episode-desc">${episode.description}</p>
@@ -143,6 +190,12 @@ function handleSearch() {
         window.location.href = `/pages/search.html?q=${query}`;
     }
 }
+
+const image = document.getElementById('info-backdrop');
+function fadeInImage() {
+  image.classList.add('back-animation');
+}
+image.onload = fadeInImage;
 
 document.getElementById('search-icon').addEventListener('click', handleSearch);
 document.getElementById('search-input').addEventListener('keypress', (e) => {
