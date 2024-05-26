@@ -53,8 +53,8 @@ function displayInfo(info, type) {
         const suggestedElement = document.createElement('div');
         suggestedElement.classList.add('card');
         suggestedElement.innerHTML = `
-            <img class="lazy" src="../public/black.jpg" data-src="${suggestedItem.poster}" alt="${suggestedItem.title}" id="suggested-image">
-            <div class="card-play"><img class="play-icon" src="../public/play.png"></div>
+            <img class="lazy" src="../media/black.jpg" data-src="${suggestedItem.poster}" alt="${suggestedItem.title}" id="suggested-image">
+            <div class="card-play"><img class="play-icon" src="../media/play.png"></div>
             <p class="card-content">${suggestedItem.title}</p>
         `;
         suggestedContainer.appendChild(suggestedElement);

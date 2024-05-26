@@ -117,8 +117,8 @@ function displayMoviesAndSeries({ items, heroItem }) {
         const itemElement = document.createElement('div');
         itemElement.classList.add('card');
         itemElement.innerHTML = `
-            <img class="lazy" src="../public/black.jpg" data-src="${item.poster}" alt="${item.title}">
-            <div class="card-play"><img class="play-icon" src="../public/play.png"></div>
+            <img class="lazy" src="../media/black.jpg" data-src="${item.poster}" alt="${item.title}">
+            <div class="card-play"><img class="play-icon" src="../media/play.png"></div>
             <p class="card-content">${item.title}</p>
         `;
         
