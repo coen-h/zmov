@@ -27,8 +27,8 @@ function displaySearchResults(results) {
         const resultElement = document.createElement('div');
         resultElement.classList.add('card');
         resultElement.innerHTML = `
-            <img class="lazy" src="../public/black.jpg" data-src="${result.poster}" alt="${result.title}">
-            <div class="card-play"><img class="play-icon" src="../public/play.png"></div>
+            <img class="lazy" src="../media/black.jpg" data-src="${result.poster}" alt="${result.title}">
+            <div class="card-play"><img class="play-icon" src="../media/play.png"></div>
             <p class="card-content">${result.title}</p>
         `;
 
