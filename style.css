@@ -511,13 +511,13 @@ p {
     filter: blur(5px);
 }
 .back-animation {
-    animation: 1.25s ease-out 0s 1 back;
+    animation: 2s ease-out 0s 1 back;
 }
 @keyframes back {
     0% {
       opacity: 0;
-      filter: blur(3px);
-      scale: 1.01;
+      filter: blur(10px);
+      scale: 1.05;
     }
     100% {
       opacity: 0.3;
@@ -560,7 +560,7 @@ p {
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    margin: 16px 250px 32px 250px;
+    margin: 16px 200px 32px 200px;
     gap: 15px;
     z-index: 10;
 }
