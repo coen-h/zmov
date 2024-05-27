@@ -29,9 +29,19 @@ function fetchInfo(type, id) {
 }
 
 function displayInfo(info, type) {
+    const infoTitleImage = document.getElementById('info-title');
+    const infoTitleFallback = document.getElementById('info-title-fallback');
+
+    infoTitleImage.src = info.images.logo;
+    infoTitleFallback.textContent = info.title;
+
+    infoTitleImage.onerror = function() {
+        infoTitleImage.classList.add('hidden');
+        infoTitleFallback.classList.remove('hidden');
+    };
+
     document.getElementById('info-poster').src = info.images.poster;
     document.getElementById('info-backdrop').src = info.images.backdrop;
-    document.getElementById('info-title').textContent = info.title;
     document.getElementById('info-description').textContent = info.description;
     document.getElementById('info-rating').textContent = `${info.rating.toString().slice(0, 1)}.${info.rating.toString().slice(1)}`;
     document.getElementById('info-date').textContent = `${info.date}`;
@@ -55,7 +65,7 @@ function displayInfo(info, type) {
         suggestedElement.innerHTML = `
             <img class="lazy" src="../media/black.jpg" data-src="${suggestedItem.poster}" alt="${suggestedItem.title}" id="suggested-image">
             <div class="card-play"><img class="play-icon" src="../media/play.png"></div>
-            <p class="card-content">${suggestedItem.title}</p>
+            <div class="card-content">${suggestedItem.title}</div>
         `;
         suggestedContainer.appendChild(suggestedElement);
 
@@ -192,10 +202,16 @@ function handleSearch() {
 }
 
 const image = document.getElementById('info-backdrop');
+const logo = document.getElementById('info-title');
+const info = document.getElementById('info-top');
 function fadeInImage() {
   image.classList.add('back-animation');
+  logo.classList.add('logo-animation');
+  info.classList.add('info-animation');
 }
 image.onload = fadeInImage;
+logo.onload = fadeInImage;
+info.onload = fadeInImage;
 
 document.getElementById('search-icon').addEventListener('click', handleSearch);
 document.getElementById('search-input').addEventListener('keypress', (e) => {

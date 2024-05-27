@@ -113,17 +113,19 @@ p {
 
 #hero {
     display: flex;
+    height: 73vh;
 }
 #hero-content {
     display: flex;
     flex-direction: column;
-    margin: 25vh 3rem 15vh 3rem;
+    position: absolute;
+    bottom: 42vh;
+    margin-left: 3rem;
     z-index: 1;
 }
 #hero-title {
     font-size: 4rem;
     margin-top: 3rem;
-    font-weight: bold;
 }
 #hero-desc {
     font-size: 1.1rem;
@@ -199,6 +201,7 @@ p {
     gap: 15px;
     overflow: scroll;
     padding: 8px;
+    min-height: 305px;
 }
 .card {
     position: relative;
@@ -474,7 +477,7 @@ p {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 450px;
+    height: auto;
     width: 600px;
     gap: 15px;
     z-index: 11;
@@ -486,6 +489,12 @@ p {
     box-shadow: 5px 5px 20px black;
 }
 #info-title {
+    max-width: 500px;
+    max-height: 200px;
+    opacity: 1;
+    scale: 1;
+}
+#info-title-fallback {
     font-size: 2.5rem;
     font-weight: bold;
 }
@@ -501,7 +510,9 @@ p {
 .genre-box {
     padding: 5px;
     border-radius: 5px;
-    background-color: rgba(255,255,255,0.3);
+    background-color: rgba(109, 0, 0, 0.5);
+    color: rgb(255, 120, 120);
+    box-shadow: 1px 2px 20px black;
 }
 #info-backdrop {
     position: absolute;
@@ -511,18 +522,33 @@ p {
     filter: blur(5px);
 }
 .back-animation {
-    animation: 2s ease-out 0s 1 back;
+    opacity: 0;
+    animation: 1.5s ease 0s 1 back;
 }
 @keyframes back {
     0% {
       opacity: 0;
-      filter: blur(10px);
+      filter: blur(3px);
       scale: 1.05;
     }
     100% {
       opacity: 0.3;
       filter: blur(5px);
       scale: 1;
+    }
+}
+.logo-animation {
+    opacity: 0;
+    animation: 1.5s ease 0s 1 logo;
+}
+@keyframes logo {
+    0% {
+      scale: 0.97;
+      opacity: 0;
+    }
+    100% {
+      scale: 1;
+      opacity: 1;
     }
 }
 #info-bottom {
