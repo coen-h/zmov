@@ -92,8 +92,8 @@ function displayMoviesAndSeries({ items, heroItem }) {
 
     if (heroItem) {
         heroContainer.innerHTML = `
-            <div class="hero-card">
             <img id="hero-image" src="${heroItem.images.backdrop}" alt="${heroItem.title}">
+            <div class="hero-card">
                 <div id="hero-content">
                     <div id="hero-title"><img src="${heroItem.images.logo}"></div>
                     <div id="hero-desc"><p>${heroItem.description}</p></div>
