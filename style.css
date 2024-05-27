@@ -115,11 +115,16 @@ p {
     display: flex;
     height: 73vh;
 }
+.hero-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    margin-bottom: 8vh;
+}
 #hero-content {
     display: flex;
     flex-direction: column;
     position: absolute;
-    bottom: 42vh;
     margin-left: 3rem;
     z-index: 1;
 }
