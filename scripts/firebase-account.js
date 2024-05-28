@@ -2,20 +2,18 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/fireba
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
         const firebaseConfig = {
-            apiKey: "AIzaSyAEXZjHoivvvO_I-mzXKEHBGWqUbWSNu6A",
-            authDomain: "zmov-0.firebaseapp.com",
-            projectId: "zmov-0",
-            storageBucket: "zmov-0.appspot.com",
-            messagingSenderId: "326117586417",
-            appId: "1:326117586417:web:b5b902a295e80793810050",
-            measurementId: "G-K8YZBHVLJ9"
-          };
-          
+            apiKey: process.env.FIREBASE_API_KEY,
+            authDomain: process.env.FIREBASE_AUTH_DOMAIN,
+            projectId: process.env.FIREBASE_PROJECT_ID,
+            storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
+            messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID,
+            appId: process.env.FIREBASE_APP_ID,
+            measurementId: process.env.FIREBASE_MEASUREMENT_ID
+        };
 
           const app = initializeApp(firebaseConfig);
           const auth = getAuth(app);
   
-          // Sign up function
           window.signUp = function signUp() {
               const email = document.getElementById('signup-email-input').value;
               const password = document.getElementById('signup-password-input').value;
@@ -31,7 +29,6 @@ import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, Go
                   });
           }
   
-          // Login function
           window.login = function login() {
               const email = document.getElementById('email').value;
               const password = document.getElementById('password').value;
@@ -47,7 +44,6 @@ import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, Go
                   });
           }
   
-          // Sign in with Google function
           window.signInWithGoogle = function signInWithGoogle() {
               const provider = new GoogleAuthProvider();
               signInWithPopup(auth, provider)
