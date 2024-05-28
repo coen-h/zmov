@@ -33,10 +33,24 @@
             </div>
         </div>
     </div>
-    <div id="settings-page">
-        <div id="account-section" style="display:none;">
-            <p id="account-email"></p>
-            <button style="color: black" onclick="logout()">Sign out</button>
+    <div id="sign">
+        <div id="sign-card">
+            <div id="sign-title"><p>Sign up</p></div>
+            <div id="sign-input">
+                <div id="sign-email">
+                    <input class="sign-input" type="email" id="signup-email-input" placeholder="Email">
+                </div>
+                <div id="sign-password">
+                    <input class="sign-input" type="password" id="signup-password-input" placeholder="Password">
+                </div>
+            </div>
+            <div>
+                <button class="sign-button" onclick="signUp()">Sign up</button>
+            </div>
+            <div id="sign-signup">
+                <p>Already registered?</p>
+                <a href="./signin.html">Sign in</a>
+            </div>
         </div>
     </div>
     <div id="footer">
@@ -53,7 +67,7 @@
             <a target=”_blank” href="https://github.com/coen-h/mov" rel=noopener noreferrer><img src="../media/github-mark-white.png" id="github"></img></a>
         </div>
     </div>
-    <script src="../scripts/account.js" type="module"></script>
+    <script src="../scripts/firebase-account.js" type="module"></script>
     <script src="../scripts/search.js" type="module"></script>
 </body>
 </html>
