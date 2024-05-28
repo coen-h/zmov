@@ -1,3 +1,30 @@
+const nextEpisodeButton = document.getElementById('next-episode-button');
+const backButton = document.getElementById('back-button');
+const iframeContainer = document.getElementById('iframe-container');
+
+function showButtons() {
+    nextEpisodeButton.style.opacity = '1';
+    backButton.style.opacity = '1';
+}
+
+function hideButtons() {
+    nextEpisodeButton.style.opacity = '0';
+    backButton.style.opacity = '0';
+}
+
+let hideButtonsTimeout;
+
+function resetHideButtonsTimer() {
+    showButtons();
+    clearTimeout(hideButtonsTimeout);
+    hideButtonsTimeout = setTimeout(hideButtons, 2000);
+}
+
+iframeContainer.addEventListener('mousemove', resetHideButtonsTimer);
+document.getElementById('button-grid').addEventListener('mousemove', resetHideButtonsTimer);
+
+resetHideButtonsTimer();
+
 document.addEventListener('DOMContentLoaded', function() {
     const iframeContainer = document.getElementById('iframe-container');
     const nextEpisodeButton = document.getElementById('next-episode-button');
@@ -63,7 +90,7 @@ document.addEventListener('DOMContentLoaded', function() {
             season++;
             episode = 1;
         } else {
-            window.location.href = '../index.html';
+            window.location.href = `../pages/info.html?type=${type}&id=${id}`;
             return;
         }
 
@@ -76,7 +103,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     backButton.addEventListener('click', () => {
-        window.location.href = '../index.html';
+        window.location.href = `../pages/info.html?type=${type}&id=${id}`;
     });
 
     if (type && id) {
