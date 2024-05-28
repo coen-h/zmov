@@ -20,9 +20,17 @@ https://zmov.vercel.app
 - Completely free, forever
 
 ## Screenshots
-> Adding screenshots soon
 
-> ## Disclaimer
+| PC                                                        | 
+| -------------------------------------------------------------- | 
+| ![home](./screenshots/home-28-05.png) | 
+| ![info](./screenshots/info-28-05.png) | 
+| ![search](./screenshots/search-28-05.png) |
+
+## Disclaimer
+
+> [!IMPORTANT]
+>
 > zmov does not host any files, it merely links to 3rd party services.  
 > Legal issues should be taken up with the file hosts and providers.  
 > zmov is not responsible for any media files shown by the video providers.
