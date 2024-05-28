@@ -399,7 +399,7 @@ p {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 85.1vh;
+    min-height: 100vh;
     max-width: 100vw;
     font-size: 3rem;
 }
@@ -660,4 +660,47 @@ p {
 }
 .hidden {
     display: none !important;
+}
+
+
+/* SIGN-IN */
+
+
+#sign {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+}
+#sign-card {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 50px;
+    border: 1px solid white;
+    gap: 10px;
+}
+#sign-title {
+    font-size: 2rem;
+    font-weight: bold;
+}
+#sign-input {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.sign-input {
+    width: 400px;
+    height: 40px;
+    color: black;
+}
+.sign-button, #sign-google {
+    width: 350px;
+    height: 60px;
+    color: black;
+}
+#sign-signup {
+    display: flex;
+    gap: 10px;
 }
