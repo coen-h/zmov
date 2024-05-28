@@ -161,7 +161,7 @@ p {
     position: absolute;
     z-index: -1;
     width: 100vw;
-    opacity: 0.4;
+    opacity: 0.5;
 }
 .hero-animation {
     animation: 1.25s ease-out 0s 1 hero;
@@ -173,7 +173,7 @@ p {
       filter: blur(5px);
     }
     100% {
-      opacity: 0.4;
+      opacity: 0.5;
       scale: 1;
       filter: blur(0px);
     }
@@ -412,32 +412,34 @@ p {
     display: flex;
     width: 100vw;
     height: 100vh;
-    z-index: 1;
 }
 #next-episode-button, #back-button {
     position: absolute;
-    padding: 10px 20px;
+    padding: 10px 30px;
     background-color: rgba(255, 255, 255, 0.2);
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    transition: opacity 0.5s ease;
+    font-weight: bold;
+    font-size: 1.2rem;
 }
 #next-episode-button:hover, #back-button:hover {
     background-color: rgba(255, 255, 255, 0.1);
 }
 #next-episode-button {
-    top: 10px;
-    margin-left: 80px;
-    font-weight: bold;
+    margin-left: 110px;
 }
 #back-button {
-    top: 10px;
-    margin-right: 80px;
-    font-weight: bold;
+    margin-right: 110px;
 }
 #button-grid {
     display: flex;
     justify-content: center;
+    width: 100vw;
+    height: 50px;
+    top: 10px;
+    position: absolute;
 }
 
 
