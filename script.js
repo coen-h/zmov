@@ -92,7 +92,7 @@ function displayMoviesAndSeries({ items, heroItem }) {
 
     if (heroItem) {
         heroContainer.innerHTML = `
-            <img id="hero-image" src="${heroItem.images.backdrop}" alt="${heroItem.title}">
+            <img id="hero-image" src="${heroItem.images.backdrop}" alt="${heroItem.title}" class="hidden">
             <div class="hero-card">
                 <div id="hero-content">
                     <div id="hero-title"><img src="${heroItem.images.logo}"></div>
@@ -150,6 +150,7 @@ function displayMoviesAndSeries({ items, heroItem }) {
     const image = document.getElementById('hero-image');
     function fadeInImage() {
     image.classList.add('hero-animation');
+    image.classList.remove('hidden');
     }
     image.onload = fadeInImage;
 }

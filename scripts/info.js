@@ -205,13 +205,13 @@ const image = document.getElementById('info-backdrop');
 const logo = document.getElementById('info-title');
 const info = document.getElementById('info-top');
 function fadeInImage() {
+  image.classList.remove('hidden');
   image.classList.add('back-animation');
+  logo.classList.remove('hidden');
   logo.classList.add('logo-animation');
-  info.classList.add('info-animation');
 }
 image.onload = fadeInImage;
 logo.onload = fadeInImage;
-info.onload = fadeInImage;
 
 document.getElementById('search-icon').addEventListener('click', handleSearch);
 document.getElementById('search-input').addEventListener('keypress', (e) => {
