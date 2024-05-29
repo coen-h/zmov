@@ -301,7 +301,7 @@ p {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: linear-gradient(to top, rgb(43, 27, 25) 0%, rgba(0, 0, 0, 0) 100%);
+    background: linear-gradient(to top, rgb(36, 36, 36) 0%, rgba(0, 0, 0, 0) 100%);
     padding: 2rem 3rem 1.25rem 3rem;
 }
 #footer-left {
@@ -522,10 +522,9 @@ p {
     box-shadow: 1px 2px 20px black;
 }
 #info-backdrop {
-    position: absolute;
+    position: fixed;
     z-index: -2;
     width: 100vw;
-    opacity: 0.3;
     filter: blur(5px);
 }
 .back-animation {
@@ -559,7 +558,7 @@ p {
     }
 }
 #info-bottom {
-    background: linear-gradient(to top, rgba(0, 0, 0, 1) 0%, rgb(24, 17, 13) 50%, rgba(0, 0, 0, 1) 98%, rgba(0, 0, 0, 0) 100%);
+    background: none;
 }
 #play-button {
     width: 100px;
@@ -635,6 +634,8 @@ p {
     max-height: 50vh;
     margin: 1rem 20rem 2rem 20rem;
     border: 2px solid rgba(255, 255, 255, 0.3);
+    background-color: rgba(255,255,255,0.05);
+    backdrop-filter: blur(15px);
     border-radius: 8px;
     padding: 0.5rem;
 }

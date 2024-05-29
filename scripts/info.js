@@ -219,3 +219,18 @@ document.getElementById('search-input').addEventListener('keypress', (e) => {
         handleSearch();
     }
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+    const infoBackdrop = document.getElementById('info-backdrop');
+    const infoOpacity = 0.3;
+
+    function updateBackgroundPosition() {
+        const scrollY = window.scrollY;
+        infoBackdrop.style.opacity = `${infoOpacity - (scrollY * 0.00008)}`;
+        infoBackdrop.style.width = `${screen.width + scrollY * 0.08}px`;
+    }
+
+    window.addEventListener('scroll', updateBackgroundPosition);
+
+    updateBackgroundPosition();
+});
