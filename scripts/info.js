@@ -226,7 +226,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function updateBackgroundPosition() {
         const scrollY = window.scrollY;
-        infoBackdrop.style.opacity = `${infoOpacity - (scrollY * 0.00008)}`;
+        infoBackdrop.style.opacity = `${infoOpacity - (scrollY * 0.00011)}`;
         infoBackdrop.style.width = `${screen.width + scrollY * 0.08}px`;
     }
 
