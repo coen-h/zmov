@@ -95,7 +95,7 @@ function displayMoviesAndSeries({ items, heroItem }) {
             <img id="hero-image" src="${heroItem.images.backdrop}" alt="${heroItem.title}" class="hidden">
             <div class="hero-card">
                 <div id="hero-content">
-                    <div id="hero-title"><img src="${heroItem.images.logo}"></div>
+                    <div id="hero-title"><img src="${heroItem.images.logo}" id="hero-title-image"></div>
                     <div id="hero-desc"><p>${heroItem.description}</p></div>
                     <div id="hero-buttons">
                         <div id="hero-watch"><button id="hero-button">Watch</button></div>

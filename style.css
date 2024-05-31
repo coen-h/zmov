@@ -11,6 +11,19 @@ p {
     margin: 0;
     padding: 0;
 }
+.hidden {
+    display: none !important;
+}
+.lazy {
+    filter: blur(5px);
+    scale: 0.98;
+    opacity: 0.3;
+}
+.loaded {
+    filter: blur(0);
+    scale: 1;
+    opacity: 1;
+}
 
 
 /* HEADER */
@@ -47,15 +60,14 @@ p {
 }
 #search {
     position: relative;
-    --size-button: 40px;
     transition: all 150ms ease;
 }
 #search:hover {
     scale: 0.98;
 }
 #search-input {
-    padding-left: var(--size-button);
-    height: var(--size-button);
+    padding-left: 40px;
+    height: 40px;
     font-size: 15px;
     border: none;
     outline: none;
@@ -79,8 +91,8 @@ p {
 }
 #search .icon {
     position: absolute;
-    width: var(--size-button);
-    height: var(--size-button);
+    width: 40px;
+    height: 40px;
     top: 0;
     left: 0;
     padding: 8px;
@@ -266,16 +278,6 @@ p {
     opacity: 1;
 }
 .card:hover .play-icon {
-    opacity: 1;
-}
-.lazy {
-    filter: blur(5px);
-    scale: 0.98;
-    opacity: 0.3;
-}
-.loaded {
-    filter: blur(0);
-    scale: 1;
     opacity: 1;
 }
 .carousel-btn {
@@ -659,6 +661,89 @@ p {
 #episode-desc {
     font-size: 1rem;
 }
-.hidden {
-    display: none !important;
+
+
+/* MOBILE */
+
+@media (max-width: 1000px) {
+    #hero-desc {
+        width: 60vw;
+    }
+}
+@media (max-height: 600px) {
+    .hero-card {
+        margin-bottom: 4vh;
+    }
+    #hero-desc {
+        font-size: 1rem;
+        width: 60vw;
+    }
+    #hero-button {
+        width: 90px;
+        height: 45px;
+        font-size: 1rem;
+    }
+    #hero-title-image {
+        width: 450px;
+    }
+    #hero {
+        height: 76vh;
+    }
+}
+@media (max-height: 500px) {
+    #discover-title {
+        font-size: 1.8rem;
+    }
+    .hero-card {
+        margin-bottom: 0;
+    }
+    #hero-desc {
+        width: 70vw;
+    }
+    #hero-title-image {
+        width: 400px;
+    }
+    #hero {
+        height: 80vh;
+    }
+    #hero-title {
+        height: 80px;
+    }
+    .card img {
+        width: 160px;
+        height: 240px;
+    }
+    .discover-card {
+        min-height: 240px;
+    }
+    #discover-section {
+        margin: 0.75rem 0.75rem 0.75rem 0.75rem;
+    }
+}
+@media (max-height: 400px) {
+    #discover-title {
+        font-size: 1.7rem;
+    }
+    #hero-desc {
+        font-size: 0.8rem;
+        width: 75vw;
+    }
+    #hero-title-image {
+        width: 340px;
+    }
+    #hero-button {
+        width: 80px;
+        height: 40px;
+        font-size: 0.8rem;
+    }
+    #hero-title {
+        height: 70px;
+    }
+    .card img {
+        width: 120px;
+        height: 180px;
+    }
+    .discover-card {
+        min-height: 180px;
+    }
 }
