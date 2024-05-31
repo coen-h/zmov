@@ -665,18 +665,14 @@ p {
 
 /* MOBILE */
 
-@media (max-width: 1000px) {
-    #hero-desc {
-        width: 60vw;
-    }
-}
+
 @media (max-height: 600px) {
     .hero-card {
         margin-bottom: 4vh;
     }
     #hero-desc {
         font-size: 1rem;
-        width: 60vw;
+        width: 50vw;
     }
     #hero-button {
         width: 90px;
@@ -689,16 +685,22 @@ p {
     #hero {
         height: 76vh;
     }
+    #header {
+        height: 75px;
+    }
+    #footer {
+        padding: 1.75rem 3rem 1rem 3rem;
+    }
 }
 @media (max-height: 500px) {
     #discover-title {
         font-size: 1.8rem;
     }
     .hero-card {
-        margin-bottom: 0;
+        margin-bottom: 2vh;
     }
     #hero-desc {
-        width: 70vw;
+        width: 65vw;
     }
     #hero-title-image {
         width: 400px;
@@ -719,14 +721,42 @@ p {
     #discover-section {
         margin: 0.75rem 0.75rem 0.75rem 0.75rem;
     }
+    .card-content {
+        font-size: 0.9rem;
+        height: 235px;
+    }
+    #header {
+        height: 70px;
+    }
+    #footer {
+        padding: 1.5rem 3rem 0.75rem 3rem;
+    }
+    #message {
+        font-size: 0.95rem;
+    }
+    #welcome {
+        font-size: 1.20rem;
+    }
+    #copyright {
+        font-size: 0.75rem;
+    }
+    #github {
+        width: 46px;
+    }
+    #mail {
+        width: 46px;
+    }
+    #dmca {
+        font-size: 1.15rem;
+    }
 }
 @media (max-height: 400px) {
     #discover-title {
         font-size: 1.7rem;
     }
     #hero-desc {
-        font-size: 0.8rem;
-        width: 75vw;
+        font-size: 0.75rem;
+        width: 70vw;
     }
     #hero-title-image {
         width: 340px;
@@ -745,5 +775,114 @@ p {
     }
     .discover-card {
         min-height: 180px;
+    }
+    .card-content {
+        font-size: 0.8rem;
+        height: 175px;
+    }
+    #header {
+        height: 65px;
+    }
+    .hero-card {
+        margin-bottom: 1vh;
+    }
+    #header-logo {
+        width: 90px;
+    }
+    #search-input {
+        height: 36px;
+        font-size: 13px;
+        padding-left: 36px;
+    }
+    #search-input:focus,
+    #search-input:not(:invalid) {
+        width: 200px;
+    }
+    #search-icon {
+        width: 22px;
+    }
+    #settings {
+        width: 38px;
+        height: 38px;
+    }
+    #settings-icon {
+        width: 26px;
+    }
+    #footer {
+        padding: 1.5rem 3rem 0.75rem 3rem;
+    }
+    #message {
+        font-size: 0.90rem;
+    }
+    #welcome {
+        font-size: 1.15rem;
+    }
+    #copyright {
+        font-size: 0.70rem;
+    }
+    #github {
+        width: 42px;
+    }
+    #mail {
+        width: 42px;
+    }
+    #dmca {
+        font-size: 1.10rem;
+    }
+}
+@media (max-height: 315px) {
+    .card img {
+        width: 100px;
+        height: 150px;
+    }
+    .discover-card {
+        min-height: 150px;
+    }
+    .card-content {
+        font-size: 0.7rem;
+        height: 145px;
+    }
+    #header {
+        height: 60px;
+    }
+    #discover-title {
+        font-size: 1.5rem;
+    }
+    #hero-desc {
+        font-size: 0.7rem;
+        width: 75vw;
+    }
+    #hero-button {
+        width: 70px;
+        height: 35px;
+        font-size: 0.7rem;
+    }
+    #hero-title-image {
+        width: 280px;
+    }
+    .hero-card {
+        margin-bottom: 0vh;
+    }
+    #footer {
+        padding: 1.25rem 3rem 0.5rem 3rem;
+    }
+    #message {
+        font-size: 0.85rem;
+    }
+    #welcome {
+        font-size: 1.10rem;
+        gap: 3px;
+    }
+    #copyright {
+        font-size: 0.65rem;
+    }
+    #github {
+        width: 38px;
+    }
+    #mail {
+        width: 38px;
+    }
+    #dmca {
+        font-size: 1.05rem;
     }
 }
