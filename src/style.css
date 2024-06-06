@@ -63,35 +63,25 @@ p {
     transition: all 150ms ease;
 }
 #search:hover {
-    scale: 0.98;
+    opacity: 0.9;
+    scale: 0.99;
 }
 #search-input {
     padding-left: 40px;
     height: 40px;
+    width: 200px;
     font-size: 15px;
     border: none;
     outline: none;
-    width: 0px;
     transition: all ease 0.3s;
     background-color: rgba(255,255,255,.15);
-    box-shadow: 1.5px 1.5px 3px #0e0e0e, -1.5px -1.5px 3px rgb(95 94 94 / 25%), inset 0px 0px 0px #0e0e0e, inset 0px -0px 0px #5f5e5e;
+    box-shadow: 1px 1px 3px #0e0e0e, -1px -1px 3px rgb(95 94 94 / 25%), inset 0px 0px 0px #0e0e0e, inset 0px -0px 0px #5f5e5e;
     border-radius: 50px;
-    cursor: pointer;
-}
-#search-input:focus,
-#search-input:not(:invalid) {
-    width: 200px;
     cursor: text;
-    box-shadow: 0px 0px 0px #0e0e0e, 0px 0px 0px rgb(95 94 94 / 25%), inset 1.5px 1.5px 3px #0e0e0e, inset -1.5px -1.5px 3px #5f5e5e;
-}
-#search-input:focus + .icon,
-#search-input:not(:invalid) + .icon {
-    pointer-events: all;
-    cursor: pointer;
 }
 #search .icon {
     position: absolute;
-    width: 40px;
+    width: 200px;
     height: 40px;
     top: 0;
     left: 0;
@@ -108,7 +98,7 @@ p {
     border: none;
     border-radius: 50%;
     padding-top: 5px;
-    box-shadow: 1px 1px 1.5px #0e0e0e, -1px -1px 1.5px rgb(95 94 94 / 25%), inset 0px 0px 0px #0e0e0e, inset 0px -0px 0px #5f5e5e;
+    box-shadow: 1px 1px 3px #0e0e0e, -1px -1px 3px rgb(95 94 94 / 25%), inset 0px 0px 0px #0e0e0e, inset 0px -0px 0px #5f5e5e;
     transition: all 150ms ease;
 }
 #settings-icon {
@@ -127,7 +117,7 @@ p {
     display: flex;
     height: 73vh;
 }
-.hero-card {
+#hero-card {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -143,6 +133,9 @@ p {
 #hero-title {
     font-size: 4rem;
     margin-top: 3rem;
+}
+#hero-title-image {
+    width: 500px;
 }
 #hero-desc {
     font-size: 1.1rem;

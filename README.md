@@ -1,5 +1,5 @@
 <div align="center"> 
-<image src="./media/logo.png" width="300"/>
+<image src="./assets/logo.png" width="300"/>
 
 ### Watch all your movies, shows and anime for free!
 </div>
