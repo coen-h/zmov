@@ -4,6 +4,15 @@
 ### Watch all your movies, shows and anime for free!
 </div>
 
+> [!NOTE]
+>
+> zmov is currently being rewritten in React.  
+> this means there will be no more commits for now.  
+> should be done in a few days from now (6/06/24).
+
+[comment]: <> (LIST TECHNOLOGYS ONCE REACT DONE, LIST REACT, VITE, JS, FIREBASE ONCE DONE, TMDB API https://github.com/marwin1991/profile-technology-icons)
+[comment]: <> (GUIDE FOR RUNNING LOCALLY, API KEYS, RUN IN VERCEL BUTTON https://github.com/Th3Wall/Fakeflix?tab=readme-ov-file#-run-locally)
+
 ## Links:
 > Use an adblocker (uBlock-Origin) to remove player pop-ups
 #### Main Site:
