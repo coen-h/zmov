@@ -14,10 +14,12 @@ export default function App() {
       <div id='discover'>
         <Discover url='https://api.themoviedb.org/3/trending/movie/week' name="Trending movies this week" />
         <Discover url='https://api.themoviedb.org/3/trending/tv/week' name="Trending series this week" />
-        <Discover />
-        <Discover />
-        <Discover />
-        <Discover />
+        <Discover url="https://api.themoviedb.org/3/discover/movie?sort_by=vote_count.desc" name="Top rated movies" />
+        <Discover url="https://api.themoviedb.org/3/discover/tv?sort_by=vote_count.desc" name="Top rated series" />
+        <Discover url="https://api.themoviedb.org/3/discover/movie?watch_region=US&with_watch_providers=8" name="Netflix" />
+        <Discover url="https://api.themoviedb.org/3/discover/movie?watch_region=US&with_watch_providers=350" name="Apple TV+" />
+        <Discover url="https://api.themoviedb.org/3/discover/movie?watch_region=US&with_watch_providers=337" name="Disney+" />
+        <Discover url="https://api.themoviedb.org/3/discover/movie?watch_region=US&with_watch_providers=9" name="Amazon Prime Video" />
       </div>
       <Footer />
     </>
