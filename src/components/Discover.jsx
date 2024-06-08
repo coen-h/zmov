@@ -6,18 +6,9 @@ export default function App(props) {
 
   useEffect(() => {
     const fetchData = async () => {
-      const options = {
-        method: 'GET',
-        headers: {
-          accept: 'application/json',
-          Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmMWU5ZjI2ZTdkYjI5NzA4NWQ1YzE1ZTdlYTRmMTVkYiIsInN1YiI6IjY1ZDkyNGExMzUyMGU4MDE2M2Q2M2NiNSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.lYIevteIqCBbc7_IRsdBmdFtLOtaVC3PwSmLGTOElMU'
-        }
-      };
-
       try {
-        const response = await fetch(props.url, options);
+        const response = await fetch(props.url);
         const data = await response.json();
-        console.log(data)
         setMovies(data.results);
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -25,7 +16,7 @@ export default function App(props) {
     };
 
     fetchData();
-  }, []);
+  }, [props.url]);
 
   const handleCarouselButtonClick = (direction, carouselRef) => {
     const carousel = carouselRef.current;
@@ -47,7 +38,7 @@ export default function App(props) {
     }
   };
 
-  const carouselRef = useRef<HTMLDivElement>(null);
+  const carouselRef = useRef(null);
 
   return (
     <div id="discover-section" className="discover-section">
@@ -61,7 +52,7 @@ export default function App(props) {
         </button>
         <div id="discover-card1" className="discover-card" ref={carouselRef}>
           {movies.map((item, index) => (
-            <Card key={index} item={item} />
+            <Card key={index} item={item} type={props.type} />
           ))}
         </div>
         <button

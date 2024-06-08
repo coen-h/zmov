@@ -1,28 +1,52 @@
-import React from 'react'
+import React, { useRef } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 
 export default function Header() {
+    const navigate = useNavigate();
+    const searchInputRef = useRef();
+
+    function handleSearch() {
+        const query = searchInputRef.current.value;
+        if (query) {
+            navigate(`/search/${query}`);
+        }
+    }
+
+    function handleKeyPress(e) {
+        if (e.key === 'Enter') {
+            handleSearch();
+        }
+    }
+
     return (
         <div id="header">
             <div id="header-section">
                 <div id="header-left">
-                    <a href="index.html">
-                        <img src="../src/assets/logo.png" id="header-logo"></img>
-                    </a>
+                    <Link to="/">
+                        <img src="/src/assets/logo.svg" id="header-logo" alt="Logo" />
+                    </Link>
                 </div>
                 <div id="header-right">
                     <button id="settings">
-                        <a href="./pages/settings.html">
-                            <img id="settings-icon" src="../src/assets/settings.png"></img>
-                        </a>
+                        <Link to="/settings">
+                            <img id="settings-icon" src="/src/assets/settings.svg" alt="Settings" />
+                        </Link>
                     </button>
                     <div id="search">
-                        <input type="text" name="text" id="search-input" required="" placeholder="Type to search..."></input>
-                        <div className="icon">
-                            <img id="search-icon" src="../src/assets/search.png"></img>
+                        <input
+                            type="text"
+                            id="search-input"
+                            required
+                            placeholder="Type to search..."
+                            ref={searchInputRef}
+                            onKeyPress={handleKeyPress}
+                        />
+                        <div className="icon" onClick={handleSearch}>
+                            <img id="search-icon" src="/src/assets/search.svg" alt="Search" />
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    )
+    );
 }
