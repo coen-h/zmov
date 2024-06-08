@@ -70,7 +70,7 @@ export default function InfoContent() {
                 <img id="info-title" src={logoImage && `https://image.tmdb.org/t/p/original${logoImage}`} />
                 <div id="info-title-fallback" className="hidden">{item.title}</div>
                 <div id="info-bar">
-                    <img src="/src/assets/star.svg" id="info-star" />
+                    <img src="/star.svg" id="info-star" />
                     <p id="info-rating">{parseFloat(item.vote_average).toFixed(1)}</p>
                     <p id="info-date">{type === 'tv' ? item.first_air_date : item.release_date}</p>
                 </div>

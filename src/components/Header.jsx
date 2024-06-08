@@ -23,13 +23,13 @@ export default function Header() {
             <div id="header-section">
                 <div id="header-left">
                     <Link to="/">
-                        <img src="/src/assets/logo.svg" id="header-logo" alt="Logo" />
+                        <img src="/logo.svg" id="header-logo" alt="Logo" />
                     </Link>
                 </div>
                 <div id="header-right">
                     <button id="settings">
                         <Link to="/settings">
-                            <img id="settings-icon" src="/src/assets/settings.svg" alt="Settings" />
+                            <img id="settings-icon" src="/settings.svg" alt="Settings" />
                         </Link>
                     </button>
                     <div id="search">
@@ -42,7 +42,7 @@ export default function Header() {
                             onKeyPress={handleKeyPress}
                         />
                         <div className="icon" onClick={handleSearch}>
-                            <img id="search-icon" src="/src/assets/search.svg" alt="Search" />
+                            <img id="search-icon" src="/search.svg" alt="Search" />
                         </div>
                     </div>
                 </div>
