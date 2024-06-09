@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Card from './Card';
 import { useParams, Link } from 'react-router-dom';
+import LoadingBar from 'react-top-loading-bar';
 
 export default function InfoContent() {
     const { type, id } = useParams();
@@ -12,18 +13,25 @@ export default function InfoContent() {
     const [seasons, setSeasons] = useState([]);
     const [selectedSeason, setSelectedSeason] = useState('');
     const [episodes, setEpisodes] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
+    const loadingBarRef = useRef(null);
 
     const apiKey = import.meta.env.VITE_API_KEY;
 
     useEffect(() => {
+        setIsLoading(true);
+    }, [type, id]);
+
+    useEffect(() => {
         const fetchData = async () => {
+            if (loadingBarRef.current) loadingBarRef.current.continuousStart();
             try {
                 const response = await fetch(`https://api.themoviedb.org/3/${type}/${id}?api_key=${apiKey}`);
                 const data = await response.json();
                 setItem(data);
                 setGenres(data.genres);
                 setIsSeries(type === 'tv');
-                
+
                 const imagesResponse = await fetch(`https://api.themoviedb.org/3/${type}/${id}/images?api_key=${apiKey}`);
                 const imagesData = await imagesResponse.json();
                 const logo = imagesData.logos.find(logo => logo.iso_639_1 === "en")?.file_path;
@@ -37,8 +45,11 @@ export default function InfoContent() {
                     setSeasons(data.seasons);
                     setSelectedSeason(data.seasons[0]?.season_number || '');
                 }
+                setIsLoading(false);
             } catch (error) {
                 console.error('Error fetching data:', error);
+            } finally {
+                if (loadingBarRef.current) loadingBarRef.current.complete();
             }
         };
 
@@ -48,12 +59,15 @@ export default function InfoContent() {
     useEffect(() => {
         const fetchEpisodes = async () => {
             if (type === 'tv' && selectedSeason !== '') {
+                if (loadingBarRef.current) loadingBarRef.current.continuousStart();
                 try {
                     const response = await fetch(`https://api.themoviedb.org/3/tv/${id}/season/${selectedSeason}?api_key=${apiKey}`);
                     const data = await response.json();
                     setEpisodes(data.episodes);
                 } catch (error) {
                     console.error('Error fetching episodes:', error);
+                } finally {
+                    if (loadingBarRef.current) loadingBarRef.current.complete();
                 }
             }
         };
@@ -63,25 +77,33 @@ export default function InfoContent() {
 
     return (
     <>
+        <LoadingBar color="#FF0000" ref={loadingBarRef} />
         <div id="info-container">
-            <img id="info-backdrop" src={item.backdrop_path && `https://image.tmdb.org/t/p/original${item.backdrop_path}`} />
-            <img id="info-poster" src={item.poster_path && `https://image.tmdb.org/t/p/w500/${item.poster_path}`} />
-            <div id="info-top">
-                <img id="info-title" src={logoImage && `https://image.tmdb.org/t/p/original${logoImage}`} />
-                <div id="info-title-fallback" className="hidden">{item.title}</div>
-                <div id="info-bar">
-                    <img src="/star.svg" id="info-star" />
-                    <p id="info-rating">{parseFloat(item.vote_average).toFixed(1)}</p>
-                    <p id="info-date">{type === 'tv' ? item.first_air_date : item.release_date}</p>
-                </div>
-                <div id="info-genres">
-                    {genres.map(genre => (
-                        <div className="genre-box" key={genre.id}>{genre.name}</div>
-                    ))}
-                </div>
-                <p id="info-description">{item.overview}</p>
-                <Link to={`/player/${type}/${id}/1/1`}><button id="play-button">Play</button></Link>
-            </div>
+            {isLoading && (
+                <div className="loader"></div>
+            )}
+            {!isLoading && (
+                <>
+                    <img id="info-backdrop" src={item.backdrop_path && `https://image.tmdb.org/t/p/original${item.backdrop_path}`} />
+                    <img id="info-poster" src={item.poster_path && `https://image.tmdb.org/t/p/w500/${item.poster_path}`} />
+                    <div id="info-top">
+                        <img id="info-title" src={logoImage && `https://image.tmdb.org/t/p/w500${logoImage}`} />
+                        <div id="info-title-fallback" className="hidden">{item.title}</div>
+                        <div id="info-bar">
+                            <img src="/star.svg" id="info-star" />
+                            <p id="info-rating">{parseFloat(item.vote_average).toFixed(1)}</p>
+                            <p id="info-date">{type === 'tv' ? item.first_air_date : item.release_date}</p>
+                        </div>
+                        <div id="info-genres">
+                            {genres.map(genre => (
+                                <div className="genre-box" key={genre.id}>{genre.name}</div>
+                            ))}
+                        </div>
+                        <p id="info-description">{item.overview}</p>
+                        <Link to={`/player/${type}/${id}/1/1`}><button id="play-button">Play</button></Link>
+                    </div>
+                </>
+            )}
         </div>
         <div id="info-bottom">
             {isSeries && (
