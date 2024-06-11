@@ -31,7 +31,6 @@ export default function App(props) {
       try {
         const response = await fetch(url);
         const data = await response.json();
-        console.log(data)
         setMovies(data.results);
       } catch (error) {
         console.error('Error fetching data:', error);
