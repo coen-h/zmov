@@ -29,11 +29,11 @@ export default function Hero() {
 
     return (
         <div id='hero'>
-            <img id="hero-image" src={heroItem.backdrop_path && `https://image.tmdb.org/t/p/original${heroItem.backdrop_path}`} />
+            <img id="hero-image" src={heroItem.backdrop_path && `https://image.tmdb.org/t/p/original${heroItem.backdrop_path}`} alt="Hero image"/>
             <div id="hero-card">
                 <div id="hero-content">
                     <div id="hero-title">
-                        <img src={logoImage && `https://image.tmdb.org/t/p/original${logoImage}`} id="hero-title-image" />
+                        <img src={logoImage && `https://image.tmdb.org/t/p/w500${logoImage}`} id="hero-title-image" alt="Hero title"/>
                     </div>
                     <div id="hero-desc">
                         <p>{heroItem.overview}</p>

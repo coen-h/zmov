@@ -7,6 +7,7 @@ import Player from './pages/Player'
 import Settings from './pages/Settings';
 import Search from './pages/Search'
 import ScrollToTopOnLoad from './utils/ScrollToTopOnLoad';
+import Services from './pages/Services'
 
 export default function App() {
   return (
@@ -19,6 +20,7 @@ export default function App() {
         <Route path="/info/:type/:id" element={<Info />} />
         <Route path="/player/:type/:id/:season/:episode" element={<Player />} />
         <Route path="/search/:query" element={<Search />} />
+        <Route path="/service/:service" element={<Services />} />
       </Routes>
     </Router>
   );

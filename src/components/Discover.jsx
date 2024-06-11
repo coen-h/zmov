@@ -41,7 +41,7 @@ export default function App(props) {
   const carouselRef = useRef(null);
 
   return (
-    <div id="discover-section" className="discover-section">
+    <div id="discover-section">
       <p id="discover-title">{props.name}</p>
       <div id="discover-main">
         <button
@@ -50,7 +50,7 @@ export default function App(props) {
         >
           &lt;
         </button>
-        <div id="discover-card1" className="discover-card" ref={carouselRef}>
+        <div className="discover-card" ref={carouselRef}>
           {movies.map((item, index) => (
             <Card key={index} item={item} type={props.type} />
           ))}

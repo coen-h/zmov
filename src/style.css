@@ -163,7 +163,7 @@ a {
 
 #hero {
     display: flex;
-    height: 73vh;
+    height: 80vh;
 }
 #hero-card {
     display: flex;
@@ -233,6 +233,14 @@ a {
 }
 
 
+/* HOME */
+
+
+#home {
+    background: linear-gradient(to top, rgba(0, 0, 0, 1) 0%, rgb(24, 17, 13) 50%, rgba(0, 0, 0, 1) 88%, rgba(0, 0, 0, 0) 100%);
+}
+
+
 /* DISCOVER */
 
 
@@ -240,7 +248,6 @@ a {
     display: flex;
     flex-direction: column;
     z-index: 2;
-    background: linear-gradient(to top, rgba(0, 0, 0, 1) 0%, rgb(24, 17, 13) 50%, rgba(0, 0, 0, 1) 90%, rgba(0, 0, 0, 0) 100%);
 }
 #discover-section {
     display: flex;
@@ -272,17 +279,32 @@ a {
     top: 0;
     left: 0;
     width: 100%;
-    height: 97%;
+    height: 100%;
     display: flex;
     justify-content: flex-end;
     flex-direction: column;
     align-items: center;
     opacity: 0;
-    transition: opacity 200ms ease;
     text-align: center;
     font-weight: 600;
     transform: translateY(0);
     transition: all 200ms ease;
+    box-shadow: inset 0px 10px 0px 0px black;
+    border-radius: 8px;
+}
+.card-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+.card-desc {
+    display: flex;
+    font-weight: 400;
+    font-size: 0.9rem;
+    gap: 2px;
+    margin-bottom: 10px;
+}
+.card-desc > p {
+    color: rgb(180, 180, 180);
 }
 .card-play {
     position: absolute;
@@ -309,10 +331,9 @@ a {
 }
 .card:hover img{
     scale: 1.05;
-    opacity: 0.35;
 }
 .card:hover .card-content {
-    transform: translateY(8px);
+    scale: 1.05;
     opacity: 1;
 }
 .card:hover .card-play {
@@ -337,6 +358,40 @@ a {
 }
 
 
+/* SERVICE */
+
+
+#service {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin: 3rem;
+}
+.service-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(170, 170, 170, 0.85);
+    padding: 0 5rem;
+    border-radius: 12px;
+    box-shadow: inset 0px 0px 25px 5px rgb(66, 66, 66);
+}
+.service-card-image {
+    height: 180px;
+}
+#service-content {
+    min-height: 100vh;
+    margin: 0rem 10rem 0rem 10rem;
+}
+.service-content {
+    display: flex;
+    padding-top: 7rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+
 /* FOOTER */
 
 
@@ -344,7 +399,7 @@ a {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: linear-gradient(to top, rgb(36, 36, 36) 0%, rgba(0, 0, 0, 0) 100%);
+    background: linear-gradient(to top, rgb(26, 11, 11) 0%, rgba(0, 0, 0, 0) 100%);
     padding: 2rem 3rem 1.25rem 3rem;
 }
 #footer-left {
@@ -710,229 +765,4 @@ a {
 }
 #episode-desc {
     font-size: 1rem;
-}
-
-
-/* MOBILE */
-
-
-@media (max-height: 600px) {
-    .hero-card {
-        margin-bottom: 4vh;
-    }
-    #hero-desc {
-        font-size: 1rem;
-        width: 50vw;
-    }
-    #hero-button {
-        width: 90px;
-        height: 45px;
-        font-size: 1rem;
-    }
-    #hero-title-image {
-        width: 450px;
-    }
-    #hero {
-        height: 76vh;
-    }
-    #header {
-        height: 75px;
-    }
-    #footer {
-        padding: 1.75rem 3rem 1rem 3rem;
-    }
-}
-@media (max-height: 500px) {
-    #discover-title {
-        font-size: 1.8rem;
-    }
-    .hero-card {
-        margin-bottom: 2vh;
-    }
-    #hero-desc {
-        width: 65vw;
-    }
-    #hero-title-image {
-        width: 400px;
-    }
-    #hero {
-        height: 80vh;
-    }
-    #hero-title {
-        height: 80px;
-    }
-    .card img {
-        width: 160px;
-        height: 240px;
-    }
-    .discover-card {
-        min-height: 240px;
-    }
-    #discover-section {
-        margin: 0.75rem 0.75rem 0.75rem 0.75rem;
-    }
-    .card-content {
-        font-size: 0.9rem;
-        height: 235px;
-    }
-    #header {
-        height: 70px;
-    }
-    #footer {
-        padding: 1.5rem 3rem 0.75rem 3rem;
-    }
-    #message {
-        font-size: 0.95rem;
-    }
-    #welcome {
-        font-size: 1.20rem;
-    }
-    #copyright {
-        font-size: 0.75rem;
-    }
-    #github {
-        width: 46px;
-    }
-    #mail {
-        width: 46px;
-    }
-    #dmca {
-        font-size: 1.15rem;
-    }
-}
-@media (max-height: 400px) {
-    #discover-title {
-        font-size: 1.7rem;
-    }
-    #hero-desc {
-        font-size: 0.75rem;
-        width: 70vw;
-    }
-    #hero-title-image {
-        width: 340px;
-    }
-    #hero-button {
-        width: 80px;
-        height: 40px;
-        font-size: 0.8rem;
-    }
-    #hero-title {
-        height: 70px;
-    }
-    .card img {
-        width: 120px;
-        height: 180px;
-    }
-    .discover-card {
-        min-height: 180px;
-    }
-    .card-content {
-        font-size: 0.8rem;
-        height: 175px;
-    }
-    #header {
-        height: 65px;
-    }
-    .hero-card {
-        margin-bottom: 1vh;
-    }
-    #header-logo {
-        width: 90px;
-    }
-    #search-input {
-        height: 36px;
-        font-size: 13px;
-        padding-left: 36px;
-    }
-    #search-input:focus,
-    #search-input:not(:invalid) {
-        width: 200px;
-    }
-    #search-icon {
-        width: 22px;
-    }
-    #settings {
-        width: 38px;
-        height: 38px;
-    }
-    #settings-icon {
-        width: 26px;
-    }
-    #footer {
-        padding: 1.5rem 3rem 0.75rem 3rem;
-    }
-    #message {
-        font-size: 0.90rem;
-    }
-    #welcome {
-        font-size: 1.15rem;
-    }
-    #copyright {
-        font-size: 0.70rem;
-    }
-    #github {
-        width: 42px;
-    }
-    #mail {
-        width: 42px;
-    }
-    #dmca {
-        font-size: 1.10rem;
-    }
-}
-@media (max-height: 315px) {
-    .card img {
-        width: 100px;
-        height: 150px;
-    }
-    .discover-card {
-        min-height: 150px;
-    }
-    .card-content {
-        font-size: 0.7rem;
-        height: 145px;
-    }
-    #header {
-        height: 60px;
-    }
-    #discover-title {
-        font-size: 1.5rem;
-    }
-    #hero-desc {
-        font-size: 0.7rem;
-        width: 75vw;
-    }
-    #hero-button {
-        width: 70px;
-        height: 35px;
-        font-size: 0.7rem;
-    }
-    #hero-title-image {
-        width: 280px;
-    }
-    .hero-card {
-        margin-bottom: 0vh;
-    }
-    #footer {
-        padding: 1.25rem 3rem 0.5rem 3rem;
-    }
-    #message {
-        font-size: 0.85rem;
-    }
-    #welcome {
-        font-size: 1.10rem;
-        gap: 3px;
-    }
-    #copyright {
-        font-size: 0.65rem;
-    }
-    #github {
-        width: 38px;
-    }
-    #mail {
-        width: 38px;
-    }
-    #dmca {
-        font-size: 1.05rem;
-    }
 }
