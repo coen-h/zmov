@@ -11,7 +11,7 @@ export default function Card(props) {
                 <div className="card-desc">
                     <p>{props.type === 'tv' ? 'TV' : props.type.charAt(0).toUpperCase() + props.type.slice(1)}</p>
                     <p>&#x2022;</p>
-                    <p>{props.item.release_date}</p>
+                    <p>{props.type === 'movie' ? props.item.release_date : props.item.first_air_date}</p>
                 </div>
             </div>
         </Link>
