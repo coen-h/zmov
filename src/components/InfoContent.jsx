@@ -84,13 +84,13 @@ export default function InfoContent() {
             )}
             {!isLoading && (
                 <>
-                    <img id="info-backdrop" src={item.backdrop_path && `https://image.tmdb.org/t/p/original${item.backdrop_path}`} />
-                    <img id="info-poster" src={item.poster_path && `https://image.tmdb.org/t/p/w500/${item.poster_path}`} />
+                    <img id="info-backdrop" src={item.backdrop_path && `https://image.tmdb.org/t/p/original${item.backdrop_path}`} alt="Backdrop"/>
+                    <img id="info-poster" src={item.poster_path && `https://image.tmdb.org/t/p/w500/${item.poster_path}`} alt="Poster"/>
                     <div id="info-top">
-                        <img id="info-title" src={logoImage && `https://image.tmdb.org/t/p/w500${logoImage}`} />
+                        <img id="info-title" src={logoImage && `https://image.tmdb.org/t/p/w500${logoImage}`} alt="Title"/>
                         <div id="info-title-fallback" className="hidden">{item.title}</div>
                         <div id="info-bar">
-                            <img src="/star.svg" id="info-star" />
+                            <img src="/star.svg" id="info-star" alt="Star Icon"/>
                             <p id="info-rating">{parseFloat(item.vote_average).toFixed(1)}</p>
                             <p id="info-date">{type === 'tv' ? item.first_air_date : item.release_date}</p>
                         </div>
@@ -119,7 +119,7 @@ export default function InfoContent() {
                         {episodes.map(episode => (
                             <Link to={`/player/${type}/${id}/${selectedSeason}/${episode.episode_number}`} key={episode.id}>
                                 <div className="episode-box">
-                                    <img id="episode-image" src={`https://image.tmdb.org/t/p/original${episode.still_path}`} alt={`Episode ${episode.episode_number}`} />
+                                    <img id="episode-image" src={`https://image.tmdb.org/t/p/w500${episode.still_path}`} alt={`Episode ${episode.episode_number}`} />
                                     <div className="episode-content">
                                         <p id="episode-title">{episode.name}</p>
                                         <p id="episode-desc">{episode.overview}</p>
