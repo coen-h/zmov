@@ -40,7 +40,7 @@ export default function Hero() {
                     </div>
                     <div id="hero-buttons">
                         <div id="hero-watch">
-                            <Link to={`/player/movie/${heroItem.id}/1/1`} id="hero-button">Watch</Link>
+                            <Link to={`/player/movie/${heroItem.id}/1/1`} id="hero-button"><img style={{width: "16px"}}src="/play.svg"/>Watch</Link>
                         </div>
                         <div id="hero-more">
                             <Link to={`/info/movie/${heroItem.id}`} id="hero-button">Info</Link>

@@ -37,7 +37,7 @@ export default function Search() {
             <div id="search-section">
                 <div id="search-results">
                     {items.map(item => (
-                        <Card key={item.id} size="big-image" item={item} type={item.media_type} />
+                        <Card key={item.id} csize="big-card" size="big-image" item={item} type={item.media_type} />
                     ))}
                 </div>
             </div>
