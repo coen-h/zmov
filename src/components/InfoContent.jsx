@@ -76,12 +76,6 @@ export default function InfoContent() {
         fetchEpisodes();
     }, [type, id, data.selectedSeason]);
 
-    const formatRuntime = (minutes) => {
-        const hours = Math.floor(minutes / 60);
-        const mins = minutes % 60;
-        return `${hours}h ${mins}m`;
-    };
-
     const getContentRating = () => {
         if (type === 'tv') {
             return data.item.content_ratings?.results.find(r => r.iso_3166_1 === 'US')?.rating || 'NR';
@@ -106,14 +100,14 @@ export default function InfoContent() {
                         <img id="info-backdrop" src={data.item.backdrop_path && `https://image.tmdb.org/t/p/original${data.item.backdrop_path}`} alt="Backdrop" />
                         <img id="info-poster" src={data.item.poster_path && `https://image.tmdb.org/t/p/w500/${data.item.poster_path}`} alt="Poster" />
                         <div id="info-top">
-                            <img id="info-title" src={data.logoImage && `https://image.tmdb.org/t/p/original${data.logoImage}`} alt="Title" />
-                            <div id="info-title-fallback" className="hidden">{data.item.title || data.item.name}</div>
+                            <img id="info-title" src={data.logoImage && `https://image.tmdb.org/t/p/original${data.logoImage}`} alt={type === 'movie' ? data.item.title : data.item.name} />
                             <div id="info-bar">
                                 <p id="info-date">{type === 'tv' ? data.item.first_air_date : data.item.release_date}</p>
-                                <img src="/star.svg" id="info-star" alt="Star Icon" />
-                                <p id="info-rating">{parseFloat(data.item.vote_average).toFixed(1)}</p>
+                                <div id="info-rating-bar">
+                                    <img src="/star.svg" id="info-star" alt="Star Icon" />
+                                    <p id="info-rating">{parseFloat(data.item.vote_average).toFixed(1)}</p>
+                                </div>
                                 <p id="info-content-rating">{getContentRating()}</p>
-                                <p id="info-runtime">{data.item.runtime ? formatRuntime(data.item.runtime) : null}</p>
                             </div>
                             <div id="info-genres">
                                 {data.genres.map(genre => (
@@ -121,12 +115,14 @@ export default function InfoContent() {
                                 ))}
                             </div>
                             <p id="info-description">{data.item.overview}</p>
-                            <Link to={`/player/${type}/${id}/1/1`}><button id="play-button">Play</button></Link>
+                            <Link to={`/player/${type}/${id}/1/1`}><button id="play-button"><img style={{width: "16px"}}src="/play.svg"/>Play</button></Link>
                         </div>
                     </>
                 )}
             </div>
             <div id="info-bottom">
+                {/* <div id="info-actors"></div> */}
+                {/* DO NEXT */}
                 {data.isSeries && (
                     <>
                         <div id="season-container">
@@ -140,7 +136,7 @@ export default function InfoContent() {
                             {data.episodes.map(episode => (
                                 <Link to={`/player/${type}/${id}/${data.selectedSeason}/${episode.episode_number}`} key={episode.id}>
                                     <div className="episode-box">
-                                        <img id="episode-image" src={`https://image.tmdb.org/t/p/w500${episode.still_path}`} alt={`Episode ${episode.episode_number}`} />
+                                        <img id="episode-image" src={episode.still_path && `https://image.tmdb.org/t/p/w500${episode.still_path}`} alt={`Episode ${episode.episode_number}`} />
                                         <div className="episode-content">
                                             <p id="episode-title">{episode.name}</p>
                                             <p id="episode-desc">{episode.overview}</p>
@@ -154,7 +150,7 @@ export default function InfoContent() {
                 <p id="suggested-title">You may also like</p>
                 <div id="suggested-container">
                     {data.recommendations.map(recommendation => (
-                        <Card size="big-image" key={recommendation.id} item={recommendation} type={type} />
+                        <Card csize="big-card" size="big-image" key={recommendation.id} item={recommendation} type={type} />
                     ))}
                 </div>
             </div>

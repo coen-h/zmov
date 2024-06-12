@@ -198,7 +198,9 @@ a {
 }
 #hero-button {
     padding: 10px 20px;
-    display: block;
+    display: flex;
+    align-items: center;
+    gap: 8px;
     background-color: rgba(255,255,255,0.3);
     border-radius: 10px;
     font-size: 1.2rem;
@@ -270,10 +272,10 @@ a {
 }
 .card {
     position: relative;
+    height: 300px;
     border-radius: 8px;
     font-size: 1rem;
-    transition: all 150ms ease;
-    overflow: none;
+    transition: all 200ms ease;
 }
 .card-content {
     position: absolute;
@@ -288,11 +290,10 @@ a {
     opacity: 0;
     text-align: center;
     font-weight: 600;
-    transform: translateY(0);
     transition: all 200ms ease;
     box-shadow: inset 0px 5px 20px black;
     background: linear-gradient(to top, black, transparent);
-    border-radius: 8px;
+    border-radius: 6px;
 }
 .card-title {
     font-size: 1.1rem;
@@ -374,14 +375,14 @@ a {
     justify-content: center;
     align-items: center;
     background-color: rgba(170, 170, 170, 0.85);
-    padding: 0 5rem;
+    padding: 2rem 4rem;
     border-radius: 12px;
     box-shadow: inset 0px 0px 25px 5px rgb(66, 66, 66);
 }
 .service-card-image {
-    height: 180px;
+    width: 220px;
 }
-#service-content {
+#service-section {
     min-height: 100vh;
     margin: 0rem 10rem 0rem 10rem;
 }
@@ -604,9 +605,15 @@ a {
     opacity: 1;
     scale: 1;
 }
-#info-title-fallback {
-    font-size: 2.5rem;
-    font-weight: bold;
+#info-content-rating {
+    border: 1px solid rgba(255,255,255,0.5);
+    border-radius: 8px;
+    padding: 1px 5px;
+}
+#info-rating-bar {
+    display: flex;
+    align-items: center;
+    gap: 2px;
 }
 #info-star {
     width: 15px;
@@ -618,9 +625,9 @@ a {
     gap: 10px;
 }
 .genre-box {
-    padding: 5px;
+    padding: 5px 8px;
     border-radius: 5px;
-    background-color: rgba(109, 0, 0, 0.5);
+    background-color: rgba(109, 0, 0, 0.6);
     color: rgb(255, 120, 120);
     box-shadow: 1px 2px 20px black;
 }
@@ -634,6 +641,10 @@ a {
 .back-animation {
     opacity: 0;
     animation: 1.5s ease 0s 1 back;
+}
+#big-card {
+    width: 250px !important;
+    height: 380px !important;
 }
 .big-image {
     width: 250px !important;
@@ -669,7 +680,11 @@ a {
     background: none;
 }
 #play-button {
-    width: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    width: 120px;
     height: 50px;
     cursor: pointer;
     background-color: rgba(255,255,255,0.2);
@@ -691,8 +706,12 @@ a {
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 8px;
-    font-weight: 700;
+    gap: 12px;
+    font-weight: 600;
+}
+#info-description {
+    color: rgba(255,255,255,0.85);
+    font-size: 1.1rem;
 }
 #suggested-container {
     display: flex; 

@@ -51,7 +51,7 @@ export default function App(props) {
       <div id="service-section">
         <div className="service-content">
           {movies.map((item, index) => (
-            <Card key={index} item={item} type='movie' size="big-image"/>
+            <Card key={index} item={item} type='movie' csize="big-card" size="big-image"/>
           ))}
         </div>
       </div>
