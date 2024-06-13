@@ -368,23 +368,29 @@ a {
     display: flex;
     justify-content: center;
     gap: 20px;
-    margin: 3rem;
+    margin: 3rem 3rem 1rem 3rem;
 }
 .service-card {
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: rgba(170, 170, 170, 0.85);
-    padding: 2rem 4rem;
+    padding: 1.5vw 3vw;
     border-radius: 12px;
     box-shadow: inset 0px 0px 25px 5px rgb(66, 66, 66);
+    width: 20%;
+    transition: all 200ms ease;
+}
+.service-card:hover {
+    scale: 1.05;
+    opacity: 0.9;
 }
 .service-card-image {
-    width: 220px;
+    width: 100%;
 }
 #service-section {
     min-height: 100vh;
-    margin: 0rem 10rem 0rem 10rem;
+    margin: 0rem 5rem 0rem 5rem;
 }
 .service-content {
     display: flex;
@@ -392,6 +398,21 @@ a {
     justify-content: center;
     flex-wrap: wrap;
     gap: 15px;
+}
+#netflix {
+    background-image: linear-gradient(to top left, rgb(152, 0, 0), black,  black,  black, rgb(152, 0, 0));
+}
+#disney {
+    background-image: linear-gradient(to bottom, rgb(0, 0, 0) , rgba(0, 58, 183, 0.8));
+}
+#apple {
+    background-color: rgba(165, 165, 165, 0.8);
+}
+#prime {
+    background-color: rgba(255, 255, 255, 0.8);
+}
+#max {
+    background-image: linear-gradient(to right, rgba(239, 240, 255, 0.8) , rgba(187, 166, 255, 0.8));
 }
 
 
@@ -454,11 +475,11 @@ a {
 
 #search-section {
     min-height: 100vh;
-    margin: 0rem 10rem 0rem 10rem;
+    margin: 0rem 12rem 0rem 12rem;
+    padding-top: 7rem;
 }
 #search-results {
     display: flex;
-    padding-top: 7rem;
     justify-content: center;
     flex-wrap: wrap;
     gap: 15px;
@@ -467,6 +488,14 @@ a {
     justify-content: center;
     align-items: center;
     font-size: 2rem;
+}
+#search-title {
+    font-size: 1.5rem;
+}
+#search-query {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
 }
 
 
