@@ -28,7 +28,7 @@ export default function InfoContent() {
         const fetchData = async () => {
             if (loadingBarRef.current) loadingBarRef.current.continuousStart();
             try {
-                const append_to_response = type === 'tv' ? 'content_ratings,images,recommendations' : 'release_dates,images,recommendations';
+                const append_to_response = type === 'tv' ? 'content_ratings,images,recommendations' : 'release_dates,images,recommendations,credits';
                 const response = await fetch(`https://api.themoviedb.org/3/${type}/${id}?api_key=${apiKey}&append_to_response=${append_to_response}`);
                 const result = await response.json();
                 const logo = result.images.logos.find(logo => logo.iso_639_1 === "en")?.file_path;
@@ -121,8 +121,6 @@ export default function InfoContent() {
                 )}
             </div>
             <div id="info-bottom">
-                {/* <div id="info-actors"></div> */}
-                {/* DO NEXT */}
                 {data.isSeries && (
                     <>
                         <div id="season-container">
