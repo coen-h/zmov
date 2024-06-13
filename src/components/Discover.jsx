@@ -24,13 +24,13 @@ export default function App(props) {
     const cardWidth = cards[0].offsetWidth;
 
     if (direction === 'prev') {
-      const newPosition = carousel.scrollLeft - (3 * cardWidth);
+      const newPosition = carousel.scrollLeft - (2 * cardWidth);
       carousel.scrollTo({
         left: newPosition,
         behavior: 'smooth'
       });
     } else if (direction === 'next') {
-      const newPosition = carousel.scrollLeft + (3 * cardWidth);
+      const newPosition = carousel.scrollLeft + (2 * cardWidth);
       carousel.scrollTo({
         left: newPosition,
         behavior: 'smooth'

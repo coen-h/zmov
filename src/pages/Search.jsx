@@ -35,6 +35,8 @@ export default function Search() {
             <LoadingBar color="#FF0000" ref={loadingBarRef} />
             <Header />
             <div id="search-section">
+                <p id="search-title">Search Results:</p>
+                <p id="search-query">"{query}"</p>
                 <div id="search-results">
                     {items.map(item => (
                         <Card key={item.id} csize="big-card" size="big-image" item={item} type={item.media_type} />
