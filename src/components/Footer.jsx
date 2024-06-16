@@ -6,7 +6,7 @@ export default function Footer() {
         <div id="footer">
         <div id="footer-left">
             <div id="welcome"><p>Welcome to</p>
-                <div id="footer-logo"><img src="/logo.svg" style={{width: "100px"}} alt="Logo"/></div>
+                <div id="footer-logo"><img src="/logo.svg" style={{width: "90px"}} alt="Logo"/></div>
             </div>
             <div id="message"><p>This site does not store any files on our server, we only link to the media which is hosted on 3rd party services.</p></div>
             <div id="copyright">Copyright © zmov 2024</div>
