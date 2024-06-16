@@ -10,14 +10,14 @@ export default function Hero() {
     useEffect(() => {
         async function fetchHero() {
             try {
-                const response = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}`);
+                const response = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}`);
                 const data = await response.json();
                 const firstMovie = data.results[0];
                 setHeroItem(firstMovie);
 
                 const imagesResponse = await fetch(`https://api.themoviedb.org/3/movie/${firstMovie.id}/images?api_key=${apiKey}`);
                 const imagesData = await imagesResponse.json();
-                const logo = imagesData.logos[0]?.file_path;
+                const logo = imagesData.logos.find(logo => logo.iso_639_1 === "en")?.file_path;
                 setLogoImage(logo);
             } catch (error) {
                 console.error('Error fetching hero:', error);
@@ -37,10 +37,11 @@ export default function Hero() {
                     </div>
                     <div id="hero-desc">
                         <p>{heroItem.overview}</p>
+                        <p>{heroItem.tagline}</p>
                     </div>
                     <div id="hero-buttons">
                         <div id="hero-watch">
-                            <Link to={`/player/movie/${heroItem.id}/1/1`} id="hero-button"><img style={{width: "16px"}} src="/play.svg"/>Watch</Link>
+                            <Link to={`/watch/movie/${heroItem.id}`} id="hero-button"><img style={{width: "16px"}} src="/play.svg"/>Watch</Link>
                         </div>
                         <div id="hero-more">
                             <Link to={`/info/movie/${heroItem.id}`} id="hero-button"><img style={{width: "20px"}} src="/info.svg"/>Info</Link>

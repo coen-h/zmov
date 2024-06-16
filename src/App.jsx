@@ -18,7 +18,7 @@ export default function App() {
         <Route path="/dmca" element={<Dmca />} />
         <Route path="/settings" element={<Settings />} />
         <Route path="/info/:type/:id" element={<Info />} />
-        <Route path="/player/:type/:id/:season/:episode" element={<Player />} />
+        <Route path="/watch/:type/:id/*" element={<Player />} />
         <Route path="/search/:query" element={<Search />} />
         <Route path="/service/:service" element={<Services />} />
       </Routes>

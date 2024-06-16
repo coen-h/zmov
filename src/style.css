@@ -17,50 +17,17 @@ p {
 a {
     text-decoration: none;
 }
-.loader {
-    width: 65px;
-    position: relative;
-  }
-  .loader:before,
-  .loader:after {
-    content: "";
-    position: absolute;
-    border-radius: 50px;
-    box-shadow: 0 0 0 3px inset #fff;
-    animation: l4 2.5s infinite;
-  }
-  .loader:after {
-    animation-delay: -1.25s;
-  }
-  @keyframes l4 {
-    0% {
-      inset: 0 35px 35px 0;
-    }
-    12.5% {
-      inset: 0 35px 0 0;
-    }
-    25% {
-      inset: 35px 35px 0 0;
-    }
-    37.5% {
-      inset: 35px 0 0 0;
-    }
-    50% {
-      inset: 35px 0 0 35px;
-    }
-    62.5% {
-      inset: 0 0 0 35px;
-    }
-    75% {
-      inset: 0 0 35px 35px;
-    }
-    87.5% {
-      inset: 0 0 35px 0;
-    }
-    100% {
-      inset: 0 35px 35px 0;
-    }
-  }
+.loader, .error {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.loader p, .error p {
+    font-size: 24px;
+    font-weight: bold;
+}
 
 
 /* HEADER */
@@ -81,7 +48,7 @@ a {
     justify-content: space-between;
     align-items: center;
     flex-grow: 1;
-    margin: 1rem 3rem 1rem 3rem;
+    margin: 1rem 3rem;
 }
 #header-right {
     display: flex;
@@ -90,6 +57,7 @@ a {
 #header-logo {
     width: 100px;
     transition: all 150ms ease;
+    margin-top: 5px;
 }
 #header-logo:hover {
     opacity: 0.6;
@@ -157,18 +125,16 @@ a {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    margin-bottom: 6vh;
+    margin: 6vh 0;
 }
 #hero-content {
     display: flex;
     flex-direction: column;
-    position: absolute;
     margin-left: 3rem;
     z-index: 1;
 }
 #hero-title {
     font-size: 4rem;
-    margin-top: 3rem;
 }
 #hero-title-image {
     width: 400px;
@@ -203,8 +169,11 @@ a {
 #hero-image {
     position: absolute;
     z-index: -1;
-    height: 80vw;
-    opacity: 0.5;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.3;
+    object-fit: cover;
 }
 
 
@@ -212,7 +181,7 @@ a {
 
 
 #home {
-    background: linear-gradient(to top, rgba(0, 0, 0, 1) 0%, rgb(24, 17, 13) 50%, rgba(0, 0, 0, 1) 88%, rgba(0, 0, 0, 0) 100%);
+    background: linear-gradient(to top, rgba(0, 0, 0, 1) 0%, rgb(15, 11, 9) 50%, rgba(0, 0, 0, 1) 97%, rgba(0, 0, 0, 0) 100%);
 }
 
 
@@ -227,7 +196,7 @@ a {
 #discover-section {
     display: flex;
     flex-direction: column;
-    margin: 1rem 0.75rem 1rem 0.75rem;
+    margin: 1rem 0.75rem;
 }
 #discover-title {
     font-size: 2rem;
@@ -363,14 +332,20 @@ a {
 }
 #service-section {
     min-height: 100vh;
-    margin: 0rem 5rem 0rem 5rem;
+    margin: 0rem 5rem;
+    padding-top: 5rem;
 }
 .service-content {
     display: flex;
-    padding-top: 7rem;
     justify-content: center;
     flex-wrap: wrap;
     gap: 15px;
+}
+#service-title {
+    font-size: 3rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 1rem;
 }
 #netflix {
     background-image: linear-gradient(to top left, rgb(152, 0, 0), black,  black,  black, rgb(152, 0, 0));
@@ -408,19 +383,23 @@ a {
     display: flex;
     flex-direction: row;
     align-items: center;
+    margin-left: 10px;
     gap: 25px;
 }
 #welcome {
     display: flex;
-    font-size: 1.25rem;
+    font-size: 1.1rem;
     font-weight: bold;
     gap: 3px;
 }
+#message {
+    font-size: 0.875rem;
+}
 #copyright {
-    font-size: 0.8rem;
+    font-size: 0.875rem;
 }
 #github {
-    width: 50px;
+    width: 40px;
     opacity: 0.5;
 }
 #github:hover {
@@ -428,7 +407,7 @@ a {
     scale: 1.05;
 }
 #mail {
-    width: 40px;
+    width: 35px;
     opacity: 0.5;
 }
 #mail:hover {
@@ -436,10 +415,12 @@ a {
     opacity: 1;
 }
 #dmca {
-    font-size: 1.2rem;
     font-weight: bold;
     opacity: 0.5;
     text-decoration: none;
+}
+#dmca:hover {
+    opacity: 1;
 }
 
 
@@ -448,7 +429,7 @@ a {
 
 #search-section {
     min-height: 100vh;
-    margin: 0rem 12rem 0rem 12rem;
+    margin: 0rem 12rem;
     padding-top: 7rem;
 }
 #search-results {
@@ -479,12 +460,13 @@ a {
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 5.5rem 0;
     width: 100vw;
 }
 #dmca-content {
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
+    min-height: 82vh;
     max-width: 80vw;
     justify-content: center;
     align-items: center;
@@ -505,6 +487,7 @@ a {
     min-height: 100vh;
     max-width: 100vw;
     font-size: 3rem;
+    text-align: center;
 }
 
 
@@ -519,32 +502,23 @@ a {
 #iframe-container > iframe {
     border: 0px;
 }
-#next-episode-button, #back-button {
-    position: absolute;
-    padding: 10px 30px;
-    background-color: rgba(255, 255, 255, 0.2);
-    border: none;
-    border-radius: 5px;
+#player-button {
+    padding: 10px;
     cursor: pointer;
-    transition: opacity 0.5s ease;
-    font-weight: bold;
-    font-size: 1.2rem;
+    transition: 150ms all;
 }
-#next-episode-button:hover, #back-button:hover {
-    background-color: rgba(255, 255, 255, 0.1);
+#player-button:hover {
+    scale: 1.2;
 }
-#next-episode-button {
-    margin-left: 110px;
-}
-#back-button {
-    margin-right: 110px;
+#player-button > img{
+    width: 50px;
+    height: 50px;
 }
 #button-grid {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     width: 100vw;
-    height: 50px;
-    top: 10px;
+    top: 0px;
     position: absolute;
 }
 
@@ -590,7 +564,7 @@ a {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: auto;
+    padding: 10px;
     width: 600px;
     gap: 15px;
     z-index: 11;
@@ -604,8 +578,6 @@ a {
 #info-title {
     max-width: 500px;
     max-height: 200px;
-    opacity: 1;
-    scale: 1;
 }
 #info-content-rating {
     border: 1px solid rgba(255,255,255,0.5);
@@ -623,7 +595,9 @@ a {
 }
 #info-genres {
     display: flex;
+    justify-content: center;
     flex-direction: row;
+    flex-wrap: wrap;
     gap: 10px;
 }
 .genre-box {
@@ -634,11 +608,14 @@ a {
     box-shadow: 1px 2px 20px black;
 }
 #info-backdrop {
-    position: fixed;
     z-index: -2;
-    width: 100vw;
     filter: blur(5px);
     opacity: 0.3;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 #big-card {
     width: 250px !important;
@@ -698,7 +675,7 @@ a {
     font-size: 2rem;
     text-align: center;
     font-weight: bold;
-    margin-top: 5rem;
+    margin-top: 2rem;
 }
 #suggested-image {
     width: 250px;
@@ -740,7 +717,6 @@ a {
     display: flex;
     cursor: pointer;
     align-items: center;
-    border-radius: 8px;
 }
 .episode-content {
     margin-left: 1.5rem;
@@ -755,4 +731,210 @@ a {
 }
 #episode-desc {
     font-size: 1rem;
+}
+
+
+/* MOBILE */
+
+
+@media (max-width: 1400px) {
+    #episodes-container {
+        margin: 1rem 10rem;
+    }
+    #season-container {
+        padding-left: 10rem;
+    }
+}
+@media (max-width: 1100px) {
+    #service {
+        display: none;
+    }
+    #hero-desc {
+        width: 60vw;
+    }
+    #info-poster {
+        display: none;
+    }
+    #search-section {
+        margin: 0 6rem;
+    }
+    #suggested-container {
+        margin: 16px 50px;
+    }
+    #episodes-container {
+        margin: 1rem 5rem;
+    }
+    #season-container {
+        padding-left: 5rem;
+    }
+    
+}
+@media (max-width: 800px) {
+    #search-section {
+        margin: 0 2rem;
+    }
+    #big-card {
+        width: 40vw !important;
+        height: 60vw !important;
+    }
+    #header {
+        height: auto;
+    }
+    .big-image {
+        width: 40vw !important;
+        height: 60vw !important;
+    }
+    #hero-title-image {
+        width: 90%;
+    }
+    #hero-desc {
+        width: 100%;
+        text-align: center;
+        font-size: 1rem;
+    }
+    #hero-buttons {
+        justify-content: center;
+    }
+    #hero-content {
+        margin: 0 1rem;
+    }
+    #hero-card {
+        margin-bottom: 3vh;
+    }
+    #hero-title {
+        display: flex;
+        justify-content: center;
+    }
+    #header-section {
+        margin: 1rem 2rem;
+    }
+    #suggested-container {
+        margin: 16px 1rem;
+        gap: 10px;
+    }
+    #episodes-container {
+        margin: 1rem 2rem;
+    }
+    #season-container {
+        padding-left: 2rem;
+    }
+    #episode-image {
+        width: 50vw;
+        margin-bottom: 10px;
+    }
+    .episode-box {
+        flex-direction: column;
+        border-bottom: 1px solid rgb(63, 63, 63);
+        padding-bottom: 20px;
+    }
+    .episode-content {
+        margin-left: 1rem;
+    }
+    #episodes-container {
+        gap: 25px;
+        padding: 1rem 0.5rem;
+    }
+}
+@media (max-width: 550px) {
+    #footer {
+        flex-direction: column;
+        gap: 10px;
+        padding: 1rem;
+    }
+    #footer-right {
+        justify-content: flex-start;
+        gap: 15px;
+        width: 100%;
+    }
+    #mail, #github {
+        width: 30px;
+    }
+    #search-section {
+        margin: 0 1rem;
+    }
+    #hero-title-image {
+        width: 100%;
+    }
+    #hero {
+        height: 75vh;
+    }
+    #hero-desc {
+        font-size: 0.875rem;
+    }
+    #header-section {
+        margin: 1rem 1rem;
+    }
+    #discover-section {
+        margin: 0;
+    }
+    #discover-title {
+        font-size: 1.5rem;
+    }
+    .card img {
+        width: 36vw;
+        height: 54vw;
+    }
+    .discover-card {
+        min-height: 55vw;
+    }
+    .card {
+        height: 54vw;
+    }
+    #mcard {
+        width: 44vw !important;
+        height: 66vw !important;
+    }
+    .mcard-image {
+        width: 44vw !important;
+        height: 66vw !important;
+    }
+    #suggested-container {
+        margin: 16px 0.5rem;
+        gap: 10px;
+    }
+    #episodes-container {
+        margin: 1rem 1rem;
+    }
+    #season-container {
+        padding: 0;
+        justify-content: center;
+    }
+    .episode-content {
+        margin-left: 0.5rem;
+    }
+    #episode-image {
+        width: 60vw;
+    }
+    #episode-desc {
+        font-size: .875rem;
+    }
+    #info-description {
+        font-size: 0.875rem;
+    }
+    #info-title {
+        max-width: 90vw;
+        max-height: 40vw;
+    }
+}
+@media (max-width: 450px) {
+    #header-section {
+        justify-content: center;
+    }
+    #header-logo {
+        content: url('/icon.svg');
+        height: 45px;
+        width: 45px;
+        margin-right: 10px;
+    }
+    #settings {
+        display: none;
+    }
+    #suggested-title {
+        font-size: 1.7rem;
+    }
+}
+@media (max-width: 350px) {
+    #search-input {
+        width: 130px;
+    }
 }

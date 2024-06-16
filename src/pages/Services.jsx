@@ -49,6 +49,7 @@ export default function App(props) {
       <LoadingBar color="#FF0000" ref={loadingBarRef} />
       <Header />
       <div id="service-section">
+      <p id="service-title">{service.charAt(0).toUpperCase() + service.slice(1)}</p>
         <div className="service-content">
           {movies.map((item, index) => (
             <Card key={index} item={item} type='movie' csize="big-card" size="big-image"/>

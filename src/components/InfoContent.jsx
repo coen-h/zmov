@@ -15,13 +15,14 @@ export default function InfoContent() {
         selectedSeason: '',
         episodes: [],
         isLoading: true,
+        error: null,
     });
     const loadingBarRef = useRef(null);
 
     const apiKey = import.meta.env.VITE_API_KEY;
 
     useEffect(() => {
-        setData(prevData => ({ ...prevData, isLoading: true }));
+        setData(prevData => ({ ...prevData, isLoading: true, error: null }));
     }, [type, id]);
 
     useEffect(() => {
@@ -46,9 +47,11 @@ export default function InfoContent() {
                     selectedSeason,
                     episodes: [],
                     isLoading: false,
+                    error: null,
                 });
             } catch (error) {
                 console.error('Error fetching data:', error);
+                setData(prevData => ({ ...prevData, isLoading: false, error: 'Error fetching data' }));
             } finally {
                 if (loadingBarRef.current) loadingBarRef.current.complete();
             }
@@ -64,9 +67,10 @@ export default function InfoContent() {
                 try {
                     const response = await fetch(`https://api.themoviedb.org/3/tv/${id}/season/${data.selectedSeason}?api_key=${apiKey}`);
                     const result = await response.json();
-                    setData(prevData => ({ ...prevData, episodes: result.episodes }));
+                    setData(prevData => ({ ...prevData, episodes: result.episodes, error: null }));
                 } catch (error) {
                     console.error('Error fetching episodes:', error);
+                    setData(prevData => ({ ...prevData, episodes: [], error: 'Error fetching episodes' }));
                 } finally {
                     if (loadingBarRef.current) loadingBarRef.current.complete();
                 }
@@ -91,16 +95,21 @@ export default function InfoContent() {
     return (
         <>
             <LoadingBar color="#FF0000" ref={loadingBarRef} />
-            <div id="info-container">
-                {data.isLoading && (
-                    <div className="loader"></div>
-                )}
-                {!data.isLoading && (
-                    <>
+            {data.isLoading ? (
+                <div className="loader">
+                    <p>Loading...</p>
+                </div>
+            ) : data.error ? (
+                <div className="error">
+                    <p>{data.error}</p>
+                </div>
+            ) : (
+                <>
+                    <div id="info-container">
                         <img id="info-backdrop" src={data.item.backdrop_path && `https://image.tmdb.org/t/p/original${data.item.backdrop_path}`} alt="Backdrop" />
                         <img id="info-poster" src={data.item.poster_path && `https://image.tmdb.org/t/p/w500/${data.item.poster_path}`} alt="Poster" />
                         <div id="info-top">
-                            <img id="info-title" src={data.logoImage && `https://image.tmdb.org/t/p/original${data.logoImage}`} alt={type === 'movie' ? data.item.title : data.item.name} />
+                            <img id="info-title" src={data.logoImage && `https://image.tmdb.org/t/p/w500${data.logoImage}`} alt={type === 'movie' ? data.item.title : data.item.name} />
                             <div id="info-bar">
                                 <p id="info-date">{type === 'tv' ? data.item.first_air_date : data.item.release_date}</p>
                                 <div id="info-rating-bar">
@@ -115,43 +124,43 @@ export default function InfoContent() {
                                 ))}
                             </div>
                             <p id="info-description">{data.item.overview}</p>
-                            <Link to={`/player/${type}/${id}/1/1`}><button id="play-button"><img style={{width: "16px"}}src="/play.svg"/>Play</button></Link>
+                            <Link to={type === 'movie' ? `/watch/${type}/${id}` : `/watch/${type}/${id}/1/1`}><button id="play-button"><img style={{width: "16px"}} src="/play.svg" />Play</button></Link>
                         </div>
-                    </>
-                )}
-            </div>
-            <div id="info-bottom">
-                {data.isSeries && (
-                    <>
-                        <div id="season-container">
-                            <select id="season-selector" value={data.selectedSeason} onChange={handleSeasonChange}>
-                                {data.seasons.map(season => (
-                                    <option key={season.id} value={season.season_number}>{season.name}</option>
-                                ))}
-                            </select>
-                        </div>
-                        <div id="episodes-container">
-                            {data.episodes.map(episode => (
-                                <Link to={`/player/${type}/${id}/${data.selectedSeason}/${episode.episode_number}`} key={episode.id}>
-                                    <div className="episode-box">
-                                        <img id="episode-image" src={episode.still_path && `https://image.tmdb.org/t/p/w500${episode.still_path}`} alt={`Episode ${episode.episode_number}`} />
-                                        <div className="episode-content">
-                                            <p id="episode-title">{episode.name}</p>
-                                            <p id="episode-desc">{episode.overview}</p>
-                                        </div>
-                                    </div>
-                                </Link>
+                    </div>
+                    <div id="info-bottom">
+                        {data.isSeries && (
+                            <>
+                                <div id="season-container">
+                                    <select id="season-selector" value={data.selectedSeason} onChange={handleSeasonChange}>
+                                        {data.seasons.map(season => (
+                                            <option key={season.id} value={season.season_number}>{season.name}</option>
+                                        ))}
+                                    </select>
+                                </div>
+                                <div id="episodes-container">
+                                    {data.episodes?.map(episode => (
+                                        <Link to={`/watch/${type}/${id}/${data.selectedSeason}/${episode.episode_number}`} key={episode.id}>
+                                            <div className="episode-box">
+                                                <img id="episode-image" src={episode.still_path && `https://image.tmdb.org/t/p/w500${episode.still_path}`} alt={`Episode ${episode.episode_number}`} />
+                                                <div className="episode-content">
+                                                    <p id="episode-title">{episode.name}</p>
+                                                    <p id="episode-desc">{episode.overview}</p>
+                                                </div>
+                                            </div>
+                                        </Link>
+                                    ))}
+                                </div>
+                            </>
+                        )}
+                        <p id="suggested-title">You may also like</p>
+                        <div id="suggested-container">
+                            {data.recommendations.map(recommendation => (
+                                <Card key={recommendation.id} item={recommendation} type={type} csize="mcard" size="mcard-image"/>
                             ))}
                         </div>
-                    </>
-                )}
-                <p id="suggested-title">You may also like</p>
-                <div id="suggested-container">
-                    {data.recommendations.map(recommendation => (
-                        <Card key={recommendation.id} item={recommendation} type={type} />
-                    ))}
-                </div>
-            </div>
+                    </div>
+                </>
+            )}
         </>
     );
 }
