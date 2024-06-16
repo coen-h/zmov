@@ -1,6 +1,6 @@
 * {
     font-family: "Manrope", sans-serif;
-    scrollbar-width: none;
+
     color: white;
 }
 body {
@@ -21,12 +21,62 @@ a {
     width: 100vw;
     height: 100vh;
     display: flex;
+    filter: grayscale(100%);
     justify-content: center;
     align-items: center;
 }
-.loader p, .error p {
+.loader img {
+    width: 100px;
+    animation: loaderimg 2000ms linear;
+    animation-iteration-count: infinite;
+}
+.error p {
     font-size: 24px;
     font-weight: bold;
+}
+@keyframes loaderimg {
+    0%  {
+        opacity: .5;
+    }
+    25%  {
+        opacity: .7
+    }
+    50%  {
+        opacity: .9
+    }
+    75% {
+        opacity: .7
+    }
+    100% {
+        opacity: .5
+    }
+}
+
+
+/* NOTFOUND */
+
+
+#notfound {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#notfound-link {
+    margin-top: 1rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    opacity: 0.5;
+    padding: 0.5rem;
+    border-radius: 8px;
+    border: 1px solid rgb(255, 255, 255);
+    background-color: rgba(255, 255, 255, 0.1);
+    transition: 200ms all;
+}
+#notfound-link:hover {
+    opacity: 1;
 }
 
 
@@ -236,6 +286,7 @@ a {
     box-shadow: inset 0px 5px 20px black;
     background: linear-gradient(to top, black, transparent);
     border-radius: 6px;
+    z-index: 10;
 }
 .card-title {
     font-size: 1.1rem;
@@ -262,6 +313,7 @@ a {
     align-items: center;
     opacity: 0;
     transition: opacity 200ms ease;
+    z-index: 20;
 }
 .play-icon {
     width: 35px !important;
@@ -322,10 +374,6 @@ a {
     box-shadow: inset 0px 0px 20px 1px rgb(66, 66, 66);
     width: 20%;
     transition: all 200ms ease;
-}
-.service-card:hover {
-    scale: 1.05;
-    opacity: 0.9;
 }
 .service-card-image {
     width: 100%;
@@ -767,7 +815,12 @@ a {
     #season-container {
         padding-left: 5rem;
     }
-    
+    .card-content {
+        opacity: 1;
+    }
+    .card-content {
+        background: linear-gradient(to top, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 70%);
+    }
 }
 @media (max-width: 800px) {
     #search-section {
@@ -914,6 +967,9 @@ a {
     #info-title {
         max-width: 90vw;
         max-height: 40vw;
+    }
+    #check {
+        display: none;
     }
 }
 @media (max-width: 450px) {

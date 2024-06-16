@@ -97,7 +97,7 @@ export default function InfoContent() {
             <LoadingBar color="#FF0000" ref={loadingBarRef} />
             {data.isLoading ? (
                 <div className="loader">
-                    <p>Loading...</p>
+                    <img src='/icon.svg' />
                 </div>
             ) : data.error ? (
                 <div className="error">
