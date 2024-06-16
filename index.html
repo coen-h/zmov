@@ -1,119 +1,18 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Watch your favorite movies and shows for free!">
+    <meta name="keywords" content="zmov, Free, Movie, Show, Streaming">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>zmov</title>
-    <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/x-icon" href="/media/icon.png">
-</head>
-<body>
-    <div id="header">
-        <div id="header-section">
-            <div id="header-left">
-                <a href="index.html">
-                    <img src="media/logo.png" id="header-logo"></img>
-                </a>
-            </div>
-            <div id="header-right">
-                <button id="settings">
-                    <a href="./pages/settings.html">
-                        <img id="settings-icon" src="./media/settings.png">
-                    </a>
-                </button>
-                <div id="search">
-                    <input type="text" name="text" id="search-input" required="" placeholder="Type to search...">
-                    <div class="icon">
-                        <img id="search-icon" src="media/search.png">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div id="hero"></div>
-    <div id="discover">
-        <div id="discover-section" class="discover-section">
-            <p id="discover-title">Trending movies this week</p>
-            <div id="discover-main">
-                <button class="carousel-btn prev-btn" data-target="#discover-card1">&lt;</button>
-                <div id="discover-card1" class="discover-card"></div>
-                <button class="carousel-btn next-btn" data-target="#discover-card1">&gt;</button>
-            </div>
-        </div>
-        <div id="discover-section" class="discover-section">
-            <p id="discover-title">Trending series this week</p>
-            <div id="discover-main">
-                <button class="carousel-btn prev-btn" data-target="#discover-card2">&lt;</button>
-                <div id="discover-card2" class="discover-card"></div>
-                <button class="carousel-btn next-btn" data-target="#discover-card2">&gt;</button>
-            </div>
-        </div>
-        <div id="discover-section" class="discover-section">
-            <p id="discover-title">Popular movies</p>
-            <div id="discover-main">
-                <button class="carousel-btn prev-btn" data-target="#discover-card3">&lt;</button>
-                <div id="discover-card3" class="discover-card"></div>
-                <button class="carousel-btn next-btn" data-target="#discover-card3">&gt;</button>
-            </div>
-        </div>
-        <div id="discover-section" class="discover-section">
-            <p id="discover-title">Popular series</p>
-            <div id="discover-main">
-                <button class="carousel-btn prev-btn" data-target="#discover-card4">&lt;</button>
-                <div id="discover-card4" class="discover-card"></div>
-                <button class="carousel-btn next-btn" data-target="#discover-card4">&gt;</button>
-            </div>
-        </div>
-        <div id="discover-section" class="discover-section">
-            <p id="discover-title">Top rated movies</p>
-            <div id="discover-main">
-                <button class="carousel-btn prev-btn" data-target="#discover-card5">&lt;</button>
-                <div id="discover-card5" class="discover-card"></div>
-                <button class="carousel-btn next-btn" data-target="#discover-card5">&gt;</button>
-            </div>
-        </div>
-        <div id="discover-section" class="discover-section">
-            <p id="discover-title">Top rated series</p>
-            <div id="discover-main">
-                <button class="carousel-btn prev-btn" data-target="#discover-card6">&lt;</button>
-                <div id="discover-card6" class="discover-card"></div>
-                <button class="carousel-btn next-btn" data-target="#discover-card6">&gt;</button>
-            </div>
-        </div>
-        <div id="discover-section" class="discover-section">
-            <p id="discover-title">Upcoming movies</p>
-            <div id="discover-main">
-                <button class="carousel-btn prev-btn" data-target="#discover-card7">&lt;</button>
-                <div id="discover-card7" class="discover-card"></div>
-                <button class="carousel-btn next-btn" data-target="#discover-card7">&gt;</button>
-            </div>
-        </div>
-        <div id="discover-section" class="discover-section">
-            <p id="discover-title">On the air series</p>
-            <div id="discover-main">
-                <button class="carousel-btn prev-btn" data-target="#discover-card8">&lt;</button>
-                <div id="discover-card8" class="discover-card"></div>
-                <button class="carousel-btn next-btn" data-target="#discover-card8">&gt;</button>
-            </div>
-        </div>
-    </div>
-    <div id="footer">
-        <div id="footer-left">
-            <div id="welcome"><p>Welcome to</p>
-                <div id="footer-logo"><img src="./media/logo.png" style="width: 100px"></div>
-            </div>
-            <div id="message"><p>This site does not store any files on our server, we only link to the media which is hosted on 3rd party services.</p></div>
-            <div id="copyright">Copyright © zmov 2024</div>
-        </div>
-        <div id="footer-right">
-            <a href="./pages/dmca.html" id="dmca">DMCA</a>
-            <a target=”_blank” href="mailto:me@coen.ovh" rel=noopener noreferrer><img src="./media/email.png" id="mail"></img></a>
-            <a target=”_blank” href="https://github.com/coen-h" rel=noopener noreferrer><img src="./media/github-mark-white.png" id="github"></img></a>
-        </div>
-    </div>
-    <script src="./script.js" type="module"></script>
-</body>
+    <link rel="icon" type="image/x-icon" href="./icon.svg">
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/index.jsx"></script>
+  </body>
 </html>
