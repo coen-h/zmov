@@ -1,6 +1,9 @@
+@font-face {
+    font-family: 'Manrope';
+    src: url('./fonts/Manrope.ttf') format('truetype');
+}
 * {
-    font-family: "Manrope", sans-serif;
-
+    font-family: 'Manrope', sans-serif;
     color: white;
 }
 body {

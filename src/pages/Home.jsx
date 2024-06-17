@@ -4,7 +4,6 @@ import Footer from '../components/Footer'
 import Hero from '../components/Hero'
 import Discover from '../components/Discover'
 import ServiceCard from '../components/ServiceCard'
-import '../style.css'
 
 export default function App() {
 
