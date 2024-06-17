@@ -1,6 +1,7 @@
 @font-face {
     font-family: 'Manrope';
     src: url('./fonts/Manrope.ttf') format('truetype');
+    font-display: swap;
 }
 * {
     font-family: 'Manrope', sans-serif;

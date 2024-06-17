@@ -106,10 +106,10 @@ export default function InfoContent() {
             ) : (
                 <>
                     <div id="info-container">
-                        <img id="info-backdrop" src={data.item.backdrop_path && `https://image.tmdb.org/t/p/original${data.item.backdrop_path}`} alt="Backdrop" rel="preload" />
-                        <img id="info-poster" src={data.item.poster_path && `https://image.tmdb.org/t/p/w500/${data.item.poster_path}`} alt="Poster" rel="preload" />
+                        <img id="info-backdrop" src={data.item.backdrop_path && `https://image.tmdb.org/t/p/original${data.item.backdrop_path}`} alt="Backdrop" />
+                        <img id="info-poster" src={data.item.poster_path && `https://image.tmdb.org/t/p/w500/${data.item.poster_path}`} alt="Poster" />
                         <div id="info-top">
-                            <img id="info-title" src={data.logoImage && `https://image.tmdb.org/t/p/w500${data.logoImage}`} alt={type === 'movie' ? data.item.title : data.item.name} rel="preload" />
+                            <img id="info-title" src={data.logoImage && `https://image.tmdb.org/t/p/w500${data.logoImage}`} alt={type === 'movie' ? data.item.title : data.item.name} />
                             <p id="info-title-text">{type === 'movie' ? data.item.title : data.item.name}</p>
                             <div id="info-bar">
                                 <p id="info-date">{type === 'tv' ? data.item.first_air_date : data.item.release_date}</p>
