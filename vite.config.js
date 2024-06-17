@@ -6,4 +6,5 @@ dotenv.config();
 
 export default defineConfig({
   plugins: [react()],
+  publicDir: 'public'
 })
