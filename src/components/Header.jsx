@@ -1,9 +1,11 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
 export default function Header() {
     const navigate = useNavigate();
     const searchInputRef = useRef();
+    const [lastScrollTop, setLastScrollTop] = useState(0);
+    const [isVisible, setIsVisible] = useState(true);
 
     function handleSearch() {
         const query = searchInputRef.current.value;
@@ -18,8 +20,26 @@ export default function Header() {
         }
     }
 
+    useEffect(() => {
+        const handleScroll = () => {
+            const currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            if (currentScrollTop > lastScrollTop) {
+                setIsVisible(false);
+            } else {
+                setIsVisible(true);
+            }
+            setLastScrollTop(currentScrollTop <= 0 ? 0 : currentScrollTop);
+        };
+
+        window.addEventListener('scroll', handleScroll);
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, [lastScrollTop]);
+
     return (
-        <div id="header">
+        <div id="header" className={isVisible ? 'visible' : 'show'}>
             <div id="header-section">
                 <div id="header-left">
                     <Link to="/">

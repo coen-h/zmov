@@ -27,6 +27,10 @@ export default function App() {
           <Discover url={`https://api.themoviedb.org/3/trending/tv/week?api_key=${apiKey}`} name="Trending series this week" type="tv" />
           <Discover url={`https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&sort_by=vote_count.desc`} name="Top rated movies" type="movie" />
           <Discover url={`https://api.themoviedb.org/3/discover/tv?api_key=${apiKey}&sort_by=vote_count.desc`} name="Top rated series" type="tv" />
+          <Discover url={`https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&with_genres=10751`} name="Family" type="movie" />
+          <Discover url={`https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&with_genres=80`} name="Crime" type="movie" />
+          <Discover url={`https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&with_genres=27`} name="Horror" type="movie" />
+          <Discover url={`https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&with_genres=99`} name="Documentary" type="movie" />
         </div>
       </div>
       <Footer />

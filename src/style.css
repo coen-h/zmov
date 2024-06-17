@@ -185,9 +185,13 @@ a {
 }
 #hero-title {
     font-size: 4rem;
+    font-weight: 600;
 }
 #hero-title-image {
     width: 400px;
+}
+#hero-title-text {
+    display: none;
 }
 #hero-desc {
     font-size: 1.1rem;
@@ -322,7 +326,7 @@ a {
 }
 .card img {
     width: 200px;
-    height: 300px;
+    height: 100%;
     border-radius: 8px;
     transition: all 200ms ease;
 }
@@ -626,6 +630,13 @@ a {
 #info-title {
     max-width: 500px;
     max-height: 200px;
+    font-size: 2.5rem;
+    font-weight: 600;
+}
+#info-title-text {
+    display: none;
+    font-size: 2.5rem;
+    font-weight: 600;
 }
 #info-content-rating {
     border: 1px solid rgba(255,255,255,0.5);
@@ -667,11 +678,11 @@ a {
 }
 #big-card {
     width: 250px !important;
-    height: 380px !important;
+    height: 100% !important;
 }
 .big-image {
     width: 250px !important;
-    height: 380px !important;
+    height: 100% !important;
 }
 #info-bottom {
     background: none;
@@ -785,6 +796,86 @@ a {
 /* MOBILE */
 
 
+@media (max-height: 600px) {
+    #hero-title-image {
+        display: none;
+    }
+    #hero-title-text {
+        display: flex;
+    }
+    #hero-title-image {
+        width: 90%;
+    }
+    #hero-desc {
+        width: 100% !important;
+        text-align: center;
+        font-size: 1rem;
+    }
+    #hero-buttons {
+        justify-content: center;
+    }
+    #hero-content {
+        margin: 0 1rem;
+    }
+    #hero-card {
+        margin-bottom: 3vh;
+    }
+    #hero-title {
+        display: flex;
+        justify-content: center;
+    }
+    #header {
+        transition: top 0.25s;
+    }
+    #header.show {
+        top: -80px;
+    }
+    #header.visible {
+        top: 0;
+    }
+    #info-title {
+        display: none;
+    }
+    #info-title-text {
+        display: flex;
+    }
+    #discover-section {
+        margin: 0;
+    }
+    #episode-image {
+        width: 20vw !important;
+    }
+    .episode-box {
+        flex-direction: row !important;
+    }
+}
+@media (max-height: 450px) {
+    #hero {
+        height: 85vh;
+    }
+    .card img {
+        width: 20vw;
+    }
+    .discover-card {
+        min-height: 31vw;
+    }
+    .card {
+        height: 30vw;
+    }
+    #discover-title {
+        font-size: 1.5rem;
+    }
+    #header-section {
+        margin: 0.8rem 1rem !important;
+    }
+    #info-top {
+        gap: 8px;
+        padding-top: 50px;
+    }
+    #info-description {
+        font-size: 0.875rem;
+    }
+}
 @media (max-width: 1400px) {
     #episodes-container {
         margin: 1rem 10rem;
@@ -826,16 +917,15 @@ a {
     #search-section {
         margin: 0 2rem;
     }
-    #big-card {
-        width: 40vw !important;
-        height: 60vw !important;
-    }
     #header {
         height: auto;
+        transition: top 0.25s;
+    }
+    #big-card {
+        width: 40vw !important;
     }
     .big-image {
         width: 40vw !important;
-        height: 60vw !important;
     }
     #hero-title-image {
         width: 90%;
@@ -877,7 +967,7 @@ a {
     }
     .episode-box {
         flex-direction: column;
-        border-bottom: 1px solid rgb(63, 63, 63);
+        border-bottom: 1px solid rgb(150, 150, 150);
         padding-bottom: 20px;
     }
     .episode-content {
@@ -886,6 +976,12 @@ a {
     #episodes-container {
         gap: 25px;
         padding: 1rem 0.5rem;
+    }
+    #header.show {
+        top: -74px;
+    }
+    #header.visible {
+        top: 0;
     }
 }
 @media (max-width: 550px) {
@@ -925,7 +1021,6 @@ a {
     }
     .card img {
         width: 36vw;
-        height: 54vw;
     }
     .discover-card {
         min-height: 55vw;
@@ -935,11 +1030,9 @@ a {
     }
     #mcard {
         width: 44vw !important;
-        height: 66vw !important;
     }
     .mcard-image {
         width: 44vw !important;
-        height: 66vw !important;
     }
     #suggested-container {
         margin: 16px 0.5rem;
@@ -987,6 +1080,12 @@ a {
     }
     #suggested-title {
         font-size: 1.7rem;
+    }
+    #header-section {
+        margin: 0.5rem 1rem;
+    }
+    #header.show {
+        top: -71px;
     }
 }
 @media (max-width: 350px) {

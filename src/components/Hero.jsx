@@ -33,18 +33,18 @@ export default function Hero() {
             <div id="hero-card">
                 <div id="hero-content">
                     <div id="hero-title">
-                        <img src={logoImage && `https://image.tmdb.org/t/p/w500${logoImage}`} id="hero-title-image"/>
+                        <img src={logoImage && `https://image.tmdb.org/t/p/w500${logoImage}`} id="hero-title-image" alt={heroItem.title}/>
+                        <span id="hero-title-text" class="alt-text">{heroItem.title}</span>
                     </div>
                     <div id="hero-desc">
                         <p>{heroItem.overview}</p>
-                        <p>{heroItem.tagline}</p>
                     </div>
                     <div id="hero-buttons">
                         <div id="hero-watch">
-                            <Link to={`/watch/movie/${heroItem.id}`} id="hero-button"><img style={{width: "16px"}} src="/play.svg"/>Watch</Link>
+                            <Link to={`/watch/movie/${heroItem.id}`} id="hero-button"><img style={{width: "16px"}} src="/play.svg" alt="play-icon"/>Watch</Link>
                         </div>
                         <div id="hero-more">
-                            <Link to={`/info/movie/${heroItem.id}`} id="hero-button"><img style={{width: "20px"}} src="/info.svg"/>Info</Link>
+                            <Link to={`/info/movie/${heroItem.id}`} id="hero-button"><img style={{width: "20px"}} src="/info.svg" alt="info-icon"/>Info</Link>
                         </div>
                     </div>
                 </div>
