@@ -1028,12 +1028,6 @@ a {
     .card {
         height: 54vw;
     }
-    #mcard {
-        width: 44vw !important;
-    }
-    .mcard-image {
-        width: 44vw !important;
-    }
     #suggested-container {
         margin: 16px 0.5rem;
         gap: 10px;
