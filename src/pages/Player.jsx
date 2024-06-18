@@ -115,9 +115,9 @@ export default function Player() {
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
             >
-                <Link to={`/info/${type}/${id}`} id="player-button"><img src="/arrowl.svg" alt="Back" /></Link>
+                <Link to={`/info/${type}/${id}`} id="player-button"><img src="/images/arrowl.svg" alt="Back" /></Link>
                 {type === 'tv' && season && episode && (
-                    <Link to={nextEpisodeLink} id="player-button"><img src="/arrowr.svg" alt="Next" /></Link>
+                    <Link to={nextEpisodeLink} id="player-button"><img src="/images/arrowr.svg" alt="Next" /></Link>
                 )}
             </div>
         </>

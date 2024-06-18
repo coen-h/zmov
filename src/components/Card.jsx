@@ -5,7 +5,7 @@ export default function Card(props) {
     return (
         <Link to={`/info/${props.type}/${props.item.id}`} className="card" id={props.csize}>
             <img className={props.size} src={props.item.poster_path && `https://image.tmdb.org/t/p/w500/${props.item.poster_path}`} alt="Poster" loading="lazy" />
-            <div className="card-play"><img className="play-icon" src="/play.svg" alt="Play Icon"/></div>
+            <div className="card-play"><img className="play-icon" src="/images/play.svg" alt="Play Icon"/></div>
             <div className="card-content">
                 <p className="card-title">{props.type === 'movie' ? props.item.title : props.item.name}</p>
                 <div className="card-desc">

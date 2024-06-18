@@ -97,7 +97,7 @@ export default function InfoContent() {
             <LoadingBar color="#FF0000" ref={loadingBarRef} />
             {data.isLoading ? (
                 <div className="loader">
-                    <img src='/icon.svg' />
+                    <img src='/images/icon.svg' />
                 </div>
             ) : data.error ? (
                 <div className="error">
@@ -114,7 +114,7 @@ export default function InfoContent() {
                             <div id="info-bar">
                                 <p id="info-date">{type === 'tv' ? data.item.first_air_date : data.item.release_date}</p>
                                 <div id="info-rating-bar">
-                                    <img src="/star.svg" id="info-star" alt="Star Icon" rel="preload" />
+                                    <img src="/images/star.svg" id="info-star" alt="Star Icon" />
                                     <p id="info-rating">{parseFloat(data.item.vote_average).toFixed(1)}</p>
                                 </div>
                                 <p id="info-content-rating">{getContentRating()}</p>
@@ -125,7 +125,7 @@ export default function InfoContent() {
                                 ))}
                             </div>
                             <p id="info-description">{data.item.overview}</p>
-                            <Link to={type === 'movie' ? `/watch/${type}/${id}` : `/watch/${type}/${id}/1/1`}><button id="play-button"><img style={{width: "16px"}} src="/play.svg" />Play</button></Link>
+                            <Link to={type === 'movie' ? `/watch/${type}/${id}` : `/watch/${type}/${id}/1/1`}><button id="play-button"><img style={{width: "16px"}} src="/images/play.svg" />Play</button></Link>
                         </div>
                     </div>
                     <div id="info-bottom">

@@ -15,11 +15,11 @@ export default function App() {
       <Hero />
       <div id="home">
         <div id='service'>
-          <ServiceCard img="/netflix.svg" type="netflix" />
-          <ServiceCard img="/disney.svg" type="disney" />
-          <ServiceCard img="/apple.svg" type="apple" />
-          <ServiceCard img="/prime.svg" type="prime" />
-          <ServiceCard img="/max.svg" type="max" />
+          <ServiceCard img="/images/netflix.svg" type="netflix" />
+          <ServiceCard img="/images/disney.svg" type="disney" />
+          <ServiceCard img="/images/apple.svg" type="apple" />
+          <ServiceCard img="/images/prime.svg" type="prime" />
+          <ServiceCard img="/images/max.svg" type="max" />
         </div>
         <div id='discover'>
           <Discover url={`https://api.themoviedb.org/3/trending/movie/week?api_key=${apiKey}`} name="Trending movies this week" type="movie" />

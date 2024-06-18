@@ -149,6 +149,21 @@ a {
 #search-icon {
     width: 30px;
 }
+#install-button {
+    width: 42px;
+    height: 42px;
+    background-color: rgba(255,255,255,.2);
+    border: none;
+    border-radius: 50%;
+    padding: 4px 0 0 0;
+    box-shadow: 1px 1px 3px #0e0e0e, -1px -1px 3px rgb(95 94 94 / 25%), inset 0px 0px 0px #0e0e0e, inset 0px -0px 0px #5f5e5e;
+}
+#install-image {
+    width: 32px;
+}
+#install-button:hover {
+    scale: 0.95;
+}
 #settings {
     width: 42px;
     height: 42px;
@@ -272,7 +287,8 @@ a {
 }
 .card {
     position: relative;
-    height: 300px;
+    width: 200px;
+    height: 100%;
     border-radius: 8px;
     font-size: 1rem;
     transition: all 200ms ease;
@@ -864,7 +880,7 @@ a {
         min-height: 31vw;
     }
     .card {
-        height: 30vw;
+        width: 20vw;
     }
     #discover-title {
         font-size: 1.5rem;
@@ -1030,7 +1046,7 @@ a {
         min-height: 55vw;
     }
     .card {
-        height: 54vw;
+        width: 36vw;
     }
     #suggested-container {
         margin: 16px 0.5rem;
@@ -1063,18 +1079,20 @@ a {
         display: none;
     }
 }
+@media (max-width: 500px) {
+    #settings {
+        display: none;
+    }
+}
 @media (max-width: 450px) {
     #header-section {
         justify-content: center;
     }
     #header-logo {
-        content: url('/icon.svg');
+        content: url('/images/icon.svg');
         height: 45px;
         width: 45px;
         margin-right: 10px;
-    }
-    #settings {
-        display: none;
     }
     #suggested-title {
         font-size: 1.7rem;
@@ -1085,9 +1103,20 @@ a {
     #header.show {
         top: -71px;
     }
+    #install-button {
+        order: 1;
+    }
 }
-@media (max-width: 350px) {
+@media (max-width: 400px) {
     #search-input {
         width: 130px;
+    }
+}
+@media (max-width: 330px) {
+    #header-section {
+        margin: 0.5rem 0rem;
+    }
+    #search-input {
+        width: 120px;
     }
 }
