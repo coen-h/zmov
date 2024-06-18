@@ -15,7 +15,7 @@ export default defineConfig({
         name: 'zmov',
         short_name: 'zmov',
         description: 'Your movie app',
-        theme_color: '#ffffff',
+        theme_color: '#000000',
         icons: [
           {
             src: '/pwa-192x192.png',
