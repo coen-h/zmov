@@ -7,6 +7,7 @@ const Header = () => {
   const searchInputRef = useRef();
   const [lastScrollTop, setLastScrollTop] = useState(0);
   const [isVisible, setIsVisible] = useState(true);
+  const [isTop, setIsTop] = useState(true);
 
   function handleSearch() {
     const query = searchInputRef.current.value;
@@ -24,6 +25,13 @@ const Header = () => {
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      
+      if (currentScrollTop === 0) {
+        setIsTop(true);
+      } else {
+        setIsTop(false);
+      }
+
       if (currentScrollTop > lastScrollTop) {
         setIsVisible(false);
       } else {
@@ -38,9 +46,9 @@ const Header = () => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, [lastScrollTop]);
-  
+
   return (
-    <div id="header" className={isVisible ? 'visible' : 'show'}>
+    <div id="header" className={`${isVisible ? 'visible' : 'show'} ${isTop ? 'no-filter' : 'with-filter'}`}>
       <div id="header-section">
         <div id="header-left">
           <Link to="/">

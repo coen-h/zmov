@@ -15,6 +15,7 @@
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.23.1",
     "react-top-loading-bar": "^2.3.1",
+    "swiper": "^11.1.4",
     "vite-plugin-pwa": "^0.20.0"
   },
   "devDependencies": {
