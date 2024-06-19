@@ -6,7 +6,6 @@
 * {
     font-family: 'Manrope', sans-serif;
     color: white;
-    scrollbar-width: none;
 }
 body {
     margin: 0;
@@ -207,7 +206,7 @@ a {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    margin: 26vh 0;
+    margin-bottom: 26vh;
 }
 #hero-content {
     display: flex;
@@ -288,8 +287,8 @@ a {
     position: relative;
     background: linear-gradient(to top, rgba(0, 0, 0, 1) 0%, rgb(15, 11, 9) 50%, rgba(0, 0, 0, 1) 97%, rgba(0, 0, 0, 0) 100%);
     top: -20vh;
+    margin-bottom: -20vh;
 }
-
 
 /* DISCOVER */
 
@@ -310,15 +309,24 @@ a {
     font-weight: bold;
     text-shadow: 2px 2px rgba(0, 0, 0, 0.2)
 }
-.discover-card {
+#discover-card {
     display: flex;
     flex-direction: row;
-    gap: 15px;
-    overflow: scroll;
     padding: 8px;
     min-height: 305px;
 }
+#discover-slider {
+    width: 200px;
+    height: 100%;
+}
+.swiper-wrapper {
+    gap: 15px;
+}
+.swiper-button-next, .swiper-button-prev {
+    color: white !important;
+}
 .card {
+    display: inline-block;
     position: relative;
     width: 200px;
     height: 100%;
@@ -852,7 +860,7 @@ a {
 @media (max-height: 600px) {
     #hero-title-image {
         display: none !important;
-        width: 90%;
+        max-width: 90%;
     }
     #hero-title-text {
         display: flex;
@@ -869,7 +877,10 @@ a {
         margin: 0 1rem;
     }
     #hero-card {
-        margin-bottom: 3vh;
+        margin-bottom: 15vh !important;
+    }
+    #home {
+        top: -10vh !important;
     }
     #hero-title {
         display: flex;
@@ -899,13 +910,23 @@ a {
     .episode-box {
         flex-direction: row !important;
     }
+    .swiper-button-next, .swiper-button-prev {
+        display: none !important;
+    }
+    .swiper-wrapper {
+        gap: 10px;
+    }
 }
 @media (max-height: 450px) {
     .card img {
         width: 20vw;
     }
-    .discover-card {
+    #discover-slider {
+        width: 20vw;
+    }
+    #discover-card {
         min-height: 31vw;
+        padding: 8px 1rem;
     }
     .card {
         width: 20vw;
@@ -960,6 +981,9 @@ a {
     .card-content {
         background: linear-gradient(to top, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 70%);
     }
+    .swiper-button-next, .swiper-button-prev {
+        display: none !important;
+    }
 }
 @media (max-width: 800px) {
     #search-section {
@@ -976,7 +1000,7 @@ a {
         width: 40vw !important;
     }
     #hero-title-image {
-        width: 90%;
+        max-width: 90%;
     }
     #hero-desc {
         width: 100%;
@@ -990,7 +1014,10 @@ a {
         margin: 0 1rem;
     }
     #hero-card {
-        margin-bottom: 3vh;
+        margin-bottom: 30vh;
+    }
+    #home {
+        top: -25vh;
     }
     #hero-title {
         display: flex;
@@ -1031,6 +1058,12 @@ a {
     #header.visible {
         top: 0;
     }
+    .carousel-btn {
+        display: none;
+    }
+    .swiper-wrapper {
+        gap: 10px;
+    }
 }
 @media (max-width: 550px) {
     #footer {
@@ -1067,10 +1100,14 @@ a {
     .card img {
         width: 36vw;
     }
-    .discover-card {
+    #discover-card {
         min-height: 55vw;
+        padding: 8px 1rem;
     }
     .card {
+        width: 36vw;
+    }
+    #discover-slider {
         width: 36vw;
     }
     #suggested-container {

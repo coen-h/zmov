@@ -35,6 +35,12 @@ export default function Hero() {
 
                     loadedStates[movie.id] = { isImageLoaded: false, isVideoLoaded: false };
 
+                    if (logo) {
+                        const img = new Image();
+                        img.src = `https://image.tmdb.org/t/p/w500${logo}`;
+                        img.onload = () => handleImageLoad(movie.id);
+                    }
+
                     const videoResponse = await fetch(`https://api.themoviedb.org/3/movie/${movie.id}/videos?api_key=${apiKey}`);
                     const videoData = await videoResponse.json();
                     const firstVideo = videoData.results.find(video => video.type === "Trailer")?.key;
@@ -114,14 +120,19 @@ export default function Hero() {
                         <div id="hero-card">
                             <div id="hero-content">
                                 <div id="hero-title">
-                                    <img 
-                                        src={logoImages[heroItem.id] && `https://image.tmdb.org/t/p/w500${logoImages[heroItem.id]}`} 
-                                        id="hero-title-image" 
-                                        alt={heroItem.title} 
-                                        onLoad={() => handleImageLoad(heroItem.id)}
-                                        style={{ display: loadedStates[heroItem.id]?.isImageLoaded ? 'block' : 'flex' }}
-                                    />
-                                    <span id="hero-title-text" className="alt-text">{heroItem.title}</span>
+                                    {isSmallScreen || !loadedStates[heroItem.id]?.isImageLoaded ? (
+                                        <span id="hero-title-text" className="alt-text">
+                                            {heroItem.title}
+                                        </span>
+                                    ) : (
+                                        <img 
+                                            src={logoImages[heroItem.id] && `https://image.tmdb.org/t/p/w500${logoImages[heroItem.id]}`} 
+                                            id="hero-title-image" 
+                                            alt={heroItem.title} 
+                                            onLoad={() => handleImageLoad(heroItem.id)}
+                                            style={{ display: loadedStates[heroItem.id]?.isImageLoaded ? 'block' : 'none' }}
+                                        />
+                                    )}
                                 </div>
                                 <div id="hero-desc">
                                     <p>{heroItem.overview}</p>
