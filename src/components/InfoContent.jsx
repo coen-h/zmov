@@ -156,7 +156,7 @@ export default function InfoContent() {
                         <p id="suggested-title">You may also like</p>
                         <div id="suggested-container">
                             {data.recommendations.map(recommendation => (
-                                <Card key={recommendation.id} item={recommendation} type={type} csize="mcard" size="mcard-image"/>
+                                <Card key={recommendation.id} item={recommendation} type={type}/>
                             ))}
                         </div>
                     </div>

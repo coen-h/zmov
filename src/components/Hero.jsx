@@ -76,10 +76,12 @@ export default function Hero() {
     }, [apiKey]);
 
     const handleImageLoad = (movieId) => {
-        setLoadedStates(prevState => ({
-            ...prevState,
-            [movieId]: { ...prevState[movieId], isImageLoaded: true }
-        }));
+        setTimeout(() => {
+            setLoadedStates(prevState => ({
+                ...prevState,
+                [movieId]: { ...prevState[movieId], isImageLoaded: true }
+            }));
+        }, 5000);
     };
 
     return (
@@ -111,7 +113,7 @@ export default function Hero() {
                                     allowFullScreen
                                     style={{
                                         opacity: loadedStates[heroItem.id]?.isImageLoaded ? 1 : 0,
-                                        transition: 'opacity 0.5s ease-in-out'
+                                        transition: 'opacity 1s ease-in-out'
                                     }}
                                     onLoad={() => handleImageLoad(heroItem.id)}
                                 />
@@ -120,19 +122,14 @@ export default function Hero() {
                         <div id="hero-card">
                             <div id="hero-content">
                                 <div id="hero-title">
-                                    {isSmallScreen || !loadedStates[heroItem.id]?.isImageLoaded ? (
-                                        <span id="hero-title-text" className="alt-text">
-                                            {heroItem.title}
-                                        </span>
-                                    ) : (
-                                        <img 
-                                            src={logoImages[heroItem.id] && `https://image.tmdb.org/t/p/w500${logoImages[heroItem.id]}`} 
-                                            id="hero-title-image" 
-                                            alt={heroItem.title} 
-                                            onLoad={() => handleImageLoad(heroItem.id)}
-                                            style={{ display: loadedStates[heroItem.id]?.isImageLoaded ? 'block' : 'none' }}
-                                        />
-                                    )}
+                                    <span id="hero-title-text" className="alt-text">
+                                        {heroItem.title}
+                                    </span>
+                                    <img 
+                                        src={logoImages[heroItem.id] && `https://image.tmdb.org/t/p/w500${logoImages[heroItem.id]}`} 
+                                        id="hero-title-image" 
+                                        alt={heroItem.title} 
+                                    />
                                 </div>
                                 <div id="hero-desc">
                                     <p>{heroItem.overview}</p>

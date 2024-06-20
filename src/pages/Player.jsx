@@ -8,26 +8,9 @@ export default function Player() {
     const [totalSeasons, setTotalSeasons] = useState(0);
     const [season, setSeason] = useState(null);
     const [episode, setEpisode] = useState(null);
-    const [buttonGridOpacity, setButtonGridOpacity] = useState(1);
-    const [timeoutId, setTimeoutId] = useState(null);
-    const [isMobile, setIsMobile] = useState(
-        window.innerWidth < 550 || window.innerHeight < 550
-    );
 
     const apiKey = import.meta.env.VITE_API_KEY;
 
-    useEffect(() => {
-        const handleResize = () => {
-            setIsMobile(window.innerWidth < 550 || window.innerHeight < 550);
-        };
-
-        window.addEventListener('resize', handleResize);
-        window.addEventListener('orientationchange', handleResize);
-        return () => {
-            window.removeEventListener('resize', handleResize);
-            window.removeEventListener('orientationchange', handleResize);
-        };
-    }, []);
 
     useEffect(() => {
         if (type === 'tv') {
@@ -58,33 +41,6 @@ export default function Player() {
         }
     }, [id, type, location.pathname]);
 
-    useEffect(() => {
-        if (!isMobile) {
-            const timer = setTimeout(() => {
-                setButtonGridOpacity(0);
-            }, 2000);
-            setTimeoutId(timer);
-
-            return () => clearTimeout(timer);
-        }
-    }, [isMobile]);
-
-    const handleMouseEnter = () => {
-        if (!isMobile) {
-            setButtonGridOpacity(1);
-            if (timeoutId) clearTimeout(timeoutId);
-        }
-    };
-
-    const handleMouseLeave = () => {
-        if (!isMobile) {
-            const timer = setTimeout(() => {
-                setButtonGridOpacity(0);
-            }, 2000);
-            setTimeoutId(timer);
-        }
-    };
-
     const nextEpisode = episode ? episode + 1 : null;
     const nextSeason = season ? season + 1 : null;
 
@@ -109,12 +65,7 @@ export default function Player() {
                     style={{ width: "100%", height: "100%" }}
                 ></iframe>
             </div>
-            <div 
-                id="button-grid" 
-                style={{ opacity: buttonGridOpacity, transition: 'opacity 0.25s' }}
-                onMouseEnter={handleMouseEnter}
-                onMouseLeave={handleMouseLeave}
-            >
+            <div id="button-grid" >
                 <Link to={`/info/${type}/${id}`} id="player-button"><img src="/images/arrowl.svg" alt="Back" /></Link>
                 {type === 'tv' && season && episode && (
                     <Link to={nextEpisodeLink} id="player-button"><img src="/images/arrowr.svg" alt="Next" /></Link>

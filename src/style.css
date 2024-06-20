@@ -101,12 +101,10 @@ a {
 }
 #header.with-filter {
     background: linear-gradient(to bottom, rgba(15, 15, 15, 1) 0%, rgba(0, 0, 0, 0) 100%);
-    -webkit-backdrop-filter: blur(3px);
     backdrop-filter: blur(3px);
 }
 #header.no-filter {
     backdrop-filter: none;
-    -webkit-backdrop-filter: none;
     background-color: transparent;
 }
 #header-section {
@@ -219,8 +217,8 @@ a {
     font-weight: 600;
 }
 #hero-title-image {
-    max-width: 400px;
-    max-height: 400px;
+    max-width: 500px;
+    max-height: 300px;
 }
 #hero-title-text {
     display: none;
@@ -305,30 +303,28 @@ a {
 }
 #discover-title {
     font-size: 2rem;
-    margin-left: 1.5rem;
+    margin-left: 0.5rem;
     font-weight: bold;
     text-shadow: 2px 2px rgba(0, 0, 0, 0.2)
 }
 #discover-card {
     display: flex;
     flex-direction: row;
-    padding: 8px;
-    min-height: 305px;
+    padding: 12px;
+    min-height: 19vw;
 }
 #discover-slider {
-    width: 200px;
+    width: 12vw;
     height: 100%;
-}
-.swiper-wrapper {
-    gap: 15px;
+    margin-right: 15px;
 }
 .swiper-button-next, .swiper-button-prev {
     color: white !important;
 }
 .card {
-    display: inline-block;
+    display: flex;
     position: relative;
-    width: 200px;
+    width: 12vw;
     height: 100%;
     border-radius: 8px;
     font-size: 1rem;
@@ -386,7 +382,7 @@ a {
     object-fit: contain;
 }
 .card img {
-    width: 200px;
+    width: 12vw;
     height: 100%;
     border-radius: 8px;
     transition: all 200ms ease;
@@ -403,15 +399,6 @@ a {
 }
 .card:hover .play-icon {
     opacity: 1;
-}
-.carousel-btn {
-    transform: translateY(-50%);
-    background-color: transparent;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-    font-size: 1.75rem;
-    border-radius: 10px 0px 0px 10px;
 }
 #discover-main {
     display: flex;
@@ -459,21 +446,6 @@ a {
     font-weight: bold;
     text-align: center;
     margin-bottom: 1rem;
-}
-#netflix {
-    background-image: linear-gradient(to top left, rgb(152, 0, 0), black,  black,  black, rgb(152, 0, 0));
-}
-#disney {
-    background-image: linear-gradient(to bottom, rgb(0, 0, 0) , rgba(0, 58, 183, 0.8));
-}
-#apple {
-    background-color: rgba(165, 165, 165, 0.8);
-}
-#prime {
-    background-color: rgba(255, 255, 255, 0.8);
-}
-#max {
-    background-image: linear-gradient(to right, rgba(239, 240, 255, 0.8) , rgba(187, 166, 255, 0.8));
 }
 
 
@@ -738,11 +710,11 @@ a {
     object-fit: cover;
 }
 #big-card {
-    width: 250px !important;
+    width: 20vw !important;
     height: 100% !important;
 }
 .big-image {
-    width: 250px !important;
+    width: 20vw !important;
     height: 100% !important;
 }
 #info-bottom {
@@ -913,8 +885,8 @@ a {
     .swiper-button-next, .swiper-button-prev {
         display: none !important;
     }
-    .swiper-wrapper {
-        gap: 10px;
+    #discover-slider {
+        margin-right: 10px;
     }
 }
 @media (max-height: 450px) {
@@ -926,7 +898,7 @@ a {
     }
     #discover-card {
         min-height: 31vw;
-        padding: 8px 1rem;
+        padding: 12px 1rem;
     }
     .card {
         width: 20vw;
@@ -951,6 +923,18 @@ a {
     }
     #season-container {
         padding-left: 10rem;
+    }
+    .card img {
+        width: 16vw;
+    }
+    #discover-card {
+        min-height: 25vw;
+    }
+    .card {
+        width: 16vw;
+    }
+    #discover-slider {
+        width: 16vw;
     }
 }
 @media (max-width: 1100px) {
@@ -983,6 +967,19 @@ a {
     }
     .swiper-button-next, .swiper-button-prev {
         display: none !important;
+    }
+    .card img {
+        width: 20vw;
+    }
+    #discover-card {
+        min-height: 31vw;
+        padding: 12px 1rem;
+    }
+    .card {
+        width: 20vw;
+    }
+    #discover-slider {
+        width: 20vw;
     }
 }
 @media (max-width: 800px) {
@@ -1058,11 +1055,18 @@ a {
     #header.visible {
         top: 0;
     }
-    .carousel-btn {
-        display: none;
+    #discover-slider {
+        margin-right: 10px;
+        width: 26vw;
     }
-    .swiper-wrapper {
-        gap: 10px;
+    .card img {
+        width: 26vw;
+    }
+    #discover-card {
+        min-height: 40vw;
+    }
+    .card {
+        width: 26vw;
     }
 }
 @media (max-width: 550px) {
@@ -1102,7 +1106,6 @@ a {
     }
     #discover-card {
         min-height: 55vw;
-        padding: 8px 1rem;
     }
     .card {
         width: 36vw;
