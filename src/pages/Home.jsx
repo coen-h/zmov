@@ -5,7 +5,7 @@ import Hero from '../components/Hero'
 import Discover from '../components/Discover'
 import ServiceCard from '../components/ServiceCard'
 
-export default function App() {
+export default function Home() {
 
   const apiKey = import.meta.env.VITE_API_KEY;
   
@@ -15,11 +15,11 @@ export default function App() {
       <Hero />
       <div id="home">
         <div id='service'>
-          <ServiceCard img="/images/netflix.svg" style={{backgroundImage: "linear-gradient(to top left, rgb(152, 0, 0), black,  black,  black, rgb(152, 0, 0))"}} />
-          <ServiceCard img="/images/disney.svg"  style={{backgroundImage: "linear-gradient(to bottom, rgb(0, 0, 0), rgba(0, 58, 183, 0.8))"}} />
-          <ServiceCard img="/images/apple.svg" style={{backgroundColor: "rgba(165, 165, 165, 0.8)"}} />
-          <ServiceCard img="/images/prime.svg" style={{backgroundColor: "rgba(255, 255, 255, 0.8)"}} />
-          <ServiceCard img="/images/max.svg" style={{backgroundImage: "linear-gradient(to right, rgba(239, 240, 255, 0.8), rgba(187, 166, 255, 0.8))"}} />
+          <ServiceCard img="/images/netflix.svg" type="netflix" style={{backgroundImage: "linear-gradient(to top left, rgb(152, 0, 0), black,  black,  black, rgb(152, 0, 0))"}} />
+          <ServiceCard img="/images/disney.svg"  type="disney" style={{backgroundImage: "linear-gradient(to bottom, rgb(0, 0, 0), rgba(0, 58, 183, 0.8))"}} />
+          <ServiceCard img="/images/apple.svg" type="apple"style={{backgroundColor: "rgba(165, 165, 165, 0.8)"}} />
+          <ServiceCard img="/images/prime.svg" type="prime" style={{backgroundColor: "rgba(255, 255, 255, 0.8)"}} />
+          <ServiceCard img="/images/max.svg" type="max" style={{backgroundImage: "linear-gradient(to right, rgba(239, 240, 255, 0.8), rgba(187, 166, 255, 0.8))"}} />
         </div>
         <div id='discover'>
           <Discover url={`https://api.themoviedb.org/3/trending/movie/week?api_key=${apiKey}`} name="Trending movies this week" type="movie" />

@@ -25,16 +25,18 @@ export default function Discover(props) {
     fetchData();
   }, [props.url]);
 
+  const swiperParams = {
+    slidesPerView: "auto",
+    navigation: true,
+    loop: movies.length > 1,
+    id: "discover-card"
+  };
+
   return (
     <div id="discover-section">
       <p id="discover-title">{props.name}</p>
       <div id="discover-main">
-        <Swiper
-          slidesPerView="auto"
-          navigation
-          loop={true}
-          id="discover-card"
-        >
+        <Swiper {...swiperParams}>
           {movies.map((item, index) => (
             <SwiperSlide key={index} id="discover-slider">
               <Card item={item} type={props.type} />

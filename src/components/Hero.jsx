@@ -81,19 +81,21 @@ export default function Hero() {
                 ...prevState,
                 [movieId]: { ...prevState[movieId], isImageLoaded: true }
             }));
-        }, 5000);
+        }, 3000);
+    };
+
+    const swiperParams = {
+        centeredSlides: true,
+        autoplay: {
+            delay: 15000,
+            disableOnInteraction: false
+        },
+        loop: heroItems.length > 1,
+        id: "swiper"
     };
 
     return (
-        <Swiper
-            centeredSlides={true}
-            autoplay={{
-                delay: 15000,
-                disableOnInteraction: false
-            }}
-            loop={true}
-            id="swiper"
-        >
+        <Swiper {...swiperParams}>
             {heroItems.map((heroItem) => (
                 <SwiperSlide key={heroItem.id}>
                     <div id='hero'>
@@ -107,7 +109,7 @@ export default function Hero() {
                             {!isSmallScreen && loadedStates[heroItem.id]?.isVideoLoaded && (
                                 <iframe
                                     id="hero-video"
-                                    src={`https://www.youtube-nocookie.com/embed/${videos[heroItem.id]}?mute=1&autoplay=1&loop=1&modestbranding=1&rel=0&iv_load_policy=3&fs=0&controls=0&disablekb=1&playlist=${videos[heroItem.id]}`}
+                                    src={`https://www.youtube.com/embed/${videos[heroItem.id]}?mute=1&autoplay=1&loop=1&rel=0&fs=0&controls=0&disablekb=1&playlist=${videos[heroItem.id]}&origin=https://watch.coen.ovh`}
                                     title={heroItem.title}
                                     frameBorder="0"
                                     allowFullScreen
