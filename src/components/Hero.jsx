@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Autoplay } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay } from 'swiper/modules'
 import SwiperCore from 'swiper';
 import 'swiper/css';
 
@@ -17,71 +17,68 @@ export default function Hero() {
     const apiKey = import.meta.env.VITE_API_KEY;
 
     useEffect(() => {
-        async function fetchHeroes() {
+        const fetchHeroes = async () => {
             try {
                 const response = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&include_video=true`);
                 const data = await response.json();
                 setHeroItems(data.results);
 
-                const logoImages = {};
-                const videos = {};
-                const loadedStates = {};
-
-                for (const movie of data.results) {
+                const promises = data.results.map(async (movie) => {
                     const imagesResponse = await fetch(`https://api.themoviedb.org/3/movie/${movie.id}/images?api_key=${apiKey}`);
                     const imagesData = await imagesResponse.json();
                     const logo = imagesData.logos.find(logo => logo.iso_639_1 === "en")?.file_path;
-                    logoImages[movie.id] = logo;
-
-                    loadedStates[movie.id] = { isImageLoaded: false, isVideoLoaded: false };
 
                     if (logo) {
-                        const img = new Image();
-                        img.src = `https://image.tmdb.org/t/p/w500${logo}`;
-                        img.onload = () => handleImageLoad(movie.id);
+                        setLogoImages(prevState => ({ ...prevState, [movie.id]: logo }));
                     }
 
                     const videoResponse = await fetch(`https://api.themoviedb.org/3/movie/${movie.id}/videos?api_key=${apiKey}`);
                     const videoData = await videoResponse.json();
                     const firstVideo = videoData.results.find(video => video.type === "Trailer")?.key;
-                    videos[movie.id] = firstVideo;
 
-                    if (firstVideo) {
-                        loadedStates[movie.id].isVideoLoaded = true;
-                    }
-                }
+                    setVideos(prevState => ({ ...prevState, [movie.id]: firstVideo }));
+                    setLoadedStates(prevState => ({
+                        ...prevState,
+                        [movie.id]: {
+                            isImageLoaded: false,
+                            isVideoLoaded: !!firstVideo
+                        }
+                    }));
+                });
 
-                setLogoImages(logoImages);
-                setVideos(videos);
-                setLoadedStates(loadedStates);
+                await Promise.all(promises);
 
             } catch (error) {
                 console.error('Error fetching heroes:', error);
             }
-        }
+        };
 
         fetchHeroes();
 
         const mediaQuery = window.matchMedia('(max-width: 1100px), (max-height: 600px)');
-        const handleMediaChange = (e) => {
-            setIsSmallScreen(e.matches);
-        };
+        const handleMediaChange = (e) => setIsSmallScreen(e.matches);
 
         handleMediaChange(mediaQuery);
         mediaQuery.addEventListener('change', handleMediaChange);
 
-        return () => {
-            mediaQuery.removeEventListener('change', handleMediaChange);
-        };
+        return () => mediaQuery.removeEventListener('change', handleMediaChange);
     }, [apiKey]);
 
     const handleImageLoad = (movieId) => {
-        setTimeout(() => {
-            setLoadedStates(prevState => ({
-                ...prevState,
-                [movieId]: { ...prevState[movieId], isImageLoaded: true }
-            }));
-        }, 3000);
+        setLoadedStates(prevState => ({
+            ...prevState,
+            [movieId]: { ...prevState[movieId], isImageLoaded: true }
+        }));
+    };
+
+    const preloadNext = (swiper, n) => {
+        const startIndex = swiper.activeIndex;
+        const endIndex = startIndex + n + 1;
+        swiper.slides.slice(startIndex, endIndex)
+            .forEach(slide => {
+                const img = slide.querySelector('img');
+                img && img.setAttribute('loading', 'eager');
+            });
     };
 
     const swiperParams = {
@@ -91,6 +88,8 @@ export default function Hero() {
             disableOnInteraction: false
         },
         loop: heroItems.length > 1,
+        onSlideChange: (swiper) => preloadNext(swiper, 2),
+        onInit: (swiper) => preloadNext(swiper, 2),
         id: "swiper"
     };
 
@@ -113,6 +112,7 @@ export default function Hero() {
                                     title={heroItem.title}
                                     frameBorder="0"
                                     allowFullScreen
+                                    loading="lazy"
                                     style={{
                                         opacity: loadedStates[heroItem.id]?.isImageLoaded ? 1 : 0,
                                         transition: 'opacity 1s ease-in-out'
@@ -127,11 +127,13 @@ export default function Hero() {
                                     <span id="hero-title-text" className="alt-text">
                                         {heroItem.title}
                                     </span>
-                                    <img 
-                                        src={logoImages[heroItem.id] && `https://image.tmdb.org/t/p/w500${logoImages[heroItem.id]}`} 
-                                        id="hero-title-image" 
-                                        alt={heroItem.title} 
-                                    />
+                                    {logoImages[heroItem.id] && (
+                                        <img 
+                                            src={`https://image.tmdb.org/t/p/w500${logoImages[heroItem.id]}`} 
+                                            id="hero-title-image" 
+                                            alt={heroItem.title} 
+                                        />
+                                    )}
                                 </div>
                                 <div id="hero-desc">
                                     <p>{heroItem.overview}</p>
@@ -139,12 +141,12 @@ export default function Hero() {
                                 <div id="hero-buttons">
                                     <div id="hero-watch">
                                         <Link to={`/watch/movie/${heroItem.id}`} id="hero-button">
-                                            <img style={{width: "16px"}} src="/images/play.svg" alt="play-icon"/>Watch
+                                            <img style={{ width: "16px" }} src="/images/play.svg" alt="play-icon" />Watch
                                         </Link>
                                     </div>
                                     <div id="hero-more">
                                         <Link to={`/info/movie/${heroItem.id}`} id="hero-button">
-                                            <img style={{width: "20px"}} src="/images/info.svg" alt="info-icon"/>Info
+                                            <img style={{ width: "20px" }} src="/images/info.svg" alt="info-icon" />Info
                                         </Link>
                                     </div>
                                 </div>
@@ -155,4 +157,4 @@ export default function Hero() {
             ))}
         </Swiper>
     );
-}
+};
