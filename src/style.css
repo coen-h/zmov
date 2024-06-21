@@ -1096,7 +1096,22 @@ a {
         width: 30px;
     }
     #search-section {
+        margin: 0;
+    }
+    #search-results {
+        gap: 3vw;
+    }
+    #search-title {
         margin: 0 1rem;
+    }
+    #search-query {
+        margin: 0 1rem 1rem 1rem;
+    }
+    #big-card {
+        width: 45vw !important;
+    }
+    .big-image {
+        width: 45vw !important;
     }
     #hero-title-image {
         width: 100%;
@@ -1126,8 +1141,14 @@ a {
         width: 36vw;
     }
     #suggested-container {
-        margin: 16px 0.5rem;
-        gap: 10px;
+        margin: 16px 1vw;
+        gap: 3vw;
+    }
+    #mcard {
+        width: 45vw !important;
+    }
+    .mimage {
+        width: 45vw !important;
     }
     #episodes-container {
         margin: 1rem 1rem;
