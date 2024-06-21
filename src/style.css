@@ -97,7 +97,7 @@ a {
     height: 80px;
     width: 100vw;
     z-index: 1111;
-    transition: backdrop-filter 0.3s ease, background-color 0.3s ease;
+    transition: all 0.3s ease;
 }
 #header.with-filter {
     background: linear-gradient(to bottom, rgba(15, 15, 15, 1) 0%, rgba(0, 0, 0, 0) 100%);
@@ -250,6 +250,15 @@ a {
     background-color: rgba(255,255,255,0.5);
     scale: 0.95;
 }
+#hero-video-button {
+    position: absolute;
+    top: 50%;
+    right: 50%;
+    z-index: 1111;
+}
+#hero-video-button:hover {
+    background-color: green;
+}
 #hero-image-container {
     position: absolute;
     width: 100vw;
@@ -320,6 +329,9 @@ a {
 }
 .swiper-button-next, .swiper-button-prev {
     color: white !important;
+    padding: 0 10px !important;
+    height: 100% !important;
+    top: 2% !important;
 }
 .card {
     display: flex;

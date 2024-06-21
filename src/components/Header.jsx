@@ -2,7 +2,7 @@ import React, { useRef, useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import InstallButton from './InstallButton';
 
-const Header = () => {
+export default function Header() {
   const navigate = useNavigate();
   const searchInputRef = useRef();
   const [lastScrollTop, setLastScrollTop] = useState(0);
@@ -80,5 +80,3 @@ const Header = () => {
     </div>
   );
 };
-
-export default Header;
