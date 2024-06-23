@@ -11,35 +11,74 @@ export default function Player() {
 
     const apiKey = import.meta.env.VITE_API_KEY;
 
-
     useEffect(() => {
-        if (type === 'tv') {
-            const pathSegments = location.pathname.split('/');
-            const seasonParam = pathSegments[4];
-            const episodeParam = pathSegments[5];
+        const pathSegments = location.pathname.split('/');
+        const seasonParam = pathSegments[4];
+        const episodeParam = pathSegments[5];
 
-            setSeason(seasonParam ? parseInt(seasonParam, 10) : null);
-            setEpisode(episodeParam ? parseInt(episodeParam, 10) : null);
+        setSeason(seasonParam ? parseInt(seasonParam, 10) : null);
+        setEpisode(episodeParam ? parseInt(episodeParam, 10) : null);
 
-            const fetchSeasonData = async () => {
-                try {
-                    const showResponse = await fetch(`https://api.themoviedb.org/3/tv/${id}?api_key=${apiKey}`);
-                    const showData = await showResponse.json();
-                    setTotalSeasons(showData.number_of_seasons);
+        const fetchData = async () => {
+            try {
+                const response = await fetch(`https://api.themoviedb.org/3/${type}/${id}?api_key=${apiKey}`);
+                const data = await response.json();
 
-                    if (seasonParam) {
-                        const seasonResponse = await fetch(`https://api.themoviedb.org/3/tv/${id}/season/${seasonParam}?api_key=${apiKey}`);
+                if (type === 'tv') {
+                    setTotalSeasons(data.number_of_seasons);
+
+                    if (seasonParam && episodeParam) {
+                        const seasonResponse = await fetch(`https://api.themoviedb.org/3/${type}/${id}/season/${seasonParam}?api_key=${apiKey}`);
                         const seasonData = await seasonResponse.json();
                         setTotalEpisodes(seasonData.episodes.length);
-                    }
-                } catch (error) {
-                    console.error('Error fetching season data:', error);
-                }
-            };
 
-            fetchSeasonData();
-        }
+                        const continueWatchingItem = {
+                            id: id,
+                            item: data,
+                            season: parseInt(seasonParam, 10),
+                            episode: parseInt(episodeParam, 10),
+                            type: type
+                        };
+                        updateContinueWatching(continueWatchingItem);
+                    }
+                } else {
+                    const continueWatchingItem = {
+                        id: id,
+                        item: data,
+                        type: type
+                    };
+                    updateContinueWatching(continueWatchingItem);
+                }
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        };
+
+        fetchData();
     }, [id, type, location.pathname]);
+
+    const updateContinueWatching = (item) => {
+        let continueWatching = [];
+        try {
+            continueWatching = JSON.parse(localStorage.getItem('continueWatching')) || [];
+        } catch (e) {
+            console.error('Error parsing continueWatching from localStorage:', e);
+            continueWatching = [];
+        }
+
+        if (!Array.isArray(continueWatching)) {
+            continueWatching = [];
+        }
+
+        continueWatching = continueWatching.filter(watch => watch.id !== item.id);
+        continueWatching.unshift(item);
+
+        if (continueWatching.length > 10) {
+            continueWatching = continueWatching.slice(0, 10);
+        }
+
+        localStorage.setItem('continueWatching', JSON.stringify(continueWatching));
+    };
 
     const nextEpisode = episode ? episode + 1 : null;
     const nextSeason = season ? season + 1 : null;

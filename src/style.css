@@ -98,14 +98,13 @@ a {
     width: 100vw;
     z-index: 1111;
     transition: all 0.3s ease;
+    background: linear-gradient(to bottom, rgba(15, 15, 15, 1) 0%, rgba(0, 0, 0, 0) 100%);
 }
 #header.with-filter {
-    background: linear-gradient(to bottom, rgba(15, 15, 15, 1) 0%, rgba(0, 0, 0, 0) 100%);
     backdrop-filter: blur(3px);
 }
 #header.no-filter {
     backdrop-filter: none;
-    background-color: transparent;
 }
 #header-section {
     display: flex;
@@ -526,14 +525,14 @@ a {
 
 #search-section {
     min-height: 100vh;
-    margin: 0rem 12rem;
+    margin: 0rem 18vw;
     padding-top: 7rem;
 }
 #search-results {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 15px;
+    gap: 1.2vw;
 }
 #search-none {
     justify-content: center;
@@ -579,12 +578,193 @@ a {
 
 #settings-page {
     display: flex;
+    flex-direction: column;
+    padding-top: 8vh;
+    min-height: 100vh;
+    z-index: 2;
+    background: radial-gradient(circle at top, #1f1313 0%, transparent 70%);;
+}
+#settings-main {
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(255,255,255,0.1);
+    border-radius: 12px;
+    margin: 0 5rem;
+    padding: 0 0.5rem 0.5rem 0.5rem;
+}
+#settings-title {
+    text-align: center;
+    font-size: 3rem;
+}
+#watchlist-card {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+#watchlist-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    order: -1;
+    margin: 0.5rem 0 1rem 0 !important;
+    gap: 30px;
+}
+#watchlist-clear {
+    background-color: rgba(255,255,255,0.2);
+    border: 0;
+    border-radius: 8px;
+    width: 70px;
+    height: 35px;
+    font-size: 1.05rem;
+    cursor: pointer;
+}
+#watchlist-clear:hover {
+    background-color: rgba(255,255,255,0.1);
+}
+#watchlist-clear:active {
+    scale: 0.95;
+}
+#watchlist-message {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+#settings-button-grid {
+    display: flex;
+    justify-content: space-between;
+    width: 100vw;
+}
+#settings-button {
+    border: 0;
+    cursor: pointer;
+    font-size: 1.05rem;
+    padding: 0.4rem;
+}
+.widecard {
+    display: flex;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 8px;
+}
+.widecard:hover .widecard-image {
+    scale: 1.05;
+}
+.widecard-image {
+    width: 16vw;
+    height: 100%;
+    object-fit: cover;
+    transition: 150ms all;
+}
+.widecard-play {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    bottom: 12px;
+    right: 8px;
+}
+.widecard-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    bottom: 0;
+    left: 0;
+    background: linear-gradient(to top, black, transparent);
+}
+.widecard-section {
+    padding: 0.5rem;
+}
+.widecard-desc {
+    font-weight: 300;
+    font-size: 0.8rem;
+}
+.widecard-title {
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+.widecard-play-icon {
+    width: 25px;
+    height: 25px;
+}
+#watchlist-button {
+    display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
-    max-width: 100vw;
-    font-size: 3rem;
+    position: absolute;
+    opacity: 0;
+    width: 35px;
+    height: 35px;
+    top: 8px;
+    right: 8px;
+    background-color: rgba(255,255,255,0.9);
+    border: 0;
+    padding: 0;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 150ms all;
+    z-index: 1111;
+}
+#watchlist-button img {
+    width: 25px;
+    height: 25px;
+}
+.widecard-content:hover #watchlist-button {
+    opacity: 1;
+}
+#watchlist-button:hover {
+    background-color: rgba(255, 76, 76, 0.9);
+}
+.watchlist-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+    align-items: center;
     text-align: center;
+    font-weight: 600;
+    transition: all 200ms ease;
+    box-shadow: inset 0px 5px 20px black;
+    background: linear-gradient(to top, black, transparent);
+    border-radius: 6px;
+    z-index: 10;
+}
+.watch-card img {
+    width: 12vw;
+    height: 100%;
+    border-radius: 8px;
+    transition: all 200ms ease;
+}
+.watch-card {
+    display: flex;
+    position: relative;
+    width: 12vw;
+    height: 100%;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 200ms ease;
+    overflow: hidden;
+}
+.watch-card:hover .card-play {
+    opacity: 1;
+}
+.watch-card:hover .play-icon {
+    opacity: 1;
+}
+.watch-card:hover #watchlist-button {
+    opacity: 1;
+}
+.watch-card:hover img {
+    scale: 1.05;
 }
 
 
@@ -751,9 +931,10 @@ a {
     background-color: rgba(255,255,255,.4);
     scale: 1.05;
 }
-#button-grid {
+#info-button-grid {
     display: flex;
     flex-direction: row;
+    gap: 10px;
 }
 #info-bar {
     display: flex;
@@ -835,6 +1016,25 @@ a {
 }
 #episode-desc {
     font-size: 1rem;
+}
+#watch-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    width: 120px;
+    height: 50px;
+    cursor: pointer;
+    background-color: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border: 0;
+    transition: all 150ms ease;
+}
+#watch-button:hover {
+    background-color: rgba(255,255,255,.4);
+    scale: 1.05;
 }
 
 
@@ -933,6 +1133,15 @@ a {
     #episodes-container {
         margin: 1rem 10rem;
     }
+    .watch-card img {
+        width: 15vw;
+    }
+    .watch-card {
+        width: 15vw;
+    }
+    .widecard-image {
+        width: 20vw;
+    }
     #season-container {
         padding-left: 10rem;
     }
@@ -953,14 +1162,26 @@ a {
     #service {
         display: none;
     }
+    #watchlist-button {
+        opacity: 1;
+    }
+    .watch-card img {
+        width: 18vw;
+    }
+    .watch-card {
+        width: 18vw;
+    }
+    #settings-main {
+        margin: 0 2.5rem;
+    }
+    .widecard-image {
+        width: 28vw;
+    }
     #hero-desc {
         width: 60vw;
     }
     #info-poster {
         display: none;
-    }
-    #search-section {
-        margin: 0 6rem;
     }
     #suggested-container {
         margin: 16px 50px;
@@ -998,6 +1219,15 @@ a {
     #search-section {
         margin: 0 2rem;
     }
+    .watch-card img {
+        width: 24vw;
+    }
+    .watch-card {
+        width: 24vw;
+    }
+    .widecard-image {
+        width: 40vw;
+    }
     #header {
         height: auto;
         transition: top 0.25s;
@@ -1015,6 +1245,9 @@ a {
         width: 100%;
         text-align: center;
         font-size: 1rem;
+    }
+    #search-results {
+        gap: 2vw;
     }
     #hero-buttons {
         justify-content: center;
@@ -1086,6 +1319,35 @@ a {
         flex-direction: column;
         gap: 10px;
         padding: 1rem;
+    }
+    #watchlist-card {
+        gap: 2vw;
+    }
+    .watch-card img {
+        width: 44vw;
+    }
+    .watch-card {
+        width: 44vw;
+    }
+    .widecard-image {
+        width: 90vw;
+    }
+    #settings-main {
+        margin: 0 3vw;
+        padding: 0 2vw 2vw 2vw;
+    }
+    #settings-title {
+        font-size: 2.2rem;
+    }
+    #settings-button {
+        font-size: 4.5vw;
+        padding: 1.5vw;
+    }
+    #watchlist-clear {
+        width: auto;
+        height: auto;
+        font-size: 4.5vw;
+        padding: 1.5vw 4vw;
     }
     #footer-right {
         justify-content: flex-start;
@@ -1178,11 +1440,6 @@ a {
     }
 }
 @media (max-width: 500px) {
-    #settings {
-        display: none;
-    }
-}
-@media (max-width: 450px) {
     #header-section {
         justify-content: center;
     }
@@ -1204,17 +1461,21 @@ a {
     #install-button {
         order: 1;
     }
-}
-@media (max-width: 400px) {
-    #search-input {
-        width: 130px;
+    #settings {
+        order: 1;
     }
 }
-@media (max-width: 330px) {
+@media (max-width: 450px) {
+    #search-input {
+        width: 35vw;
+    }
     #header-section {
         margin: 0.5rem 0rem;
     }
-    #search-input {
-        width: 120px;
+    #header-right {
+        gap: 3vw;
+    }
+    #header-logo {
+        margin-right: 2vw;
     }
 }

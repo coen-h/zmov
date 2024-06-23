@@ -1,9 +1,14 @@
 import React from 'react'
+import Watchlist from './Watchlist'
 
-export default function Settings() {
+export default function SettingsContent() {
     return (
     <div id="settings-page">
-        <p>this page isnt none yet, come back soon.</p>
+        <h1 id="settings-title">Welcome Back!</h1>
+        <div id="account">
+
+        </div>
+        <Watchlist />
     </div>
     )
 }

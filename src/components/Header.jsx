@@ -57,11 +57,6 @@ export default function Header() {
         </div>
         <div id="header-right">
           <InstallButton />
-          <button id="settings">
-            <Link to="/settings">
-              <img id="settings-icon" src="/images/settings.svg" alt="Settings" />
-            </Link>
-          </button>
           <div id="search">
             <input
               type="text"
@@ -75,6 +70,11 @@ export default function Header() {
               <img id="search-icon" src="/images/search.svg" alt="Search" />
             </div>
           </div>
+          <button id="settings">
+            <Link to="/settings">
+              <img id="settings-icon" src="/images/settings.svg" alt="Settings" />
+            </Link>
+          </button>
         </div>
       </div>
     </div>
