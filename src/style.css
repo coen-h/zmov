@@ -711,8 +711,8 @@ a {
     z-index: 1111;
 }
 #watchlist-button img {
-    width: 25px;
-    height: 25px;
+    width: 22px;
+    height: 22px;
 }
 .widecard-content:hover #watchlist-button {
     opacity: 1;
