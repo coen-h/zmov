@@ -81,7 +81,7 @@ export default function Watchlist() {
                 </div>
               ))
             ) : (
-              <p id="watchlist-message">Your WatchList is Empty!</p>
+              <p id="watchlist-message">Your Watchlist is Empty!</p>
             )
           )}
           {activeButton === 'continueWatching' && (

@@ -101,11 +101,16 @@ export default function Player() {
                         : `https://vidsrc.pro/embed/${type}/${id}`
                     } 
                     allowFullScreen={true}
-                    style={{ width: "100%", height: "100%" }}
+                    style={{ width: "100%", height: "100%", border: '0' }}
                 ></iframe>
             </div>
             <div id="button-grid" >
                 <Link to={`/info/${type}/${id}`} id="player-button"><img src="/images/arrowl.svg" alt="Back" /></Link>
+                {/* <select name="servers"> */}
+                    {/* <option value="">default</option> */}
+                    {/* <option value="2">2</option> */}
+                    {/* <option value="3">3</option> */}
+                {/* </select> */}
                 {type === 'tv' && season && episode && (
                     <Link to={nextEpisodeLink} id="player-button"><img src="/images/arrowr.svg" alt="Next" /></Link>
                 )}

@@ -110,12 +110,12 @@ export default function Hero() {
                                     id="hero-video"
                                     src={`https://www.youtube.com/embed/${videos[heroItem.id]}?mute=1&autoplay=1&loop=1&rel=0&fs=0&controls=0&disablekb=1&playlist=${videos[heroItem.id]}&origin=https://watch.coen.ovh`}
                                     title={heroItem.title}
-                                    frameBorder="0"
                                     allowFullScreen
                                     loading="lazy"
                                     style={{
                                         opacity: loadedStates[heroItem.id]?.isImageLoaded ? 1 : 0,
-                                        transition: 'opacity 1s ease-in-out'
+                                        transition: 'opacity 1s ease-in-out',
+                                        border: '0',
                                     }}
                                     onLoad={() => handleImageLoad(heroItem.id)}
                                 />
@@ -128,7 +128,7 @@ export default function Hero() {
                                         {heroItem.title}
                                     </span>
                                     <img 
-                                        src={`https://image.tmdb.org/t/p/w500${logoImages[heroItem.id]}`} 
+                                        src={logoImages[heroItem.id] && `https://image.tmdb.org/t/p/w500${logoImages[heroItem.id]}`} 
                                         id="hero-title-image" 
                                         alt={heroItem.title} 
                                     />
