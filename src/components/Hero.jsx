@@ -76,8 +76,8 @@ export default function Hero() {
         const endIndex = startIndex + n + 1;
         swiper.slides.slice(startIndex, endIndex)
             .forEach(slide => {
-                const img = slide.querySelector('img');
-                img && img.setAttribute('loading', 'eager');
+                const iframe = slide.querySelector('iframe');
+                iframe && iframe.setAttribute('loading', 'lazy');
             });
     };
 
@@ -127,13 +127,11 @@ export default function Hero() {
                                     <span id="hero-title-text" className="alt-text">
                                         {heroItem.title}
                                     </span>
-                                    {logoImages[heroItem.id] && (
-                                        <img 
-                                            src={`https://image.tmdb.org/t/p/w500${logoImages[heroItem.id]}`} 
-                                            id="hero-title-image" 
-                                            alt={heroItem.title} 
-                                        />
-                                    )}
+                                    <img 
+                                        src={`https://image.tmdb.org/t/p/w500${logoImages[heroItem.id]}`} 
+                                        id="hero-title-image" 
+                                        alt={heroItem.title} 
+                                    />
                                 </div>
                                 <div id="hero-desc">
                                     <p>{heroItem.overview}</p>

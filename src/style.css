@@ -630,6 +630,7 @@ a {
     align-items: center;
     justify-content: center;
     text-align: center;
+    padding: 5vw;
 }
 #settings-button-grid {
     display: flex;
