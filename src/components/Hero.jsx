@@ -102,7 +102,7 @@ export default function Hero() {
                             id="hero-image-container"
                             style={{
                                 backgroundImage: `url(https://image.tmdb.org/t/p/original${heroItem.backdrop_path})`,
-                                opacity: 0.5
+                                opacity: 0.4
                             }}
                         >
                             {!isSmallScreen && loadedStates[heroItem.id]?.isVideoLoaded && (
