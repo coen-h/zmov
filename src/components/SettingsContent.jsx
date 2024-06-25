@@ -5,9 +5,9 @@ export default function SettingsContent() {
     return (
     <div id="settings-page">
         <h1 id="settings-title">Welcome Back!</h1>
-        <div id="account">
+        {/* <div id="account"> */}
 
-        </div>
+        {/* </div> */}
         <Watchlist />
     </div>
     )

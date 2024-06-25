@@ -8,8 +8,43 @@ export default function Player() {
     const [totalSeasons, setTotalSeasons] = useState(0);
     const [season, setSeason] = useState(null);
     const [episode, setEpisode] = useState(null);
+    const [selectedServer, setSelectedServer] = useState('default');
 
     const apiKey = import.meta.env.VITE_API_KEY;
+
+    const serverURLs = {
+        default: `https://vidsrc.pro/embed/${type}/${id}`,
+        server2: `https://showbox.justbinge.lol/embed/${id}`,
+        server3: `https://vidsrc.to/embed/${type}/${id}`,
+        server4: `https://multiembed.mov/?video_id=${id}&tmdb=1`,
+        server5: `https://vidsrc.xyz/embed/${type}/${id}`,
+        server6: `https://www.2embed.cc/embed${type === 'tv' ? 'tv' : ''}/${id}`,
+        server7: `https://player.smashy.stream/${type}/${id}`
+
+        //https://showbox.justbinge.lol/api/run/showbox/746036?s=0&e=0
+        //use for 4k on own player
+
+        //vidbinge.com new source, movie-web
+        //they get streams from wafflehacker
+        //vidsrcto.wafflehacker.io
+        //nsbx.wafflehacker.io
+
+        //moviesapi.club other source
+        //might need to scrape
+    };
+
+    const getServerURL = () => {
+        if (type === 'tv' && season && episode) {
+            if (selectedServer === 'server4' || selectedServer === 'server6' || selectedServer === 'server7') {
+                return `${serverURLs[selectedServer]}&s=${season}&e=${episode}`;
+            } else if (selectedServer === 'server2') {
+                return `${serverURLs[selectedServer]}?s=${season}e=${episode}`
+            } else {
+                return `${serverURLs[selectedServer]}/${season}/${episode}`;
+            }
+        }
+        return serverURLs[selectedServer];
+    };
 
     useEffect(() => {
         const pathSegments = location.pathname.split('/');
@@ -55,7 +90,7 @@ export default function Player() {
         };
 
         fetchData();
-    }, [id, type, location.pathname]);
+    }, [id, type, location.pathname, apiKey]);
 
     const updateContinueWatching = (item) => {
         let continueWatching = [];
@@ -95,25 +130,33 @@ export default function Player() {
         <>
             <div id="iframe-container">
                 <iframe 
-                    src={
-                        type === 'tv' 
-                        ? `https://vidsrc.pro/embed/${type}/${id}/${season}/${episode}`
-                        : `https://vidsrc.pro/embed/${type}/${id}`
-                    } 
+                    src={getServerURL()} 
                     allowFullScreen={true}
                     style={{ width: "100%", height: "100%", border: '0' }}
                 ></iframe>
             </div>
-            <div id="button-grid" >
+            <div id="button-grid">
                 <Link to={`/info/${type}/${id}`} id="player-button"><img src="/images/arrowl.svg" alt="Back" /></Link>
-                {/* <select name="servers"> */}
-                    {/* <option value="">default</option> */}
-                    {/* <option value="2">2</option> */}
-                    {/* <option value="3">3</option> */}
-                {/* </select> */}
-                {type === 'tv' && season && episode && (
-                    <Link to={nextEpisodeLink} id="player-button"><img src="/images/arrowr.svg" alt="Next" /></Link>
-                )}
+                
+                <div id="player-button-grid">
+                    <select 
+                        name="servers" 
+                        value={selectedServer} 
+                        onChange={(e) => setSelectedServer(e.target.value)} 
+                        id="server-select"
+                    >
+                        <option value="default">Default</option>
+                        <option value="server2">Server 2</option>
+                        <option value="server3">Server 3</option>
+                        <option value="server4">Server 4</option>
+                        <option value="server5">Server 5</option>
+                        <option value="server6">Server 6</option>
+                        <option value="server7">Server 7</option>
+                    </select>
+                    {type === 'tv' && season && episode && (
+                        <Link to={nextEpisodeLink} id="player-button"><img src="/images/arrowr.svg" alt="Next" /></Link>
+                    )}
+                </div>
             </div>
         </>
     );

@@ -198,7 +198,7 @@ a {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    margin-bottom: 26vh;
+    margin-bottom: 22vh;
 }
 #hero-content {
     display: flex;
@@ -791,8 +791,23 @@ a {
     display: flex;
     justify-content: space-between;
     width: 100vw;
-    top: 0px;
+    top: 25px;
     position: absolute;
+}
+#server-select {
+    padding: 5px 20px;
+    margin: 10px;
+    font-size: 1.3rem;
+    background-color: rgba(0,0,0,0.8);
+    border: 2px rgba(255,255,255,0.2) solid;
+    border-radius: 8px;
+}
+#server-select option {
+    background-color: rgba(0,0,0,0.8);
+}
+#player-button-grid {
+    display: flex;
+    align-items: center;
 }
 
 
@@ -1061,6 +1076,7 @@ a {
     }
     #home {
         top: -10vh !important;
+        margin-bottom: -10vh !important;
     }
     #hero-title {
         display: flex;
@@ -1256,6 +1272,7 @@ a {
     }
     #home {
         top: -25vh;
+        margin-bottom: -25vh;
     }
     #hero-title {
         display: flex;
