@@ -8,18 +8,20 @@ export default function Player() {
     const [totalSeasons, setTotalSeasons] = useState(0);
     const [season, setSeason] = useState(null);
     const [episode, setEpisode] = useState(null);
-    const [selectedServer, setSelectedServer] = useState('default');
+    const [selectedServer, setSelectedServer] = useState('server1');
 
     const apiKey = import.meta.env.VITE_API_KEY;
 
     const serverURLs = {
-        default: `https://vidsrc.pro/embed/${type}/${id}`,
+        server1: `https://vidsrc.pro/embed/${type}/${id}`,
         server2: `https://showbox.justbinge.lol/embed/${id}`,
         server3: `https://vidsrc.to/embed/${type}/${id}`,
-        server4: `https://multiembed.mov/?video_id=${id}&tmdb=1`,
-        server5: `https://vidsrc.xyz/embed/${type}/${id}`,
-        server6: `https://www.2embed.cc/embed${type === 'tv' ? 'tv' : ''}/${id}`,
-        server7: `https://player.smashy.stream/${type}/${id}`
+        server4: `https://multiembed.mov/directstream.php?video_id=${id}&tmdb=1`,
+        server5: `https://moviesapi.club/${type}/${id}`,
+        server6: `https://vidsrc.xyz/embed/${type}/${id}`,
+        server7: `https://www.2embed.cc/embed${type === 'tv' ? 'tv' : ''}/${id}`,
+        server8: `https://player.smashy.stream/${type}/${id}`,
+        
 
         //https://showbox.justbinge.lol/api/run/showbox/746036?s=0&e=0
         //use for 4k on own player
@@ -28,17 +30,16 @@ export default function Player() {
         //they get streams from wafflehacker
         //vidsrcto.wafflehacker.io
         //nsbx.wafflehacker.io
-
-        //moviesapi.club other source
-        //might need to scrape
     };
 
     const getServerURL = () => {
         if (type === 'tv' && season && episode) {
-            if (selectedServer === 'server4' || selectedServer === 'server6' || selectedServer === 'server7') {
+            if (selectedServer === 'server4' || selectedServer === 'server7' || selectedServer === 'server8') {
                 return `${serverURLs[selectedServer]}&s=${season}&e=${episode}`;
             } else if (selectedServer === 'server2') {
                 return `${serverURLs[selectedServer]}?s=${season}e=${episode}`
+            } else if (selectedServer === 'server5') {
+                return `${serverURLs[selectedServer]}-${season}-${episode}`
             } else {
                 return `${serverURLs[selectedServer]}/${season}/${episode}`;
             }
@@ -145,13 +146,14 @@ export default function Player() {
                         onChange={(e) => setSelectedServer(e.target.value)} 
                         id="server-select"
                     >
-                        <option value="default">Default</option>
+                        <option value="server1">Server 1</option>
                         <option value="server2">Server 2</option>
                         <option value="server3">Server 3</option>
                         <option value="server4">Server 4</option>
                         <option value="server5">Server 5</option>
                         <option value="server6">Server 6</option>
                         <option value="server7">Server 7</option>
+                        <option value="server8">Server 8</option>
                     </select>
                     {type === 'tv' && season && episode && (
                         <Link to={nextEpisodeLink} id="player-button"><img src="/images/arrowr.svg" alt="Next" /></Link>

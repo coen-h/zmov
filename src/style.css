@@ -193,6 +193,7 @@ a {
 #hero {
     display: flex;
     height: 100vh;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 100%);
 }
 #hero-card {
     display: flex;
@@ -577,7 +578,7 @@ a {
     padding-top: 8vh;
     min-height: 100vh;
     z-index: 2;
-    background: radial-gradient(circle at top, #1f1313 0%, transparent 70%);;
+    background: radial-gradient(circle at top, #1f1313 0%, transparent 70%);
 }
 #settings-main {
     display: flex;
@@ -776,31 +777,35 @@ a {
     border: 0px;
 }
 #player-button {
-    padding: 10px;
+    padding: 2px;
     cursor: pointer;
     transition: 150ms all;
+    pointer-events: all;
 }
 #player-button:hover {
     scale: 1.2;
 }
 #player-button > img{
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
 }
 #button-grid {
     display: flex;
     justify-content: space-between;
     width: 100vw;
-    top: 25px;
+    top: 0px;
     position: absolute;
+    pointer-events: none;
 }
 #server-select {
     padding: 5px 20px;
-    margin: 10px;
+    margin: 2px;
     font-size: 1.3rem;
     background-color: rgba(0,0,0,0.8);
     border: 2px rgba(255,255,255,0.2) solid;
     border-radius: 8px;
+    cursor: pointer;
+    pointer-events: all;
 }
 #server-select option {
     background-color: rgba(0,0,0,0.8);

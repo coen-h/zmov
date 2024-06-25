@@ -102,7 +102,7 @@ export default function Hero() {
                             id="hero-image-container"
                             style={{
                                 backgroundImage: `url(https://image.tmdb.org/t/p/original${heroItem.backdrop_path})`,
-                                opacity: 0.3
+                                opacity: 0.5
                             }}
                         >
                             {!isSmallScreen && loadedStates[heroItem.id]?.isVideoLoaded && (
@@ -114,7 +114,7 @@ export default function Hero() {
                                     loading="lazy"
                                     style={{
                                         opacity: loadedStates[heroItem.id]?.isImageLoaded ? 1 : 0,
-                                        transition: 'opacity 1s ease-in-out',
+                                        transition: 'opacity 0.5s ease-in-out',
                                         border: '0',
                                     }}
                                     onLoad={() => handleImageLoad(heroItem.id)}
