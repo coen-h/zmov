@@ -33,18 +33,22 @@ export default function Player() {
     };
 
     const getServerURL = () => {
+        let url = serverURLs[selectedServer];
         if (type === 'tv' && season && episode) {
             if (selectedServer === 'server4' || selectedServer === 'server7' || selectedServer === 'server8') {
-                return `${serverURLs[selectedServer]}&s=${season}&e=${episode}`;
+                url += `&s=${season}&e=${episode}`;
             } else if (selectedServer === 'server2') {
-                return `${serverURLs[selectedServer]}?s=${season}e=${episode}`
+                url += `?s=${season}&e=${episode}`;
             } else if (selectedServer === 'server5') {
-                return `${serverURLs[selectedServer]}-${season}-${episode}`
+                url += `-${season}-${episode}`;
             } else {
-                return `${serverURLs[selectedServer]}/${season}/${episode}`;
+                url += `/${season}/${episode}`;
             }
         }
-        return serverURLs[selectedServer];
+        if (selectedServer === 'server1') {
+            url += '?&autoplay=1&theme=ff2222';
+        }
+        return url;
     };
 
     useEffect(() => {
