@@ -139,7 +139,7 @@ export default function Hero() {
                                 <div id="hero-buttons">
                                     <div id="hero-watch">
                                         <Link to={`/watch/movie/${heroItem.id}`} id="hero-button">
-                                            <img style={{ width: "16px" }} src="/images/play.svg" alt="play-icon" />Watch
+                                            <i className="fa-solid fa-play" style={{color: "#ffffff", fontSize: "1.2rem"}} alt="Play Icon" />Watch
                                         </Link>
                                     </div>
                                     <div id="hero-more">

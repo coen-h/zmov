@@ -150,9 +150,6 @@ a {
     padding: 6px;
     pointer-events: none;
 }
-#search-icon {
-    width: 30px;
-}
 #install-button {
     width: 42px;
     height: 42px;
@@ -174,12 +171,8 @@ a {
     background-color: rgba(255,255,255,.2);
     border: none;
     border-radius: 50%;
-    padding: 4px 0 0 0;
     box-shadow: 1px 1px 3px #0e0e0e, -1px -1px 3px rgb(95 94 94 / 25%), inset 0px 0px 0px #0e0e0e, inset 0px -0px 0px #5f5e5e;
     transition: all 150ms ease;
-}
-#settings-icon {
-    width: 34px;
 }
 #settings:hover {
     scale: 0.95;
@@ -382,11 +375,6 @@ a {
     transition: opacity 200ms ease;
     z-index: 20;
 }
-.play-icon {
-    width: 35px !important;
-    height: 35px !important;
-    object-fit: contain;
-}
 .card img {
     width: 12vw;
     height: 100%;
@@ -403,7 +391,7 @@ a {
 .card:hover .card-play {
     opacity: 1;
 }
-.card:hover .play-icon {
+.card:hover .fa-play {
     opacity: 1;
 }
 #discover-main {
@@ -455,6 +443,15 @@ a {
     text-align: center;
     margin-bottom: 1rem;
 }
+#service-button-grid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+}
+#service-button {
+
+}
 
 
 /* FOOTER */
@@ -492,20 +489,12 @@ a {
     font-size: 0.875rem;
 }
 #github {
-    width: 40px;
+    font-size: 40px;
     opacity: 0.5;
 }
 #github:hover {
     opacity: 1;
     scale: 1.05;
-}
-#mail {
-    width: 35px;
-    opacity: 0.5;
-}
-#mail:hover {
-    scale: 1.05;
-    opacity: 1;
 }
 #dmca {
     font-weight: bold;
@@ -564,9 +553,6 @@ a {
     justify-content: center;
     align-items: center;
     gap: 50px;
-}
-#dmca-email {
-    font-size: 1.25rem;
 }
 
 
@@ -661,8 +647,8 @@ a {
     display: flex;
     align-items: center;
     position: absolute;
-    bottom: 12px;
-    right: 8px;
+    bottom: 20px;
+    right: 10px;
 }
 .widecard-content {
     display: flex;
@@ -686,10 +672,7 @@ a {
     font-size: 0.9rem;
     font-weight: 500;
 }
-.widecard-play-icon {
-    width: 25px;
-    height: 25px;
-}
+
 #watchlist-button {
     display: flex;
     justify-content: center;
@@ -755,7 +738,7 @@ a {
 .watch-card:hover .card-play {
     opacity: 1;
 }
-.watch-card:hover .play-icon {
+.watch-card:hover .fa-play {
     opacity: 1;
 }
 .watch-card:hover #watchlist-button {
@@ -1373,8 +1356,8 @@ a {
         gap: 15px;
         width: 100%;
     }
-    #mail, #github {
-        width: 30px;
+    #github {
+        font-size: 30px;
     }
     #search-section {
         margin: 0;

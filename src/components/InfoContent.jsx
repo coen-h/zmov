@@ -169,11 +169,11 @@ export default function InfoContent() {
               <div id="info-button-grid">
                 <Link to={getPlayLink()}>
                   <button id="play-button">
-                    <img style={{ width: "16px" }} src="/images/play.svg" alt="Play Icon" />Play
+                    <i className="fa-solid fa-play" style={{color: "#ffffff", fontSize: "18px"}} alt="Play Icon" />Play
                   </button>
                 </Link>
                 <button style={{ width: "auto", height: "auto", padding: "0.5rem" }} id="watch-button" onClick={toggleWatchlist}>
-                  <img style={{ width: "30px" }} src={isInWatchlist ? "/images/minus.svg" : "/images/plus.svg"} alt="Watchlist Icon" />
+                  <i style={{ fontSize: "28px", color: "#ffffff", padding: "0 5px" }} className={isInWatchlist ? "fa-light fa-minus" : "fa-light fa-plus"} alt="Watchlist Icon"></i>
                 </button>
               </div>
             </div>

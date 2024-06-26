@@ -146,14 +146,14 @@ export default function Player() {
                         onChange={(e) => setSelectedServer(e.target.value)} 
                         id="server-select"
                     >
-                        <option value="server1">Server 1</option>
-                        <option value="server2">Server 2</option>
-                        <option value="server3">Server 3</option>
-                        <option value="server4">Server 4</option>
-                        <option value="server5">Server 5</option>
-                        <option value="server6">Server 6</option>
-                        <option value="server7">Server 7</option>
-                        <option value="server8">Server 8</option>
+                        <option value="server1">PRO</option>
+                        <option value="server2">BINGE</option>
+                        <option value="server3">TO</option>
+                        <option value="server4">MULTI</option>
+                        <option value="server5">CLUB</option>
+                        <option value="server6">XYZ</option>
+                        <option value="server7">2EMBED</option>
+                        <option value="server8">SMASHY</option>
                     </select>
                     {type === 'tv' && season && episode && (
                         <Link to={nextEpisodeLink} id="player-button"><img src="/images/arrowr.svg" alt="Next" /></Link>

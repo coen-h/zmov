@@ -67,12 +67,12 @@ export default function Header() {
               onKeyPress={handleKeyPress}
             />
             <div className="icon" onClick={handleSearch}>
-              <img id="search-icon" src="/images/search.svg" alt="Search" />
+              <i class="fa-regular fa-magnifying-glass" alt="Search" style={{fontSize: "25px", padding: "2px 0 0 2px"}} />
             </div>
           </div>
           <button id="settings">
             <Link to="/settings">
-              <img id="settings-icon" src="/images/settings.svg" alt="Settings" />
+              <i class="fa-light fa-gear" alt="Settings" style={{ fontSize: "30px" }} />
             </Link>
           </button>
         </div>

@@ -13,8 +13,7 @@ export default function Footer() {
         </div>
         <div id="footer-right">
             <Link to="/dmca" id="dmca">DMCA</Link>
-            <a target="_blank" href="mailto:me@coen.ovh" rel="noopener noreferrer"><img src="/images/email.svg" id="mail" alt="Email Icon"/></a>
-            <a target="_blank" href="https://github.com/coen-h" rel="noopener noreferrer"><img src="/images/github-mark-white.svg" id="github" alt="Github Icon"/></a>
+            <a target="_blank" href="https://github.com/coen-h" rel="noopener noreferrer"><i className="fa-brands fa-github" style={{color: "#ffffff"}} id="github" alt="Github Icon"></i></a>
         </div>
     </div>
     )
