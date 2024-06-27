@@ -32,7 +32,7 @@ const InstallButton = () => {
 
   return (
     <button onClick={handleInstallClick} id="install-button" style={{ display: deferredPrompt ? 'block' : 'none' }}>
-      <img id ="install-image" src="/images/install.svg" />
+      <i className="fa-regular fa-circle-arrow-down" style={{fontSize: "30px"}} />
     </button>
   );
 };

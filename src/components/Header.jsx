@@ -67,12 +67,12 @@ export default function Header() {
               onKeyPress={handleKeyPress}
             />
             <div className="icon" onClick={handleSearch}>
-              <i class="fa-regular fa-magnifying-glass" alt="Search" style={{fontSize: "25px", padding: "2px 0 0 2px"}} />
+              <i className="fa-regular fa-magnifying-glass" alt="Search" style={{fontSize: "25px", padding: "2px 0 0 2px"}} />
             </div>
           </div>
           <button id="settings">
             <Link to="/settings">
-              <i class="fa-light fa-gear" alt="Settings" style={{ fontSize: "30px" }} />
+              <i className="fa-light fa-gear" alt="Settings" style={{ fontSize: "30px" }} />
             </Link>
           </button>
         </div>

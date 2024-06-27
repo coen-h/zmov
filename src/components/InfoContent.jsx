@@ -155,7 +155,7 @@ export default function InfoContent() {
               <div id="info-bar">
                 <p id="info-date">{type === 'tv' ? data.item.first_air_date : data.item.release_date}</p>
                 <div id="info-rating-bar">
-                  <img src="/images/star.svg" id="info-star" alt="Star Icon" />
+                  <i className="fa-solid fa-star" style={{fontSize: "11px", color: "#F9c000"}} alt="Star Icon" />
                   <p id="info-rating">{parseFloat(data.item.vote_average).toFixed(1)}</p>
                 </div>
                 <p id="info-content-rating">{getContentRating()}</p>

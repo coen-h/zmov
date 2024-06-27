@@ -141,7 +141,7 @@ export default function Player() {
                 ></iframe>
             </div>
             <div id="button-grid">
-                <Link to={`/info/${type}/${id}`} id="player-button"><img src="/images/arrowl.svg" alt="Back" /></Link>
+                <Link to={`/info/${type}/${id}`} id="player-button"><i className="fa-solid fa-arrow-left" alt="Back" style={{fontSize: "26px"}} /></Link>
                 
                 <div id="player-button-grid">
                     <select 
@@ -160,7 +160,7 @@ export default function Player() {
                         <option value="server8">SMASHY</option>
                     </select>
                     {type === 'tv' && season && episode && (
-                        <Link to={nextEpisodeLink} id="player-button"><img src="/images/arrowr.svg" alt="Next" /></Link>
+                        <Link to={nextEpisodeLink} id="player-button"><i className="fa-solid fa-arrow-right" style={{fontSize: "26px"}} alt="Next" /></Link>
                     )}
                 </div>
             </div>

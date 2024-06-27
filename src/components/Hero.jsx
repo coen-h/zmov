@@ -19,7 +19,7 @@ export default function Hero() {
     useEffect(() => {
         const fetchHeroes = async () => {
             try {
-                const response = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&include_video=true`);
+                const response = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&include_video=true&append_to_response=release_dates`);
                 const data = await response.json();
                 setHeroItems(data.results);
 
@@ -133,6 +133,17 @@ export default function Hero() {
                                         alt={heroItem.title} 
                                     />
                                 </div>
+                                <div id="hero-bar">
+                                    <div style={{display: "flex", alignItems: "center", gap: "4px"}}>
+                                        <i style={{color: "#F9c000"}} className="fa-solid fa-star fa-xs"></i>
+                                        <p>{parseFloat(heroItem.vote_average).toFixed(1)}</p>
+                                    </div>
+                                    <div style={{display: "flex", alignItems: "center", gap: "4px"}}>
+                                        <i className="fa-light fa-calendar-lines"></i>
+                                        <p>{heroItem.release_date}</p>
+                                    </div>
+                                    <p style={{outline: "rgba(255,255,255,0.5) 1px solid", padding: "2px 4px", borderRadius: "6px"}}>{(heroItem.original_language).toUpperCase()}</p>
+                                </div>
                                 <div id="hero-desc">
                                     <p>{heroItem.overview}</p>
                                 </div>
@@ -144,7 +155,7 @@ export default function Hero() {
                                     </div>
                                     <div id="hero-more">
                                         <Link to={`/info/movie/${heroItem.id}`} id="hero-button">
-                                            <img style={{ width: "20px" }} src="/images/info.svg" alt="info-icon" />Info
+                                            <i className="fa-regular fa-circle-info" style={{ fontSize: "18px" }} alt="info-icon" />Info
                                         </Link>
                                     </div>
                                 </div>

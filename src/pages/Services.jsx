@@ -92,11 +92,19 @@ export default function Services() {
           ))}
         </div>
         <div id="service-button-grid">
-          <button id="service-button" onClick={handleFarBack} disabled={page === 1}>Back</button>
-          <button id="service-button" onClick={handleBack} disabled={page === 1}>Back</button>
-          <span>{page}</span>
-          <button id="service-button" onClick={handleNext} disabled={page >= totalPage}>Next</button>
-          <button id="service-button" onClick={handleFarNext} disabled={page >= totalPage}>Next</button>
+          <button id="service-button" style={{borderRadius: "8px 0 0 8px"}} onClick={handleFarBack} disabled={page === 1}>
+          <i className="fa-solid fa-chevrons-left" />
+          </button>
+          <button id="service-button" onClick={handleBack} disabled={page === 1}>
+            <i className="fa-solid fa-angle-left" />
+          </button>
+          <span id="service-span">{page}</span>
+          <button id="service-button" onClick={handleNext} disabled={page >= totalPage}>
+            <i className="fa-solid fa-angle-right" />
+          </button>
+          <button id="service-button" style={{borderRadius: "0 8px 8px 0"}} onClick={handleFarNext} disabled={page >= totalPage}>
+            <i className="fa-solid fa-chevrons-right" />
+          </button>
         </div>
       </div>
       <Footer />

@@ -156,11 +156,7 @@ a {
     background-color: rgba(255,255,255,.2);
     border: none;
     border-radius: 50%;
-    padding: 4px 0 0 0;
     box-shadow: 1px 1px 3px #0e0e0e, -1px -1px 3px rgb(95 94 94 / 25%), inset 0px 0px 0px #0e0e0e, inset 0px -0px 0px #5f5e5e;
-}
-#install-image {
-    width: 32px;
 }
 #install-button:hover {
     scale: 0.95;
@@ -226,7 +222,7 @@ a {
     display: flex;
     align-items: center;
     gap: 8px;
-    background-color: rgba(255,255,255,0.3);
+    background-color: rgba(255,255,255,0.2);
     border-radius: 10px;
     font-size: 1.2rem;
     font-weight: bold;
@@ -234,17 +230,7 @@ a {
     transition: all 150ms ease;
 }
 #hero-button:hover {
-    background-color: rgba(255,255,255,0.5);
-    scale: 0.95;
-}
-#hero-video-button {
-    position: absolute;
-    top: 50%;
-    right: 50%;
-    z-index: 1111;
-}
-#hero-video-button:hover {
-    background-color: green;
+    background-color: rgba(255,255,255,0.3);
 }
 #hero-image-container {
     position: absolute;
@@ -270,6 +256,10 @@ a {
     height: 100%;
     object-fit: cover;
     opacity: 0.3;
+}
+#hero-bar {
+    display: flex;
+    gap: 10px;
 }
 
 
@@ -381,6 +371,17 @@ a {
     border-radius: 8px;
     transition: all 200ms ease;
 }
+#card-rating {
+    background-color: rgba(0,0,0,0.5);
+    padding: 2px 5px 2px 5px;
+    border-radius: 6px 0 0 6px;
+    position: absolute;
+    top: 10px;
+    right: 0;
+}
+#card-rating > p {
+    font-weight: 400;
+}
 .card:hover img{
     scale: 1.05;
 }
@@ -448,9 +449,35 @@ a {
     justify-content: center;
     align-items: center;
     margin-top: 30px;
+    gap: 2px;
 }
 #service-button {
-
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background-color: rgba(255,255,255,0.3);
+    font-size: 1.1rem;
+    font-weight: bold;
+    border: 0;
+    transition: all 150ms ease;
+    cursor: pointer;
+}
+#service-button:disabled {
+    cursor:unset;
+    background-color: rgba(255,255,255,0.2);
+}
+#service-span {
+    display: flex;
+    align-items: center;
+    padding: 8px 16px;
+    background-color: rgba(255,255,255,0.3);
+}
+#service-button:hover:enabled {
+    background-color: rgba(255,255,255,0.2)
+}
+#service-button:hover:enabled i {
+    color: #ff4f4f;
 }
 
 
@@ -565,7 +592,7 @@ a {
     padding-top: 8vh;
     min-height: 100vh;
     z-index: 2;
-    background: radial-gradient(circle at top, #1f1313 0%, transparent 70%);
+    background: radial-gradient(circle at top, #382222 0%, transparent 70%);
 }
 #settings-main {
     display: flex;
@@ -761,17 +788,13 @@ a {
     border: 0px;
 }
 #player-button {
-    padding: 2px;
+    padding: 10px;
     cursor: pointer;
     transition: 150ms all;
     pointer-events: all;
 }
 #player-button:hover {
     scale: 1.2;
-}
-#player-button > img{
-    width: 40px;
-    height: 40px;
 }
 #button-grid {
     display: flex;
@@ -872,10 +895,6 @@ a {
     display: flex;
     align-items: center;
     gap: 2px;
-}
-#info-star {
-    width: 15px;
-    height: 15px;
 }
 #info-genres {
     display: flex;
