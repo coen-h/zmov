@@ -465,7 +465,7 @@ a {
 }
 #service-button:disabled {
     cursor:unset;
-    background-color: rgba(255,255,255,0.2);
+    background-color: rgba(255,255,255,0.15);
 }
 #service-span {
     display: flex;
@@ -474,7 +474,7 @@ a {
     background-color: rgba(255,255,255,0.3);
 }
 #service-button:hover:enabled {
-    background-color: rgba(255,255,255,0.2)
+    background-color: rgba(255,255,255,0.15)
 }
 #service-button:hover:enabled i {
     color: #ff4f4f;
@@ -1076,6 +1076,9 @@ a {
     #hero-buttons {
         justify-content: center;
     }
+    #hero-bar {
+        justify-content: center;
+    }
     #hero-content {
         margin: 0 1rem;
     }
@@ -1271,6 +1274,10 @@ a {
     }
     #hero-buttons {
         justify-content: center;
+    }
+    #hero-bar {
+        justify-content: center;
+        margin-top: 10px;
     }
     #hero-content {
         margin: 0 1rem;
