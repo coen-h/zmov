@@ -4,7 +4,7 @@
 ### Watch all your movies, shows and anime for free!
 </div>
 
-[comment]: <> (GUIDE FOR RUNNING LOCALLY, API KEYS, RUN IN VERCEL BUTTON https://github.com/Th3Wall/Fakeflix?tab=readme-ov-file#-run-locally)
+<br/>
 
 ## Links:
 > Use an adblocker (uBlock-Origin) to remove player pop-ups
@@ -13,13 +13,17 @@ https://watch.coen.ovh
 #### Mirrors:
 https://zmov.vercel.app
 
+<br/>
+
 ## Features
 - 4K Movies and Shows
 - Downloading built-in to player
 - Subtitles, PIP, Fullscreen
-- Mobile support
+- Mobile PWA
+- Saves Watch History and Watchlist
 - Ad-free
-- Completely free, forever
+
+<br/>
 
 ## Screenshots
 
@@ -28,6 +32,50 @@ https://zmov.vercel.app
 | ![home](./screenshots/home.png) | 
 | ![info](./screenshots/info.png) | 
 | ![search](./screenshots/search.png) |
+
+<br/>
+
+## 👨🏻‍💻 Run Locally
+
+- Clone the project
+
+```bash
+  git clone https://github.com/coen-h/zmov
+```
+
+- Go to the project directory
+
+```bash
+  cd zmov
+```
+
+- Install dependencies
+
+```bash
+  npm install
+```
+
+- Create a .env file
+
+- Request an API key from TMDB and them add it to the .env file
+
+```
+VITE_API_KEY=VITE_API_KEY
+```
+
+- Start the server
+
+```bash
+  npm start
+```
+
+<br/>
+
+## :white_check_mark: Requirements
+
+Before starting :checkered_flag:, you need to have [Git](https://git-scm.com) and [Node](https://nodejs.org/en/) installed.
+
+<br/>
 
 ## Disclaimer
 

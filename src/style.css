@@ -200,8 +200,8 @@ a {
     font-weight: 600;
 }
 #hero-title-image {
-    max-width: 500px;
-    max-height: 220px;
+    max-width: 60vw;
+    max-height: 30vh;
 }
 #hero-title-text {
     display: none;
@@ -285,7 +285,7 @@ a {
 #discover-section {
     display: flex;
     flex-direction: column;
-    margin: 1rem 0.75rem;
+    margin: 1rem 2.5rem;
 }
 #discover-title {
     font-size: 2rem;
@@ -876,8 +876,8 @@ a {
     box-shadow: 5px 5px 20px black;
 }
 #info-title {
-    max-width: 500px;
-    max-height: 200px;
+    max-width: 90vw;
+    max-height: 35vh;
     font-size: 2.5rem;
     font-weight: 600;
 }
@@ -1180,10 +1180,16 @@ a {
     #discover-slider {
         width: 16vw;
     }
+    #discover-section {
+        margin: 1rem 1.5rem;
+    }
 }
 @media (max-width: 1100px) {
     #service {
         display: none;
+    }
+    #discover-section {
+        margin: 1rem 1rem;
     }
     #watchlist-button {
         opacity: 1;
@@ -1244,6 +1250,9 @@ a {
     }
     .watch-card img {
         width: 24vw;
+    }
+    #discover-section {
+        margin: 1rem 0.5rem;
     }
     .watch-card {
         width: 24vw;
@@ -1404,7 +1413,7 @@ a {
         width: 45vw !important;
     }
     #hero-title-image {
-        width: 100%;
+        max-width: 100%;
     }
     #hero-desc {
         font-size: 0.875rem;
@@ -1458,10 +1467,6 @@ a {
     }
     #info-description {
         font-size: 0.875rem;
-    }
-    #info-title {
-        max-width: 90vw;
-        max-height: 40vw;
     }
     #check {
         display: none;

@@ -31,7 +31,7 @@ export default function InfoContent() {
       if (loadingBarRef.current) loadingBarRef.current.continuousStart();
       try {
         const append_to_response = type === 'tv' ? 'content_ratings,images,recommendations' : 'release_dates,images,recommendations,credits';
-        const response = await fetch(`https://api.themoviedb.org/3/${type}/${id}?api_key=${apiKey}&append_to_response=${append_to_response}`);
+        const response = await fetch(`https://api.themoviedb.org/3/${type}/${id}?api_key=${apiKey}&append_to_response=${append_to_response}&include_adult=false`);
         const result = await response.json();
         const logo = result.images.logos.find(logo => logo.iso_639_1 === "en")?.file_path;
         const isSeries = type === 'tv';

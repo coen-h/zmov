@@ -16,7 +16,7 @@ export default function Search() {
         const fetchData = async () => {
             if (loadingBarRef.current) loadingBarRef.current.continuousStart();
             try {
-                const response = await fetch(`https://api.themoviedb.org/3/search/multi?query=${query}&api_key=${apiKey}`);
+                const response = await fetch(`https://api.themoviedb.org/3/search/multi?query=${query}&api_key=${apiKey}&include_adult=false`);
                 const data = await response.json();
                 const filteredData = data.results.filter(item => item.media_type !== 'person');
                 setItems(filteredData);

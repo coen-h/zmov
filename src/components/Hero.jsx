@@ -19,8 +19,9 @@ export default function Hero() {
     useEffect(() => {
         const fetchHeroes = async () => {
             try {
-                const response = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&include_video=true&append_to_response=release_dates`);
+                const response = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&append_to_response=release_dates&include_adult=false`);
                 const data = await response.json();
+                console.log(data)
                 setHeroItems(data.results);
 
                 const promises = data.results.map(async (movie) => {

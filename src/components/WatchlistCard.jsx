@@ -17,7 +17,7 @@ export default function WatchlistCard({ item, type, onRemove }) {
         <div className="watchlist-content">
           <div className="card-play"><i className="fa-solid fa-play" style={{color: "#ffffff", fontSize: "2.5rem"}} alt="Play Icon" /></div>
           <button id="watchlist-button" onClick={(event) => removeItem(event, item.id)}>
-            <img src="/images/trash.svg" alt="Remove" />
+            <i className="fa-light fa-trash-can" style={{fontSize: "18px", color: "#000000"}} alt="Remove" />
           </button>
           <p className="card-title">{type === 'movie' ? item.title : item.name}</p>
           <div className="card-desc">

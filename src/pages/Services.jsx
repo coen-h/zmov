@@ -19,19 +19,19 @@ export default function Services() {
   let baseUrl = '';
 
   if (service === 'netflix') {
-    baseUrl = `https://api.themoviedb.org/3/discover/movie?watch_region=US&with_watch_providers=8&api_key=${apiKey}`;
+    baseUrl = `https://api.themoviedb.org/3/discover/movie?watch_region=US&with_watch_providers=8&api_key=${apiKey}&include_adult=false`;
     name = 'Netflix';
   } else if (service === 'disney') {
-    baseUrl = `https://api.themoviedb.org/3/discover/movie?watch_region=US&with_watch_providers=337&api_key=${apiKey}`;
+    baseUrl = `https://api.themoviedb.org/3/discover/movie?watch_region=US&with_watch_providers=337&api_key=${apiKey}&include_adult=false`;
     name = 'Disney+';
   } else if (service === 'apple') {
-    baseUrl = `https://api.themoviedb.org/3/discover/movie?watch_region=US&with_watch_providers=350&api_key=${apiKey}`;
+    baseUrl = `https://api.themoviedb.org/3/discover/movie?watch_region=US&with_watch_providers=350&api_key=${apiKey}&include_adult=false`;
     name = 'Apple TV+';
   } else if (service === 'prime') {
-    baseUrl = `https://api.themoviedb.org/3/discover/movie?watch_region=US&with_watch_providers=9&api_key=${apiKey}`;
+    baseUrl = `https://api.themoviedb.org/3/discover/movie?watch_region=US&with_watch_providers=9&api_key=${apiKey}&include_adult=false`;
     name = 'Prime Video';
   } else if (service === 'max') {
-    baseUrl = `https://api.themoviedb.org/3/discover/movie?watch_region=US&with_watch_providers=1899&api_key=${apiKey}`;
+    baseUrl = `https://api.themoviedb.org/3/discover/movie?watch_region=US&with_watch_providers=1899&api_key=${apiKey}&include_adult=false`;
     name = 'HBO Max';
   }
 
