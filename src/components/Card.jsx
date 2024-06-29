@@ -1,11 +1,50 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 
 export default function Card(props) {
+    const [isLoaded, setIsLoaded] = useState(false);
+    const cardRef = useRef();
+    const imgRef = useRef();
+
+    useEffect(() => {
+        const handleImageLoad = () => {
+            setIsLoaded(true);
+        };
+
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting && imgRef.current) {
+                        imgRef.current.onload = handleImageLoad;
+                        imgRef.current.src = `https://image.tmdb.org/t/p/w500/${props.item.poster_path}`;
+                        observer.disconnect();
+                    }
+                });
+            },
+            { threshold: 0.1 }
+        );
+
+        if (cardRef.current) {
+            observer.observe(cardRef.current);
+        }
+
+        return () => {
+            if (cardRef.current) {
+                observer.disconnect();
+            }
+        };
+    }, [props.item.poster_path]);
+
     return (
-        <Link to={`/info/${props.type}/${props.item.id}`} className="card" id={props.csize}>
-            <img className={props.size} src={props.item.poster_path && `https://image.tmdb.org/t/p/w500/${props.item.poster_path}`} alt="Poster" />
-            <div className="card-play"><i className="fa-solid fa-play" style={{color: "#ffffff", fontSize: "2.5rem"}} alt="Play Icon" /></div>
+        <Link to={`/info/${props.type}/${props.item.id}`} className={`card ${isLoaded ? 'loaded' : 'loading'}`} id={props.csize} ref={cardRef}>
+            <img
+                ref={imgRef}
+                className={props.size}
+                alt="Poster"
+            />
+            <div className="card-play">
+                <i className="fa-solid fa-play" style={{ color: "#ffffff", fontSize: "2.5rem" }} alt="Play Icon" />
+            </div>
             <div className="card-content">
                 <p className="card-title">{props.type === 'movie' ? props.item.title : props.item.name}</p>
                 <div className="card-desc">
@@ -15,8 +54,8 @@ export default function Card(props) {
                     <p id="check">&#x2022;</p>
                     <p id="check">{(props.item.original_language).toUpperCase()}</p>
                 </div>
-                <div id="card-rating" style={{display: "flex", alignItems: "center", gap: "4px"}}>
-                    <i style={{color: "#F9c000"}} className="fa-solid fa-star fa-xs"></i>
+                <div id="card-rating" style={{ display: "flex", alignItems: "center", gap: "4px" }}>
+                    <i style={{ color: "#F9c000" }} className="fa-solid fa-star fa-xs"></i>
                     <p>{parseFloat(props.item.vote_average).toFixed(1)}</p>
                 </div>
             </div>

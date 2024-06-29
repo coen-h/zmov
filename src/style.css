@@ -319,6 +319,12 @@ a {
     font-size: 1rem;
     transition: all 200ms ease;
 }
+.card.loading {
+    opacity: 0;
+}
+.card.loaded {
+    opacity: 1;
+}
 .card-content {
     position: absolute;
     top: 0;

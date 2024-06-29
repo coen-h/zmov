@@ -27,6 +27,7 @@ export default function InfoContent() {
   }, [type, id]);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     const fetchData = async () => {
       if (loadingBarRef.current) loadingBarRef.current.continuousStart();
       try {

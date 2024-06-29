@@ -21,7 +21,6 @@ export default function Hero() {
             try {
                 const response = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&append_to_response=release_dates&include_adult=false`);
                 const data = await response.json();
-                console.log(data)
                 setHeroItems(data.results);
 
                 const promises = data.results.map(async (movie) => {

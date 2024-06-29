@@ -14,22 +14,13 @@ export default function Player() {
 
     const serverURLs = {
         server1: `https://vidsrc.pro/embed/${type}/${id}`,
-        server2: `https://showbox.justbinge.lol/embed/${id}`,
         server3: `https://vidsrc.to/embed/${type}/${id}`,
         server4: `https://multiembed.mov/directstream.php?video_id=${id}&tmdb=1`,
         server5: `https://moviesapi.club/${type}/${id}`,
+        server2: `https://showbox.justbinge.lol/embed/${id}`,
         server6: `https://vidsrc.xyz/embed/${type}/${id}`,
         server7: `https://www.2embed.cc/embed${type === 'tv' ? 'tv' : ''}/${id}`,
         server8: `https://player.smashy.stream/${type}/${id}`,
-        
-
-        //https://showbox.justbinge.lol/api/run/showbox/746036?s=0&e=0
-        //use for 4k on own player
-
-        //vidbinge.com new source, movie-web
-        //they get streams from wafflehacker
-        //vidsrcto.wafflehacker.io
-        //nsbx.wafflehacker.io
     };
 
     const getServerURL = () => {

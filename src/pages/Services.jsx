@@ -39,6 +39,7 @@ export default function Services() {
     const searchParams = new URLSearchParams(location.search);
     const currentPage = parseInt(searchParams.get('page')) || 1;
     setPage(currentPage);
+    setMovies([]);
 
     const fetchData = async () => {
       if (loadingBarRef.current) loadingBarRef.current.continuousStart();
@@ -47,6 +48,7 @@ export default function Services() {
         const data = await response.json();
         setMovies(data.results);
         setTotalPage(data.total_pages);
+        window.scrollTo({ top: 0, behavior: "smooth" });
       } catch (error) {
         console.error('Error fetching data:', error);
       } finally {
@@ -61,24 +63,20 @@ export default function Services() {
 
   const handleFarNext = () => {
     navigate(`?page=${totalPage}`);
-    window.scrollTo(0, 0);
-  }
+  };
   const handleNext = () => {
     const nextPage = page + 1;
     navigate(`?page=${nextPage}`);
-    window.scrollTo(0, 0);
   };
   const handleBack = () => {
     if (page > 1) {
       const prevPage = page - 1;
       navigate(`?page=${prevPage}`);
-      window.scrollTo(0, 0);
     }
   };
   const handleFarBack = () => {
     navigate(`?page=1`);
-    window.scrollTo(0, 0);
-  }
+  };
 
   return (
     <>
@@ -93,7 +91,7 @@ export default function Services() {
         </div>
         <div id="service-button-grid">
           <button id="service-button" style={{borderRadius: "8px 0 0 8px"}} onClick={handleFarBack} disabled={page === 1}>
-          <i className="fa-solid fa-chevrons-left" />
+            <i className="fa-solid fa-chevrons-left" />
           </button>
           <button id="service-button" onClick={handleBack} disabled={page === 1}>
             <i className="fa-solid fa-angle-left" />
