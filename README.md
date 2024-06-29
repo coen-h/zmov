@@ -29,10 +29,10 @@ https://watch.coen.ovh
 
 | PC                                  | Mobile                   |
 | ------------------------------------| -------------------------|
-| ![home](./screenshots/home.png)     | ![home](./screenshots/mhome.png) |
-| ![info](./screenshots/info.png)     | ![info](./screenshots/minfo.png) |
-| ![search](./screenshots/search.png) | ![search](./screenshots/msearch.png) |
-| ![user](./screenshots/user.png)     | ![user](./screenshots/muser.png) |
+| <img src="./screenshots/home.png" alt="home" width="750"/>     | <img src="./screenshots/mhome.png" alt="home" width="220"/> |
+| <img src="./screenshots/info.png" alt="info" width="750"/>     | <img src="./screenshots/minfo.png" alt="info" width="220"/> |
+| <img src="./screenshots/search.png" alt="search" width="750"/> | <img src="./screenshots/msearch.png" alt="search" width="220"/> |
+| <img src="./screenshots/user.png" alt="user" width="750"/>     | <img src="./screenshots/muser.png" alt="user" width="220"/> |
 
 <br/>
 
