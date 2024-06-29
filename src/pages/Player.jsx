@@ -8,35 +8,35 @@ export default function Player() {
     const [totalSeasons, setTotalSeasons] = useState(0);
     const [season, setSeason] = useState(null);
     const [episode, setEpisode] = useState(null);
-    const [selectedServer, setSelectedServer] = useState('server1');
+    const [selectedServer, setSelectedServer] = useState('PRO');
 
     const apiKey = import.meta.env.VITE_API_KEY;
 
     const serverURLs = {
-        server1: `https://vidsrc.pro/embed/${type}/${id}`,
-        server3: `https://vidsrc.to/embed/${type}/${id}`,
-        server4: `https://multiembed.mov/directstream.php?video_id=${id}&tmdb=1`,
-        server5: `https://moviesapi.club/${type}/${id}`,
-        server2: `https://showbox.justbinge.lol/embed/${id}`,
-        server6: `https://vidsrc.xyz/embed/${type}/${id}`,
-        server7: `https://www.2embed.cc/embed${type === 'tv' ? 'tv' : ''}/${id}`,
-        server8: `https://player.smashy.stream/${type}/${id}`,
+        PRO: `https://vidsrc.pro/embed/${type}/${id}`,
+        TO: `https://vidsrc.to/embed/${type}/${id}`,
+        MULTI: `https://multiembed.mov/directstream.php?video_id=${id}&tmdb=1`,
+        CLUB: `https://moviesapi.club/${type}/${id}`,
+        BINGE: `https://showbox.justbinge.lol/embed/${id}`,
+        XYZ: `https://vidsrc.xyz/embed/${type}/${id}`,
+        TWO: `https://www.2embed.cc/embed${type === 'tv' ? 'tv' : ''}/${id}`,
+        SS: `https://player.smashy.stream/${type}/${id}`,
     };
 
     const getServerURL = () => {
         let url = serverURLs[selectedServer];
         if (type === 'tv' && season && episode) {
-            if (selectedServer === 'server4' || selectedServer === 'server7' || selectedServer === 'server8') {
+            if (selectedServer === 'MULTI' || selectedServer === 'TWO') {
                 url += `&s=${season}&e=${episode}`;
-            } else if (selectedServer === 'server2') {
+            } else if (selectedServer === 'BINGE' || selectedServer === 'SS') {
                 url += `?s=${season}&e=${episode}`;
-            } else if (selectedServer === 'server5') {
+            } else if (selectedServer === 'CLUB') {
                 url += `-${season}-${episode}`;
             } else {
                 url += `/${season}/${episode}`;
             }
         }
-        if (selectedServer === 'server1') {
+        if (selectedServer === 'PRO') {
             url += '?&autoplay=1&theme=ff2222';
         }
         return url;
@@ -141,14 +141,14 @@ export default function Player() {
                         onChange={(e) => setSelectedServer(e.target.value)} 
                         id="server-select"
                     >
-                        <option value="server1">PRO</option>
-                        <option value="server2">BINGE</option>
-                        <option value="server3">TO</option>
-                        <option value="server4">MULTI</option>
-                        <option value="server5">CLUB</option>
-                        <option value="server6">XYZ</option>
-                        <option value="server7">2EMBED</option>
-                        <option value="server8">SMASHY</option>
+                        <option value="PRO">PRO</option>
+                        <option value="TO">TO</option>
+                        <option value="MULTI">MULTI</option>
+                        <option value="CLUB">CLUB</option>
+                        <option value="BINGE">BINGE</option>
+                        <option value="XYZ">XYZ</option>
+                        <option value="TWO">2EMBED</option>
+                        <option value="SS">SMASHY</option>
                     </select>
                     {type === 'tv' && season && episode && (
                         <Link to={nextEpisodeLink} id="player-button"><i className="fa-solid fa-arrow-right" style={{fontSize: "26px"}} alt="Next" /></Link>
