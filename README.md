@@ -1,17 +1,17 @@
+<br/>
+
 <div align="center"> 
 <image src="/src/assets/logo.png" width="300"/>
 
 ### Watch all your movies, shows and anime for free!
 </div>
 
-<br/>
-
 ## Links:
 > Use an adblocker (uBlock-Origin) to remove player pop-ups
 #### Main Site:
-https://watch.coen.ovh 
-#### Mirrors:
 https://zmov.vercel.app
+#### Mirrors:
+https://watch.coen.ovh 
 
 <br/>
 
@@ -27,15 +27,23 @@ https://zmov.vercel.app
 
 ## Screenshots
 
-| PC                                                        | 
-| -------------------------------------------------------------- | 
-| ![home](./screenshots/home.png) | 
-| ![info](./screenshots/info.png) | 
-| ![search](./screenshots/search.png) |
+| PC                                  | Mobile                   |
+| ------------------------------------| -------------------------|
+| ![home](./screenshots/home.png)     | ![home](./screenshots/mhome.png) |
+| ![info](./screenshots/info.png)     | ![info](./screenshots/minfo.png) |
+| ![search](./screenshots/search.png) | ![search](./screenshots/msearch.png) |
+| ![user](./screenshots/user.png)     | ![user](./screenshots/muser.png) |
 
 <br/>
 
+
 ## 👨🏻‍💻 Run Locally
+
+### :white_check_mark: Requirements
+
+Before starting :checkered_flag:, you need to have [Git](https://git-scm.com) and [Node](https://nodejs.org/en/) installed.
+
+<br/>
 
 - Clone the project
 
@@ -66,14 +74,8 @@ VITE_API_KEY=VITE_API_KEY
 - Start the server
 
 ```bash
-  npm start
+  npm run dev
 ```
-
-<br/>
-
-## :white_check_mark: Requirements
-
-Before starting :checkered_flag:, you need to have [Git](https://git-scm.com) and [Node](https://nodejs.org/en/) installed.
 
 <br/>
 
