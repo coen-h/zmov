@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, Pagination } from 'swiper/modules'
+import { Autoplay } from 'swiper/modules'
 import SwiperCore from 'swiper';
 import 'swiper/css';
 
-SwiperCore.use([Autoplay, Pagination]);
+SwiperCore.use([Autoplay]);
 
 export default function Hero() {
     const [heroItems, setHeroItems] = useState([]);
@@ -87,7 +87,6 @@ export default function Hero() {
             delay: 15000,
             disableOnInteraction: false
         },
-        pagination: true,
         loop: heroItems.length > 1,
         onSlideChange: (swiper) => preloadNext(swiper, 2),
         onInit: (swiper) => preloadNext(swiper, 2),
