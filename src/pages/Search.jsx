@@ -13,6 +13,7 @@ export default function Search() {
     const apiKey = import.meta.env.VITE_API_KEY;
 
     useEffect(() => {
+        window.scrollTo(0, 0);
         const fetchData = async () => {
             if (loadingBarRef.current) loadingBarRef.current.continuousStart();
             try {

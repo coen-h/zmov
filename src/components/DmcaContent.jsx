@@ -1,6 +1,11 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 export default function Dmca() {
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    })
+
     return (
     <div id="dmca-section">
         <div id="dmca-content">

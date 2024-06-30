@@ -6,14 +6,12 @@ import Info from './pages/Info';
 import Player from './pages/Player'
 import Settings from './pages/Settings';
 import Search from './pages/Search'
-import ScrollToTopOnLoad from './utils/ScrollToTopOnLoad';
 import Services from './pages/Services'
 import NotFound from './pages/NotFound';
 
 export default function App() {
   return (
     <Router>
-      <ScrollToTopOnLoad />
       <Routes>
         <Route index element={<Home />} />
         <Route path="/dmca" element={<Dmca />} />

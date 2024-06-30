@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import Hero from '../components/Hero'
@@ -8,6 +8,10 @@ import ServiceCard from '../components/ServiceCard'
 export default function Home() {
 
   const apiKey = import.meta.env.VITE_API_KEY;
+  
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  })
   
   return (
     <>
