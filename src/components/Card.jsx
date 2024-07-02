@@ -4,19 +4,13 @@ import { Link } from 'react-router-dom';
 export default function Card(props) {
     const [isLoaded, setIsLoaded] = useState(false);
     const cardRef = useRef();
-    const imgRef = useRef();
 
     useEffect(() => {
-        const handleImageLoad = () => {
-            setIsLoaded(true);
-        };
-
         const observer = new IntersectionObserver(
             (entries) => {
                 entries.forEach((entry) => {
-                    if (entry.isIntersecting && imgRef.current) {
-                        imgRef.current.onload = handleImageLoad;
-                        imgRef.current.src = `https://image.tmdb.org/t/p/w500/${props.item.poster_path}`;
+                    if (entry.isIntersecting) {
+                        setIsLoaded(true);
                         observer.disconnect();
                     }
                 });
@@ -33,13 +27,13 @@ export default function Card(props) {
                 observer.disconnect();
             }
         };
-    }, [props.item.poster_path]);
+    }, []);
 
     return (
         <Link to={`/info/${props.type}/${props.item.id}`} className={`card ${isLoaded ? 'loaded' : 'loading'}`} id={props.csize} ref={cardRef}>
             <img
-                ref={imgRef}
                 className={props.size}
+                src={props.item.poster_path && `https://image.tmdb.org/t/p/w500/${props.item.poster_path}`}
                 alt="Poster"
             />
             <div className="card-play">
