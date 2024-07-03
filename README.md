@@ -68,7 +68,7 @@ Before starting :checkered_flag:, you need to have [Git](https://git-scm.com) an
 - Request an API key from TMDB and them add it to the .env file
 
 ```
-VITE_API_KEY=VITE_API_KEY
+  VITE_API_KEY=YOUR_TMDB_API_KEY
 ```
 
 - Start the server
