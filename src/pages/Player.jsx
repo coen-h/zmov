@@ -142,10 +142,10 @@ export default function Player() {
                         id="server-select"
                     >
                         <option value="PRO">PRO</option>
-                        <option value="TO">TO</option>
-                        <option value="MULTI">MULTI</option>
-                        <option value="CLUB">CLUB</option>
                         <option value="BINGE">BINGE</option>
+                        <option value="TO">TO</option>
+                        <option value="CLUB">CLUB</option>
+                        <option value="MULTI">MULTI</option>
                         <option value="XYZ">XYZ</option>
                         <option value="TWO">2EMBED</option>
                         <option value="SS">SMASHY</option>
