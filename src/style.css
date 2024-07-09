@@ -1016,7 +1016,7 @@ a {
     gap: 25px;
     overflow-y: scroll;
     max-height: 50vh;
-    margin: 1rem 20rem 2rem 20rem;
+    margin: 1rem 20rem 6rem 20rem;
     border: 2px solid rgba(255, 255, 255, 0.3);
     background-color: rgba(255,255,255,0.05);
     backdrop-filter: blur(15px);
@@ -1132,17 +1132,30 @@ a {
 }
 @media (max-height: 450px) {
     .card img {
-        width: 20vw;
+        width: 20vw !important;
+    }
+    #hero-title-text {
+        font-size: 2.8rem;
+    }
+    #hero-desc > p {
+        font-size: 0.9rem;
     }
     #discover-slider {
-        width: 20vw;
+        width: 20vw !important;
     }
     #discover-card {
-        min-height: 31vw;
-        padding: 12px 1rem;
+        min-height: 31vw !important;
     }
     .card {
-        width: 20vw;
+        width: 20vw !important;
+    }
+    #discover-section {
+        margin: 0.5rem 0rem !important;
+    }
+    #big-card img {
+        width: 40vw !important;
+        height: 25vw !important;
+        object-fit: cover;
     }
     #discover-title {
         font-size: 1.5rem;
@@ -1157,10 +1170,13 @@ a {
     #info-description {
         font-size: 0.875rem;
     }
+    #search-section {
+        margin: 0 2rem;
+    }
 }
 @media (max-width: 1400px) {
     #episodes-container {
-        margin: 1rem 10rem;
+        margin: 1rem 10rem 6rem 10rem;
     }
     .watch-card img {
         width: 15vw;
@@ -1222,7 +1238,7 @@ a {
         margin: 16px 50px;
     }
     #episodes-container {
-        margin: 1rem 5rem;
+        margin: 1rem 5rem 6rem 5rem;
     }
     #season-container {
         padding-left: 5rem;
@@ -1316,7 +1332,8 @@ a {
         gap: 10px;
     }
     #episodes-container {
-        margin: 1rem 2rem;
+        margin: 1rem 2rem 4rem 2rem;
+        gap: 25px;
     }
     #season-container {
         padding-left: 2rem;
@@ -1333,10 +1350,6 @@ a {
     .episode-content {
         margin-left: 1rem;
     }
-    #episodes-container {
-        gap: 25px;
-        padding: 1rem 0.5rem;
-    }
     #header.show {
         top: -74px;
     }
@@ -1345,16 +1358,16 @@ a {
     }
     #discover-slider {
         margin-right: 10px;
-        width: 26vw;
+        width: 30vw;
     }
     .card img {
-        width: 26vw;
+        width: 30vw;
     }
     #discover-card {
-        min-height: 40vw;
+        min-height: 46vw;
     }
     .card {
-        width: 26vw;
+        width: 30vw;
     }
 }
 @media (max-width: 550px) {
@@ -1434,16 +1447,16 @@ a {
         font-size: 1.5rem;
     }
     .card img {
-        width: 36vw;
+        width: 40vw;
     }
     #discover-card {
-        min-height: 55vw;
+        min-height: 61vw;
     }
     .card {
-        width: 36vw;
+        width: 40vw;
     }
     #discover-slider {
-        width: 36vw;
+        width: 40vw;
     }
     #suggested-container {
         margin: 16px 1vw;
@@ -1456,17 +1469,21 @@ a {
         width: 45vw !important;
     }
     #episodes-container {
-        margin: 1rem 1rem;
+        margin: 1rem 1rem 4rem 1rem;
     }
     #season-container {
         padding: 0;
         justify-content: center;
     }
+    #season-selector {
+        width: 100%;
+        margin: 0 1rem;
+    }
     .episode-content {
         margin-left: 0.5rem;
     }
     #episode-image {
-        width: 60vw;
+        width: 70vw;
     }
     #episode-desc {
         font-size: .875rem;
@@ -1503,10 +1520,13 @@ a {
     #settings {
         order: 1;
     }
+    #episode-image {
+        width: 80vw;
+    }
 }
 @media (max-width: 450px) {
     #search-input {
-        width: 35vw;
+        width: 36vw;
     }
     #header-section {
         margin: 0.5rem 0rem;
@@ -1516,5 +1536,8 @@ a {
     }
     #header-logo {
         margin-right: 2vw;
+    }
+    #episode-image {
+        width: 100%;
     }
 }
