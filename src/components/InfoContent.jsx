@@ -154,7 +154,10 @@ export default function InfoContent() {
               <img id="info-title" src={data.logoImage && `https://image.tmdb.org/t/p/w500${data.logoImage}`} alt={type === 'movie' ? data.item.title : data.item.name} />
               <p id="info-title-text">{type === 'movie' ? data.item.title : data.item.name}</p>
               <div id="info-bar">
-                <p id="info-date">{type === 'tv' ? data.item.first_air_date : data.item.release_date}</p>
+                <div style={{display: "flex", alignItems: "center", gap: "5px"}}>
+                  <i className="fa-light fa-calendar-lines"></i>
+                  <p id="info-date">{type === 'tv' ? data.item.first_air_date : data.item.release_date}</p>
+                </div>
                 <div id="info-rating-bar">
                   <i className="fa-solid fa-star" style={{fontSize: "11px", color: "#F9c000"}} alt="Star Icon" />
                   <p id="info-rating">{parseFloat(data.item.vote_average).toFixed(1)}</p>
