@@ -28,7 +28,7 @@ export default function Player() {
         if (type === 'tv' && season && episode) {
             if (selectedServer === 'MULTI' || selectedServer === 'TWO') {
                 url += `&s=${season}&e=${episode}`;
-            } else if (selectedServer === 'BINGE' || selectedServer === 'SS') {
+            } else if (selectedServer === 'SS') {
                 url += `?s=${season}&e=${episode}`;
             } else if (selectedServer === 'CLUB') {
                 url += `-${season}-${episode}`;
