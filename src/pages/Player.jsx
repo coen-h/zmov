@@ -17,7 +17,7 @@ export default function Player() {
         TO: `https://vidsrc.to/embed/${type}/${id}`,
         MULTI: `https://multiembed.mov/directstream.php?video_id=${id}&tmdb=1`,
         CLUB: `https://moviesapi.club/${type}/${id}`,
-        BINGE: `https://showbox.justbinge.lol/embed/${id}`,
+        BINGE: `https://embed.streamflix.one/embed/${type}/${id}`,
         XYZ: `https://vidsrc.xyz/embed/${type}/${id}`,
         TWO: `https://www.2embed.cc/embed${type === 'tv' ? 'tv' : ''}/${id}`,
         SS: `https://player.smashy.stream/${type}/${id}`,
@@ -142,10 +142,10 @@ export default function Player() {
                         id="server-select"
                     >
                         <option value="PRO">PRO</option>
-                        <option value="BINGE">BINGE</option>
                         <option value="TO">TO</option>
                         <option value="CLUB">CLUB</option>
                         <option value="MULTI">MULTI</option>
+                        <option value="BINGE">BINGE</option>
                         <option value="XYZ">XYZ</option>
                         <option value="TWO">2EMBED</option>
                         <option value="SS">SMASHY</option>
