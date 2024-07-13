@@ -15,6 +15,7 @@ export default function Player() {
     const serverURLs = {
         PRO: `https://vidsrc.pro/embed/${type}/${id}`,
         TO: `https://vidsrc.to/embed/${type}/${id}`,
+        SFLIX: `https://watch.streamflix.one/${type}/${id}/watch?server=1`,
         MULTI: `https://multiembed.mov/directstream.php?video_id=${id}&tmdb=1`,
         CLUB: `https://moviesapi.club/${type}/${id}`,
         BINGE: `https://embed.streamflix.one/embed/${type}/${id}`,
@@ -32,6 +33,8 @@ export default function Player() {
                 url += `?s=${season}&e=${episode}`;
             } else if (selectedServer === 'CLUB') {
                 url += `-${season}-${episode}`;
+            } else if (selectedServer === 'SFLIX') {
+                url += `&season=${season}&episode=${episode}`;
             } else {
                 url += `/${season}/${episode}`;
             }
@@ -143,10 +146,11 @@ export default function Player() {
                     >
                         <option value="PRO">PRO</option>
                         <option value="TO">TO</option>
-                        <option value="CLUB">CLUB</option>
+                        <option value="SFLIX">SFLIX</option>
                         <option value="MULTI">MULTI</option>
-                        <option value="BINGE">BINGE</option>
+                        <option value="CLUB">CLUB</option>
                         <option value="XYZ">XYZ</option>
+                        <option value="BINGE">BINGE</option>
                         <option value="TWO">2EMBED</option>
                         <option value="SS">SMASHY</option>
                     </select>
