@@ -19,6 +19,7 @@ export default function InfoContent() {
   });
   const [isInWatchlist, setIsInWatchlist] = useState(false);
   const loadingBarRef = useRef(null);
+  const [isTop, setIsTop] = useState(true);
 
   const apiKey = import.meta.env.VITE_API_KEY;
 
@@ -134,6 +135,24 @@ export default function InfoContent() {
     }
   };  
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      
+      if (currentScrollTop === 0) {
+        setIsTop(true);
+      } else {
+        setIsTop(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
     <>
       <LoadingBar color="#FF0000" ref={loadingBarRef} />
@@ -148,7 +167,7 @@ export default function InfoContent() {
       ) : (
         <>
           <div id="info-container">
-            <img id="info-backdrop" src={data.item.backdrop_path && `https://image.tmdb.org/t/p/original${data.item.backdrop_path}`} alt="Backdrop" />
+            <img id="info-backdrop" style={{ opacity: isTop ? "0.35" : "", filter: isTop ? "blur(0px)" : "" }} src={data.item.backdrop_path && `https://image.tmdb.org/t/p/original${data.item.backdrop_path}`} alt="Backdrop" />
             <img id="info-poster" src={data.item.poster_path && `https://image.tmdb.org/t/p/w500/${data.item.poster_path}`} alt="Poster" />
             <div id="info-top">
               <img id="info-title" src={data.logoImage && `https://image.tmdb.org/t/p/w500${data.logoImage}`} alt={type === 'movie' ? data.item.title : data.item.name} />
@@ -173,11 +192,11 @@ export default function InfoContent() {
               <div id="info-button-grid">
                 <Link to={getPlayLink()}>
                   <button id="play-button">
-                    <i className="fa-solid fa-play" style={{color: "#ffffff", fontSize: "18px"}} alt="Play Icon" />Play
+                    <i className="fa-solid fa-play" style={{fontSize: "18px"}} alt="Play Icon" /><p>Play</p>
                   </button>
                 </Link>
-                <button style={{ width: "auto", height: "auto", padding: "0.5rem" }} id="watch-button" onClick={toggleWatchlist}>
-                  <i style={{ fontSize: "28px", color: "#ffffff", padding: "0 5px" }} className={isInWatchlist ? "fa-light fa-minus" : "fa-light fa-plus"} alt="Watchlist Icon"></i>
+                <button style={{width: "auto", height: "auto", padding: "0.5rem"}} id="watch-button" onClick={toggleWatchlist}>
+                  <i style={{fontSize: "28px", padding: "0 5px"}} className={isInWatchlist ? "fa-light fa-minus" : "fa-light fa-plus"} alt="Watchlist Icon"></i>
                 </button>
               </div>
             </div>

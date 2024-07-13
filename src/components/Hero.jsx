@@ -149,13 +149,13 @@ export default function Hero() {
                                 </div>
                                 <div id="hero-buttons">
                                     <div id="hero-watch">
-                                        <Link to={`/watch/movie/${heroItem.id}`} id="hero-button">
-                                            <i className="fa-solid fa-play" style={{color: "#ffffff", fontSize: "1.2rem"}} alt="Play Icon" />Watch
+                                        <Link to={`/watch/movie/${heroItem.id}`} id="hero-play">
+                                            <i className="fa-solid fa-play" style={{color: "#000000", fontSize: "1.2rem"}} alt="Play Icon" /><p style={{color: "#000000"}}>Watch</p>
                                         </Link>
                                     </div>
                                     <div id="hero-more">
                                         <Link to={`/info/movie/${heroItem.id}`} id="hero-button">
-                                            <i className="fa-regular fa-circle-info" style={{ fontSize: "18px" }} alt="info-icon" />Info
+                                            <i className="fa-regular fa-circle-info" style={{ fontSize: "18px" }} alt="info-icon" /><p>Info</p>
                                         </Link>
                                     </div>
                                 </div>
