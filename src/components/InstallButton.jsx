@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const InstallButton = () => {
+export default function InstallButton() {
   const [deferredPrompt, setDeferredPrompt] = useState(null);
 
   useEffect(() => {
@@ -36,5 +36,3 @@ const InstallButton = () => {
     </button>
   );
 };
-
-export default InstallButton;

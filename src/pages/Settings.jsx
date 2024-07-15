@@ -1,10 +1,9 @@
 import React, { useEffect } from 'react'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
-import SettingsContent from '../components/SettingsContent'
+import Watchlist from '../components/Watchlist'
 
 export default function Settings() {
-
     useEffect(() => {
         window.scrollTo(0, 0);
     })
@@ -12,7 +11,10 @@ export default function Settings() {
     return (
         <>
             <Header />
-            <SettingsContent />
+            <div id="settings-page">
+                <h1 id="settings-title">Welcome Back!</h1>
+                <Watchlist />
+            </div>
             <Footer />
         </>
     )

@@ -393,6 +393,9 @@ a {
     transition: all 200ms ease;
 }
 #card-rating {
+    display: "flex";
+    align-items: "center";
+    gap: "4px";
     background-color: rgba(0,0,0,0.5);
     padding: 2px 5px 2px 5px;
     border-radius: 6px 0 0 6px;
@@ -444,34 +447,6 @@ a {
     transition: all 200ms ease;
     overflow: hidden;
 }
-.service-card-image {
-    width: 100%;
-    transition: all 200ms ease;
-}
-#service-section {
-    min-height: 100vh;
-    margin: 0rem 5rem;
-    padding-top: 5rem;
-}
-.service-content {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 15px;
-}
-#service-title {
-    font-size: 3rem;
-    font-weight: bold;
-    text-align: center;
-    margin-bottom: 1rem;
-}
-#service-button-grid {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 30px;
-    gap: 2px;
-}
 #service-button {
     padding: 10px 20px;
     display: flex;
@@ -487,12 +462,6 @@ a {
 #service-button:disabled {
     cursor:unset;
     background-color: rgba(255,255,255,0.15);
-}
-#service-span {
-    display: flex;
-    align-items: center;
-    padding: 8px 16px;
-    background-color: rgba(255,255,255,0.3);
 }
 #service-button:hover:enabled {
     background-color: rgba(255,255,255,0.15)
@@ -523,18 +492,6 @@ a {
     align-items: center;
     margin-left: 10px;
     gap: 25px;
-}
-#welcome {
-    display: flex;
-    font-size: 1.1rem;
-    font-weight: bold;
-    gap: 3px;
-}
-#message {
-    font-size: 0.875rem;
-}
-#copyright {
-    font-size: 0.875rem;
 }
 #github {
     font-size: 40px;
@@ -709,18 +666,6 @@ a {
     left: 0;
     background: linear-gradient(to top, black, transparent);
 }
-.widecard-section {
-    padding: 0.5rem;
-}
-.widecard-desc {
-    font-weight: 300;
-    font-size: 0.8rem;
-}
-.widecard-title {
-    font-size: 0.9rem;
-    font-weight: 500;
-}
-
 #watchlist-button {
     display: flex;
     justify-content: center;
@@ -800,14 +745,6 @@ a {
 /* PLAYER */
 
 
-#iframe-container {
-    display: flex;
-    width: 100vw;
-    height: 100vh;
-}
-#iframe-container > iframe {
-    border: 0px;
-}
 #player-button {
     padding: 10px;
     cursor: pointer;
@@ -837,10 +774,6 @@ a {
 }
 #server-select option {
     background-color: rgba(0,0,0,0.8);
-}
-#player-button-grid {
-    display: flex;
-    align-items: center;
 }
 
 
@@ -950,9 +883,6 @@ a {
     width: 20vw !important;
     height: 100% !important;
 }
-#info-bottom {
-    background: none;
-}
 #play-button {
     display: flex;
     justify-content: center;
@@ -970,11 +900,6 @@ a {
 }
 #play-button:hover {
     background-color: rgba(255,255,255,.4);
-}
-#info-button-grid {
-    display: flex;
-    flex-direction: row;
-    gap: 10px;
 }
 #info-bar {
     display: flex;
@@ -1001,10 +926,6 @@ a {
     text-align: center;
     font-weight: bold;
     margin-top: 2rem;
-}
-#suggested-image {
-    width: 250px;
-    height: auto;
 }
 #season-container {
     display: flex;
@@ -1049,10 +970,6 @@ a {
 #episode-image {
     width: 200px;
     border-radius: 8px;
-}
-#episode-title {
-    font-size: 1.25rem;
-    font-weight: bold;
 }
 #episode-desc {
     font-size: 1rem;

@@ -127,7 +127,7 @@ export default function Player() {
 
     return (
         <>
-            <div id="iframe-container">
+            <div style={{display: "flex", width: "100vw", height: "100vh"}}>
                 <iframe 
                     src={getServerURL()} 
                     allowFullScreen={true}
@@ -137,7 +137,7 @@ export default function Player() {
             <div id="button-grid">
                 <Link to={`/info/${type}/${id}`} id="player-button"><i className="fa-solid fa-arrow-left" alt="Back" style={{fontSize: "26px"}} /></Link>
                 
-                <div id="player-button-grid">
+                <div style={{display: "flex", alignItems: "center"}}>
                     <select 
                         name="servers" 
                         value={selectedServer} 

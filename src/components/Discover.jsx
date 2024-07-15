@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
-import 'swiper/css/navigation';
 import { Navigation } from 'swiper/modules'
 import SwiperCore from 'swiper';
+import 'swiper/css';
+import 'swiper/css/navigation';
 import Card from './Card';
 
 SwiperCore.use([Navigation]);

@@ -82,21 +82,21 @@ export default function Services() {
     <>
       <LoadingBar color="#FF0000" ref={loadingBarRef} />
       <Header />
-      <div id="service-section">
-        <p id="service-title">{name}</p>
-        <div className="service-content">
+      <div style={{minHeight: "100vh", margin: "0rem 5rem", paddingTop: "5rem"}}>
+        <p style={{fontSize: "3rem", fontWeight: "bold", textAlign: "center", marginBottom: "1rem"}}>{name}</p>
+        <div style={{display: "flex", justifyContent: "center", flexWrap: "wrap", gap: "15px"}}>
           {movies.map((item, index) => (
             <Card key={index} item={item} type='movie' csize="big-card" size="big-image" />
           ))}
         </div>
-        <div id="service-button-grid">
+        <div style={{display: "flex", justifyContent: "center", alignItems: "center", marginTop: "30px", gap: "2px"}}>
           <button id="service-button" style={{borderRadius: "8px 0 0 8px"}} onClick={handleFarBack} disabled={page === 1}>
             <i className="fa-solid fa-chevrons-left" />
           </button>
           <button id="service-button" onClick={handleBack} disabled={page === 1}>
             <i className="fa-solid fa-angle-left" />
           </button>
-          <span id="service-span">{page}</span>
+          <span style={{display: "flex", alignItems: "center", padding: "8px 16px", backgroundColor: "rgba(255,255,255,0.3)"}}>{page}</span>
           <button id="service-button" onClick={handleNext} disabled={page >= totalPage}>
             <i className="fa-solid fa-angle-right" />
           </button>

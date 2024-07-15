@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useParams } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Card from '../components/Card';
-import { useParams } from 'react-router-dom';
 import LoadingBar from 'react-top-loading-bar';
 
 export default function Search() {
