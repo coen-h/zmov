@@ -14,11 +14,9 @@ export default function Player() {
 
     const serverURLs = {
         PRO: `https://vidsrc.pro/embed/${type}/${id}`,
-        TO: `https://vidsrc.to/embed/${type}/${id}`,
         SFLIX: `https://watch.streamflix.one/${type}/${id}/watch?server=1`,
         MULTI: `https://multiembed.mov/directstream.php?video_id=${id}&tmdb=1`,
         CLUB: `https://moviesapi.club/${type}/${id}`,
-        BINGE: `https://embed.streamflix.one/embed/${type}/${id}`,
         XYZ: `https://vidsrc.xyz/embed/${type}/${id}`,
         TWO: `https://www.2embed.cc/embed${type === 'tv' ? 'tv' : ''}/${id}`,
         SS: `https://player.smashy.stream/${type}/${id}`,
@@ -145,14 +143,12 @@ export default function Player() {
                         id="server-select"
                     >
                         <option value="PRO">PRO</option>
-                        <option value="TO">TO</option>
-                        <option value="SFLIX">SFLIX</option>
                         <option value="MULTI">MULTI</option>
-                        <option value="CLUB">CLUB</option>
                         <option value="XYZ">XYZ</option>
-                        <option value="BINGE">BINGE</option>
-                        <option value="TWO">2EMBED</option>
+                        <option value="CLUB">CLUB</option>
+                        <option value="SFLIX">SFLIX</option>
                         <option value="SS">SMASHY</option>
+                        <option value="TWO">2EMBED</option>
                     </select>
                     {type === 'tv' && season && episode && (
                         <Link to={nextEpisodeLink} id="player-button"><i className="fa-solid fa-arrow-right" style={{fontSize: "26px"}} alt="Next" /></Link>
