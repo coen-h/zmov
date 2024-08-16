@@ -9,11 +9,11 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     </React.StrictMode>
 );
 
-const updateSW = registerSW({
+registerSW({
     onNeedRefresh() {
-        console.log('New content is available. Please refresh.');
+      console.log('New content is available. Please refresh.');
     },
     onOfflineReady() {
-        console.log('App is ready to work offline.');
+      console.log('App is ready to work offline.');
     },
-});
+  });

@@ -1,10 +1,11 @@
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import Watchlist from '../components/Watchlist'
 
 export default function Settings() {
     useEffect(() => {
+        document.title = `Settings - zmov`;
         window.scrollTo(0, 0);
     })
 

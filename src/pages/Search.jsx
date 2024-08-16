@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useParams } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -14,7 +14,9 @@ export default function Search() {
 
     useEffect(() => {
         window.scrollTo(0, 0);
+        
         const fetchData = async () => {
+            document.title = `${query} - zmov`;
             if (loadingBarRef.current) loadingBarRef.current.continuousStart();
             try {
                 const response = await fetch(`https://api.themoviedb.org/3/search/multi?query=${query}&api_key=${apiKey}&include_adult=false`);
@@ -29,7 +31,7 @@ export default function Search() {
         };
 
         fetchData();
-    }, [query]);
+    }, [query, apiKey]);
 
     return (
         <>  
@@ -37,7 +39,7 @@ export default function Search() {
             <Header />
             <div id="search-section">
                 <p id="search-title">Search Results:</p>
-                <p id="search-query">"{query}"</p>
+                <p id="search-query">&quot;{query}&quot;</p>
                 <div id="search-results">
                     {items.map(item => (
                         <Card key={item.id} csize="big-card" size="big-image" item={item} type={item.media_type} />

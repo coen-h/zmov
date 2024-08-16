@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import Card from '../components/Card';
 import LoadingBar from 'react-top-loading-bar';
@@ -14,6 +14,7 @@ export default function Services() {
   const location = useLocation();
   const loadingBarRef = useRef(null);
   let name = '';
+  document.title = `${service.charAt(0).toUpperCase() + service.slice(1)} - zmov`;
 
   const apiKey = import.meta.env.VITE_API_KEY;
   let baseUrl = '';

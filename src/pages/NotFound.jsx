@@ -1,7 +1,10 @@
-import React from 'react';
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 export default function NotFound() {
+    useEffect(() => {
+        document.title = `Not Found - zmov`;
+    })
     return (
         <div id="notfound">
             <h1>404 - Page Not Found</h1>
@@ -9,4 +12,4 @@ export default function NotFound() {
             <Link to="/" id="notfound-link">Home</Link>
         </div>
     );
-};
+}

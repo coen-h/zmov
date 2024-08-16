@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import InstallButton from './InstallButton';
 
@@ -79,4 +79,4 @@ export default function Header() {
       </div>
     </div>
   );
-};
+}

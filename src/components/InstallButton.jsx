@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 export default function InstallButton() {
   const [deferredPrompt, setDeferredPrompt] = useState(null);
@@ -35,4 +35,4 @@ export default function InstallButton() {
       <i className="fa-regular fa-circle-arrow-down" style={{fontSize: "30px"}} />
     </button>
   );
-};
+}

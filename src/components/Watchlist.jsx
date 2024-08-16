@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import WatchlistCard from './WatchlistCard';
 import WideCard from './WideCard';
 
@@ -92,11 +92,11 @@ export default function Watchlist() {
                 </div>
               ))
             ) : (
-              <p id="watchlist-message">You Haven't Watched Anything Yet!</p>
+              <p id="watchlist-message">You Haven&apos;t Watched Anything Yet!</p>
             )
           )}
         </div>
       </div>
     </>
   );
-};
+}

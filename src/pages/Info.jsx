@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import Card from '../components/Card';
 import LoadingBar from 'react-top-loading-bar';
@@ -30,6 +30,7 @@ export default function Info() {
   }, [type, id]);
 
   useEffect(() => {
+    document.title = 'Loading - zmov';
     window.scrollTo(0, 0);
     const fetchData = async () => {
       if (loadingBarRef.current) loadingBarRef.current.continuousStart();
@@ -41,6 +42,8 @@ export default function Info() {
         const isSeries = type === 'tv';
         const seasons = isSeries ? result.seasons.filter(season => season.season_number !== 0) : [];
         const selectedSeason = isSeries && seasons.length > 0 ? seasons[0].season_number : '';
+
+        document.title = `${result.title || result.name} - zmov`;
 
         setData({
           item: result,
@@ -68,7 +71,7 @@ export default function Info() {
     };
 
     fetchData();
-  }, [type, id]);
+  }, [type, id, apiKey]);
 
   useEffect(() => {
     const fetchEpisodes = async () => {
@@ -88,7 +91,7 @@ export default function Info() {
     };
 
     fetchEpisodes();
-  }, [type, id, data.selectedSeason]);
+  }, [type, id, data.selectedSeason, apiKey]);
 
   const getContentRating = () => {
     if (type === 'tv') {
@@ -241,4 +244,4 @@ export default function Info() {
       <Footer />
     </>
   );
-};
+}

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import Hero from '../components/Hero'
@@ -10,8 +10,9 @@ export default function Home() {
   const apiKey = import.meta.env.VITE_API_KEY;
   
   useEffect(() => {
+    document.title = 'Home - zmov';
     window.scrollTo({ top: 0, behavior: "smooth" });
-  })
+  }, []);
   
   return (
     <>

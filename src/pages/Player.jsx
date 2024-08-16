@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useParams, Link, useLocation } from 'react-router-dom';
 
 export default function Player() {
@@ -8,11 +8,15 @@ export default function Player() {
     const [totalSeasons, setTotalSeasons] = useState(0);
     const [season, setSeason] = useState(null);
     const [episode, setEpisode] = useState(null);
-    const [selectedServer, setSelectedServer] = useState('PRO');
+    const [selectedServer, setSelectedServer] = useState('UPCLOUD');
+    const [upcloud, setUpcloud] = useState('');
+    const [vidcloud, setVidcloud] = useState('');
 
     const apiKey = import.meta.env.VITE_API_KEY;
 
     const serverURLs = {
+        UPCLOUD: `${upcloud}`,
+        VIDCLOUD: `${vidcloud}`,
         PRO: `https://vidsrc.pro/embed/${type}/${id}`,
         SFLIX: `https://watch.streamflix.one/${type}/${id}/watch?server=1`,
         MULTI: `https://multiembed.mov/directstream.php?video_id=${id}&tmdb=1`,
@@ -42,7 +46,45 @@ export default function Player() {
         }
         return url;
     };
+    useEffect(() => {
+        const fetchConsumnet = async () => {
+            try {
+                const response = await fetch(`https://api.themoviedb.org/3/${type}/${id}?api_key=${apiKey}`);
+                const data = await response.json();
 
+                const conResponse = await fetch(`https://consumnetapieshan.vercel.app/movies/flixhq/${data.title || data.name}?page=1`);
+                const conData = await conResponse.json();
+                const firstResult = conData.results.find((result) => result.title === data.title || data.name);
+
+                const conInfo = await fetch(`https://consumnetapieshan.vercel.app/movies/flixhq/info?id=${firstResult.id}`)
+                const conInfoData = await conInfo.json();
+
+                let episodeIdNum;
+                if (firstResult.type === "Movie") {
+                    episodeIdNum = conInfoData.episodes[0].id;
+                } else if (firstResult.type === "TV Series") {
+                    const seasonResults = conInfoData.episodes.filter((result) => result.season === season);
+                    episodeIdNum = seasonResults.find((result) => result.number === episode).id;
+                }
+
+                const upcloudUrl = `https://consumnetapieshan.vercel.app/movies/flixhq/watch?episodeId=${episodeIdNum}&mediaId=${firstResult.id}&server=upcloud`;
+                const upcloudResponse = await fetch(upcloudUrl);
+                const upcloudData = await upcloudResponse.json();
+
+                const vidcloudUrl = `https://consumnetapieshan.vercel.app/movies/flixhq/watch?episodeId=${episodeIdNum}&mediaId=${firstResult.id}&server=vidcloud`;
+                const vidcloudResponse = await fetch(vidcloudUrl);
+                const vidcloudData = await vidcloudResponse.json();
+
+                setUpcloud(upcloudData.headers.Referer);
+                setVidcloud(vidcloudData.headers.Referer);
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        };
+
+        fetchConsumnet();
+    }, [upcloud, vidcloud, type, id, apiKey, episode, season]);
+    
     useEffect(() => {
         const pathSegments = location.pathname.split('/');
         const seasonParam = pathSegments[4];
@@ -55,6 +97,8 @@ export default function Player() {
             try {
                 const response = await fetch(`https://api.themoviedb.org/3/${type}/${id}?api_key=${apiKey}`);
                 const data = await response.json();
+
+                document.title = `${data.title || data.name} ${type === "movie" ? '' : `S${seasonParam}E${episodeParam}`} - zmov`;
 
                 if (type === 'tv') {
                     setTotalSeasons(data.number_of_seasons);
@@ -134,14 +178,15 @@ export default function Player() {
             </div>
             <div id="button-grid">
                 <Link to={`/info/${type}/${id}`} id="player-button"><i className="fa-solid fa-arrow-left" alt="Back" style={{fontSize: "26px"}} /></Link>
-                
                 <div style={{display: "flex", alignItems: "center"}}>
                     <select 
                         name="servers" 
                         value={selectedServer} 
                         onChange={(e) => setSelectedServer(e.target.value)} 
                         id="server-select"
-                    >
+                    >   
+                        <option value="UPCLOUD">UPCLOUD</option>
+                        <option value="VIDCLOUD">VIDCLOUD</option>
                         <option value="PRO">PRO</option>
                         <option value="MULTI">MULTI</option>
                         <option value="XYZ">XYZ</option>

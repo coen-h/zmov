@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 
 export default function Card(props) {
@@ -18,14 +18,15 @@ export default function Card(props) {
             { threshold: 0.1 }
         );
 
-        if (cardRef.current) {
-            observer.observe(cardRef.current);
+        const element = cardRef.current;
+        if (element) {
+          observer.observe(element);
         }
-
+      
         return () => {
-            if (cardRef.current) {
-                observer.disconnect();
-            }
+          if (element) {
+            observer.disconnect();
+          }
         };
     }, []);
 

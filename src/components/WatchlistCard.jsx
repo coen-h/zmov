@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 
 export default function WatchlistCard({ item, type, onRemove }) {
@@ -31,4 +30,4 @@ export default function WatchlistCard({ item, type, onRemove }) {
       </Link>
     </div>
   );
-};
+}
