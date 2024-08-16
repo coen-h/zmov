@@ -187,6 +187,7 @@ export default function Player() {
                         value={selectedServer} 
                         onChange={(e) => setSelectedServer(e.target.value)} 
                         id="server-select"
+                        referrerPolicy="no-referrer"
                     >   
                         <option value="UPCLOUD">UPCLOUD</option>
                         <option value="VIDCLOUD">VIDCLOUD</option>
