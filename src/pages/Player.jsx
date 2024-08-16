@@ -8,15 +8,11 @@ export default function Player() {
     const [totalSeasons, setTotalSeasons] = useState(0);
     const [season, setSeason] = useState(null);
     const [episode, setEpisode] = useState(null);
-    const [selectedServer, setSelectedServer] = useState('UPCLOUD');
-    const [upcloud, setUpcloud] = useState('/loading');
-    const [vidcloud, setVidcloud] = useState('/loading');
+    const [selectedServer, setSelectedServer] = useState('PRO');
 
     const apiKey = import.meta.env.VITE_API_KEY;
 
     const serverURLs = {
-        UPCLOUD: `${upcloud}`,
-        VIDCLOUD: `${vidcloud}`,
         PRO: `https://vidsrc.pro/embed/${type}/${id}`,
         SFLIX: `https://watch.streamflix.one/${type}/${id}/watch?server=1`,
         MULTI: `https://multiembed.mov/directstream.php?video_id=${id}&tmdb=1`,
@@ -46,47 +42,6 @@ export default function Player() {
         }
         return url;
     };
-    useEffect(() => {
-        const fetchConsumnet = async () => {
-            try {
-                const response = await fetch(`https://api.themoviedb.org/3/${type}/${id}?api_key=${apiKey}`);
-                const data = await response.json();
-
-                const conResponse = await fetch(`https://consumnetapieshan.vercel.app/movies/flixhq/${data.title || data.name}?page=1`);
-                const conData = await conResponse.json();
-                const firstResult = conData.results.find((result) => 
-                    (type === 'movie' && result.title === data.title) || 
-                    (type === 'tv' && result.title === data.name)
-                );
-
-                const conInfo = await fetch(`https://consumnetapieshan.vercel.app/movies/flixhq/info?id=${firstResult.id}`)
-                const conInfoData = await conInfo.json();
-
-                let episodeIdNum;
-                if (firstResult.type === "Movie") {
-                    episodeIdNum = conInfoData.episodes[0].id;
-                } else if (firstResult.type === "TV Series") {
-                    const seasonResults = conInfoData.episodes.filter((result) => result.season === season);
-                    episodeIdNum = seasonResults.find((result) => result.number === episode).id;
-                }
-
-                const upcloudUrl = `https://consumnetapieshan.vercel.app/movies/flixhq/watch?episodeId=${episodeIdNum}&mediaId=${firstResult.id}&server=upcloud`;
-                const upcloudResponse = await fetch(upcloudUrl);
-                const upcloudData = await upcloudResponse.json();
-
-                const vidcloudUrl = `https://consumnetapieshan.vercel.app/movies/flixhq/watch?episodeId=${episodeIdNum}&mediaId=${firstResult.id}&server=vidcloud`;
-                const vidcloudResponse = await fetch(vidcloudUrl);
-                const vidcloudData = await vidcloudResponse.json();
-
-                setUpcloud(upcloudData.headers.Referer);
-                setVidcloud(vidcloudData.headers.Referer);
-            } catch (error) {
-                console.error('Error fetching data:', error);
-            }
-        };
-
-        fetchConsumnet();
-    }, [upcloud, vidcloud, type, id, apiKey, episode, season]);
     
     useEffect(() => {
         const pathSegments = location.pathname.split('/');
@@ -188,8 +143,6 @@ export default function Player() {
                         onChange={(e) => setSelectedServer(e.target.value)} 
                         id="server-select"
                     >   
-                        <option value="UPCLOUD">UPCLOUD</option>
-                        <option value="VIDCLOUD">VIDCLOUD</option>
                         <option value="PRO">PRO</option>
                         <option value="MULTI">MULTI</option>
                         <option value="XYZ">XYZ</option>
