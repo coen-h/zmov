@@ -176,7 +176,7 @@ export default function Player() {
                 <iframe 
                     src={getServerURL()} 
                     allowFullScreen={true}
-                    referrerPolicy="origin"
+                    referrerPolicy="unsafe-url"
                     style={{ width: "100%", height: "100%", border: '0' }}
                 ></iframe>
             </div>
