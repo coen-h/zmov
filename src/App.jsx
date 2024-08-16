@@ -7,6 +7,7 @@ import Settings from './pages/Settings';
 import Search from './pages/Search'
 import Services from './pages/Services'
 import NotFound from './pages/NotFound';
+import Loading from './pages/Loading'
 
 export default function App() {
   return (
@@ -19,6 +20,7 @@ export default function App() {
         <Route path="/watch/:type/:id/*" element={<Player />} />
         <Route path="/search/:query" element={<Search />} />
         <Route path="/service/:service" element={<Services />} />
+        <Route path="/loading/:season/:episode" element={<Loading />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>

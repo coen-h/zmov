@@ -9,8 +9,8 @@ export default function Player() {
     const [season, setSeason] = useState(null);
     const [episode, setEpisode] = useState(null);
     const [selectedServer, setSelectedServer] = useState('UPCLOUD');
-    const [upcloud, setUpcloud] = useState('');
-    const [vidcloud, setVidcloud] = useState('');
+    const [upcloud, setUpcloud] = useState('/loading');
+    const [vidcloud, setVidcloud] = useState('/loading');
 
     const apiKey = import.meta.env.VITE_API_KEY;
 
