@@ -54,7 +54,10 @@ export default function Player() {
 
                 const conResponse = await fetch(`https://consumnetapieshan.vercel.app/movies/flixhq/${data.title || data.name}?page=1`);
                 const conData = await conResponse.json();
-                const firstResult = conData.results.find((result) => result.title === data.title || data.name);
+                const firstResult = conData.results.find((result) => 
+                    (type === 'movie' && result.title === data.title) || 
+                    (type === 'tv' && result.title === data.name)
+                );
 
                 const conInfo = await fetch(`https://consumnetapieshan.vercel.app/movies/flixhq/info?id=${firstResult.id}`)
                 const conInfoData = await conInfo.json();
