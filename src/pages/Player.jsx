@@ -14,18 +14,24 @@ export default function Player() {
 
     const serverURLs = {
         PRO: `https://vidsrc.pro/embed/${type}/${id}`,
+        TO: `https://vidsrc.cc/v2/embed/${type}/${id}`,
+        ADFREE: `https://vidsrc2.to/embed/${type}/${id}`,
         SFLIX: `https://watch.streamflix.one/${type}/${id}/watch?server=1`,
         MULTI: `https://multiembed.mov/directstream.php?video_id=${id}&tmdb=1`,
         CLUB: `https://moviesapi.club/${type}/${id}`,
         XYZ: `https://vidsrc.xyz/embed/${type}/${id}`,
         TWO: `https://www.2embed.cc/embed${type === 'tv' ? 'tv' : ''}/${id}`,
         SS: `https://player.smashy.stream/${type}/${id}`,
+        FRENCH: `https://frembed.pro/api/${type === 'tv' ? 'serie' : 'film'}.php?id=${id}`,
+        INDIAN: `https://www.rgshows.me/player/${type === 'tv' ? 'series' : 'movies'}/api3/index.html?id=${id}`,
+        PORT: `https://superflixapi.dev/${type === 'tv' ? 'serie' : 'filme'}/${id}`,
+        MULTLANG: `https://player.autoembed.cc/embed/${type}/${id}`,
     };
 
     const getServerURL = () => {
         let url = serverURLs[selectedServer];
         if (type === 'tv' && season && episode) {
-            if (selectedServer === 'MULTI' || selectedServer === 'TWO') {
+            if (selectedServer === 'MULTI' || selectedServer === 'TWO' || selectedServer === 'INDIAN') {
                 url += `&s=${season}&e=${episode}`;
             } else if (selectedServer === 'SS') {
                 url += `?s=${season}&e=${episode}`;
@@ -33,12 +39,16 @@ export default function Player() {
                 url += `-${season}-${episode}`;
             } else if (selectedServer === 'SFLIX') {
                 url += `&season=${season}&episode=${episode}`;
+            } else if (selectedServer === 'FRENCH') {
+                url += `&sa=${season}&epi=${episode}`;
             } else {
                 url += `/${season}/${episode}`;
             }
         }
         if (selectedServer === 'PRO') {
             url += '?&autoplay=1&theme=ff2222';
+        } else if (selectedServer === 'ADFREE') {
+            url += '?ads=0';
         }
         return url;
     };
@@ -144,12 +154,18 @@ export default function Player() {
                         id="server-select"
                     >   
                         <option value="PRO">PRO</option>
+                        <option value="TO">TO</option>
                         <option value="MULTI">MULTI</option>
+                        <option value="ADFREE">ADFREE</option>
                         <option value="XYZ">XYZ</option>
                         <option value="CLUB">CLUB</option>
                         <option value="SFLIX">SFLIX</option>
                         <option value="SS">SMASHY</option>
                         <option value="TWO">2EMBED</option>
+                        <option value="FRENCH">FRENCH</option>
+                        <option value="INDIAN">INDIAN</option>
+                        <option value="PORT">PORT</option>
+                        <option value="MULTLANG">MULTLANG</option>
                     </select>
                     {type === 'tv' && season && episode && (
                         <Link to={nextEpisodeLink} id="player-button"><i className="fa-solid fa-arrow-right" style={{fontSize: "26px"}} alt="Next" /></Link>
