@@ -432,7 +432,7 @@ a {
 #service {
     display: flex;
     justify-content: center;
-    gap: 20px;
+    gap: 1vw;
     margin: 3rem 3rem 2rem 3rem;
 }
 .service-card {
@@ -443,7 +443,7 @@ a {
     padding: 1.2vw 2.4vw;
     border-radius: 12px;
     box-shadow: inset 0px 0px 20px 1px rgb(66, 66, 66);
-    width: 20%;
+    width: 100%;
     transition: all 200ms ease;
     overflow: hidden;
 }
@@ -499,7 +499,7 @@ a {
 }
 #github:hover {
     opacity: 1;
-    scale: 1.05;
+    scale: 1;
 }
 #dmca {
     font-weight: bold;
@@ -1019,6 +1019,7 @@ a {
     }
     #hero-card {
         margin-bottom: 15vh !important;
+        width: 100%;
     }
     #home {
         top: -10vh !important;
@@ -1127,6 +1128,9 @@ a {
     }
     .card {
         width: 16vw;
+    }
+    #service {
+        margin: 3rem 1.5rem 2rem 1.5rem;
     }
     #discover-slider {
         width: 16vw;
@@ -1244,6 +1248,7 @@ a {
     }
     #hero-card {
         margin-bottom: 30vh;
+        width: 100%;
     }
     #home {
         top: -25vh;

@@ -66,7 +66,7 @@ export default function Header() {
               ref={searchInputRef}
               onKeyPress={handleKeyPress}
             />
-            <div className="icon" onClick={handleSearch}>
+            <div className="icon">
               <i className="fa-regular fa-magnifying-glass" alt="Search" style={{fontSize: "25px", padding: "2px 0 0 2px"}} />
             </div>
           </div>
