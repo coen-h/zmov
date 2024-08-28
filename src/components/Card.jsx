@@ -1,5 +1,13 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+
+Card.propTypes = {
+  item: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
+  size: PropTypes.string.isRequired,
+  csize: PropTypes.string.isRequired,
+};
 
 export default function Card(props) {
     const [isLoaded, setIsLoaded] = useState(false);
@@ -49,7 +57,7 @@ export default function Card(props) {
                     <p id="check">&#x2022;</p>
                     <p id="check">{(props.item.original_language).toUpperCase()}</p>
                 </div>
-                <div id="card-rating" style={{ display: "flex", alignItems: "center", gap: "4px" }}>
+                <div id="card-rating">
                     <i style={{ color: "#F9c000" }} className="fa-solid fa-star fa-xs"></i>
                     <p>{parseFloat(props.item.vote_average).toFixed(1)}</p>
                 </div>

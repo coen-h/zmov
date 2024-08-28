@@ -393,9 +393,9 @@ a {
     transition: all 200ms ease;
 }
 #card-rating {
-    display: "flex";
-    align-items: "center";
-    gap: "4px";
+    display: flex;
+    align-items: center;
+    gap: 4px;
     background-color: rgba(0,0,0,0.5);
     padding: 2px 5px 2px 5px;
     border-radius: 6px 0 0 6px;
@@ -1460,7 +1460,7 @@ a {
 }
 @media (max-width: 450px) {
     #search-input {
-        width: 36vw;
+        width: 46vw;
     }
     #header-section {
         margin: 0.5rem 0rem;

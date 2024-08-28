@@ -1,4 +1,10 @@
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+
+WideCard.propTypes = {
+  item: PropTypes.string.isRequired,
+  onRemove: PropTypes.string.isRequired,
+};
 
 export default function WideCard(props) {
   const removeItem = (event, id) => {

@@ -5,6 +5,13 @@ import SwiperCore from 'swiper';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import Card from './Card';
+import PropTypes from 'prop-types';
+
+Discover.propTypes = {
+  name: PropTypes.string.isRequired,
+  url: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
+};
 
 SwiperCore.use([Navigation]);
 

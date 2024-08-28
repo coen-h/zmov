@@ -1,4 +1,11 @@
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+
+WatchlistCard.propTypes = {
+  item: PropTypes.string.isRequired,
+  onRemove: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
+};
 
 export default function WatchlistCard({ item, type, onRemove }) {
   const removeItem = (event, id) => {
