@@ -15,9 +15,10 @@ export default function Player() {
     const serverURLs = {
         PRO: `https://vidsrc.pro/embed/${type}/${id}`,
         TO: `https://vidsrc.cc/v2/embed/${type}/${id}`,
-        ADFREE: `https://vidsrc2.to/embed/${type}/${id}`,
         SFLIX: `https://watch.streamflix.one/${type}/${id}/watch?server=1`,
-        MULTI: `https://multiembed.mov/directstream.php?video_id=${id}&tmdb=1`,
+        VIP: `https://multiembed.mov/directstream.php?video_id=${id}&tmdb=1`,
+        MULTI: `https://multiembed.mov/?video_id=${id}&tmdb=1`,
+        PRIME: `https://www.primewire.tf/embed/${type}?tmdb=${id}`,
         CLUB: `https://moviesapi.club/${type}/${id}`,
         XYZ: `https://vidsrc.xyz/embed/${type}/${id}`,
         TWO: `https://www.2embed.cc/embed${type === 'tv' ? 'tv' : ''}/${id}`,
@@ -31,13 +32,13 @@ export default function Player() {
     const getServerURL = () => {
         let url = serverURLs[selectedServer];
         if (type === 'tv' && season && episode) {
-            if (selectedServer === 'MULTI' || selectedServer === 'TWO' || selectedServer === 'INDIAN') {
+            if (selectedServer === 'VIP' || selectedServer === 'MULTI' || selectedServer === 'TWO' || selectedServer === 'INDIAN') {
                 url += `&s=${season}&e=${episode}`;
             } else if (selectedServer === 'SS') {
                 url += `?s=${season}&e=${episode}`;
             } else if (selectedServer === 'CLUB') {
                 url += `-${season}-${episode}`;
-            } else if (selectedServer === 'SFLIX') {
+            } else if (selectedServer === 'SFLIX' || selectedServer === 'PRIME') {
                 url += `&season=${season}&episode=${episode}`;
             } else if (selectedServer === 'FRENCH') {
                 url += `&sa=${season}&epi=${episode}`;
@@ -155,12 +156,13 @@ export default function Player() {
                     >   
                         <option value="PRO">PRO</option>
                         <option value="TO">TO</option>
-                        <option value="MULTI">MULTI</option>
-                        <option value="ADFREE">ADFREE</option>
+                        <option value="VIP">VIP</option>
                         <option value="XYZ">XYZ</option>
                         <option value="CLUB">CLUB</option>
+                        <option value="MULTI">MULTI</option>
                         <option value="SFLIX">SFLIX</option>
                         <option value="SS">SMASHY</option>
+                        <option value="PRIME">PRIME</option>
                         <option value="TWO">2EMBED</option>
                         <option value="FRENCH">FRENCH</option>
                         <option value="INDIAN">INDIAN</option>
