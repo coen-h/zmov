@@ -4,6 +4,7 @@ import { useParams, Link, useLocation } from 'react-router-dom';
 export default function Player() {
     const { type, id } = useParams();
     const location = useLocation();
+    const [gridPos, setGridPos] = useState(0);
     const [totalEpisodes, setTotalEpisodes] = useState(0);
     const [totalSeasons, setTotalSeasons] = useState(0);
     const [season, setSeason] = useState(null);
@@ -14,6 +15,8 @@ export default function Player() {
 
     const serverURLs = {
         PRO: `https://vidsrc.pro/embed/${type}/${id}`,
+        ADFREE: `https://vidsrc.pro/embed/${type}/${id}`,
+        FLIX: `https://flixcloud.co/embed/${type}?id=${id}`,
         TO: `https://vidsrc.cc/v2/embed/${type}/${id}`,
         SFLIX: `https://watch.streamflix.one/${type}/${id}/watch?server=1`,
         VIP: `https://multiembed.mov/directstream.php?video_id=${id}&tmdb=1`,
@@ -32,7 +35,7 @@ export default function Player() {
     const getServerURL = () => {
         let url = serverURLs[selectedServer];
         if (type === 'tv' && season && episode) {
-            if (selectedServer === 'VIP' || selectedServer === 'MULTI' || selectedServer === 'TWO' || selectedServer === 'INDIAN') {
+            if (selectedServer === 'VIP' || selectedServer === 'MULTI' || selectedServer === 'TWO' || selectedServer === 'INDIAN' || selectedServer === 'FLIX') {
                 url += `&s=${season}&e=${episode}`;
             } else if (selectedServer === 'SS') {
                 url += `?s=${season}&e=${episode}`;
@@ -49,7 +52,7 @@ export default function Player() {
         if (selectedServer === 'PRO') {
             url += '?&autoplay=1&theme=ff2222';
         } else if (selectedServer === 'ADFREE') {
-            url += '?ads=0';
+            url += '?player=new';
         }
         return url;
     };
@@ -102,6 +105,14 @@ export default function Player() {
         fetchData();
     }, [id, type, location.pathname, apiKey]);
 
+    useEffect(() => {
+        if (selectedServer === 'TO' || selectedServer === 'XYZ' || selectedServer === 'MULTI' || selectedServer === 'PRIME' || selectedServer === 'INDIAN' || selectedServer === 'MULTLANG') {
+            setGridPos(35);
+        } else {
+            setGridPos(0); // Reset to default or another value if necessary
+        }
+    }, [selectedServer]);
+
     const updateContinueWatching = (item) => {
         let continueWatching = [];
         try {
@@ -145,7 +156,7 @@ export default function Player() {
                     style={{ width: "100%", height: "100%", border: '0' }}
                 ></iframe>
             </div>
-            <div id="button-grid">
+            <div id="button-grid" style={{top: gridPos}}>
                 <Link to={`/info/${type}/${id}`} id="player-button"><i className="fa-solid fa-arrow-left" alt="Back" style={{fontSize: "26px"}} /></Link>
                 <div style={{display: "flex", alignItems: "center"}}>
                     <select 
@@ -155,8 +166,10 @@ export default function Player() {
                         id="server-select"
                     >   
                         <option value="PRO">PRO</option>
+                        <option value="ADFREE">ADFREE</option>
                         <option value="TO">TO</option>
                         <option value="VIP">VIP</option>
+                        <option value="FLIX">FLIX</option>
                         <option value="XYZ">XYZ</option>
                         <option value="CLUB">CLUB</option>
                         <option value="MULTI">MULTI</option>
