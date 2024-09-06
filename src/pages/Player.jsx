@@ -3,6 +3,7 @@ import { useParams, Link, useLocation } from 'react-router-dom';
 
 export default function Player() {
     const { type, id } = useParams();
+    const [animeTitle, setAnimeTitle] = useState('');
     const location = useLocation();
     const [gridPos, setGridPos] = useState(0);
     const [totalEpisodes, setTotalEpisodes] = useState(0);
@@ -16,6 +17,8 @@ export default function Player() {
     const serverURLs = {
         PRO: `https://vidsrc.pro/embed/${type}/${id}`,
         ADFREE: `https://vidsrc.pro/embed/${type}/${id}`,
+        VIDLINK: `https://vidlink.pro/${type}/${id}`,
+        NL: `https://player.vidsrc.nl/embed/${type}/${id}`,
         FLIX: `https://flixcloud.co/embed/${type}?id=${id}`,
         ROLLER: `https://embed-testing-v7.vercel.app/tests/rollerdice/${id}`,
         TO: `https://vidsrc.cc/v2/embed/${type}/${id}`,
@@ -29,6 +32,12 @@ export default function Player() {
         INDIAN: `https://www.rgshows.me/player/${type === 'tv' ? 'series' : 'movies'}/api3/index.html?id=${id}`,
         PORT: `https://superflixapi.dev/${type === 'tv' ? 'serie' : 'filme'}/${id}`,
         MULTLANG: `https://player.autoembed.cc/embed/${type}/${id}`,
+        ANIME1DUB: `https://embed.anicdn.top/v/${animeTitle}-dub`,
+        ANIME1SUB: `https://embed.anicdn.top/v/${animeTitle}`,
+        ANIME2DUB: `https://2anime.xyz/embed/${animeTitle}-dub`,
+        ANIME2SUB: `https://2anime.xyz/embed/${animeTitle}`,
+        ANIME3DUB: `https://anime.autoembed.cc/embed/${animeTitle}-dub`,
+        ANIME3SUB: `https://anime.autoembed.cc/embed/${animeTitle}`,
     };
 
     const getServerURL = () => {
@@ -46,6 +55,10 @@ export default function Player() {
                 url += `&season=${season}&episode=${episode}`;
             } else if (selectedServer === 'FRENCH') {
                 url += `&sa=${season}&epi=${episode}`;
+            } else if (selectedServer === 'ANIME1DUB' || selectedServer === 'ANIME1SUB') {
+                url += `/${episode}.html`;
+            } else if (selectedServer === 'ANIME2DUB' || selectedServer === 'ANIME2SUB' || selectedServer === 'ANIME3DUB' || selectedServer === 'ANIME3SUB') {
+                url += `-episode-${episode}`;
             } else {
                 url += `/${season}/${episode}`;
             }
@@ -54,6 +67,8 @@ export default function Player() {
             url += '?&autoplay=1&theme=ff2222';
         } else if (selectedServer === 'ADFREE') {
             url += '?player=new';
+        } else if (selectedServer === 'VIDLINK') {
+            url += '?primaryColor=B20710&secondaryColor=170000';   
         }
         return url;
     };
@@ -68,8 +83,9 @@ export default function Player() {
 
         const fetchData = async () => {
             try {
-                const response = await fetch(`https://api.themoviedb.org/3/${type}/${id}?api_key=${apiKey}`);
+                const response = await fetch(`https://api.themoviedb.org/3/${type}/${id}?api_key=${apiKey}&append_to_response=alternative_titles`);
                 const data = await response.json();
+                setAnimeTitle(data.alternative_titles.results.find((item) => item.type === "Romaji")?.title);
 
                 document.title = `${data.title || data.name} ${type === "movie" ? '' : `S${seasonParam}E${episodeParam}`} - zmov`;
 
