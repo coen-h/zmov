@@ -18,7 +18,6 @@ export default function Player() {
         PRO: `https://vidsrc.pro/embed/${type}/${id}`,
         ADFREE: `https://vidsrc.pro/embed/${type}/${id}`,
         VIDLINK: `https://vidlink.pro/${type}/${id}`,
-        NL: `https://player.vidsrc.nl/embed/${type}/${id}`,
         FLIX: `https://flixcloud.co/embed/${type}?id=${id}`,
         ROLLER: `https://embed-testing-v7.vercel.app/tests/rollerdice/${id}`,
         TO: `https://vidsrc.cc/v2/embed/${type}/${id}`,
@@ -56,7 +55,7 @@ export default function Player() {
             } else if (selectedServer === 'FRENCH') {
                 url += `&sa=${season}&epi=${episode}`;
             } else if (selectedServer === 'ANIME1DUB' || selectedServer === 'ANIME1SUB') {
-                url += `/${episode}.html`;
+                url += `/${episode}`;
             } else if (selectedServer === 'ANIME2DUB' || selectedServer === 'ANIME2SUB' || selectedServer === 'ANIME3DUB' || selectedServer === 'ANIME3SUB') {
                 url += `-episode-${episode}`;
             } else {
@@ -69,6 +68,8 @@ export default function Player() {
             url += '?player=new';
         } else if (selectedServer === 'VIDLINK') {
             url += '?primaryColor=B20710&secondaryColor=170000';   
+        } else if (selectedServer === 'ANIME1DUB' || selectedServer === 'ANIME1SUB') {
+            url += '.html';
         }
         return url;
     };
@@ -85,7 +86,7 @@ export default function Player() {
             try {
                 const response = await fetch(`https://api.themoviedb.org/3/${type}/${id}?api_key=${apiKey}&append_to_response=alternative_titles`);
                 const data = await response.json();
-                setAnimeTitle(data.alternative_titles.results.find((item) => item.type === "Romaji")?.title);
+                setAnimeTitle(data.alternative_titles.results.find((item) => item.type === "Romaji")?.title.replace(/\s+/g, '-'));                  
 
                 document.title = `${data.title || data.name} ${type === "movie" ? '' : `S${seasonParam}E${episodeParam}`} - zmov`;
 
@@ -123,10 +124,10 @@ export default function Player() {
     }, [id, type, location.pathname, apiKey]);
 
     useEffect(() => {
-        if (selectedServer === 'TO' || selectedServer === 'XYZ' || selectedServer === 'MULTI' || selectedServer === 'PRIME' || selectedServer === 'INDIAN' || selectedServer === 'MULTLANG') {
+        if (selectedServer === 'TO' || selectedServer === 'XYZ' || selectedServer === 'MULTI' || selectedServer === 'PRIME' || selectedServer === 'INDIAN' || selectedServer === 'MULTLANG' || selectedServer === 'ANIME1DUB' || selectedServer === 'ANIME1SUB' || selectedServer === 'ANIME2DUB' || selectedServer === 'ANIME2SUB' || selectedServer === 'ANIME3DUB' || selectedServer === 'ANIME3SUB') {
             setGridPos(35);
         } else {
-            setGridPos(0); // Reset to default or another value if necessary
+            setGridPos(0);
         }
     }, [selectedServer]);
 
@@ -184,6 +185,7 @@ export default function Player() {
                     >   
                         <option value="PRO">PRO</option>
                         <option value="ADFREE">ADFREE</option>
+                        <option value="VIDLINK">VIDLINK</option>
                         <option value="ROLLER">ROLLER</option>
                         <option value="FLIX">FLIX</option>
                         <option value="TO">TO</option>
@@ -197,6 +199,12 @@ export default function Player() {
                         <option value="INDIAN">INDIAN</option>
                         <option value="PORT">PORT</option>
                         <option value="MULTLANG">MULTLANG</option>
+                        <option value="ANIME1DUB">ANI1-DUB</option>
+                        <option value="ANIME1SUB">ANI1-SUB</option>
+                        <option value="ANIME2DUB">ANI2-DUB</option>
+                        <option value="ANIME2SUB">ANI2-SUB</option>
+                        <option value="ANIME3DUB">ANI3-DUB</option>
+                        <option value="ANIME3SUB">ANI3-SUB</option>
                     </select>
                     {type === 'tv' && season && episode && (
                         <Link to={nextEpisodeLink} id="player-button"><i className="fa-solid fa-arrow-right" style={{fontSize: "26px"}} alt="Next" /></Link>
