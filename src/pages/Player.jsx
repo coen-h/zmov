@@ -10,16 +10,15 @@ export default function Player() {
     const [totalSeasons, setTotalSeasons] = useState(0);
     const [season, setSeason] = useState(null);
     const [episode, setEpisode] = useState(null);
-    const [selectedServer, setSelectedServer] = useState('PRO');
+    const [selectedServer, setSelectedServer] = useState('VIDLINK');
 
     const apiKey = import.meta.env.VITE_API_KEY;
 
     const serverURLs = {
         PRO: `https://vidsrc.pro/embed/${type}/${id}`,
-        ADFREE: `https://vidsrc.pro/embed/${type}/${id}`,
         VIDLINK: `https://vidlink.pro/${type}/${id}`,
-        FLIX: `https://flixcloud.co/embed/${type}?id=${id}`,
         ROLLER: `https://embed-testing-v7.vercel.app/tests/rollerdice/${id}`,
+        NL: `https://player.vidsrc.nl/embed/${type}/${id}`,
         TO: `https://vidsrc.cc/v2/embed/${type}/${id}`,
         SFLIX: `https://watch.streamflix.one/${type}/${id}/watch?server=1`,
         VIP: `https://multiembed.mov/directstream.php?video_id=${id}&tmdb=1`,
@@ -63,8 +62,6 @@ export default function Player() {
             }
         }
         if (selectedServer === 'PRO') {
-            url += '?&autoplay=1&theme=ff2222';
-        } else if (selectedServer === 'ADFREE') {
             url += '?player=new';
         } else if (selectedServer === 'VIDLINK') {
             url += '?primaryColor=B20710&secondaryColor=170000';   
@@ -124,7 +121,7 @@ export default function Player() {
     }, [id, type, location.pathname, apiKey]);
 
     useEffect(() => {
-        if (selectedServer === 'TO' || selectedServer === 'XYZ' || selectedServer === 'MULTI' || selectedServer === 'PRIME' || selectedServer === 'INDIAN' || selectedServer === 'MULTLANG' || selectedServer === 'ANIME1DUB' || selectedServer === 'ANIME1SUB' || selectedServer === 'ANIME2DUB' || selectedServer === 'ANIME2SUB' || selectedServer === 'ANIME3DUB' || selectedServer === 'ANIME3SUB') {
+        if (selectedServer === 'TO' || selectedServer === 'XYZ' || selectedServer === 'MULTI' || selectedServer === 'PRIME' || selectedServer === 'INDIAN' || selectedServer === 'MULTLANG' || selectedServer === 'ANIME1DUB' || selectedServer === 'ANIME1SUB' || selectedServer === 'ANIME2DUB' || selectedServer === 'ANIME2SUB' || selectedServer === 'ANIME3DUB' || selectedServer === 'ANIME3SUB' || selectedServer === 'NL') {
             setGridPos(35);
         } else {
             setGridPos(0);
@@ -183,11 +180,10 @@ export default function Player() {
                         onChange={(e) => setSelectedServer(e.target.value)} 
                         id="server-select"
                     >   
-                        <option value="PRO">PRO</option>
-                        <option value="ADFREE">ADFREE</option>
                         <option value="VIDLINK">VIDLINK</option>
                         <option value="ROLLER">ROLLER</option>
-                        <option value="FLIX">FLIX</option>
+                        <option value="PRO">PRO</option>
+                        <option value="NL">NL</option>
                         <option value="TO">TO</option>
                         <option value="VIP">VIP</option>
                         <option value="CLUB">CLUB</option>
