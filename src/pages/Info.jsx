@@ -35,7 +35,7 @@ export default function Info() {
     const fetchData = async () => {
       if (loadingBarRef.current) loadingBarRef.current.continuousStart();
       try {
-        const append_to_response = type === 'tv' ? 'content_ratings,images,recommendations' : 'release_dates,images,recommendations,credits';
+        const append_to_response = type === 'tv' ? 'content_ratings,images,recommendations' : 'release_dates,images,recommendations,credits,watch/providers';
         const response = await fetch(`https://api.themoviedb.org/3/${type}/${id}?api_key=${apiKey}&append_to_response=${append_to_response}&include_adult=false`);
         const result = await response.json();
         const logo = result.images.logos.find(logo => logo.iso_639_1 === "en")?.file_path;
@@ -188,6 +188,7 @@ export default function Info() {
                   <p id="info-rating">{parseFloat(data.item.vote_average).toFixed(1)}</p>
                 </div>
                 <p id="info-content-rating">{getContentRating()}</p>
+                <p>{Object.keys(data.item["watch/providers"]?.results || {}).length > 0 ? "HD" : "CAM"}</p>
               </div>
               <div id="info-genres">
                 {data.genres.map(genre => (

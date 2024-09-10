@@ -16,9 +16,9 @@ export default function Player() {
 
     const serverURLs = {
         PRO: `https://vidsrc.pro/embed/${type}/${id}`,
+        MAFIA: `https://mafia.autoembed.cc/${type}/${id}`,
         VIDLINK: `https://vidlink.pro/${type}/${id}`,
         ROLLER: `https://embed-testing-v7.vercel.app/tests/rollerdice/${id}`,
-        NL: `https://player.vidsrc.nl/embed/${type}/${id}`,
         TO: `https://vidsrc.cc/v2/embed/${type}/${id}`,
         SFLIX: `https://watch.streamflix.one/${type}/${id}/watch?server=1`,
         VIP: `https://multiembed.mov/directstream.php?video_id=${id}&tmdb=1`,
@@ -64,7 +64,7 @@ export default function Player() {
         if (selectedServer === 'PRO') {
             url += '?player=new';
         } else if (selectedServer === 'VIDLINK') {
-            url += '?primaryColor=B20710&secondaryColor=170000';   
+            url += '?primaryColor=B20710&secondaryColor=170000&autoplay=true&nextbutton=true';   
         } else if (selectedServer === 'ANIME1DUB' || selectedServer === 'ANIME1SUB') {
             url += '.html';
         }
@@ -181,9 +181,9 @@ export default function Player() {
                         id="server-select"
                     >   
                         <option value="VIDLINK">VIDLINK</option>
+                        <option value="MAFIA">MAFIA</option>
                         <option value="ROLLER">ROLLER</option>
                         <option value="PRO">PRO</option>
-                        <option value="NL">NL</option>
                         <option value="TO">TO</option>
                         <option value="VIP">VIP</option>
                         <option value="CLUB">CLUB</option>
