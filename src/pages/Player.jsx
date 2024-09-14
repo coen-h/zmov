@@ -16,8 +16,10 @@ export default function Player() {
 
     const serverURLs = {
         PRO: `https://vidsrc.pro/embed/${type}/${id}`,
+        VIDBINGE: `https://vidbinge.dev/embed/${type}/${id}`,
         MAFIA: `https://mafia.autoembed.cc/${type}/${id}`,
         VIDLINK: `https://vidlink.pro/${type}/${id}`,
+        ONSTREAM: `https://embed-testing-v7.vercel.app/tests/whatstream/${id}`,
         ROLLER: `https://embed-testing-v7.vercel.app/tests/rollerdice/${id}`,
         TO: `https://vidsrc.cc/v2/embed/${type}/${id}`,
         SFLIX: `https://watch.streamflix.one/${type}/${id}/watch?server=1`,
@@ -47,7 +49,7 @@ export default function Player() {
                 url += `?s=${season}&e=${episode}`;
             } else if (selectedServer === 'CLUB') {
                 url += `-${season}-${episode}`;
-            } else if (selectedServer === 'ROLLER') {
+            } else if (selectedServer === 'ROLLER' || selectedServer === 'ONSTREAM') {
                 url += `-${season}-${episode}`;
             } else if (selectedServer === 'SFLIX') {
                 url += `&season=${season}&episode=${episode}`;
@@ -180,9 +182,16 @@ export default function Player() {
                         onChange={(e) => setSelectedServer(e.target.value)} 
                         id="server-select"
                     >   
+                        <option style={{backgroundColor: "rgba(50,50,50,1)"}} selected disabled>ADFREE</option>
+                        <hr/>
                         <option value="VIDLINK">VIDLINK</option>
-                        <option value="MAFIA">MAFIA</option>
                         <option value="ROLLER">ROLLER</option>
+                        <option value="MAFIA">MAFIA</option>
+                        <option value="ONSTREAM">ONSTREAM</option>
+                        <hr/>
+                        <option style={{backgroundColor: "rgba(50,50,50,1)"}} selected disabled>ADS</option>
+                        <hr/>
+                        <option value="VIDBINGE">BINGE (4K)</option>
                         <option value="PRO">PRO</option>
                         <option value="TO">TO</option>
                         <option value="VIP">VIP</option>
@@ -191,10 +200,16 @@ export default function Player() {
                         <option value="MULTI">MULTI</option>
                         <option value="SFLIX">SFLIX</option>
                         <option value="SS">SMASHY</option>
+                        <hr/>
+                        <option style={{backgroundColor: "rgba(50,50,50,1)"}} selected disabled>LANGUAGE</option>
+                        <hr/>
                         <option value="FRENCH">FRENCH</option>
                         <option value="INDIAN">INDIAN</option>
                         <option value="PORT">PORT</option>
                         <option value="MULTLANG">MULTLANG</option>
+                        <hr/>
+                        <option style={{backgroundColor: "rgba(50,50,50,1)"}} selected disabled>ANIME</option>
+                        <hr/>
                         <option value="ANIME1DUB">ANI1-DUB</option>
                         <option value="ANIME1SUB">ANI1-SUB</option>
                         <option value="ANIME2DUB">ANI2-DUB</option>
