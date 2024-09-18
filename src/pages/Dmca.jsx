@@ -36,8 +36,8 @@ export default function Dmca() {
                     </div>
                     <div>
                         <p>Contact Here:</p>
-                        <a target="_blank" href="mailto:dmca@coen.ovh" rel="noopener noreferrer">
-                            <p>dmca@coen.ovh</p>
+                        <a target="_blank" href={`mailto:${import.meta.env.VITE_DMCA_EMAIL}`} rel="noopener noreferrer">
+                            <p>{import.meta.env.VITE_DMCA_EMAIL}</p>
                         </a>
                     </div>
                 </div>

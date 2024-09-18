@@ -12,32 +12,33 @@ export default function Player() {
     const [episode, setEpisode] = useState(null);
     const [selectedServer, setSelectedServer] = useState('VIDLINK');
 
+    const playerURLs = import.meta.env
     const apiKey = import.meta.env.VITE_API_KEY;
 
     const serverURLs = {
-        PRO: `https://vidsrc.pro/embed/${type}/${id}`,
-        VIDBINGE: `https://vidbinge.dev/embed/${type}/${id}`,
-        MAFIA: `https://mafia.autoembed.cc/${type}/${id}`,
-        VIDLINK: `https://vidlink.pro/${type}/${id}`,
-        ONSTREAM: `https://embed-testing-v7.vercel.app/tests/whatstream/${id}`,
-        ROLLER: `https://embed-testing-v7.vercel.app/tests/rollerdice/${id}`,
-        TO: `https://vidsrc.cc/v2/embed/${type}/${id}`,
-        SFLIX: `https://watch.streamflix.one/${type}/${id}/watch?server=1`,
-        VIP: `https://multiembed.mov/directstream.php?video_id=${id}&tmdb=1`,
-        MULTI: `https://multiembed.mov/?video_id=${id}&tmdb=1`,
-        CLUB: `https://moviesapi.club/${type}/${id}`,
-        XYZ: `https://vidsrc.xyz/embed/${type}/${id}`,
-        SS: `https://player.smashy.stream/${type}/${id}`,
-        FRENCH: `https://frembed.pro/api/${type === 'tv' ? 'serie' : 'film'}.php?id=${id}`,
-        INDIAN: `https://www.rgshows.me/player/${type === 'tv' ? 'series' : 'movies'}/api3/index.html?id=${id}`,
-        PORT: `https://superflixapi.dev/${type === 'tv' ? 'serie' : 'filme'}/${id}`,
-        MULTLANG: `https://player.autoembed.cc/embed/${type}/${id}`,
-        ANIME1DUB: `https://embed.anicdn.top/v/${animeTitle}-dub`,
-        ANIME1SUB: `https://embed.anicdn.top/v/${animeTitle}`,
-        ANIME2DUB: `https://2anime.xyz/embed/${animeTitle}-dub`,
-        ANIME2SUB: `https://2anime.xyz/embed/${animeTitle}`,
-        ANIME3DUB: `https://anime.autoembed.cc/embed/${animeTitle}-dub`,
-        ANIME3SUB: `https://anime.autoembed.cc/embed/${animeTitle}`,
+        PRO: `${playerURLs.VITE_STREAM_PRO}/embed/${type}/${id}`,
+        VIDBINGE: `${playerURLs.VITE_STREAM_VIDBINGE}/embed/${type}/${id}`,
+        MAFIA: `${playerURLs.VITE_STREAM_MAFIA}/${type}/${id}`,
+        VIDLINK: `${playerURLs.VITE_STREAM_VIDLINK}/${type}/${id}`,
+        ONSTREAM: `${playerURLs.VITE_STREAM_ONSTREAM}/tests/whatstream/${id}`,
+        ROLLER: `${playerURLs.VITE_STREAM_ROLLER}/tests/rollerdice/${id}`,
+        TO: `${playerURLs.VITE_STREAM_TO}/v2/embed/${type}/${id}`,
+        SFLIX: `${playerURLs.VITE_STREAM_SFLIX}/${type}/${id}/watch?server=1`,
+        VIP: `${playerURLs.VITE_STREAM_VIP}/directstream.php?video_id=${id}&tmdb=1`,
+        MULTI: `${playerURLs.VITE_STREAM_MULTI}/?video_id=${id}&tmdb=1`,
+        CLUB: `${playerURLs.VITE_STREAM_CLUB}/${type}/${id}`,
+        XYZ: `${playerURLs.VITE_STREAM_XYZ}/embed/${type}/${id}`,
+        SS: `${playerURLs.VITE_STREAM_SS}/embed/${type}/${id}`,
+        FRENCH: `${playerURLs.VITE_STREAM_FRENCH}/api/${type === 'tv' ? 'serie' : 'film'}.php?id=${id}`,
+        INDIAN: `${playerURLs.VITE_STREAM_INDIAN}/player/${type === 'tv' ? 'series' : 'movies'}/api3/index.html?id=${id}`,
+        PORT: `${playerURLs.VITE_STREAM_PORT}/${type === 'tv' ? 'serie' : 'filme'}/${id}`,
+        MULTLANG: `${playerURLs.VITE_STREAM_MULTLANG}/embed/${type}/${id}`,
+        ANIME1DUB: `${playerURLs.VITE_STREAM_ANIME1DUB}/embed/${animeTitle}-dub`,
+        ANIME1SUB: `${playerURLs.VITE_STREAM_ANIME1SUB}/embed/${animeTitle}`,
+        ANIME2DUB: `${playerURLs.VITE_STREAM_ANIME2DUB}/embed/${animeTitle}-dub`,
+        ANIME2SUB: `${playerURLs.VITE_STREAM_ANIME2SUB}/embed/${animeTitle}`,
+        ANIME3DUB: `${playerURLs.VITE_STREAM_ANIME3DUB}/embed/${animeTitle}-dub`,        
+        ANIME3SUB: `${playerURLs.VITE_STREAM_ANIME3SUB}/embed/${animeTitle}`,
     };
 
     const getServerURL = () => {
