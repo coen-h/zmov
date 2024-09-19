@@ -18,11 +18,12 @@ export default function Player() {
     const serverURLs = {
         PRO: `${playerURLs.VITE_STREAM_PRO}/embed/${type}/${id}`,
         VIDBINGE: `${playerURLs.VITE_STREAM_VIDBINGE}/embed/${type}/${id}`,
-        MAFIA: `${playerURLs.VITE_STREAM_MAFIA}/${type}/${id}`,
         VIDLINK: `${playerURLs.VITE_STREAM_VIDLINK}/${type}/${id}`,
+        RIP: `${playerURLs.VITE_STREAM_RIP}/embed/${type}/${id}`,
+        NL: `${playerURLs.VITE_STREAM_NL}/embed/${type}/${id}`,
         ONSTREAM: `${playerURLs.VITE_STREAM_ONSTREAM}/tests/whatstream/${id}`,
         ROLLER: `${playerURLs.VITE_STREAM_ROLLER}/tests/rollerdice/${id}`,
-        TO: `${playerURLs.VITE_STREAM_TO}/v2/embed/${type}/${id}`,
+        CC: `${playerURLs.VITE_STREAM_CC}/v3/embed/${type}/${id}`,
         SFLIX: `${playerURLs.VITE_STREAM_SFLIX}/${type}/${id}/watch?server=1`,
         VIP: `${playerURLs.VITE_STREAM_VIP}/directstream.php?video_id=${id}&tmdb=1`,
         MULTI: `${playerURLs.VITE_STREAM_MULTI}/?video_id=${id}&tmdb=1`,
@@ -33,8 +34,8 @@ export default function Player() {
         INDIAN: `${playerURLs.VITE_STREAM_INDIAN}/player/${type === 'tv' ? 'series' : 'movies'}/api3/index.html?id=${id}`,
         PORT: `${playerURLs.VITE_STREAM_PORT}/${type === 'tv' ? 'serie' : 'filme'}/${id}`,
         MULTLANG: `${playerURLs.VITE_STREAM_MULTLANG}/embed/${type}/${id}`,
-        ANIME1DUB: `${playerURLs.VITE_STREAM_ANIME1DUB}/embed/${animeTitle}-dub`,
-        ANIME1SUB: `${playerURLs.VITE_STREAM_ANIME1SUB}/embed/${animeTitle}`,
+        ANIME1DUB: `${playerURLs.VITE_STREAM_ANIME1DUB}/v/${animeTitle}-dub`,
+        ANIME1SUB: `${playerURLs.VITE_STREAM_ANIME1SUB}/v/${animeTitle}`,
         ANIME2DUB: `${playerURLs.VITE_STREAM_ANIME2DUB}/embed/${animeTitle}-dub`,
         ANIME2SUB: `${playerURLs.VITE_STREAM_ANIME2SUB}/embed/${animeTitle}`,
         ANIME3DUB: `${playerURLs.VITE_STREAM_ANIME3DUB}/embed/${animeTitle}-dub`,        
@@ -124,7 +125,7 @@ export default function Player() {
     }, [id, type, location.pathname, apiKey]);
 
     useEffect(() => {
-        if (selectedServer === 'TO' || selectedServer === 'XYZ' || selectedServer === 'MULTI' || selectedServer === 'PRIME' || selectedServer === 'INDIAN' || selectedServer === 'MULTLANG' || selectedServer === 'ANIME1DUB' || selectedServer === 'ANIME1SUB' || selectedServer === 'ANIME2DUB' || selectedServer === 'ANIME2SUB' || selectedServer === 'ANIME3DUB' || selectedServer === 'ANIME3SUB' || selectedServer === 'NL') {
+        if (selectedServer === 'CC' || selectedServer === 'XYZ' || selectedServer === 'MULTI' || selectedServer === 'INDIAN' || selectedServer === 'MULTLANG' || selectedServer === 'ANIME1DUB' || selectedServer === 'ANIME1SUB' || selectedServer === 'ANIME2DUB' || selectedServer === 'ANIME2SUB' || selectedServer === 'ANIME3DUB' || selectedServer === 'ANIME3SUB' || selectedServer === 'NL') {
             setGridPos(35);
         } else {
             setGridPos(0);
@@ -186,15 +187,16 @@ export default function Player() {
                         <option style={{backgroundColor: "rgba(50,50,50,1)"}} selected disabled>ADFREE</option>
                         <hr/>
                         <option value="VIDLINK">VIDLINK</option>
+                        <option value="CC">CC (4K)</option>
                         <option value="ROLLER">ROLLER</option>
-                        <option value="MAFIA">MAFIA</option>
+                        <option value="NL">NL</option>
+                        <option value="RIP">RIP</option>
                         <option value="ONSTREAM">ONSTREAM</option>
                         <hr/>
                         <option style={{backgroundColor: "rgba(50,50,50,1)"}} selected disabled>ADS</option>
                         <hr/>
                         <option value="VIDBINGE">BINGE (4K)</option>
                         <option value="PRO">PRO</option>
-                        <option value="TO">TO</option>
                         <option value="VIP">VIP</option>
                         <option value="CLUB">CLUB</option>
                         <option value="XYZ">XYZ</option>
