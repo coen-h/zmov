@@ -3,6 +3,7 @@ import { useParams, Link, useLocation } from 'react-router-dom';
 
 export default function Player() {
     const { type, id } = useParams();
+    const [imdbId, setImdbId] = useState('');
     const [animeTitle, setAnimeTitle] = useState('');
     const location = useLocation();
     const [gridPos, setGridPos] = useState(0);
@@ -21,10 +22,7 @@ export default function Player() {
         VIDLINK: `${playerURLs.VITE_STREAM_VIDLINK}/${type}/${id}`,
         RIP: `${playerURLs.VITE_STREAM_RIP}/embed/${type}/${id}`,
         NL: `${playerURLs.VITE_STREAM_NL}/embed/${type}/${id}`,
-        ONSTREAM: `${playerURLs.VITE_STREAM_ONSTREAM}/tests/whatstream/${id}`,
-        ROLLER: `${playerURLs.VITE_STREAM_ROLLER}/tests/rollerdice/${id}`,
         CC: `${playerURLs.VITE_STREAM_CC}/v3/embed/${type}/${id}`,
-        SFLIX: `${playerURLs.VITE_STREAM_SFLIX}/${type}/${id}/watch?server=1`,
         VIP: `${playerURLs.VITE_STREAM_VIP}/directstream.php?video_id=${id}&tmdb=1`,
         MULTI: `${playerURLs.VITE_STREAM_MULTI}/?video_id=${id}&tmdb=1`,
         CLUB: `${playerURLs.VITE_STREAM_CLUB}/${type}/${id}`,
@@ -33,6 +31,7 @@ export default function Player() {
         FRENCH: `${playerURLs.VITE_STREAM_FRENCH}/api/${type === 'tv' ? 'serie' : 'film'}.php?id=${id}`,
         INDIAN: `${playerURLs.VITE_STREAM_INDIAN}/player/${type === 'tv' ? 'series' : 'movies'}/api3/index.html?id=${id}`,
         PORT: `${playerURLs.VITE_STREAM_PORT}/${type === 'tv' ? 'serie' : 'filme'}/${id}`,
+        RUSSIAN: `${playerURLs.VITE_STREAM_RUSSIAN}/embed/imdb/${imdbId}`,
         MULTLANG: `${playerURLs.VITE_STREAM_MULTLANG}/embed/${type}/${id}`,
         ANIME1DUB: `${playerURLs.VITE_STREAM_ANIME1DUB}/v/${animeTitle}-dub`,
         ANIME1SUB: `${playerURLs.VITE_STREAM_ANIME1SUB}/v/${animeTitle}`,
@@ -40,6 +39,7 @@ export default function Player() {
         ANIME2SUB: `${playerURLs.VITE_STREAM_ANIME2SUB}/embed/${animeTitle}`,
         ANIME3DUB: `${playerURLs.VITE_STREAM_ANIME3DUB}/embed/${animeTitle}-dub`,        
         ANIME3SUB: `${playerURLs.VITE_STREAM_ANIME3SUB}/embed/${animeTitle}`,
+
     };
 
     const getServerURL = () => {
@@ -61,6 +61,8 @@ export default function Player() {
                 url += `/${episode}`;
             } else if (selectedServer === 'ANIME2DUB' || selectedServer === 'ANIME2SUB' || selectedServer === 'ANIME3DUB' || selectedServer === 'ANIME3SUB') {
                 url += `-episode-${episode}`;
+            } else if (selectedServer === 'RUSSIAN') {
+                url += `?season=${season}&episode=${episode}`;
             } else {
                 url += `/${season}/${episode}`;
             }
@@ -85,8 +87,9 @@ export default function Player() {
 
         const fetchData = async () => {
             try {
-                const response = await fetch(`https://api.themoviedb.org/3/${type}/${id}?api_key=${apiKey}&append_to_response=alternative_titles`);
+                const response = await fetch(`https://api.themoviedb.org/3/${type}/${id}?api_key=${apiKey}&append_to_response=alternative_titles&external_source=imdb_id`);
                 const data = await response.json();
+                setImdbId(data.imdb_id);
                 setAnimeTitle(data.alternative_titles.results.find((item) => item.type === "Romaji")?.title.replace(/\s+/g, '-'));                  
 
                 document.title = `${data.title || data.name} ${type === "movie" ? '' : `S${seasonParam}E${episodeParam}`} - zmov`;
@@ -188,10 +191,8 @@ export default function Player() {
                         <hr/>
                         <option value="VIDLINK">VIDLINK</option>
                         <option value="CC">CC (4K)</option>
-                        <option value="ROLLER">ROLLER</option>
                         <option value="NL">NL</option>
                         <option value="RIP">RIP</option>
-                        <option value="ONSTREAM">ONSTREAM</option>
                         <hr/>
                         <option style={{backgroundColor: "rgba(50,50,50,1)"}} selected disabled>ADS</option>
                         <hr/>
@@ -201,7 +202,6 @@ export default function Player() {
                         <option value="CLUB">CLUB</option>
                         <option value="XYZ">XYZ</option>
                         <option value="MULTI">MULTI</option>
-                        <option value="SFLIX">SFLIX</option>
                         <option value="SS">SMASHY</option>
                         <hr/>
                         <option style={{backgroundColor: "rgba(50,50,50,1)"}} selected disabled>LANGUAGE</option>
@@ -209,6 +209,7 @@ export default function Player() {
                         <option value="FRENCH">FRENCH</option>
                         <option value="INDIAN">INDIAN</option>
                         <option value="PORT">PORT</option>
+                        <option value="RUSSIAN">RUSSIAN</option>
                         <option value="MULTLANG">MULTLANG</option>
                         <hr/>
                         <option style={{backgroundColor: "rgba(50,50,50,1)"}} selected disabled>ANIME</option>
