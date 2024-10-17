@@ -890,7 +890,7 @@ a {
     width: 120px;
     height: 50px;
     cursor: pointer;
-    background-color: rgba(255,255,255,0.2);
+    background-color: rgba(255,255,255,1);
     border-radius: 10px;
     font-size: 1.2rem;
     font-weight: bold;
@@ -898,7 +898,7 @@ a {
     transition: all 150ms ease;
 }
 #play-button:hover {
-    background-color: rgba(255,255,255,.4);
+    background-color: rgba(255,255,255,0.5);
 }
 #info-bar {
     display: flex;

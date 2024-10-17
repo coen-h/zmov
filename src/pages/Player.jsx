@@ -67,9 +67,7 @@ export default function Player() {
                 url += `/${season}/${episode}`;
             }
         }
-        if (selectedServer === 'PRO') {
-            url += '?player=new';
-        } else if (selectedServer === 'VIDLINK') {
+        if (selectedServer === 'VIDLINK') {
             url += '?primaryColor=B20710&secondaryColor=170000&autoplay=true&nextbutton=true';   
         } else if (selectedServer === 'ANIME1DUB' || selectedServer === 'ANIME1SUB') {
             url += '.html';
@@ -196,7 +194,7 @@ export default function Player() {
                         <hr/>
                         <option style={{backgroundColor: "rgba(50,50,50,1)"}} selected disabled>ADS</option>
                         <hr/>
-                        <option value="VIDBINGE">BINGE (4K)</option>
+                        <option value="VIDBINGE">BINGE</option>
                         <option value="PRO">PRO</option>
                         <option value="VIP">VIP</option>
                         <option value="CLUB">CLUB</option>

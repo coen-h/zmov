@@ -199,7 +199,7 @@ export default function Info() {
               <div style={{display: "flex", flexDirection: "row", gap: "10px"}}>
                 <Link to={getPlayLink()}>
                   <button id="play-button">
-                    <i className="fa-solid fa-play" style={{fontSize: "18px"}} alt="Play Icon" /><p>Play</p>
+                    <i className="fa-solid fa-play" style={{color: "black", fontSize: "18px"}} alt="Play Icon" /><p style={{color: "black"}}>Play</p>
                   </button>
                 </Link>
                 <button style={{width: "auto", height: "auto", padding: "0.5rem"}} id="watch-button" onClick={toggleWatchlist}>
