@@ -48,31 +48,32 @@ export default function Header() {
   }, [lastScrollTop]);
 
   return (
-    <div id="header" className={`${isVisible ? 'visible' : 'show'} ${isTop ? 'no-filter' : 'with-filter'}`}>
-      <div id="header-section">
+    <div id="header" className={`flex fixed h-20 w-screen z-[1111] transition-all duration-300 ease-in-out bg-gradient-to-b from-gray-950 ${isVisible ? 'visible' : 'show'} ${isTop ? 'backdrop-blur-0' : 'backdrop-blur-sm'}`}>
+      <div id="header-section" className='flex justify-between items-center flex-grow my-4 mx-12'>
         <div id="header-left">
           <Link to="/">
-            <img src="/images/logo.svg" id="header-logo" alt="Logo" />
+            <img src="/images/logo.svg" id="header-logo" className='w-[100px] transition-all duration-150 east-in-out mt-1 hover:opacity-60 scale-[0.97]' alt="Logo" />
           </Link>
         </div>
-        <div id="header-right">
+        <div id="header-right" className='flex gap-4'>
           <InstallButton />
-          <div id="search">
+          <div id="search" className='relative transition-all duration-150 ease-in-out hover:opacity-80'>
             <input
               type="text"
               id="search-input"
+              className='pl-10 h-10 w-[200px] text-base border-0 outline-none transition-all duration-300 ease-in-out bg-white bg-opacity-20 box-shadow-md shadow-lg rounded-[50px] cursor-text'
               required
               placeholder="Type to search..."
               ref={searchInputRef}
               onKeyPress={handleKeyPress}
             />
-            <div className="icon">
-              <i className="fa-regular fa-magnifying-glass" alt="Search" style={{fontSize: "25px", padding: "2px 0 0 2px"}} />
+            <div className="icon absolute w-[200px] h-10 top-0 left-0 p-[6px] pointer-events-none">
+              <i className="fa-regular fa-magnifying-glass text-2xl pt-[2px] pl-[2px]" alt="Search"/>
             </div>
           </div>
-          <button id="settings">
+          <button id="settings" className='w-[42px] h-[42px] bg-white bg-opacity-20 border-none border-radius-50% box-shadow-md shadow-lg transition-all duration-300 ease-in-out hover:scale-95 hover:rotate-60'>
             <Link to="/settings">
-              <i className="fa-light fa-gear" alt="Settings" style={{ fontSize: "30px" }} />
+              <i className="fa-light fa-gear text-3xl" alt="Settings" />
             </Link>
           </button>
         </div>
