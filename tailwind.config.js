@@ -23,6 +23,9 @@ export default {
       // animation: {
       //   'loaded': 'siteLoad 1.5s ease',
       // },
+      backgroundImage: {
+        'hero-gradient': 'linear-gradient(to top, rgba(0, 0, 0, 1) 0%, rgb(15, 11, 9) 50%, rgba(0, 0, 0, 1) 97%, rgba(0, 0, 0, 0) 100%)',
+      },
     },
   },
   plugins: [],

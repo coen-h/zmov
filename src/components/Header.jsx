@@ -55,7 +55,7 @@ export default function Header() {
             <img src="/images/logo.svg" id="header-logo" className='w-[100px] transition-all duration-150 east-in-out mt-1 hover:opacity-60 scale-[0.97]' alt="Logo" />
           </Link>
         </div>
-        <div id="header-right" className='flex gap-4'>
+        <div id="header-right" className='flex gap-2'>
           <InstallButton />
           <div id="search" className='relative transition-all duration-150 ease-in-out hover:opacity-80'>
             <input
@@ -71,7 +71,7 @@ export default function Header() {
               <i className="fa-regular fa-magnifying-glass text-2xl pt-[2px] pl-[2px]" alt="Search"/>
             </div>
           </div>
-          <button id="settings" className='w-[42px] h-[42px] bg-white bg-opacity-20 border-none border-radius-50% box-shadow-md shadow-lg transition-all duration-300 ease-in-out hover:scale-95 hover:rotate-60'>
+          <button id="settings" className='w-[42px] h-[42px] bg-white bg-opacity-20 border-none rounded-[50%] box-shadow-md shadow-lg transition-all duration-300 ease-in-out hover:scale-95 hover:rotate-60'>
             <Link to="/settings">
               <i className="fa-light fa-gear text-3xl" alt="Settings" />
             </Link>

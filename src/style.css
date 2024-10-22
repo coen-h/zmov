@@ -62,35 +62,11 @@ a {
 
 /* NOTFOUND */
 
-
 /* HEADER */
 
 /* HERO */
 
-#hero-image {
-    position: absolute;
-    z-index: -1;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    opacity: 0.3;
-}
-#hero-bar {
-    display: flex;
-    gap: 10px;
-}
-
-
 /* HOME */
-
-
-#home {
-    z-index: 1;
-    position: relative;
-    background: linear-gradient(to top, rgba(0, 0, 0, 1) 0%, rgb(15, 11, 9) 50%, rgba(0, 0, 0, 1) 97%, rgba(0, 0, 0, 0) 100%);
-    top: -20vh;
-    margin-bottom: -20vh;
-}
 
 /* DISCOVER */
 
@@ -100,30 +76,14 @@ a {
     flex-direction: column;
     z-index: 2;
 }
-#discover-section {
-    display: flex;
-    flex-direction: column;
-    margin: 1rem 2.5rem;
-}
-#discover-title {
-    font-size: 2rem;
-    margin-left: 0.5rem;
-    font-weight: bold;
-    text-shadow: 2px 2px rgba(0, 0, 0, 0.2)
-}
 #discover-card {
     display: flex;
     flex-direction: row;
     padding: 12px;
     min-height: 19vw;
 }
-#discover-slider {
-    width: 12vw;
-    height: 100%;
-    margin-right: 15px;
-}
 .swiper-button-next, .swiper-button-prev {
-    color: white !important;
+    color: rgba(255,255,255,0.8) !important;
     padding: 0 10px !important;
     height: 100% !important;
     top: 2% !important;
@@ -222,11 +182,6 @@ a {
 .card:hover .fa-play {
     opacity: 1;
 }
-#discover-main {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-}
 
 
 /* SERVICE */
@@ -237,30 +192,6 @@ a {
     justify-content: center;
     gap: 1vw;
     margin: 3rem 3rem 2rem 3rem;
-}
-.service-card {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: rgba(170, 170, 170, 0.85);
-    padding: 1.2vw 2.4vw;
-    border-radius: 12px;
-    box-shadow: inset 0px 0px 20px 1px rgb(66, 66, 66);
-    width: 100%;
-    transition: all 200ms ease;
-    overflow: hidden;
-}
-#service-button {
-    padding: 10px 20px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    background-color: rgba(255,255,255,0.3);
-    font-size: 1.1rem;
-    font-weight: bold;
-    border: 0;
-    transition: all 150ms ease;
-    cursor: pointer;
 }
 #service-button:disabled {
     cursor:unset;

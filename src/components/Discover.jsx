@@ -40,12 +40,12 @@ export default function Discover(props) {
   };
 
   return (
-    <div id="discover-section">
-      <p id="discover-title">{props.name}</p>
-      <div id="discover-main">
+    <div id="discover-section" className='flex flex-col my-4 mx-10'>
+      <p id="discover-title" className=' text-[2rem] ml-2 font-bold'>{props.name}</p>
+      <div id="discover-main" className='flex items-center'>
         <Swiper {...swiperParams}>
           {movies.map((item, index) => (
-            <SwiperSlide key={index} id="discover-slider">
+            <SwiperSlide key={index} id="discover-slider" className='w-[12vw] h-full mr-[15px]'>
               <Card item={item} type={props.type} />
             </SwiperSlide>
           ))}

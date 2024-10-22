@@ -83,25 +83,25 @@ export default function Services() {
     <>
       <LoadingBar color="#FF0000" ref={loadingBarRef} />
       <Header />
-      <div style={{minHeight: "100vh", margin: "0rem 5rem", paddingTop: "5rem"}}>
-        <p style={{fontSize: "3rem", fontWeight: "bold", textAlign: "center", marginBottom: "1rem"}}>{name}</p>
-        <div style={{display: "flex", justifyContent: "center", flexWrap: "wrap", gap: "15px"}}>
+      <div className='min-h-screen mx-20 pt-20'>
+        <p className='text-[3rem] font-bold text-center mb-4'>{name}</p>
+        <div className='flex justify-center flex-wrap gap-[15px]'>
           {movies.map((item, index) => (
             <Card key={index} item={item} type='movie' csize="big-card" size="big-image" />
           ))}
         </div>
-        <div style={{display: "flex", justifyContent: "center", alignItems: "center", marginTop: "30px", gap: "2px"}}>
-          <button id="service-button" style={{borderRadius: "8px 0 0 8px"}} onClick={handleFarBack} disabled={page === 1}>
+        <div className='flex justify-center items-center mt-[30px] gap-[2px]'>
+          <button id="service-button" className='flex items-center gap-2 font-bold text-lg border-none transition-all duration-150 ease-in-out cursor-ponter bg-white bg-opacity-30 px-5 py-[10px] rounded-l-lg' onClick={handleFarBack} disabled={page === 1}>
             <i className="fa-solid fa-chevrons-left" />
           </button>
-          <button id="service-button" onClick={handleBack} disabled={page === 1}>
+          <button id="service-button" className='flex items-center gap-2 font-bold text-lg border-none transition-all duration-150 ease-in-out cursor-ponter bg-white bg-opacity-30 px-5 py-[10px]' onClick={handleBack} disabled={page === 1}>
             <i className="fa-solid fa-angle-left" />
           </button>
-          <span style={{display: "flex", alignItems: "center", padding: "8px 16px", backgroundColor: "rgba(255,255,255,0.3)"}}>{page}</span>
-          <button id="service-button" onClick={handleNext} disabled={page >= totalPage}>
+          <span className='flex items-center py-2 px-4 bg-white bg-opacity-30'>{page}</span>
+          <button id="service-button" className='flex items-center gap-2 font-bold text-lg border-none transition-all duration-150 ease-in-out cursor-ponter bg-white bg-opacity-30 px-5 py-[10px]' onClick={handleNext} disabled={page >= totalPage}>
             <i className="fa-solid fa-angle-right" />
           </button>
-          <button id="service-button" style={{borderRadius: "0 8px 8px 0"}} onClick={handleFarNext} disabled={page >= totalPage}>
+          <button className='flex items-center gap-2 font-bold text-lg border-none transition-all duration-150 ease-in-out cursor-ponter bg-white bg-opacity-30 px-5 py-[10px] rounded-r-lg' id="service-button" onClick={handleFarNext} disabled={page >= totalPage}>
             <i className="fa-solid fa-chevrons-right" />
           </button>
         </div>

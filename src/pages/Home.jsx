@@ -18,7 +18,7 @@ export default function Home() {
     <>
       <Header />
       <Hero />
-      <div id="home">
+      <div id="home" className='z-[1] relative top-[-20vh] mb-[-20vh] bg-hero-gradient'>
         <div id='service'>
           <ServiceCard img="/images/netflix.svg" type="netflix" style={{backgroundImage: "linear-gradient(to top left, rgb(152, 0, 0), black,  black,  black, rgb(152, 0, 0))"}} />
           <ServiceCard img="/images/disney.svg"  type="disney" style={{backgroundImage: "linear-gradient(to bottom, rgb(0, 0, 0), rgba(0, 58, 183, 0.8))"}} />
