@@ -126,7 +126,7 @@ export default function Player() {
     }, [id, type, location.pathname, apiKey]);
 
     useEffect(() => {
-        if (selectedServer === 'CC' || selectedServer === 'XYZ' || selectedServer === 'MULTI' || selectedServer === 'INDIAN' || selectedServer === 'MULTLANG' || selectedServer === 'ANIME1DUB' || selectedServer === 'ANIME1SUB' || selectedServer === 'ANIME2DUB' || selectedServer === 'ANIME2SUB' || selectedServer === 'ANIME3DUB' || selectedServer === 'ANIME3SUB' || selectedServer === 'NL') {
+        if (selectedServer === 'XYZ' || selectedServer === 'MULTI' || selectedServer === 'INDIAN' || selectedServer === 'MULTLANG' || selectedServer === 'ANIME1DUB' || selectedServer === 'ANIME1SUB' || selectedServer === 'ANIME2DUB' || selectedServer === 'ANIME2SUB' || selectedServer === 'ANIME3DUB' || selectedServer === 'ANIME3SUB' || selectedServer === 'NL') {
             setGridPos(35);
         } else {
             setGridPos(0);
@@ -169,16 +169,16 @@ export default function Player() {
 
     return (
         <>
-            <div style={{display: "flex", width: "100vw", height: "100vh"}}>
+            <div className='flex w-screen h-screen'>
                 <iframe 
                     src={getServerURL()} 
                     allowFullScreen={true}
-                    style={{ width: "100%", height: "100%", border: '0' }}
+                    className='w-screen h-screen border-0'
                 ></iframe>
             </div>
-            <div id="button-grid" style={{top: gridPos}}>
+            <div id="button-grid" className='flex justify-between w-screen absolute pointer-events-none' style={{top: gridPos}}>
                 <Link to={`/info/${type}/${id}`} id="player-button"><i className="fa-solid fa-arrow-left" alt="Back" style={{fontSize: "26px"}} /></Link>
-                <div style={{display: "flex", alignItems: "center"}}>
+                <div className='flex items-center'>
                     <select 
                         name="servers" 
                         value={selectedServer} 
@@ -220,7 +220,7 @@ export default function Player() {
                         <option value="ANIME3SUB">ANI3-SUB</option>
                     </select>
                     {type === 'tv' && season && episode && (
-                        <Link to={nextEpisodeLink} id="player-button"><i className="fa-solid fa-arrow-right" style={{fontSize: "26px"}} alt="Next" /></Link>
+                        <Link to={nextEpisodeLink} id="player-button" className='p-[10px] cursor-pointer transition-all duration-150 hover:scale-125'><i className="fa-solid fa-arrow-right" style={{fontSize: "26px"}} alt="Next" /></Link>
                     )}
                 </div>
             </div>

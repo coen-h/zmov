@@ -17,11 +17,11 @@ export default function WatchlistCard({ item, type, onRemove }) {
   };
 
   return (
-    <div className="watch-card">
-      <Link to={`/info/${type}/${item.id}`} className="watch-card-link">
-        <img className="watch-card-image" src={`https://image.tmdb.org/t/p/w500/${item.poster_path}`} alt="Poster" />
-        <div className="watchlist-content">
-          <div className="card-play"><i className="fa-solid fa-play" style={{color: "#ffffff", fontSize: "2.5rem"}} alt="Play Icon" /></div>
+    <div className="watch-card flex relative w-[12vw] h-full rounded-lg text-base transition-all duration-200 ease-in-out overflow-hidden">
+      <Link to={`/info/${type}/${item.id}`} className="watch-card-link group">
+        <img className="watch-card-image group-hover:scale-105 w-[12vw] h-full rounded-lg transition-all duration-200 ease-in-out" src={`https://image.tmdb.org/t/p/w500/${item.poster_path}`} alt="Poster" />
+        <div className="watchlist-content absolute top-0 left-0 w-full h-full flex justify-end  flex-col items-center text-center font-semibold transition-all duration-200 ease-in-out bg-gradient-to-t from-black rounded-md z-10 shadow-lg">
+          <div className="card-play group-hover:opacity-100"><i className="fa-solid fa-play group-hover:opacity-100 text-white text-[2.5rem]" alt="Play Icon" /></div>
           <button id="watchlist-button" onClick={(event) => removeItem(event, item.id)}>
             <i className="fa-light fa-trash-can" style={{fontSize: "18px", color: "#000000"}} alt="Remove" />
           </button>

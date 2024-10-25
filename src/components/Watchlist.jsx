@@ -43,20 +43,20 @@ export default function Watchlist() {
 
   return (
     <>
-      <div id="settings-main">
-        <div style={{ marginBottom: '0.2rem' }} id="watchlist-title">
-          <div id="settings-button-grid">
+      <div id="settings-main" className='flex flex-col bg-white bg-opacity-10 rounded-xl mx-20 px-2 pb-2'>
+        <div id="watchlist-title" className='flex justify-between items-center order-[-1] mt-2 mb-4 gap-8'>
+          <div id="settings-button-grid" className='flex justify-between w-screen'>
             <div>
               <button
                 id="settings-button"
-                style={{ borderRadius: "8px 0 0 8px", backgroundColor: activeButton === 'continueWatching' ? 'rgba(255, 70, 70, 0.5)' : 'rgba(255,255,255,0.2)' }}
+                className={`border-0 cursor-pointer text-[1.05rem] p-[0.4rem] rounded-s-lg bg-${activeButton === 'continueWatching' ? 'red-900' : 'neutral-800'}`}
                 onClick={() => handleButtonClick('continueWatching')}
               >
                 Continue Watching
               </button>
               <button
                 id="settings-button"
-                style={{ borderRadius: "0 8px 8px 0", backgroundColor: activeButton === 'watchlist' ? 'rgba(255, 70, 70, 0.5)' : 'rgba(255,255,255,0.2)' }}
+                className={`border-0 cursor-pointer text-[1.05rem] p-[0.4rem] rounded-e-lg bg-${activeButton === 'watchlist' ? 'red-900' : 'neutral-800'}`}
                 onClick={() => handleButtonClick('watchlist')}
               >
                 Watchlist
@@ -64,15 +64,15 @@ export default function Watchlist() {
             </div>
             <div>
               {activeButton === 'watchlist' && (
-                <button id="watchlist-clear" onClick={clearWatchlist}>Clear</button>
+                <button id="watchlist-clear" className="w-[70px] h-[35px] rounded-lg text-[1.05rem] border-0 bg-white bg-opacity-20 cursor-pointer hover:bg-opacity-10 active:scale-95" onClick={clearWatchlist}>Clear</button>
               )}
               {activeButton === 'continueWatching' && (
-                <button id="watchlist-clear" onClick={clearContinueWatching}>Clear</button>
+                <button id="watchlist-clear" className="w-[70px] h-[35px] rounded-lg text-[1.05rem] border-0 bg-white bg-opacity-20 cursor-pointer hover:bg-opacity-10 active:scale-95" onClick={clearContinueWatching}>Clear</button>
               )}
             </div>
           </div>
         </div>
-        <div id="watchlist-card">
+        <div id="watchlist-card" className='flex justify-center flex-wrap gap-3'>
           {activeButton === 'watchlist' && (
             watchlist.length > 0 ? (
               watchlist.map((item, index) => (
@@ -81,7 +81,7 @@ export default function Watchlist() {
                 </div>
               ))
             ) : (
-              <p id="watchlist-message">Your Watchlist is Empty!</p>
+              <p id="watchlist-message" className='flex items-center justify-center text-center p-[5vw]'>Your Watchlist is Empty!</p>
             )
           )}
           {activeButton === 'continueWatching' && (

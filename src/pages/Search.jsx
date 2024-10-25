@@ -37,10 +37,10 @@ export default function Search() {
         <>  
             <LoadingBar color="#FF0000" ref={loadingBarRef} />
             <Header />
-            <div id="search-section">
-                <p id="search-title">Search Results:</p>
-                <p id="search-query">&quot;{query}&quot;</p>
-                <div id="search-results">
+            <div id="search-section" className='min-h-screen my-0 mx-[18vw] pt-28'>
+                <p id="search-title" className='text-2xl'>Search Results:</p>
+                <p id="search-query" className='text-[2rem] font-bold mb-6'>&quot;{query}&quot;</p>
+                <div id="search-results" className='flex justify-center flex-wrap gap-[1.2vw]'>
                     {items.map(item => (
                         <Card key={item.id} csize="big-card" size="big-image" item={item} type={item.media_type} />
                     ))}
