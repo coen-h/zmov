@@ -64,12 +64,12 @@ export default function Header() {
               onKeyPress={handleKeyPress}
             />
             <div className="icon absolute w-[200px] max-xs:w-[60vw] h-[42px] top-0 left-0 p-[6px] pointer-events-none">
-              <i className="fa-regular fa-magnifying-glass text-2xl pt-[2px] pl-[2px]" alt="Search"/>
+              <i className="fa-regular fa-magnifying-glass text-2xl leading-6 pt-[2px] pl-[2px]" alt="Search"/>
             </div>
           </div>
           <button className='w-[42px] h-[42px] pt-[2px] bg-white bg-opacity-20 border-none rounded-[50%] shadow-lg transition-all duration-150 hover:scale-95 hover:rotate-45'>
             <Link to="/settings">
-              <i className="fa-light fa-gear text-3xl" alt="Settings" />
+              <i className="fa-light fa-gear text-3xl leading-[30px]" alt="Settings" />
             </Link>
           </button>
         </div>
