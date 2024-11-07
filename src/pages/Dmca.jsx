@@ -11,8 +11,8 @@ export default function Dmca() {
     return (
         <>
             <Header />
-            <div id="dmca-section" className='flex justify-center items-center py-[5.5rem] w-screen'>
-                <div id="dmca-content" className='flex flex-col min-h-[82vh] max-w-[80vw] justify-center items-center gap-[50px]'>
+            <div className='flex justify-center items-center py-[5.5rem] w-screen'>
+                <div className='flex flex-col min-h-[82vh] max-w-[80vw] justify-center items-center gap-[50px]'>
                     <div>
                         <p>We take the intellectual property rights of others seriously and require that our users do the same. 
                             The Digital Millennium Copyright Act (DMCA) established a process for addressing claims of copyright infringement. 

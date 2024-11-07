@@ -66,9 +66,9 @@ export default function Discover(props) {
   };
 
   return (
-    <div id="discover-section" className='flex flex-col my-4 mx-10 max-2xl:mx-0'>
-      <p id="discover-title" className=' text-[2rem] ml-2 font-bold max-xl:ml-3 max-md:text-[7vw]'>{props.name}</p>
-      <div id="discover-main" className='flex items-center'>
+    <div className='flex flex-col my-4 mx-10 max-2xl:mx-0'>
+      <p className=' text-[2rem] ml-2 font-bold max-xl:ml-3 max-md:text-[7vw]'>{props.name}</p>
+      <div className='flex items-center'>
         <Swiper {...swiperParams}>
           {movies.map((item, index) => (
             <SwiperSlide key={index} style={{width: slideWidth, height: '100%'}} className='mr-[0.75vw] max-xl:mr-[1.5vw]'>

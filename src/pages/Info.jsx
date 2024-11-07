@@ -163,46 +163,46 @@ export default function Info() {
       <Header />
       <LoadingBar color="#FF0000" ref={loadingBarRef} />
       {data.isLoading ? (
-        <div className="loader">
-          <img src='/images/icon.svg' alt="Loading..." />
+        <div className="w-screen h-screen flex grayscale justify-center items-center">
+          <img className='w-[100px] animate-loaderImg' src='/images/icon.svg' alt="Loading..." />
         </div>
       ) : data.error ? (
-        <div className="error">
-          <p>{data.error}</p>
+        <div className="w-screen h-screen flex grayscale justify-center items-center">
+          <p className='text-2xl font-bold'>{data.error}</p>
         </div>
       ) : (
         <>
-          <div id="info-container" className='flex justify-center items-center w-screen h-screen gap-12 text-center'>
-            <img id="info-backdrop" style={{ opacity: isTop ? 0.35 : 0.25 }} className={`${isTop ? 'blur-0' : 'blur-sm'} z-[-2] fixed top-0 w-full h-full object-cover transition-all duration-500`} src={data.item.backdrop_path && `https://image.tmdb.org/t/p/original${data.item.backdrop_path}`} alt="Backdrop" />
-            <img id="info-poster" className='w-[300px] rounded-xl z-[12] shadow-lg max-2xl:hidden' src={data.item.poster_path && `https://image.tmdb.org/t/p/w500/${data.item.poster_path}`} alt="Poster" />
-            <div id="info-top" className='flex flex-col justify-center items-center p-[10px] w-[600px] gap-4 z-[11] [@media(max-height:500px)]:gap-3'>
-              <img id="info-title" className='max-w-[90vw] max-h-[35vh] text-[2.5rem] font-semibold [@media(max-height:500px)]:hidden' src={data.logoImage && `https://image.tmdb.org/t/p/w500${data.logoImage}`} alt={type === 'movie' ? data.item.title : data.item.name} />
-              <p id="info-title-text" className='hidden text-[2.5rem] font-semibold [@media(max-height:500px)]:block'>{type === 'movie' ? data.item.title : data.item.name}</p>
-              <div id="info-bar" className='flex items-center gap-3 font-semibold'>
+          <div className='flex justify-center items-center w-screen h-screen gap-12 text-center'>
+            <img className={`${isTop ? 'blur-0' : 'blur-sm'} ${isTop ? 'opacity-35' : 'opacity-25'} z-[-2] fixed top-0 w-full h-full object-cover transition-all duration-500`} src={data.item.backdrop_path && `https://image.tmdb.org/t/p/original${data.item.backdrop_path}`} alt="Backdrop" />
+            <img className='w-[300px] rounded-xl z-[12] shadow-lg max-2xl:hidden' src={data.item.poster_path && `https://image.tmdb.org/t/p/w500/${data.item.poster_path}`} alt="Poster" />
+            <div className='flex flex-col justify-center items-center p-[10px] w-[600px] gap-4 z-[11] [@media(max-height:500px)]:gap-3'>
+              <img className='max-w-[90vw] max-h-[35vh] text-[2.5rem] font-semibold [@media(max-height:500px)]:hidden' src={data.logoImage && `https://image.tmdb.org/t/p/w500${data.logoImage}`} alt={type === 'movie' ? data.item.title : data.item.name} />
+              <p className='hidden text-[2.5rem] font-semibold [@media(max-height:500px)]:block'>{type === 'movie' ? data.item.title : data.item.name}</p>
+              <div className='flex items-center gap-3 font-semibold'>
                 <div className='flex items-center gap-1'>
                   <i className="fa-light fa-calendar-lines"></i>
-                  <p id="info-date">{type === 'tv' ? data.item.first_air_date : data.item.release_date}</p>
+                  <p>{type === 'tv' ? data.item.first_air_date : data.item.release_date}</p>
                 </div>
-                <div id="info-rating-bar" className='flex items-center gap-[2px]'>
+                <div className='flex items-center gap-[2px]'>
                   <i className="fa-solid fa-star text-xs text-yellow-500" alt="Star Icon" />
-                  <p id="info-rating">{parseFloat(data.item.vote_average).toFixed(1)}</p>
+                  <p>{parseFloat(data.item.vote_average).toFixed(1)}</p>
                 </div>
-                <p id="info-content-rating" className='border border-solid border-white border-opacity-50 rounded-lg px-1'>{getContentRating()}</p>
+                <p className='border border-solid border-white border-opacity-50 rounded-lg px-1'>{getContentRating()}</p>
                 <p>{Object.keys(data.item["watch/providers"]?.results || {}).length > 0 ? "HD" : "CAM"}</p>
               </div>
-              <div id="info-genres" className='flex justify-center flex-wrap gap-2 [@media(max-height:500px)]:hidden'>
+              <div className='flex justify-center flex-wrap gap-2 [@media(max-height:500px)]:hidden'>
                 {data.genres.map(genre => (
                   <div className="genre-box px-2 py-1 rounded-md bg-[#6d0000cc] text-red-400 shadow-[1px_2px_20px_#000]" key={genre.id}>{genre.name}</div>
                 ))}
               </div>
-              <p id="info-description" className='line-clamp-[8] text-white text-opacity-85 text-[1.1rem] leading-6 max-md:text-base max-md:leading-5 [@media(max-height:500px)]:text-base [@media(max-height:500px)]:leading-5'>{data.item.overview}</p>
+              <p className='line-clamp-[8] text-white text-opacity-85 text-[1.1rem] leading-6 max-md:text-base max-md:leading-5 [@media(max-height:500px)]:text-base [@media(max-height:500px)]:leading-5'>{data.item.overview}</p>
               <div className='flex gap-2'>
                 <Link to={getPlayLink()}>
-                  <button id="play-button" className='flex justify-center items-center gap-2 w-[120px] h-[50px] cursor-pointer bg-white rounded-lg text-xl font-bold border-0 transition-all duration-150 hover:bg-opacity-50'>
+                  <button className='flex justify-center items-center gap-2 w-[120px] h-[50px] cursor-pointer bg-white rounded-lg text-xl font-bold border-0 transition-all duration-150 hover:bg-opacity-50'>
                     <i className="fa-solid fa-play text-black text-lg" alt="Play Icon" /><p className='text-black'>Play</p>
                   </button>
                 </Link>
-                <button className='flex justify-center items-center gap-2 cursor-pointer bg-white bg-opacity-20 rounded-lg text-xl font-bold border-0 transition-all duration-150 hover:bg-opacity-40 w-auto h-auto p-2' id="watch-button" onClick={toggleWatchlist}>
+                <button className='flex justify-center items-center gap-2 cursor-pointer bg-white bg-opacity-20 rounded-lg text-xl font-bold border-0 transition-all duration-150 hover:bg-opacity-40 w-auto h-auto p-2' onClick={toggleWatchlist}>
                   <i className={`${isInWatchlist ? "fa-light fa-minus" : "fa-light fa-plus"} text-3xl py-0 px-1`} alt="Watchlist Icon"></i>
                 </button>
               </div>
@@ -211,21 +211,21 @@ export default function Info() {
           <div className='bg-none'>
             {data.isSeries && (
               <>
-                <div id="season-container" className='flex justify-start pl-[16vw] max-xl:pl-[10vw] max-lg:pl-[2vw] max-xs:pr-[2vw]'>
-                  <select id="season-selector" className='bg-white bg-opacity-10 rounded-lg border-0 text-left pl-4 text-2xl w-[208px] h-[50px] max-xs:w-full focus:bg-gray-800 active:bg-gray-800' value={data.selectedSeason} onChange={handleSeasonChange}>
+                <div className='flex justify-start pl-[16vw] max-xl:pl-[10vw] max-lg:pl-[2vw] max-xs:pr-[2vw]'>
+                  <select className='bg-white bg-opacity-10 rounded-lg border-0 text-left pl-4 text-2xl w-[208px] h-[50px] max-xs:w-full focus:bg-gray-800 active:bg-gray-800' value={data.selectedSeason} onChange={handleSeasonChange}>
                     {data.seasons.map(season => (
                       <option key={season.id} value={season.season_number}>{season.name}</option>
                     ))}
                   </select>
                 </div>
-                <div id="episodes-container" className='flex flex-col gap-6 overflow-y-scroll max-h-[50vh] mx-[16vw] max-xl:mx-[10vw] max-lg:mx-[2vw] mt-4 mb-24 border-2 border-solid border-white border-opacity-30 bg-white bg-opacity-5 backdrop-blur-lg rounded-lg p-2'>
+                <div className='flex flex-col gap-6 overflow-y-scroll max-h-[50vh] mx-[16vw] max-xl:mx-[10vw] max-lg:mx-[2vw] mt-4 mb-24 border-2 border-solid border-white border-opacity-30 bg-white bg-opacity-5 backdrop-blur-lg rounded-lg p-2'>
                   {data.episodes?.map(episode => (
                     <Link to={`/watch/${type}/${id}/${data.selectedSeason}/${episode.episode_number}`} key={episode.id}>
                       <div className="episode-box flex cursor-pointer items-center max-lg:flex-col max-lg:border-b max-lg:pb-4 max-lg:border-gray-400">
-                        <img id="episode-image" className='w-[200px] rounded-lg max-lg:w-[50vw] max-lg:mb-2 max-md:w-full' src={episode.still_path && `https://image.tmdb.org/t/p/w500${episode.still_path}`} alt={`Episode ${episode.episode_number}`} />
+                        <img className='w-[200px] rounded-lg max-lg:w-[50vw] max-lg:mb-2 max-md:w-full' src={episode.still_path && `https://image.tmdb.org/t/p/w500${episode.still_path}`} alt={`Episode ${episode.episode_number}`} />
                         <div className="episode-content ml-6 max-lg:ml-0">
                           <p className='text-xl font-bold'>{episode.name}</p>
-                          <p id="episode-desc" className='text-base line-clamp-4'>{episode.overview}</p>
+                          <p className='text-base line-clamp-4'>{episode.overview}</p>
                         </div>
                       </div>
                     </Link>
@@ -233,10 +233,10 @@ export default function Info() {
                 </div>
               </>
             )}
-            <p id="suggested-title" className='text-[2.1rem] text-center font-bold mt-8 mb-5'>You may also like</p>
-            <div id="suggested-container" className='flex justify-center items-center flex-wrap mx-[16vw] mt-4 mb-8 gap-[1vw] z-10 max-xl:mx-[8vw] max-lg:mx-[2vw] max-lg:gap-[2vw]'>
+            <p className='text-[2.1rem] text-center font-bold mt-8 mb-5'>You may also like</p>
+            <div className='flex justify-center items-center flex-wrap mx-[16vw] mt-4 mb-8 gap-[1vw] z-10 max-xl:mx-[8vw] max-lg:mx-[2vw] max-lg:gap-[2vw]'>
               {data.recommendations.map(recommendation => (
-                <Card key={recommendation.id} size="w-[16.24vw] max-xl:w-[20.24vw] max-lg:w-[30.65vw] max-md:w-[46.99vw]" item={recommendation} type={type} />
+                <Card key={recommendation.id} size="w-[16.1vw] max-xl:w-[20.1vw] max-lg:w-[30.5vw] max-md:w-[46.8vw]" item={recommendation} type={type} />
               ))}
             </div>
           </div>

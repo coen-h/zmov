@@ -176,14 +176,13 @@ export default function Player() {
                     className='w-screen h-screen border-0'
                 ></iframe>
             </div>
-            <div id="button-grid" className='flex justify-between w-screen absolute' style={{top: gridPos}}>
-                <Link to={`/info/${type}/${id}`} id="player-button"><i className="fa-solid fa-arrow-left text-3xl ml-2 mt-1 hover:scale-90" alt="Back" /></Link>
+            <div className='flex justify-between w-screen absolute' style={{top: gridPos}}>
+                <Link to={`/info/${type}/${id}`}><i className="fa-solid fa-arrow-left text-3xl ml-2 mt-2 hover:scale-90" alt="Back" /></Link>
                 <div className='flex items-center'>
                     <select 
                         name="servers" 
                         value={selectedServer} 
                         onChange={(e) => setSelectedServer(e.target.value)} 
-                        id="server-select"
                         className='px-4 py-1 m-1 text-xl bg-black border-2 border-white border-opacity-20 rounded-lg cursor-pointer'
                     >   
                         <option style={{backgroundColor: "rgb(50, 50, 50)"}} selected disabled>ADFREE</option>
@@ -214,7 +213,7 @@ export default function Player() {
                         <option value="ANIME3SUB">ANI3-SUB</option>
                     </select>
                     {type === 'tv' && season && episode && (
-                        <Link to={nextEpisodeLink} id="player-button" className='p-[10px] cursor-pointer transition-all duration-150 hover:scale-125'><i className="fa-solid fa-arrow-right" style={{fontSize: "26px"}} alt="Next" /></Link>
+                        <Link to={nextEpisodeLink} ><i className="fa-solid fa-arrow-right text-3xl mr-2 ml-1 hover:scale-90" alt="Next" /></Link>
                     )}
                 </div>
             </div>

@@ -87,21 +87,21 @@ export default function Services() {
         <p className='text-[3rem] font-bold text-center mb-4'>{name}</p>
         <div className='flex justify-center flex-wrap gap-[1.2vw] max-md:gap-[2vw]'>
           {movies.map((item, index) => (
-            <Card key={index} item={item} type='movie' size="w-[20.52vw] max-xl:w-[25.85vw] max-lg:w-[29.84vw] max-md:w-[45.99vw]" />
+            <Card key={index} item={item} type='movie' size="w-[20.3vw] max-xl:w-[25.6vw] max-lg:w-[29.6vw] max-md:w-[45.7vw]" />
           ))}
         </div>
         <div className='flex justify-center items-center mt-[30px] gap-[2px]'>
-          <button id="service-button" className='group flex items-center gap-2 font-bold text-lg border-none transition-all duration-150 cursor-ponter bg-white bg-opacity-30 px-5 py-[10px] rounded-l-lg disabled:cursor-default disabled:bg-opacity-15' onClick={handleFarBack} disabled={page === 1}>
+          <button className='group flex items-center gap-2 font-bold text-lg border-none transition-all duration-150 cursor-ponter bg-white bg-opacity-30 px-5 py-[10px] rounded-l-lg disabled:cursor-default disabled:bg-opacity-15' onClick={handleFarBack} disabled={page === 1}>
             <i className="fa-solid fa-chevrons-left enabled:group-hover:text-[#ff4f4f]" />
           </button>
-          <button id="service-button" className='group flex items-center gap-2 font-bold text-lg border-none transition-all duration-150 cursor-ponter bg-white bg-opacity-30 px-5 py-[10px] disabled:cursor-default disabled:bg-opacity-15' onClick={handleBack} disabled={page === 1}>
+          <button className='group flex items-center gap-2 font-bold text-lg border-none transition-all duration-150 cursor-ponter bg-white bg-opacity-30 px-5 py-[10px] disabled:cursor-default disabled:bg-opacity-15' onClick={handleBack} disabled={page === 1}>
             <i className="fa-solid fa-angle-left enabled:group-hover:text-[#ff4f4f]" />
           </button>
           <span className='flex items-center py-2 px-4 bg-white bg-opacity-30'>{page}</span>
-          <button id="service-button" className='group flex items-center gap-2 font-bold text-lg border-none transition-all duration-150 cursor-ponter bg-white bg-opacity-30 px-5 py-[10px] disabled:cursor-default disabled:bg-opacity-15' onClick={handleNext} disabled={page >= totalPage}>
+          <button className='group flex items-center gap-2 font-bold text-lg border-none transition-all duration-150 cursor-ponter bg-white bg-opacity-30 px-5 py-[10px] disabled:cursor-default disabled:bg-opacity-15' onClick={handleNext} disabled={page >= totalPage}>
             <i className="fa-solid fa-angle-right enabled:group-hover:text-[#ff4f4f]" />
           </button>
-          <button id="service-button" className='group flex items-center gap-2 font-bold text-lg border-none transition-all duration-150 cursor-ponter bg-white bg-opacity-30 px-5 py-[10px] rounded-r-lg disabled:cursor-default disabled:bg-opacity-15' onClick={handleFarNext} disabled={page >= totalPage}>
+          <button className='group flex items-center gap-2 font-bold text-lg border-none transition-all duration-150 cursor-ponter bg-white bg-opacity-30 px-5 py-[10px] rounded-r-lg disabled:cursor-default disabled:bg-opacity-15' onClick={handleFarNext} disabled={page >= totalPage}>
             <i className="fa-solid fa-chevrons-right enabled:group-hover:text-[#ff4f4f]" />
           </button>
         </div>

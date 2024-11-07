@@ -54,11 +54,11 @@ export default function Card(props) {
                     <p>{props.type === 'tv' ? 'TV' : props.type.charAt(0).toUpperCase() + props.type.slice(1)}</p>
                     <p>&#x2022;</p>
                     <p>{(props.type === 'movie' ? props.item.release_date : props.type === 'tv' ? props.item.first_air_date : '').slice(0, 4)}</p>
-                    <p id="check">&#x2022;</p>
-                    <p id="check">{(props.item.original_language).toUpperCase()}</p>
+                    <p>&#x2022;</p>
+                    <p>{(props.item.original_language).toUpperCase()}</p>
                 </div>
-                <div id="card-rating" className='flex items-center gap-1 bg-black bg-opacity-50 py-[2px] px-[5px] rounded-s-md absolute top-[10px] right-0'>
-                    <i style={{ color: "#F9c000" }} className="fa-solid fa-star fa-xs"></i>
+                <div className='flex items-center gap-1 bg-black bg-opacity-50 py-[2px] px-[5px] rounded-s-md absolute top-[10px] right-0'>
+                    <i className="fa-solid fa-star fa-xs text-yellow-500"></i>
                     <p className='font-normal'>{parseFloat(props.item.vote_average).toFixed(1)}</p>
                 </div>
             </div>
