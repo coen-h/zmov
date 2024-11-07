@@ -97,67 +97,57 @@ export default function Hero() {
         <Swiper {...swiperParams}>
             {heroItems.map((heroItem) => (
                 <SwiperSlide key={heroItem.id}>
-                    <div id='hero'>
+                    <div className='flex h-screen max-lg:h-[90vh] [@media(max-height:500px)]:h-[102vh]'>
                         <div
-                            id="hero-image-container"
                             style={{
                                 backgroundImage: `url(https://image.tmdb.org/t/p/original${heroItem.backdrop_path})`,
-                                opacity: 0.4
                             }}
+                            className='absolute w-screen h-screen overflow-hidden z-[-1] opacity-40'
                         >
                             {!isSmallScreen && loadedStates[heroItem.id]?.isVideoLoaded && (
                                 <iframe
-                                    id="hero-video"
                                     src={`https://www.youtube.com/embed/${videos[heroItem.id]}?mute=1&autoplay=1&loop=1&rel=0&fs=0&controls=0&disablekb=1&playlist=${videos[heroItem.id]}&origin=https://watch.coen.ovh`}
                                     title={heroItem.title}
                                     allowFullScreen
                                     loading="lazy"
-                                    style={{
-                                        opacity: loadedStates[heroItem.id]?.isImageLoaded ? 1 : 0,
-                                        transition: 'opacity 0.5s ease-in-out',
-                                        border: '0',
-                                    }}
+                                    className={`absolute w-[150vw] h-[200vh] top-[-50%] left-[-25%] object-cover border-none transition-opacity duration-500 ease-in ${loadedStates[heroItem.id]?.isImageLoaded ? 'opacity-100' : 'opacity-0'}`}
                                     onLoad={() => handleImageLoad(heroItem.id)}
                                 />
                             )}
                         </div>
-                        <div id="hero-card">
-                            <div id="hero-content">
-                                <div id="hero-title">
-                                    <span id="hero-title-text" className="alt-text">
+                        <div className='flex flex-col justify-end mb-[22vh]'>
+                            <div className='flex flex-col ml-12 z-[1] gap-1 max-lg:mx-4 max-2xl:mx-6'>
+                                <div className='flex text-[4rem] font-semibold mb-3 max-lg:justify-center max-lg:text-[3rem] [@media(max-height:500px)]:mb-0'>
+                                    <span className="alt-text hidden line-clamp-2 text-center [@media(max-height:500px)]:block">
                                         {heroItem.title}
                                     </span>
                                     <img 
                                         src={logoImages[heroItem.id] && `https://image.tmdb.org/t/p/w500${logoImages[heroItem.id]}`} 
-                                        id="hero-title-image" 
+                                        className='max-w-[60vw] max-h-[30vh] max-lg:max-w-[90vw] max-md:max-w-full [@media(max-height:500px)]:hidden'
                                         alt={heroItem.title} 
                                     />
                                 </div>
-                                <div id="hero-bar">
-                                    <div style={{display: "flex", alignItems: "center", gap: "4px"}}>
-                                        <i style={{color: "#F9c000"}} className="fa-solid fa-star fa-xs"></i>
+                                <div className='flex gap-[10px] max-lg:justify-center'>
+                                    <div className='flex items-center gap-1'>
+                                        <i className="fa-solid fa-star fa-xs text-yellow-500"></i>
                                         <p>{parseFloat(heroItem.vote_average).toFixed(1)}</p>
                                     </div>
-                                    <div style={{display: "flex", alignItems: "center", gap: "4px"}}>
+                                    <div className='flex items-center gap-1'>
                                         <i className="fa-light fa-calendar-lines"></i>
                                         <p>{heroItem.release_date}</p>
                                     </div>
-                                    <p style={{outline: "rgba(255,255,255,0.5) 1px solid", padding: "2px 4px", borderRadius: "6px"}}>{(heroItem.original_language).toUpperCase()}</p>
+                                    <p className='py-[1px] px-[4px] outline-1 outline outline-gray-400 rounded-md'>{(heroItem.original_language).toUpperCase()}</p>
                                 </div>
-                                <div id="hero-desc">
+                                <div className='text-[1.05rem] w-[40vw] leading-6 line-clamp-3 max-xl:w-[60vw] max-lg:justify-center max-lg:w-full max-lg:text-center [@media(max-height:500px)]:text-base [@media(max-height:500px)]:leading-[1.35rem]'>
                                     <p>{heroItem.overview}</p>
                                 </div>
-                                <div id="hero-buttons">
-                                    <div id="hero-watch">
-                                        <Link to={`/watch/movie/${heroItem.id}`} id="hero-play">
-                                            <i className="fa-solid fa-play" style={{color: "#000000", fontSize: "1.2rem"}} alt="Play Icon" /><p style={{color: "#000000"}}>Watch</p>
-                                        </Link>
-                                    </div>
-                                    <div id="hero-more">
-                                        <Link to={`/info/movie/${heroItem.id}`} id="hero-button">
-                                            <i className="fa-regular fa-circle-info" style={{ fontSize: "18px" }} alt="info-icon" /><p>Info</p>
-                                        </Link>
-                                    </div>
+                                <div className='flex gap-2 mt-2 max-lg:justify-center'>
+                                    <Link to={`/watch/movie/${heroItem.id}`} className='flex items-center gap-2 px-4 py-2  bg-white rounded-lg text-xl font-bold border-none transition-all duration-150 hover:bg-opacity-50'>
+                                        <i className="fa-solid fa-play text-black text-xl" alt="Play Icon" /><p className='text-black'>Watch</p>
+                                    </Link>
+                                    <Link to={`/info/movie/${heroItem.id}`} className='flex items-center gap-[10px] px-4 py-2 bg-white bg-opacity-20 rounded-lg text-xl font-bold border-none transition-all duration-150 hover:bg-opacity-40'>
+                                        <i className="fa-regular fa-circle-info text-xl" alt="info-icon" /><p>Info</p>
+                                    </Link>
                                 </div>
                             </div>
                         </div>

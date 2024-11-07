@@ -11,8 +11,8 @@ export default function Dmca() {
     return (
         <>
             <Header />
-            <div id="dmca-section">
-                <div id="dmca-content">
+            <div className='flex justify-center items-center py-[5.5rem] w-screen'>
+                <div className='flex flex-col min-h-[82vh] max-w-[80vw] justify-center items-center gap-[50px]'>
                     <div>
                         <p>We take the intellectual property rights of others seriously and require that our users do the same. 
                             The Digital Millennium Copyright Act (DMCA) established a process for addressing claims of copyright infringement. 
@@ -24,7 +24,7 @@ export default function Dmca() {
                     </div>
                     <div>
                         <p>DMCA Report requirements</p>
-                        <ul>
+                        <ul className='list-disc pl-4 pt-2'>
                             <li>A description of the copyrighted work that you claim is being infringed;</li>
                             <li>A description of the material you claim is infringing and that you want removed or access to which you want disabled with a URL and proof you are the original owner or other location of that material;</li>
                             <li>Your name, title (if acting as an agent), address, telephone number, and email address;</li>
