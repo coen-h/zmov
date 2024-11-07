@@ -176,42 +176,36 @@ export default function Player() {
                     className='w-screen h-screen border-0'
                 ></iframe>
             </div>
-            <div id="button-grid" className='flex justify-between w-screen absolute pointer-events-none' style={{top: gridPos}}>
-                <Link to={`/info/${type}/${id}`} id="player-button"><i className="fa-solid fa-arrow-left" alt="Back" style={{fontSize: "26px"}} /></Link>
+            <div id="button-grid" className='flex justify-between w-screen absolute' style={{top: gridPos}}>
+                <Link to={`/info/${type}/${id}`} id="player-button"><i className="fa-solid fa-arrow-left text-3xl ml-2 mt-1 hover:scale-90" alt="Back" /></Link>
                 <div className='flex items-center'>
                     <select 
                         name="servers" 
                         value={selectedServer} 
                         onChange={(e) => setSelectedServer(e.target.value)} 
                         id="server-select"
+                        className='px-4 py-1 m-1 text-xl bg-black border-2 border-white border-opacity-20 rounded-lg cursor-pointer'
                     >   
-                        <option style={{backgroundColor: "rgba(50,50,50,1)"}} selected disabled>ADFREE</option>
-                        <hr/>
+                        <option style={{backgroundColor: "rgb(50, 50, 50)"}} selected disabled>ADFREE</option>
                         <option value="VIDLINK">VIDLINK</option>
-                        <option value="CC">CC (4K)</option>
-                        <option value="NL">NL</option>
                         <option value="RIP">RIP</option>
-                        <hr/>
-                        <option style={{backgroundColor: "rgba(50,50,50,1)"}} selected disabled>ADS</option>
-                        <hr/>
-                        <option value="VIDBINGE">BINGE</option>
+                        <option style={{backgroundColor: "rgb(50, 50, 50)"}} selected disabled>ADS</option>
+                        <option value="VIDBINGE">BINGE (4K)</option>
                         <option value="PRO">PRO</option>
                         <option value="VIP">VIP</option>
                         <option value="CLUB">CLUB</option>
                         <option value="XYZ">XYZ</option>
+                        <option value="CC">CC</option>
                         <option value="MULTI">MULTI</option>
+                        <option value="NL">NL</option>
                         <option value="SS">SMASHY</option>
-                        <hr/>
-                        <option style={{backgroundColor: "rgba(50,50,50,1)"}} selected disabled>LANGUAGE</option>
-                        <hr/>
+                        <option style={{backgroundColor: "rgb(50, 50, 50)"}} selected disabled>LANGUAGE</option>
                         <option value="FRENCH">FRENCH</option>
                         <option value="INDIAN">INDIAN</option>
                         <option value="PORT">PORT</option>
                         <option value="RUSSIAN">RUSSIAN</option>
                         <option value="MULTLANG">MULTLANG</option>
-                        <hr/>
-                        <option style={{backgroundColor: "rgba(50,50,50,1)"}} selected disabled>ANIME</option>
-                        <hr/>
+                        <option style={{backgroundColor: "rgb(50, 50, 50)"}} selected disabled>ANIME</option>
                         <option value="ANIME1DUB">ANI1-DUB</option>
                         <option value="ANIME1SUB">ANI1-SUB</option>
                         <option value="ANIME2DUB">ANI2-DUB</option>

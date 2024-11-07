@@ -83,26 +83,26 @@ export default function Services() {
     <>
       <LoadingBar color="#FF0000" ref={loadingBarRef} />
       <Header />
-      <div className='min-h-screen mx-20 pt-20'>
+      <div className='min-h-screen mx-[18vw] pt-20 max-xl:mx-[10vw] max-lg:mx-[4vw] max-md:mx-[3vw]'>
         <p className='text-[3rem] font-bold text-center mb-4'>{name}</p>
-        <div className='flex justify-center flex-wrap gap-[15px]'>
+        <div className='flex justify-center flex-wrap gap-[1.2vw] max-md:gap-[2vw]'>
           {movies.map((item, index) => (
-            <Card key={index} item={item} type='movie' csize="big-card" size="big-image" />
+            <Card key={index} item={item} type='movie' size="w-[20.52vw] max-xl:w-[25.85vw] max-lg:w-[29.84vw] max-md:w-[45.99vw]" />
           ))}
         </div>
         <div className='flex justify-center items-center mt-[30px] gap-[2px]'>
-          <button id="service-button" className='flex items-center gap-2 font-bold text-lg border-none transition-all duration-150 ease-in-out cursor-ponter bg-white bg-opacity-30 px-5 py-[10px] rounded-l-lg' onClick={handleFarBack} disabled={page === 1}>
-            <i className="fa-solid fa-chevrons-left" />
+          <button id="service-button" className='group flex items-center gap-2 font-bold text-lg border-none transition-all duration-150 cursor-ponter bg-white bg-opacity-30 px-5 py-[10px] rounded-l-lg disabled:cursor-default disabled:bg-opacity-15' onClick={handleFarBack} disabled={page === 1}>
+            <i className="fa-solid fa-chevrons-left enabled:group-hover:text-[#ff4f4f]" />
           </button>
-          <button id="service-button" className='flex items-center gap-2 font-bold text-lg border-none transition-all duration-150 ease-in-out cursor-ponter bg-white bg-opacity-30 px-5 py-[10px]' onClick={handleBack} disabled={page === 1}>
-            <i className="fa-solid fa-angle-left" />
+          <button id="service-button" className='group flex items-center gap-2 font-bold text-lg border-none transition-all duration-150 cursor-ponter bg-white bg-opacity-30 px-5 py-[10px] disabled:cursor-default disabled:bg-opacity-15' onClick={handleBack} disabled={page === 1}>
+            <i className="fa-solid fa-angle-left enabled:group-hover:text-[#ff4f4f]" />
           </button>
           <span className='flex items-center py-2 px-4 bg-white bg-opacity-30'>{page}</span>
-          <button id="service-button" className='flex items-center gap-2 font-bold text-lg border-none transition-all duration-150 ease-in-out cursor-ponter bg-white bg-opacity-30 px-5 py-[10px]' onClick={handleNext} disabled={page >= totalPage}>
-            <i className="fa-solid fa-angle-right" />
+          <button id="service-button" className='group flex items-center gap-2 font-bold text-lg border-none transition-all duration-150 cursor-ponter bg-white bg-opacity-30 px-5 py-[10px] disabled:cursor-default disabled:bg-opacity-15' onClick={handleNext} disabled={page >= totalPage}>
+            <i className="fa-solid fa-angle-right enabled:group-hover:text-[#ff4f4f]" />
           </button>
-          <button className='flex items-center gap-2 font-bold text-lg border-none transition-all duration-150 ease-in-out cursor-ponter bg-white bg-opacity-30 px-5 py-[10px] rounded-r-lg' id="service-button" onClick={handleFarNext} disabled={page >= totalPage}>
-            <i className="fa-solid fa-chevrons-right" />
+          <button id="service-button" className='group flex items-center gap-2 font-bold text-lg border-none transition-all duration-150 cursor-ponter bg-white bg-opacity-30 px-5 py-[10px] rounded-r-lg disabled:cursor-default disabled:bg-opacity-15' onClick={handleFarNext} disabled={page >= totalPage}>
+            <i className="fa-solid fa-chevrons-right enabled:group-hover:text-[#ff4f4f]" />
           </button>
         </div>
       </div>

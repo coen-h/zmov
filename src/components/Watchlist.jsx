@@ -43,23 +43,23 @@ export default function Watchlist() {
 
   return (
     <>
-      <div id="settings-main" className='flex flex-col bg-white bg-opacity-10 rounded-xl mx-20 px-2 pb-2'>
+      <div id="settings-main" className='flex flex-col bg-white bg-opacity-10 rounded-xl mx-[5vw] max-md:mx-[2vw] px-[0.5vw] max-xl:px-[1vw] max-md:px-[1.5vw] pb-2'>
         <div id="watchlist-title" className='flex justify-between items-center order-[-1] mt-2 mb-4 gap-8'>
           <div id="settings-button-grid" className='flex justify-between w-screen'>
             <div>
               <button
                 id="settings-button"
-                className={`border-0 cursor-pointer text-[1.05rem] p-[0.4rem] rounded-s-lg bg-${activeButton === 'continueWatching' ? 'red-900' : 'neutral-800'}`}
+                className={`min-w-16 min-h-[33px] border-none cursor-pointer text-[1.05rem] py-1 px-2 rounded-s-lg bg-opacity-90 ${activeButton === 'continueWatching' ? 'bg-[#b12222]' : 'bg-neutral-600'}`}
                 onClick={() => handleButtonClick('continueWatching')}
               >
-                Continue Watching
+                <span className="max-xs:hidden">Continue Watching</span>
               </button>
               <button
                 id="settings-button"
-                className={`border-0 cursor-pointer text-[1.05rem] p-[0.4rem] rounded-e-lg bg-${activeButton === 'watchlist' ? 'red-900' : 'neutral-800'}`}
+                className={`min-w-16 min-h-[33px] border-none cursor-pointer text-[1.05rem] py-1 px-2 rounded-e-lg bg-opacity-90 ${activeButton === 'watchlist' ? 'bg-[#b12222]' : 'bg-neutral-600'}`}
                 onClick={() => handleButtonClick('watchlist')}
               >
-                Watchlist
+                <span className="max-xs:hidden">Watchlist</span>
               </button>
             </div>
             <div>
@@ -72,7 +72,7 @@ export default function Watchlist() {
             </div>
           </div>
         </div>
-        <div id="watchlist-card" className='flex justify-center flex-wrap gap-3'>
+        <div id="watchlist-card" className='flex justify-center flex-wrap gap-[0.7vw] max-xl:gap-[1.25vw]'>
           {activeButton === 'watchlist' && (
             watchlist.length > 0 ? (
               watchlist.map((item, index) => (

@@ -7,9 +7,9 @@ export default function NotFound() {
     })
     return (
         <div className='w-screen h-screen flex flex-col justify-center items-center'>
-            <h1>404 - Page Not Found</h1>
+            <h1 className='text-[2rem] font-bold mb-4'>404 - Page Not Found</h1>
             <p>The page you are looking for does not exist.</p>
-            <Link to="/" id="notfound-link" className='mt-4 text-2xl font-bold opacity-50 p-2 rounded-lg border-1 border-solid border-white bg-black bg-opacity-10 transition-all duration-200 hover:opacity-100'>Home</Link>
+            <Link to="/" id="notfound-link" className='mt-4 text-2xl font-bold opacity-50 p-2 rounded-lg border border-solid border-white bg-white bg-opacity-10 transition-all duration-200 hover:opacity-100'>Home</Link>
         </div>
     );
 }

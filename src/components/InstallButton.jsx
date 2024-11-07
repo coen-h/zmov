@@ -31,7 +31,7 @@ export default function InstallButton() {
   };
 
   return (
-    <button onClick={handleInstallClick} id="install-button" className={`w-[42px] h-[42px] bg-white bg-opacity-20 border-none rounded-[50%] box-shadow-md shadow-lg hover:scale-95 ${deferredPrompt ? 'block' : 'none'}`}>
+    <button onClick={handleInstallClick} id="install-button" className={`w-[42px] h-[42px] bg-white bg-opacity-20 border-none rounded-[50%] box-shadow-md shadow-lg hover:scale-95 ${deferredPrompt ? 'block' : 'hidden'}`}>
       <i className="fa-regular fa-circle-arrow-down" style={{fontSize: "30px"}} />
     </button>
   );
