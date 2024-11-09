@@ -57,7 +57,7 @@ export default function Header() {
           <div className='relative transition-all duration-150 hover:opacity-80'>
             <input
               type="text"
-              className='pl-10 h-[42px] w-[200px] max-xs:w-[60vw] text-base border-0 outline-none transition-all duration-300 bg-white bg-opacity-20 shadow-[1px_1px_3px_#0e0e0e,-1px_-1px_3px_#5f5e5e40,inset_0_0_#0e0e0e,inset_0_-0px_#5f5e5e] rounded-[50px] cursor-text'
+              className='pl-10 h-[42px] w-[200px] max-xs:w-[60vw] text-base border-0 outline-none transition-all duration-300 bg-white/20 shadow-[1px_1px_3px_#0e0e0e,-1px_-1px_3px_#5f5e5e40,inset_0_0_#0e0e0e,inset_0_-0px_#5f5e5e] rounded-[50px] cursor-text'
               required
               placeholder="Type to search..."
               ref={searchInputRef}
@@ -67,7 +67,7 @@ export default function Header() {
               <i className="fa-regular fa-magnifying-glass text-2xl leading-6 pt-[2px] pl-[2px]" alt="Search"/>
             </div>
           </div>
-          <button className='w-[42px] h-[42px] pt-[2px] bg-white bg-opacity-20 border-none rounded-[50%] shadow-lg transition-all duration-150 hover:scale-95 hover:rotate-45'>
+          <button className='w-[42px] h-[42px] pt-[2px] bg-white/20 border-none rounded-[50%] shadow-lg transition-all duration-150 hover:scale-95 hover:rotate-45'>
             <Link to="/settings">
               <i className="fa-light fa-gear text-3xl leading-[30px]" alt="Settings" />
             </Link>

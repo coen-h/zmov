@@ -18,7 +18,7 @@ export default function Home() {
     <>
       <Header />
       <Hero />
-      <div className='z-[1] relative top-[-20vh] mb-[-20vh] max-lg:top-[-40vh] max-lg:mb-[-40vh] max-2xl:top-[-25vh] max-2xl:mb-[-25vh] [@media(max-height:500px)]:top-[-34vh] [@media(max-height:500px)]:mb-[-34vh] bg-hero-gradient'>
+      <div className='z-[1] relative top-[-20vh] mb-[-20vh] max-lg:top-[-30vh] max-lg:mb-[-30vh] max-2xl:top-[-25vh] max-2xl:mb-[-25vh] [@media(max-height:500px)]:top-[-34vh] [@media(max-height:500px)]:mb-[-34vh] bg-hero-gradient'>
         <div className='flex justify-center gap-[1vw] mx-8 mt-12 mb-8'>
           <ServiceCard img="/images/netflix.svg" type="netflix" style={{backgroundImage: "linear-gradient(to top left, rgb(152, 0, 0), black,  black,  black, rgb(152, 0, 0))"}} />
           <ServiceCard img="/images/disney.svg"  type="disney" style={{backgroundImage: "linear-gradient(to bottom, rgb(0, 0, 0), rgba(0, 58, 183, 0.8))"}} />

@@ -202,7 +202,7 @@ export default function Info() {
                     <i className="fa-solid fa-play text-black text-lg" alt="Play Icon" /><p className='text-black'>Play</p>
                   </button>
                 </Link>
-                <button className='flex justify-center items-center gap-2 cursor-pointer bg-white bg-opacity-20 rounded-lg text-xl font-bold border-0 transition-all duration-150 hover:bg-opacity-40 w-auto h-auto p-2' onClick={toggleWatchlist}>
+                <button className='flex justify-center items-center gap-2 cursor-pointer bg-white/20 rounded-lg text-xl font-bold border-0 transition-all duration-150 hover:bg-opacity-40 w-auto h-auto p-2' onClick={toggleWatchlist}>
                   <i className={`${isInWatchlist ? "fa-light fa-minus" : "fa-light fa-plus"} text-3xl py-0 px-1`} alt="Watchlist Icon"></i>
                 </button>
               </div>
@@ -212,13 +212,13 @@ export default function Info() {
             {data.isSeries && (
               <>
                 <div className='flex justify-start pl-[16vw] max-xl:pl-[10vw] max-lg:pl-[2vw] max-xs:pr-[2vw]'>
-                  <select className='bg-white bg-opacity-10 rounded-lg border-0 text-left pl-4 text-2xl w-[208px] h-[50px] max-xs:w-full focus:bg-gray-800 active:bg-gray-800' value={data.selectedSeason} onChange={handleSeasonChange}>
+                  <select className='bg-white/10 rounded-lg border-0 text-left pl-4 text-2xl w-[208px] h-[50px] max-xs:w-full focus:bg-gray-800 active:bg-gray-800' value={data.selectedSeason} onChange={handleSeasonChange}>
                     {data.seasons.map(season => (
                       <option key={season.id} value={season.season_number}>{season.name}</option>
                     ))}
                   </select>
                 </div>
-                <div className='flex flex-col gap-6 overflow-y-scroll max-h-[50vh] mx-[16vw] max-xl:mx-[10vw] max-lg:mx-[2vw] mt-4 mb-24 border-2 border-solid border-white border-opacity-30 bg-white bg-opacity-5 backdrop-blur-lg rounded-lg p-2'>
+                <div className='flex flex-col gap-6 overflow-y-scroll max-h-[50vh] mx-[16vw] max-xl:mx-[10vw] max-lg:mx-[2vw] mt-4 mb-24 border-2 border-solid border-white border-opacity-30 bg-white/5 backdrop-blur-lg rounded-lg p-2'>
                   {data.episodes?.map(episode => (
                     <Link to={`/watch/${type}/${id}/${data.selectedSeason}/${episode.episode_number}`} key={episode.id}>
                       <div className="episode-box flex cursor-pointer items-center max-lg:flex-col max-lg:border-b max-lg:pb-4 max-lg:border-gray-400">

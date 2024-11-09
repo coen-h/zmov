@@ -43,18 +43,18 @@ export default function Watchlist() {
 
   return (
     <>
-      <div className='flex flex-col bg-white bg-opacity-10 rounded-xl mx-[5vw] max-md:mx-[2vw] px-[0.5vw] max-xl:px-[1vw] max-md:px-[1.5vw] pb-2'>
+      <div className='flex flex-col bg-white/10 rounded-xl mx-[5vw] max-md:mx-[2vw] px-[0.5vw] max-xl:px-[1vw] max-md:px-[1.5vw] pb-2'>
         <div className='flex justify-between items-center order-[-1] mt-2 mb-4 gap-8'>
           <div className='flex justify-between w-screen'>
             <div>
               <button
-                className={`min-w-16 min-h-[33px] border-none cursor-pointer text-[1.05rem] py-1 px-2 rounded-s-lg bg-opacity-90 ${activeButton === 'continueWatching' ? 'bg-[#b12222]' : 'bg-neutral-600'}`}
+                className={`min-w-16 min-h-[33px] border-none cursor-pointer text-[1.05rem] py-1 px-2 rounded-s-lg ${activeButton === 'continueWatching' ? 'bg-[#b12222]/90' : 'bg-neutral-600/90'}`}
                 onClick={() => handleButtonClick('continueWatching')}
               >
                 <span className="max-xs:hidden">Continue Watching</span>
               </button>
               <button
-                className={`min-w-16 min-h-[33px] border-none cursor-pointer text-[1.05rem] py-1 px-2 rounded-e-lg bg-opacity-90 ${activeButton === 'watchlist' ? 'bg-[#b12222]' : 'bg-neutral-600'}`}
+                className={`min-w-16 min-h-[33px] border-none cursor-pointer text-[1.05rem] py-1 px-2 rounded-e-lg ${activeButton === 'watchlist' ? 'bg-[#b12222]/90' : 'bg-neutral-600/90'}`}
                 onClick={() => handleButtonClick('watchlist')}
               >
                 <span className="max-xs:hidden">Watchlist</span>
@@ -62,10 +62,10 @@ export default function Watchlist() {
             </div>
             <div>
               {activeButton === 'watchlist' && (
-                <button className="w-[70px] h-[35px] rounded-lg text-[1.05rem] border-0 bg-white bg-opacity-20 cursor-pointer hover:bg-opacity-10 active:scale-95" onClick={clearWatchlist}>Clear</button>
+                <button className="w-[70px] h-[35px] rounded-lg text-[1.05rem] border-0 bg-white/20 cursor-pointer hover:bg-opacity-10 active:scale-95" onClick={clearWatchlist}>Clear</button>
               )}
               {activeButton === 'continueWatching' && (
-                <button className="w-[70px] h-[35px] rounded-lg text-[1.05rem] border-0 bg-white bg-opacity-20 cursor-pointer hover:bg-opacity-10 active:scale-95" onClick={clearContinueWatching}>Clear</button>
+                <button className="w-[70px] h-[35px] rounded-lg text-[1.05rem] border-0 bg-white/20 cursor-pointer hover:bg-opacity-10 active:scale-95" onClick={clearContinueWatching}>Clear</button>
               )}
             </div>
           </div>

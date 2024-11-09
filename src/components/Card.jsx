@@ -57,7 +57,7 @@ export default function Card(props) {
                     <p>&#x2022;</p>
                     <p>{(props.item.original_language).toUpperCase()}</p>
                 </div>
-                <div className='flex items-center gap-1 bg-black bg-opacity-50 py-[2px] px-[5px] rounded-s-md absolute top-[10px] right-0'>
+                <div className='flex items-center gap-1 bg-black/50 py-[2px] px-[5px] rounded-s-md absolute top-[10px] right-0'>
                     <i className="fa-solid fa-star fa-xs text-yellow-500"></i>
                     <p className='font-normal'>{parseFloat(props.item.vote_average).toFixed(1)}</p>
                 </div>

@@ -22,7 +22,7 @@ export default function WatchlistCard({ item, type, onRemove }) {
         <img className="watch-card-image group-hover:scale-105 h-full transition-all duration-200" src={`https://image.tmdb.org/t/p/w500/${item.poster_path}`} alt="Poster" />
         <div className="watchlist-content absolute top-0 left-0 w-full h-full flex justify-end flex-col items-center text-center font-semibold transition-all duration-200 bg-gradient-to-t from-black rounded-md shadow-inner shadow-black">
           <div className="card-play absolute top-0 left-0 w-full h-full flex justify-center items-center opacity-0 transition-opacity duration-200 z-20 group-hover:opacity-100"><i className="fa-solid fa-play group-hover:opacity-100 text-white text-[2.5rem]" alt="Play Icon" /></div>
-          <button className='flex justify-center items-center absolute top-1 right-1 opacity-0 max-xl:opacity-100 w-9 h-9 z-[1111] bg-white bg-opacity-90 border-0 p-0 rounded-lg cursor-pointer transition-all duration-150 group-hover:opacity-100 hover:bg-red-500' onClick={(event) => removeItem(event, item.id)}>
+          <button className='flex justify-center items-center absolute top-1 right-1 opacity-0 max-xl:opacity-100 w-9 h-9 z-[1111] bg-white/90 border-0 p-0 rounded-lg cursor-pointer transition-all duration-150 group-hover:opacity-100 hover:bg-red-500' onClick={(event) => removeItem(event, item.id)}>
             <i className="fa-light fa-trash-can text-lg text-black" alt="Remove" />
           </button>
           <p className="card-title text-lg font-bold leading-[1.4rem]">{type === 'movie' ? item.title : item.name}</p>

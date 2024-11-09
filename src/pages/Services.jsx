@@ -91,17 +91,17 @@ export default function Services() {
           ))}
         </div>
         <div className='flex justify-center items-center mt-[30px] gap-[2px]'>
-          <button className='group flex items-center gap-2 font-bold text-lg border-none transition-all duration-150 cursor-ponter bg-white bg-opacity-30 px-5 py-[10px] rounded-l-lg disabled:cursor-default disabled:bg-opacity-15' onClick={handleFarBack} disabled={page === 1}>
+          <button className='group flex items-center gap-2 font-bold text-lg border-none transition-all duration-150 cursor-ponter bg-white/30 px-5 py-[10px] rounded-l-lg disabled:cursor-default disabled:bg-opacity-15' onClick={handleFarBack} disabled={page === 1}>
             <i className="fa-solid fa-chevrons-left enabled:group-hover:text-[#ff4f4f]" />
           </button>
-          <button className='group flex items-center gap-2 font-bold text-lg border-none transition-all duration-150 cursor-ponter bg-white bg-opacity-30 px-5 py-[10px] disabled:cursor-default disabled:bg-opacity-15' onClick={handleBack} disabled={page === 1}>
+          <button className='group flex items-center gap-2 font-bold text-lg border-none transition-all duration-150 cursor-ponter bg-white/30 px-5 py-[10px] disabled:cursor-default disabled:bg-opacity-15' onClick={handleBack} disabled={page === 1}>
             <i className="fa-solid fa-angle-left enabled:group-hover:text-[#ff4f4f]" />
           </button>
-          <span className='flex items-center py-2 px-4 bg-white bg-opacity-30'>{page}</span>
-          <button className='group flex items-center gap-2 font-bold text-lg border-none transition-all duration-150 cursor-ponter bg-white bg-opacity-30 px-5 py-[10px] disabled:cursor-default disabled:bg-opacity-15' onClick={handleNext} disabled={page >= totalPage}>
+          <span className='flex items-center py-2 px-4 bg-white/30'>{page}</span>
+          <button className='group flex items-center gap-2 font-bold text-lg border-none transition-all duration-150 cursor-ponter bg-white/30 px-5 py-[10px] disabled:cursor-default disabled:bg-opacity-15' onClick={handleNext} disabled={page >= totalPage}>
             <i className="fa-solid fa-angle-right enabled:group-hover:text-[#ff4f4f]" />
           </button>
-          <button className='group flex items-center gap-2 font-bold text-lg border-none transition-all duration-150 cursor-ponter bg-white bg-opacity-30 px-5 py-[10px] rounded-r-lg disabled:cursor-default disabled:bg-opacity-15' onClick={handleFarNext} disabled={page >= totalPage}>
+          <button className='group flex items-center gap-2 font-bold text-lg border-none transition-all duration-150 cursor-ponter bg-white/30 px-5 py-[10px] rounded-r-lg disabled:cursor-default disabled:bg-opacity-15' onClick={handleFarNext} disabled={page >= totalPage}>
             <i className="fa-solid fa-chevrons-right enabled:group-hover:text-[#ff4f4f]" />
           </button>
         </div>
