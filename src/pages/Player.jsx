@@ -17,6 +17,7 @@ export default function Player() {
     const apiKey = import.meta.env.VITE_API_KEY;
 
     const serverURLs = {
+        FLICKY: `${playerURLs.VITE_STREAM_FLICKY}/embed/${type}/?id=${id}`,
         PRO: `${playerURLs.VITE_STREAM_PRO}/embed/${type}/${id}`,
         VIDBINGE: `${playerURLs.VITE_STREAM_VIDBINGE}/embed/${type}/${id}`,
         VIDLINK: `${playerURLs.VITE_STREAM_VIDLINK}/${type}/${id}`,
@@ -33,6 +34,7 @@ export default function Player() {
         PORT: `${playerURLs.VITE_STREAM_PORT}/${type === 'tv' ? 'serie' : 'filme'}/${id}`,
         RUSSIAN: `${playerURLs.VITE_STREAM_RUSSIAN}/embed/imdb/${imdbId}`,
         MULTLANG: `${playerURLs.VITE_STREAM_MULTLANG}/embed/${type}/${id}`,
+        FLICKYANI: `${playerURLs.VITE_STREAM_FLICKYANI}/embed/anime/?id=${id}`,
         ANIME1DUB: `${playerURLs.VITE_STREAM_ANIME1DUB}/v/${animeTitle}-dub`,
         ANIME1SUB: `${playerURLs.VITE_STREAM_ANIME1SUB}/v/${animeTitle}`,
         ANIME2DUB: `${playerURLs.VITE_STREAM_ANIME2DUB}/embed/${animeTitle}-dub`,
@@ -187,7 +189,8 @@ export default function Player() {
                     >   
                         <option style={{backgroundColor: "rgb(50, 50, 50)"}} selected disabled>ADFREE</option>
                         <option value="VIDLINK">VIDLINK</option>
-                        <option value="RIP">RIP</option>
+                        <option value="FLICKY">FLICKY</option>
+                        <option value="NL">NL</option>
                         <option style={{backgroundColor: "rgb(50, 50, 50)"}} selected disabled>ADS</option>
                         <option value="VIDBINGE">BINGE (4K)</option>
                         <option value="PRO">PRO</option>
@@ -196,7 +199,6 @@ export default function Player() {
                         <option value="XYZ">XYZ</option>
                         <option value="CC">CC</option>
                         <option value="MULTI">MULTI</option>
-                        <option value="NL">NL</option>
                         <option value="SS">SMASHY</option>
                         <option style={{backgroundColor: "rgb(50, 50, 50)"}} selected disabled>LANGUAGE</option>
                         <option value="FRENCH">FRENCH</option>
@@ -211,6 +213,7 @@ export default function Player() {
                         <option value="ANIME2SUB">ANI2-SUB</option>
                         <option value="ANIME3DUB">ANI3-DUB</option>
                         <option value="ANIME3SUB">ANI3-SUB</option>
+                        <option value="FLICKYANI">FLICKYANI</option>
                     </select>
                     {type === 'tv' && season && episode && (
                         <Link to={nextEpisodeLink} ><i className="fa-solid fa-arrow-right text-3xl mr-2 ml-1 hover:scale-90" alt="Next" /></Link>
