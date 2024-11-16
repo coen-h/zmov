@@ -11,7 +11,9 @@ export default function Player() {
     const [totalSeasons, setTotalSeasons] = useState(0);
     const [season, setSeason] = useState(null);
     const [episode, setEpisode] = useState(null);
-    const [selectedServer, setSelectedServer] = useState('VIDLINK');
+    const [selectedServer, setSelectedServer] = useState(() => {
+        return localStorage.getItem('preferredServer') || 'PRO';
+    });
 
     const playerURLs = import.meta.env
     const apiKey = import.meta.env.VITE_API_KEY;
@@ -41,7 +43,12 @@ export default function Player() {
         ANIME2SUB: `${playerURLs.VITE_STREAM_ANIME2SUB}/embed/${animeTitle}`,
         ANIME3DUB: `${playerURLs.VITE_STREAM_ANIME3DUB}/embed/${animeTitle}-dub`,        
         ANIME3SUB: `${playerURLs.VITE_STREAM_ANIME3SUB}/embed/${animeTitle}`,
+    };
 
+    const handleServerChange = (e) => {
+        const newServer = e.target.value;
+        setSelectedServer(newServer);
+        localStorage.setItem('preferredServer', newServer);
     };
 
     const getServerURL = () => {
@@ -184,7 +191,7 @@ export default function Player() {
                     <select 
                         name="servers" 
                         value={selectedServer} 
-                        onChange={(e) => setSelectedServer(e.target.value)} 
+                        onChange={handleServerChange}
                         className='px-4 py-1 m-1 text-xl bg-black border-2 border-white border-opacity-20 rounded-lg cursor-pointer'
                     >   
                         <option style={{backgroundColor: "rgb(50, 50, 50)"}} selected disabled>ADFREE</option>
