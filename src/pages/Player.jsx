@@ -36,13 +36,13 @@ export default function Player() {
         PORT: `${playerURLs.VITE_STREAM_PORT}/${type === 'tv' ? 'serie' : 'filme'}/${id}`,
         RUSSIAN: `${playerURLs.VITE_STREAM_RUSSIAN}/embed/imdb/${imdbId}`,
         MULTLANG: `${playerURLs.VITE_STREAM_MULTLANG}/embed/${type}/${id}`,
-        FLICKYANI: `${playerURLs.VITE_STREAM_FLICKYANI}/embed/anime/?id=${id}`,
-        ANIME1DUB: `${playerURLs.VITE_STREAM_ANIME1DUB}/v/${animeTitle}-dub`,
-        ANIME1SUB: `${playerURLs.VITE_STREAM_ANIME1SUB}/v/${animeTitle}`,
-        ANIME2DUB: `${playerURLs.VITE_STREAM_ANIME2DUB}/embed/${animeTitle}-dub`,
-        ANIME2SUB: `${playerURLs.VITE_STREAM_ANIME2SUB}/embed/${animeTitle}`,
-        ANIME3DUB: `${playerURLs.VITE_STREAM_ANIME3DUB}/embed/${animeTitle}-dub`,        
-        ANIME3SUB: `${playerURLs.VITE_STREAM_ANIME3SUB}/embed/${animeTitle}`,
+        ANICDNDUB: `${playerURLs.VITE_STREAM_ANIME1DUB}/v/${animeTitle}-dub`,
+        ANICDNSUB: `${playerURLs.VITE_STREAM_ANIME1SUB}/v/${animeTitle}`,
+        ANI2DUB: `${playerURLs.VITE_STREAM_ANIME2DUB}/embed/${animeTitle}-dub`,
+        ANI2SUB: `${playerURLs.VITE_STREAM_ANIME2SUB}/embed/${animeTitle}`,
+        AUTOANIDUB: `${playerURLs.VITE_STREAM_ANIME3DUB}/embed/${animeTitle}-dub`,        
+        AUTOANISUB: `${playerURLs.VITE_STREAM_ANIME3SUB}/embed/${animeTitle}`,
+        FLICKYANI: `${playerURLs.VITE_STREAM_FLICKYANI}/embed/anime/?id=${id}`
     };
 
     const handleServerChange = (e) => {
@@ -186,8 +186,11 @@ export default function Player() {
                 ></iframe>
             </div>
             <div className='flex justify-between w-screen absolute' style={{top: gridPos}}>
-                <Link to={`/info/${type}/${id}`}><i className="fa-solid fa-arrow-left text-3xl ml-2 mt-2 hover:scale-90" alt="Back" /></Link>
+                <Link to={`/info/${type}/${id}`}><i className="fa-solid fa-arrow-left text-3xl ml-2 mt-2 hover:opacity-50" alt="Back" /></Link>
                 <div className='flex items-center'>
+                    <a href={`https://dl.vidsrc.vip/${type}/${id}${type === 'tv' ? `/${season}/${episode}` : ''}`} target="_blank" rel="noopener noreferrer">
+                        <i className="fa-solid fa-download text-3xl mr-1 hover:opacity-50" alt="Back" />
+                    </a>
                     <select 
                         name="servers" 
                         value={selectedServer} 
@@ -214,16 +217,16 @@ export default function Player() {
                         <option value="RUSSIAN">RUSSIAN</option>
                         <option value="MULTLANG">MULTLANG</option>
                         <option style={{backgroundColor: "rgb(50, 50, 50)"}} selected disabled>ANIME</option>
-                        <option value="ANIME1DUB">ANI1-DUB</option>
-                        <option value="ANIME1SUB">ANI1-SUB</option>
-                        <option value="ANIME2DUB">ANI2-DUB</option>
-                        <option value="ANIME2SUB">ANI2-SUB</option>
-                        <option value="ANIME3DUB">ANI3-DUB</option>
-                        <option value="ANIME3SUB">ANI3-SUB</option>
+                        <option value="ANICDNDUB">ANICDN-DUB</option>
+                        <option value="ANICDNSUB">ANICDN-SUB</option>
+                        <option value="ANI2DUB">2ANI-DUB</option>
+                        <option value="ANI2SUB">2ANI-SUB</option>
+                        <option value="AUTOANIDUB">AUTOANI-DUB</option>
+                        <option value="AUTOANISUB">AUTOANI-SUB</option>
                         <option value="FLICKYANI">FLICKYANI</option>
                     </select>
                     {type === 'tv' && season && episode && (
-                        <Link to={nextEpisodeLink} ><i className="fa-solid fa-arrow-right text-3xl mr-2 ml-1 hover:scale-90" alt="Next" /></Link>
+                        <Link to={nextEpisodeLink} ><i className="fa-solid fa-arrow-right text-3xl mr-2 ml-1 hover:opacity-50" alt="Next" /></Link>
                     )}
                 </div>
             </div>
