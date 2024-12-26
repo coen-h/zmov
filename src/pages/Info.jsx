@@ -24,6 +24,12 @@ export default function Info() {
   const [isTop, setIsTop] = useState(true);
 
   const apiKey = import.meta.env.VITE_API_KEY;
+  const blockedUrls = import.meta.env.VITE_BLOCKED_URLS?.split(',') || [];
+
+  const getCurrentUrlId = () => {
+    const pathSegments = window.location.pathname.split('/');
+    return pathSegments[pathSegments.length - 1];
+  };
 
   useEffect(() => {
     setData((prevData) => ({ ...prevData, isLoading: true, error: null }));
@@ -169,6 +175,10 @@ export default function Info() {
       ) : data.error ? (
         <div className="w-screen h-screen flex grayscale justify-center items-center">
           <p className='text-2xl font-bold'>{data.error}</p>
+        </div>
+      ) : blockedUrls.includes(getCurrentUrlId()) ? (
+        <div className="w-screen h-screen flex grayscale justify-center items-center">
+          <p className="text-2xl font-bold">This content has been removed</p>
         </div>
       ) : (
         <>

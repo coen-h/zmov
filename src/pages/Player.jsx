@@ -17,6 +17,12 @@ export default function Player() {
 
     const playerURLs = import.meta.env
     const apiKey = import.meta.env.VITE_API_KEY;
+    const blockedUrls = import.meta.env.VITE_BLOCKED_URLS?.split(',') || [];
+
+    const getCurrentUrlId = () => {
+        const pathSegments = window.location.pathname.split('/');
+        return pathSegments[pathSegments.length - 1];
+    };
 
     const serverURLs = {
         FLICKY: `${playerURLs.VITE_STREAM_FLICKY}/embed/${type}/?id=${id}`,
@@ -178,6 +184,12 @@ export default function Player() {
 
     return (
         <>
+          {blockedUrls.includes(getCurrentUrlId()) ? (
+            <div className="w-screen h-screen flex grayscale justify-center items-center">
+              <p className="text-2xl font-bold">This content has been removed</p>
+            </div>
+          ) : (
+          <>
             <div className='flex w-screen h-screen'>
                 <iframe 
                     src={getServerURL()} 
@@ -230,6 +242,8 @@ export default function Player() {
                     )}
                 </div>
             </div>
+          </>
+          )}
         </>
     );
 }
