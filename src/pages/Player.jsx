@@ -26,6 +26,7 @@ export default function Player() {
 
     const serverURLs = {
         FLICKY: `${playerURLs.VITE_STREAM_FLICKY}/embed/${type}/?id=${id}`,
+        HEXA: `${playerURLs.VITE_STREAM_HEXA}/${type}/${id}`,
         PRO: `${playerURLs.VITE_STREAM_PRO}/embed/${type}/${id}`,
         VIDBINGE: `${playerURLs.VITE_STREAM_VIDBINGE}/embed/${type}/${id}`,
         VIDLINK: `${playerURLs.VITE_STREAM_VIDLINK}/${type}/${id}`,
@@ -211,6 +212,7 @@ export default function Player() {
                     >   
                         <option style={{backgroundColor: "rgb(50, 50, 50)"}} selected disabled>ADFREE</option>
                         <option value="VIDLINK">VIDLINK</option>
+                        <option value="HEXA">HEXA</option>
                         <option value="FLICKY">FLICKY</option>
                         <option value="NL">NL</option>
                         <option style={{backgroundColor: "rgb(50, 50, 50)"}} selected disabled>ADS</option>
