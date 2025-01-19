@@ -25,6 +25,10 @@ export default function Player() {
     };
 
     const serverURLs = {
+        RIVE: `${playerURLs.VITE_STREAM_RIVE}/embed?type=${type}&id=${id}`,
+        ONE: `${playerURLs.VITE_STREAM_ONE}/${type}/${id}`,
+        SEVENX: `${playerURLs.VITE_STREAM_SEVENX}/embed/${type}/${id}`,
+        SPEN: `${playerURLs.VITE_STREAM_SPEN}/${type}/${id}`,
         FLICKY: `${playerURLs.VITE_STREAM_FLICKY}/embed/${type}/?id=${id}`,
         HEXA: `${playerURLs.VITE_STREAM_HEXA}/${type}/${id}`,
         PRO: `${playerURLs.VITE_STREAM_PRO}/embed/${type}/${id}`,
@@ -69,7 +73,7 @@ export default function Player() {
                 url += `-${season}-${episode}`;
             } else if (selectedServer === 'ROLLER' || selectedServer === 'ONSTREAM') {
                 url += `-${season}-${episode}`;
-            } else if (selectedServer === 'SFLIX') {
+            } else if (selectedServer === 'SFLIX' || selectedServer === 'RIVE') {
                 url += `&season=${season}&episode=${episode}`;
             } else if (selectedServer === 'FRENCH') {
                 url += `&sa=${season}&epi=${episode}`;
@@ -142,7 +146,7 @@ export default function Player() {
     }, [id, type, location.pathname, apiKey]);
 
     useEffect(() => {
-        if (selectedServer === 'XYZ' || selectedServer === 'MULTI' || selectedServer === 'INDIAN' || selectedServer === 'MULTLANG' || selectedServer === 'ANIME1DUB' || selectedServer === 'ANIME1SUB' || selectedServer === 'ANIME2DUB' || selectedServer === 'ANIME2SUB' || selectedServer === 'ANIME3DUB' || selectedServer === 'ANIME3SUB' || selectedServer === 'NL') {
+        if (selectedServer === 'XYZ' || selectedServer === 'MULTI' || selectedServer === 'INDIAN' || selectedServer === 'MULTLANG' || selectedServer === 'ANIME1DUB' || selectedServer === 'ANIME1SUB' || selectedServer === 'ANIME2DUB' || selectedServer === 'ANIME2SUB' || selectedServer === 'ANIME3DUB' || selectedServer === 'ANIME3SUB') {
             setGridPos(35);
         } else {
             setGridPos(0);
@@ -212,15 +216,18 @@ export default function Player() {
                     >   
                         <option style={{backgroundColor: "rgb(50, 50, 50)"}} selected disabled>ADFREE</option>
                         <option value="VIDLINK">VIDLINK</option>
+                        <option value="SEVENX">SEVENX</option>
                         <option value="HEXA">HEXA</option>
                         <option value="FLICKY">FLICKY</option>
-                        <option value="NL">NL</option>
+                        <option value="SPEN">SPEN</option>
                         <option style={{backgroundColor: "rgb(50, 50, 50)"}} selected disabled>ADS</option>
                         <option value="VIDBINGE">BINGE (4K)</option>
+                        <option value="RIVE">RIVE</option>
                         <option value="PRO">PRO</option>
                         <option value="VIP">VIP</option>
                         <option value="CLUB">CLUB</option>
                         <option value="XYZ">XYZ</option>
+                        <option value="ONE">ONE</option>
                         <option value="CC">CC</option>
                         <option value="MULTI">MULTI</option>
                         <option value="SS">SMASHY</option>
