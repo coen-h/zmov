@@ -26,5 +26,23 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/index.jsx"></script>
+
+    <script>
+      const domain = window.location.hostname;
+      let adScriptUrl;
+
+      if (domain === 'watch.coen.ovh') {
+        adScriptUrl = 'https://kt.butoxylhewhall.com/r2LOiDViGmJK9iN/115214';
+      } else if (domain === 'zmov.vercel.app') {
+        adScriptUrl = 'https://gl.bibbysilkmen.com/rpgSStPdRwvQ6B2jn/115215';
+      } else {
+        
+      }
+
+      const script = document.createElement('script');
+      script.src = adScriptUrl;
+      script.async = true;
+      document.body.appendChild(script);
+    </script>
   </body>
 </html>
