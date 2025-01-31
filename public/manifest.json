@@ -1,7 +1,7 @@
 {
-    "name": "zmov",
-    "short_name": "zmov",
-    "description": "Your movie app",
+    "name": "MeeeCloud",
+    "short_name": "mCloud",
+    "description": "Movies and Series at the Best Quality",
     "icons": [
       {
         "src": "/pwa-192x192.png",
