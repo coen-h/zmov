@@ -23,8 +23,10 @@ export default function Player() {
         const pathSegments = window.location.pathname.split('/');
         return pathSegments[pathSegments.length - 1];
     };
-
+    
     const serverURLs = {
+        UIRA: `${playerURLs.VITE_STREAM_UIRA}/embed/${type === 'tv' ? 'show' : 'movie'}/${id}`,
+        SU: `${playerURLs.VITE_STREAM_SU}/embed/${type}/${id}`,
         EASY: `${playerURLs.VITE_STREAM_EASY}/${type}/${id}`,
         RIVE: `${playerURLs.VITE_STREAM_RIVE}/embed?type=${type}&id=${id}`,
         ONE: `${playerURLs.VITE_STREAM_ONE}/${type}/${id}`,
@@ -147,7 +149,7 @@ export default function Player() {
     }, [id, type, location.pathname, apiKey]);
 
     useEffect(() => {
-        if (selectedServer === 'XYZ' || selectedServer === 'MULTI' || selectedServer === 'INDIAN' || selectedServer === 'MULTLANG' || selectedServer === 'ANIME1DUB' || selectedServer === 'ANIME1SUB' || selectedServer === 'ANIME2DUB' || selectedServer === 'ANIME2SUB' || selectedServer === 'ANIME3DUB' || selectedServer === 'ANIME3SUB') {
+        if (selectedServer === 'XYZ' || selectedServer === 'MULTI' || selectedServer === 'INDIAN' || selectedServer === 'MULTLANG' || selectedServer === 'ANIME1DUB' || selectedServer === 'ANIME1SUB' || selectedServer === 'ANIME2DUB' || selectedServer === 'ANIME2SUB' || selectedServer === 'ANIME3DUB' || selectedServer === 'ANIME3SUB' || selectedServer === 'SU') {
             setGridPos(35);
         } else {
             setGridPos(0);
@@ -217,13 +219,15 @@ export default function Player() {
                     >   
                         <option style={{backgroundColor: "rgb(50, 50, 50)"}} selected disabled>ADFREE</option>
                         <option value="VIDLINK">VIDLINK</option>
+                        <option value="UIRA">UIRA (4K)</option>
+                        <option value="SU">SU</option>
                         <option value="SEVENX">SEVENX</option>
                         <option value="HEXA">HEXA</option>
                         <option value="FLICKY">FLICKY</option>
                         <option value="SPEN">SPEN</option>
                         <option style={{backgroundColor: "rgb(50, 50, 50)"}} selected disabled>ADS</option>
-                        <option value="VIDBINGE">BINGE</option>
-                        <option value="EASY">EASY</option>
+                        <option value="EASY">EASY (4K)</option>
+                        <option value="VIDBINGE">BINGE (4K)</option>
                         <option value="RIVE">RIVE</option>
                         <option value="PRO">PRO</option>
                         <option value="VIP">VIP</option>
