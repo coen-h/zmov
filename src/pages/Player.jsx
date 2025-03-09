@@ -25,6 +25,7 @@ export default function Player() {
     };
     
     const serverURLs = {
+        PSTREAM: `${playerURLs.VITE_STREAM_PSTREAM}/embed/tmdb-${type}-${id}`,
         UIRA: `${playerURLs.VITE_STREAM_UIRA}/embed/${type === 'tv' ? 'show' : 'movie'}/${id}`,
         SU: `${playerURLs.VITE_STREAM_SU}/embed/${type}/${id}`,
         EASY: `${playerURLs.VITE_STREAM_EASY}/${type}/${id}`,
@@ -219,6 +220,7 @@ export default function Player() {
                     >   
                         <option style={{backgroundColor: "rgb(50, 50, 50)"}} selected disabled>ADFREE</option>
                         <option value="VIDLINK">VIDLINK</option>
+                        <option value="PSTREAM">PSTREAM</option>
                         <option value="UIRA">UIRA (4K)</option>
                         <option value="SU">SU</option>
                         <option value="SEVENX">SEVENX</option>
