@@ -25,6 +25,9 @@ export default function Player() {
     };
     
     const serverURLs = {
+        RIP: `${playerURLs.VITE_STREAM_RIP}/embed/${type}/${id}`,
+        FAST: `${playerURLs.VITE_STREAM_FAST}/${type}/${id}`,
+        VIDJOY: `${playerURLs.VITE_STREAM_VIDJOY}/embed/${type}/${id}`,
         PSTREAM: `${playerURLs.VITE_STREAM_PSTREAM}/embed/tmdb-${type}-${id}`,
         SU: `${playerURLs.VITE_STREAM_SU}/embed/${type}/${id}`,
         EASY: `${playerURLs.VITE_STREAM_EASY}/${type}/${id}`,
@@ -37,7 +40,6 @@ export default function Player() {
         PRO: `${playerURLs.VITE_STREAM_PRO}/embed/${type}/${id}`,
         VIDBINGE: `${playerURLs.VITE_STREAM_VIDBINGE}/embed/${type}/${id}`,
         VIDLINK: `${playerURLs.VITE_STREAM_VIDLINK}/${type}/${id}`,
-        RIP: `${playerURLs.VITE_STREAM_RIP}/embed/${type}/${id}`,
         NL: `${playerURLs.VITE_STREAM_NL}/embed/${type}/${id}`,
         CC: `${playerURLs.VITE_STREAM_CC}/v3/embed/${type}/${id}`,
         VIP: `${playerURLs.VITE_STREAM_VIP}/directstream.php?video_id=${id}&tmdb=1`,
@@ -64,6 +66,39 @@ export default function Player() {
         setSelectedServer(newServer);
         localStorage.setItem('preferredServer', newServer);
     };
+
+    // const getWatchProgress = () => {
+    //     // VIDLINK
+    //     // window.addEventListener('message', (event) => {
+    //     //     if (event.data?.type === 'MEDIA_DATA') {
+    //     //       const mediaData = event.data.data;
+    //     //       localStorage.setItem('vidLinkProgress', JSON.stringify(mediaData));
+    //     //     }
+    //     // });
+
+    //     // VIDEASY
+    //     // window.addEventListener("message", function (event) {
+    //     //     // console.log("event: ", event);
+    //     //     console.log("Message received from the player: ", JSON.parse(event.data)); // Message received from player
+    //     //     if (typeof event.data === "string") {
+    //     //       var messageArea = document.querySelector("#messageArea");
+    //     //       messageArea.innerText = event.data;
+    //     //     }
+    //     // });
+
+    //     console.log(localStorage.getItem('vidLinkProgress'));
+    // };
+
+    // https://vidfast.pro/#api
+    // https://vidlink.pro/
+    // https://111movies.com/movie/940721?autoplay=1&theme=%23ddc36c&progress=2003.287701
+    // https://www.videasy.net/docs
+    // https://www.arabiflix.com/watch/movies/7732
+
+    // https://www.showbox.media/movie/m-godzilla-x-kong-the-new-empire-2024
+    // https://www.showbox.media/index/share_link?id=62586&type=1
+    // https://www.febbox.com/share/orbP5lBO
+    // https://net3lix.world/watch/movie/823464
 
     const getServerURL = () => {
         let url = serverURLs[selectedServer];
@@ -149,7 +184,7 @@ export default function Player() {
     }, [id, type, location.pathname, apiKey]);
 
     useEffect(() => {
-        if (selectedServer === 'XYZ' || selectedServer === 'MULTI' || selectedServer === 'INDIAN' || selectedServer === 'MULTLANG' || selectedServer === 'ANIME1DUB' || selectedServer === 'ANIME1SUB' || selectedServer === 'ANIME2DUB' || selectedServer === 'ANIME2SUB' || selectedServer === 'ANIME3DUB' || selectedServer === 'ANIME3SUB' || selectedServer === 'SU') {
+        if (selectedServer === 'XYZ' || selectedServer === 'RIP' || selectedServer === 'MULTI' || selectedServer === 'INDIAN' || selectedServer === 'MULTLANG' || selectedServer === 'ANIME1DUB' || selectedServer === 'ANIME1SUB' || selectedServer === 'ANIME2DUB' || selectedServer === 'ANIME2SUB' || selectedServer === 'ANIME3DUB' || selectedServer === 'ANIME3SUB' || selectedServer === 'SU') {
             setGridPos(35);
         } else {
             setGridPos(0);
@@ -190,6 +225,7 @@ export default function Player() {
             : `/watch/${type}/${id}/${season}/${nextEpisode}`
         : `/info/${type}/${id}`;
 
+        // getWatchProgress();
     return (
         <>
           {blockedUrls.includes(getCurrentUrlId()) ? (
@@ -230,9 +266,12 @@ export default function Player() {
                         <option value="VIDBINGE">BINGE (4K)</option>
                         <option value="RIVE">RIVE</option>
                         <option value="PRO">PRO</option>
+                        <option value="RIP">RIP</option>
+                        <option value="FAST">FAST</option>
                         <option value="VIP">VIP</option>
                         <option value="CLUB">CLUB</option>
                         <option value="XYZ">XYZ</option>
+                        <option value="VIDJOY">VIDJOY</option>
                         <option value="ONE">ONE</option>
                         <option value="CC">CC</option>
                         <option value="MULTI">MULTI</option>
