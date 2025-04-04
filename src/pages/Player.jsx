@@ -21,7 +21,7 @@ export default function Player() {
 
     const getCurrentUrlId = () => {
         const pathSegments = window.location.pathname.split('/');
-        return pathSegments[pathSegments.length - 1];
+        return pathSegments[3];
     };
     
     const serverURLs = {

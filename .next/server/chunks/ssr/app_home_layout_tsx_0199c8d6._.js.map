@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 7, "column": 0}, "map": {"version":3,"sources":["file://C%3A/Users/Coen/repos/zmov/app/home/layout.tsx"],"sourcesContent":["import type { Metadata } from \"next\";\r\n\r\nexport const metadata: Metadata = {\r\n  title: \"home - zmov\",\r\n};\r\n\r\nexport default function ClientLayout({ children }: Readonly<{ children: React.ReactNode }>) {\r\n  return children\r\n}"],"names":[],"mappings":";;;;AAEO,MAAM,WAAqB;IAChC,OAAO;AACT;AAEe,SAAS,aAAa,EAAE,QAAQ,EAA2C;IACxF,OAAO;AACT","debugId":null}}]
+}
