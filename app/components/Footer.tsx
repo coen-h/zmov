@@ -4,15 +4,29 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <div className="w-full flex justify-between px-12 py-4 bg-gradient-to-t from-[#1a0b0b]">
-      <div className="flex flex-col gap-2">
-        <div className="flex items-center gap-1"><p className="font-semibold text-lg">Welcome to</p><img src='/logo.png' alt="logo" className="h-7 hover:opacity-50 transition-all" /></div>
-        <p className="font-light">This site does not store any files on our server, we only link to the media which is hosted on 3rd party services.</p>
+    <div className="w-full flex justify-between px-12 max-2xl:px-5 max-lg:px-3 py-4 bg-gradient-to-t from-[#1a0b0b]">
+      <div className="flex flex-col gap-2 mr-2">
+        <div className="flex items-center gap-1">
+          <p className="font-semibold text-lg">Welcome to</p>
+          <svg className="hover:opacity-50 transition-all" version="1.0" xmlns="http://www.w3.org/2000/svg" width="98.39px" height="28px" viewBox="0 0 622.000000 177.000000" preserveAspectRatio="xMidYMid meet">
+            <g transform="translate(0.000000,177.000000) scale(0.100000,-0.100000)" fill="#e80000" stroke="none">
+              <path d="M4012 1590 c-165 -30 -316 -127 -408 -264 -93 -136 -136 -340 -114 -538 34 -307 193 -514 450 -584 90 -25 300 -25 389 0 226 62 380 232 437 481 25 109 25 311 0 420 -54 241 -211 413 -431 470 -74 19 -251 27 -323 15z m277 -286 c122 -66 179 -220 168 -449 -9 -181 -61 -302 -158 -367 -118 -79 -286 -61 -381 40 -53 56 -82 128 -97 236 -40 287 49 508 229 567 14 5 61 7 105 6 67 -3 89 -8 134 -33z"/>
+              <path d="M2004 1575 c-75 -16 -133 -45 -183 -90 -21 -19 -41 -35 -44 -35 -3 0 -19 25 -36 55 l-31 55 -110 0 -110 0 0 -680 0 -680 160 0 160 0 0 497 0 496 41 39 c61 59 127 88 197 88 107 0 171 -35 208 -114 l24 -51 0 -477 0 -478 155 0 155 0 0 488 c0 550 -4 520 80 581 59 42 101 54 184 49 97 -4 147 -36 184 -116 l27 -57 3 -472 3 -473 155 0 154 0 0 493 c0 533 -3 564 -56 668 -88 175 -308 262 -539 214 -81 -17 -200 -72 -234 -109 l-24 -25 -42 34 c-114 94 -316 136 -481 100z"/>
+              <path d="M4703 1578 c8 -20 583 -1319 598 -1350 11 -26 17 -28 68 -28 l56 0 310 686 c171 377 312 689 313 695 3 6 -58 8 -163 7 l-168 -3 -169 -405 c-93 -223 -173 -408 -176 -412 -4 -3 -79 179 -167 405 l-160 412 -174 3 c-137 2 -172 0 -168 -10z"/>
+              <path d="M260 1430 l0 -140 359 -2 359 -3 -369 -490 -369 -490 0 -52 0 -53 605 0 605 0 0 140 0 140 -355 0 c-195 0 -355 2 -355 5 0 3 157 222 350 486 l350 482 0 58 0 59 -590 0 -590 0 0 -140z"/>
+            </g>
+          </svg>
+        </div>
+        <p className="font-light line-clamp-2 max-sm:text-sm">This site does not store any files on our server, we only link to the media which is hosted on 3rd party services.</p>
         <p>Copyright © zmov {new Date().getFullYear()}</p>
       </div>
       <div className="flex items-center gap-4">
         <Link href='/dmca' className="font-semibold text-white/50 hover:text-white">DMCA</Link>
-        <Link href='https://github.com/coen-h' rel="noopener noreferrer" target="_blank"><img src="/icon.png" alt="icon" className="h-10 opacity-50 hover:opacity-100 transition-all" /></Link>
+        <Link href='https://github.com/coen-h' rel="noopener noreferrer" target="_blank">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512" width='40px' height='40px' className="opacity-50 hover:opacity-100 transition-all">
+            <path fill="#ffffff" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3 .3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5 .3-6.2 2.3zm44.2-1.7c-2.9 .7-4.9 2.6-4.6 4.9 .3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3 .7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3 .3 2.9 2.3 3.9 1.6 1 3.6 .7 4.3-.7 .7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3 .7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3 .7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/>
+          </svg>
+        </Link>
       </div>
     </div>
   );

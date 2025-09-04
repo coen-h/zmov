@@ -1,13 +1,13 @@
 'use client';
 
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+import Header from '@/app/components/Header';
+import Footer from '@/app/components/Footer';
 
-export default function Home() {
+export default function DMCA() {
   return (
   <>
     <Header />
-    <div className="w-full h-screen flex flex-col items-center justify-center px-[18vw] gap-8">
+    <div className="mx-auto px-8 pt-20 pb-5 max-w-[1200px] min-h-screen flex flex-col items-center justify-center gap-8">
       <p>
         We take the intellectual property rights of others seriously and require that our users do the same. 
         The Digital Millennium Copyright Act (DMCA) established a process for addressing claims of copyright infringement. 

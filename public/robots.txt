@@ -1,8 +1,8 @@
 User-agent: *
-Disallow: /settings/
 Disallow: /dmca/
 Disallow: /service/
 Disallow: /search/
 Disallow: /info/
 Disallow: /watch/
+Disallow: /
 Allow: /

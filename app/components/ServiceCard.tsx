@@ -1,23 +1,32 @@
 'use client';
 
-import Link from "next/link";
+import Link from 'next/link';
+import { useEffect, useState } from 'react';
+import { serviceConfig } from '@/app/lib/serviceConfig';
 
-export default function ServiceCard() {
+type ServiceType = keyof typeof serviceConfig
+
+export default function ServiceCard({ type }: { type: ServiceType | string }) {
+  const config = serviceConfig.find(item => item.type === type);
+  const [windowWidth, setWindowWidth] = useState(0);
+
+  useEffect(() => {
+    function handleResize() {
+      setWindowWidth(window.innerWidth);
+    }
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  const MIN_WIDTH = 900;
+
   return (
-    <Link href='/service' className="w-full p-8 shadow-inner shadow-gray-700 rounded-xl bg-gradient-to-b from-black to-blue-600/80">
-      <img className="h-full" src='/images/disney.svg' alt="Service Image"/>
+    <Link
+      href={`/service/${config?.id}`}
+      className={`flex justify-center w-full h-[175px] px-12 py-4 shadow-inner shadow-gray-700 rounded-xl ${config?.background} max-3xl:px-4`}
+    >
+      <img className="h-full" src={windowWidth > MIN_WIDTH ? config?.image : config?.squareimage} alt={config?.alt} />
     </Link>
-    // <Link href='/service' className="w-full p-8 shadow-inner shadow-gray-700 rounded-xl bg-gradient-to-tl from-red-700/80 via-black to-red-700/80">
-    //   <img className="h-full" src='/images/netflix.svg' alt="Service Image"/>
-    // </Link>
-    // <Link href='/service' className="w-full p-8 shadow-inner shadow-gray-700 rounded-xl bg-gradient-to-r from-white/80 to-purple-400/80">
-    //   <img className="h-full" src='/images/max.svg' alt="Service Image"/>
-    // </Link>
-    // <Link href='/service' className="w-full p-8 shadow-inner shadow-gray-700 rounded-xl bg-gray-400/85">
-    //   <img className="h-full" src='/images/apple.svg' alt="Service Image"/>
-    // </Link>
-    // <Link href='/service' className="w-full p-8 shadow-inner shadow-gray-700 rounded-xl bg-white/80">
-    //   <img className="h-full" src='/images/prime.svg' alt="Service Image"/>
-    // </Link>
   );
 }
