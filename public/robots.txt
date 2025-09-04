@@ -4,5 +4,7 @@ Disallow: /service/
 Disallow: /search/
 Disallow: /info/
 Disallow: /watch/
-Disallow: /
+Disallow: /user/
+Disallow: /taiem/
+Disallow: /login/
 Allow: /

@@ -1,7 +1,7 @@
 <br/>
 
 <div align="center"> 
-<image src="/src/assets/logo.png" width="300"/>
+<image src="./public/images/logo.png" width="300"/>
 
 ### Watch all your movies, shows and anime for free!
 </div>
@@ -20,7 +20,7 @@ https://watch.coen.ovh
 - Downloading built-in to player
 - Subtitles, PIP, Fullscreen
 - Mobile PWA
-- Saves Watch History and Watchlist
+- Saves Watch History
 - Ad-free
 
 <br/>
@@ -69,6 +69,21 @@ Before starting :checkered_flag:, you need to have [Git](https://git-scm.com) an
 
 ```
   VITE_API_KEY=YOUR_TMDB_API_KEY
+```
+
+- Create a Supabase Project and setup Authentication with Google (You can find guides online to help if you don't know how to do this already)
+
+- Create a new table in your Supabase project with this PostgresQL query
+
+```
+CREATE TABLE public.watchedItem (itemId integer NOT NULL UNIQUE,userId uuid NOT NULL,title text NOT NULL,type text NOT NULL,poster text,progress double precision DEFAULT '0'::double precision,duration double precision DEFAULT '0'::double precision,episode integer DEFAULT 1,season integer DEFAULT 1,numOfEpisodes integer DEFAULT 0,numOfSeasons integer DEFAULT 0,createdAt timestamp with time zone NOT NULL DEFAULT now(),CONSTRAINT watchedItem_pkey PRIMARY KEY (itemId, userId));
+```
+
+- Add the following environment variables to your .env file (You might need to use the transaction pooler database url if direct connection doesn't work for you)
+```
+NEXT_PUBLIC_SUPABASE_URL=YOUR_SUPABASE_URL
+NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=YOUR_SUPABASE_PUBLISHABLE_KEY
+DATABASE_URL=YOUR_SUPABASE_DATABASE_URL
 ```
 
 - Start the server
