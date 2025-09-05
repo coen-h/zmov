@@ -1,6 +1,6 @@
 'use client';
 
-import Link from "next/link";
+import { useRouter } from 'next/navigation';
 
 export type CardData = {
   id: number;
@@ -14,8 +14,9 @@ export type CardData = {
 };
 
 export default function Card({ data }: { data: CardData }) {  
+  const router = useRouter();
   return (
-      <Link href={`/info/${data.release_date ? 'movie' : 'tv'}/${data.id}`} className='group flex relative rounded-lg w-full h-full' prefetch={false}>
+      <button onClick={() => router.push(`/info/${data.release_date ? 'movie' : 'tv'}/${data.id}`)} className='group flex relative rounded-lg w-full h-full'>
         <img
           src={`https://image.tmdb.org/t/p/w300/${data.poster_path}`}
           className='h-full object-cover rounded-lg group-hover:scale-105 transition-all'
@@ -43,6 +44,6 @@ export default function Card({ data }: { data: CardData }) {
             <path fill="#ffffff" d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80L0 432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/>
           </svg>
         </div>
-      </Link>
+      </button>
   );
 }

@@ -13,20 +13,6 @@ const baseConfig: NextConfig = {
       },
     ],
   },
-  async rewrites() {
-    return [
-      // let Next.js handle dynamic routes like /info/movie/:id
-      {
-        source: "/info/:type/:id",
-        destination: "/info/:type/:id",
-      },
-      // fallback: everything else goes to homepage
-      {
-        source: "/:path*",
-        destination: "/",
-      },
-    ];
-  },
 };
 
 const withPWAConfig = withPWA({
@@ -36,6 +22,5 @@ const withPWAConfig = withPWA({
   disable: process.env.NODE_ENV === "development",
   runtimeCaching,
 });
-
 // @ts-ignore
 export default withPWAConfig(baseConfig);
