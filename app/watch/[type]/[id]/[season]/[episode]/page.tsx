@@ -122,7 +122,7 @@ export default function Watch() {
           setSeasonLength(existing.numOfSeasons);
 
           if (!initialSetRef.current) {
-            setInitialProgress(existing.progress ?? 0);
+            setInitialProgress(existing.season === season && existing.episode === episode ? existing.progress : 0);
             initialSetRef.current = true;
           }
 
