@@ -3,12 +3,12 @@
 export default async function fetchVideo() {
   const apiKey = process.env.API_KEY;
 
-  const responseHero = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&include_adult=false`, { next: { revalidate: 3600 } });
+  const responseHero = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&include_adult=false`, { next: { revalidate: 86400 } });
   const dataHero = await responseHero.json();
 
   const movies = await Promise.all(
     dataHero.results.map(async (movie: { id: number; }) => {
-      const responseImage = await fetch(`https://api.themoviedb.org/3/movie/${movie.id}?api_key=${apiKey}&append_to_response=images,videos`, { next: { revalidate: 3600 } });
+      const responseImage = await fetch(`https://api.themoviedb.org/3/movie/${movie.id}?api_key=${apiKey}&append_to_response=images,videos`, { next: { revalidate: 86400 } });
 
       const dataImage = await responseImage.json();
 
