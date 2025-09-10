@@ -25,7 +25,6 @@ export default function Service() {
       async function fetchData() {
         setServiceData({ results: [], total_pages: 1 });
         const result = await fetchService(service, page);
-        console.log(result)
         setServiceData(result);
         setTotalPage(result.total_pages);
         window.scrollTo({top: 0, behavior: "smooth"});

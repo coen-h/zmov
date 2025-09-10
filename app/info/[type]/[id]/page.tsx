@@ -6,6 +6,7 @@ import fetchEpisodes from '@/app/lib/fetchEpisodes';
 import { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
 import Header from '@/app/components/Header';
+import Image from "next/image";
 import Footer from '@/app/components/Footer';
 import Card, { CardData } from '@/app/components/Card';
 import { supabase } from "@/utils/supabase";
@@ -153,10 +154,29 @@ export default function Info() {
         {info?.id ? (
           <>
             <div key={info.id} className='flex justify-center items-center w-screen h-screen gap-10 text-center'>
-            <img className={`-z-10 fixed w-full h-full object-cover transition-all duration-500 ${isAtTop ? 'opacity-35' : 'opacity-25'} ${isAtTop ? 'blur-0' : 'blur-xs'}`} src={`https://image.tmdb.org/t/p/original/${info.backdrop_path}`} alt={info.title} />
-            <img className='rounded-xl shadow-lg max-xl:hidden' src={`https://image.tmdb.org/t/p/w300/${info.poster_path}`} alt={info.title} />
+            <div className='-z-10 fixed w-full h-full'>
+              <Image 
+                fill
+                className={`object-cover transition-all duration-500 ${isAtTop ? 'opacity-35' : 'opacity-25'} ${isAtTop ? 'blur-0' : 'blur-xs'}`}
+                src={`https://image.tmdb.org/t/p/w1920/${info.backdrop_path}`}
+                alt='Backdrop'
+              />
+            </div>
+            <Image 
+              width={300}
+              height={450}
+              className='rounded-xl shadow-lg max-xl:hidden' 
+              src={`https://image.tmdb.org/t/p/w300/${info.poster_path}`} 
+              alt="Poster"
+            />
             <div className='flex flex-col justify-center items-center mx-4 max-w-[600px] gap-3'>
-              <img className='text-[2.5rem] font-semibold max-h-[40vh]' src={`https://image.tmdb.org/t/p/w500/${info.logo}`} alt={info.title} />
+              <Image 
+                height={300}
+                width={500}
+                src={`https://image.tmdb.org/t/p/w500/${info.logo}`}
+                alt='Logo'
+                className="h-full"
+              />
               <div className='flex items-center gap-3 font-semibold'>
                 <div className='flex items-center gap-1'>
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width='16px' height='16px'>
@@ -164,7 +184,7 @@ export default function Info() {
                   </svg>
                   <p>{info.release_date ?? info.first_air_date}</p>
                 </div>
-                <div className='flex items-center gap-[2px]'>
+                <div className='flex items-center gap-1'>
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" width='16px' height='16px'>
                     <path fill='#efb100' d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"/>
                   </svg>
@@ -203,7 +223,13 @@ export default function Info() {
                 {episodes?.episodes?.map(episode => (
                   <Link href={`/watch/${type}/${id}/${type === 'tv' ? `/${episode.season_number}/${episode.episode_number}` : ''}`} key={episode.id} prefetch={false}>
                     <div className="flex max-sm:flex-col max-sm:gap-2 cursor-pointer items-center border border-white/15 p-1 rounded-lg">
-                      <img className='w-[180px] max-3xl:w-[200px] max-xl:w-[300px] max-md:w-[225px] max-sm:w-[500px] rounded-md' src={`https://image.tmdb.org/t/p/w500/${episode.still_path}`} />
+                      <Image 
+                        width={500}
+                        height={281}
+                        className='w-[180px] max-3xl:w-[200px] max-xl:w-[300px] max-md:w-[225px] max-sm:w-[500px] rounded-md'
+                        src={`https://image.tmdb.org/t/p/w500/${episode.still_path}`}
+                        alt='Episode'
+                      />
                       <div className="ml-4 max-sm:mx-2">
                         <p className='text-xl font-bold line-clamp-1'>{episode.name}</p>
                         <div className='flex text-white/50 items-center'>

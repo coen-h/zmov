@@ -5,6 +5,7 @@ import { Autoplay } from "swiper/modules";
 import { useEffect, useState } from "react";
 import fetchHome from "@/app/lib/fetchHome";
 import fetchHero from "@/app/lib/fetchHero";
+import Image from "next/image";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 import Card, { CardData } from "@/app/components/Card";
@@ -132,17 +133,16 @@ export default function Home() {
         {heroData.map((item, index) => (
           <SwiperSlide key={index}>
             <div className="flex h-screen">
-              <div
-                className={`absolute w-screen h-screen overflow-hidden z-[-1] opacity-40`}
-                style={{
-                  backgroundImage: `url(https://image.tmdb.org/t/p/w1920/${item.backdrop_path})`,
-                  backgroundPosition: "center",
-                  backgroundSize: "cover",
-                }}
-              >
+              <div className={`absolute w-screen h-screen overflow-hidden z-[-1] opacity-40`}>
+                <Image 
+                  src={`https://image.tmdb.org/t/p/w1920/${item.backdrop_path}`}
+                  alt="Backdrop"
+                  fill
+                  className="object-cover bg-center"
+                />
                 {windowWidth > MIN_IFRAME_WIDTH && (
                   <iframe
-                    src={`https://www.youtube.com/embed/${item.trailerKey}?mute=1&autoplay=1&loop=1&rel=0&fs=0&controls=0&disablekb=1&playlist=${item.trailerKey}&origin=https://watch.coen.ovh`}
+                    src={`https://www.youtube-nocookie.com/embed/${item.trailerKey}?mute=1&autoplay=1&loop=1&rel=0&fs=0&controls=0&disablekb=1&playlist=${item.trailerKey}&origin=https://watch.coen.ovh`}
                     title={item.title}
                     allowFullScreen
                     className={`absolute w-[150vw] h-[200vh] top-[-50%] left-[-25%] object-cover border-none transition-opacity duration-500 ease-in opacity-100`}
@@ -151,11 +151,13 @@ export default function Home() {
                 )}
               </div>
               <div className="flex flex-col justify-end mb-52 ml-12 gap-1 max-2xl:ml-5 max-lg:items-center max-lg:w-full max-lg:mx-5">
-                <div className="flex font-semibold mb-3">
-                  <img
+                <div className="flex mb-3">
+                  <Image 
+                    priority={true}
+                    height={300}
+                    width={500}
                     src={`https://image.tmdb.org/t/p/w500/${item.logo}`}
-                    className="max-w-[60vw] max-h-[30vh] max-lg:max-w-[85vw] text-5xl text-center"
-                    alt={item.title}
+                    alt='Logo'
                   />
                 </div>
                 <div className="flex gap-[10px]">

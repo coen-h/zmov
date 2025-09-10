@@ -199,8 +199,6 @@ export default function Watch() {
         if (data.type === "MEDIA_DATA") {
           if (!Array.isArray(data.data)) return;
           const currentItem = data.data.find((item) => item.id === id);
-          console.log('test', currentItem);
-          console.log('test', data);
           if (currentItem?.progress) {
             setWatchProgress(currentItem.progress.watched);
             setDurationData(currentItem.progress.duration);

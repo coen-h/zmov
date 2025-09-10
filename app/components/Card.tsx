@@ -1,6 +1,8 @@
 'use client';
 
 import Link from "next/link";
+import Image from "next/image";
+import { useState } from "react";
 
 export type CardData = {
   id: number;
@@ -13,14 +15,39 @@ export type CardData = {
   original_language: string;
 };
 
+const shimmer = (w: number, h: number) => `
+<svg width="${w}" height="${h}" xmlns="http://www.w3.org/2000/svg">
+  <rect width="${w}" height="${h}" fill="#222">
+    <animate
+      attributeName="fill"
+      values="#222;#111;#222"
+      dur="2s"
+      repeatCount="indefinite"
+      keyTimes="0;0.5;1"
+      keySplines=".42,0,.58,1; .42,0,.58,1"
+      calcMode="spline"
+    />
+  </rect>
+</svg>`;
+
+const toBase64 = (str: string) =>
+  typeof window === "undefined"
+    ? Buffer.from(str).toString("base64")
+    : window.btoa(str);
+
 export default function Card({ data }: { data: CardData }) {  
+  const [loaded, setLoaded] = useState(false);
+
   return (
-      <Link href={`/info/${data.release_date ? 'movie' : 'tv'}/${data.id}`} className='group flex relative rounded-lg w-full h-full' prefetch={false}>
-        <img
+      <Link href={`/info/${data.release_date ? 'movie' : 'tv'}/${data.id}`} className={`group flex relative rounded-lg w-full h-full transition-opacity duration-200 ${loaded ? "opacity-100" : "opacity-50"}`} prefetch={false}>
+        <Image
           src={`https://image.tmdb.org/t/p/w300/${data.poster_path}`}
-          className='h-full object-cover rounded-lg group-hover:scale-105 transition-all'
           alt="Poster"
-          loading="lazy"
+          width={300}
+          height={450}
+          onLoad={() => setLoaded(true)}
+          placeholder={`data:image/svg+xml;base64,${toBase64(shimmer(600, 475))}`}
+          className="rounded-lg group-hover:scale-105 transition-all"
         />
         <div className="group-hover:opacity-100 group-hover:scale-105 absolute bottom-0 w-full h-full flex flex-col justify-end text-center font-semibold rounded-md bg-gradient-to-t from-black shadow-inner shadow-black/60 opacity-0 transition-all max-2xl:opacity-100">
           <p className="text-lg font-bold line-clamp-2">{data.title ? data.title : data.name}</p>
