@@ -28,6 +28,7 @@ export default function WatchCard({ data, onRemove }: WatchCardProps) {
         width={500}
         height={281}
         className="w-full h-full rounded-md group-hover:scale-105 transition-all"
+        unoptimized
       />
       <div className="absolute w-full h-full bottom-0 left-0 bg-gradient-to-t from-black">
         <button onClick={(e) => { e.preventDefault(); e.stopPropagation(); onRemove(); }} className='absolute top-2 left-2 p-2 bg-white/90 rounded-lg cursor-pointer transition-all text-black hover:bg-red-500 opacity-0 group-hover:opacity-100 max-2xl:opacity-100'>

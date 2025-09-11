@@ -139,6 +139,7 @@ export default function Home() {
                   alt="Backdrop"
                   fill
                   className="object-cover bg-center"
+                  unoptimized
                 />
                 {windowWidth > MIN_IFRAME_WIDTH && (
                   <iframe
@@ -158,6 +159,7 @@ export default function Home() {
                     width={500}
                     src={`https://image.tmdb.org/t/p/w500/${item.logo}`}
                     alt='Logo'
+                    unoptimized
                   />
                 </div>
                 <div className="flex gap-[10px]">

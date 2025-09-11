@@ -48,6 +48,7 @@ export default function Card({ data }: { data: CardData }) {
           onLoad={() => setLoaded(true)}
           placeholder={`data:image/svg+xml;base64,${toBase64(shimmer(600, 475))}`}
           className="rounded-lg group-hover:scale-105 transition-all"
+          unoptimized
         />
         <div className="group-hover:opacity-100 group-hover:scale-105 absolute bottom-0 w-full h-full flex flex-col justify-end text-center font-semibold rounded-md bg-gradient-to-t from-black shadow-inner shadow-black/60 opacity-0 transition-all max-2xl:opacity-100">
           <p className="text-lg font-bold line-clamp-2">{data.title ? data.title : data.name}</p>

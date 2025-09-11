@@ -160,6 +160,7 @@ export default function Info() {
                 className={`object-cover transition-all duration-500 ${isAtTop ? 'opacity-35' : 'opacity-25'} ${isAtTop ? 'blur-0' : 'blur-xs'}`}
                 src={`https://image.tmdb.org/t/p/w1920/${info.backdrop_path}`}
                 alt='Backdrop'
+                unoptimized
               />
             </div>
             <Image 
@@ -168,6 +169,7 @@ export default function Info() {
               className='rounded-xl shadow-lg max-xl:hidden' 
               src={`https://image.tmdb.org/t/p/w300/${info.poster_path}`} 
               alt="Poster"
+              unoptimized
             />
             <div className='flex flex-col justify-center items-center mx-4 max-w-[600px] gap-3'>
               <Image 
@@ -176,6 +178,7 @@ export default function Info() {
                 src={`https://image.tmdb.org/t/p/w500/${info.logo}`}
                 alt='Logo'
                 className="h-full"
+                unoptimized
               />
               <div className='flex items-center gap-3 font-semibold'>
                 <div className='flex items-center gap-1'>
@@ -229,6 +232,7 @@ export default function Info() {
                         className='w-[180px] max-3xl:w-[200px] max-xl:w-[300px] max-md:w-[225px] max-sm:w-[500px] rounded-md'
                         src={`https://image.tmdb.org/t/p/w500/${episode.still_path}`}
                         alt='Episode'
+                        unoptimized
                       />
                       <div className="ml-4 max-sm:mx-2">
                         <p className='text-xl font-bold line-clamp-1'>{episode.name}</p>
