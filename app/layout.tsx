@@ -6,9 +6,9 @@ import "./globals.css";
 const manrope = Manrope({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "zmov",
-  description: "Watch your favorite movies and shows for free!",
-  keywords: "zmov, 123movies, 123movie, 123 movies, movies123, free movies, watch movies online, movies123, fmovies, putlocker, solarmovies",
+  title: "Media Player Vevco",
+  description: "vevco movies",
+  keywords: "vevadeco",
 };
 
 export default function RootLayout({
@@ -29,7 +29,6 @@ export default function RootLayout({
       >
         {children}
       </body>
-      <GoogleAnalytics gaId="G-K8YZBHVLJ9" />
     </html>
   );
 }
