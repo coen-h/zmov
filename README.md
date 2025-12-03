@@ -9,14 +9,6 @@
 
 Use an adblocker (uBlock-Origin) to remove player pop-ups.
 
-#### Main Site
-
-https://zmov.vercel.app
-
-#### Mirrors
-
-https://watch.coen.ovh 
-
 ## Features
 
 - 4K Movies and Shows
