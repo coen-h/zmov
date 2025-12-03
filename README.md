@@ -5,10 +5,6 @@
 
 </div>
 
-## Links
-
-Use an adblocker (uBlock-Origin) to remove player pop-ups.
-
 ## Features
 
 - 4K Movies and Shows
