@@ -1,6 +1,6 @@
 "use client";
 
-import serverUrls from "@/app/lib/serverUrls";
+// import serverUrls from "@/app/lib/serverUrls";
 import { useState, useEffect, useRef } from "react";
 import fetchInfo from "@/app/lib/fetchInfo";
 import Link from "next/link";
@@ -41,18 +41,18 @@ type SourceHandlers = Record<
 >;
 
 export default function Watch() {
-  const urls = serverUrls();
-  const [selectedUrl, setSelectedUrl] = useState(() => {
-    if (typeof window !== "undefined") {
-      const storedServer = localStorage.getItem("lastUsedServer");
-      if (storedServer) return storedServer;
-    }
-    return urls[0].url;
-  });
-  const [urlParams, setUrlParams] = useState(() => {
-    const initial = urls.find((item) => item.url === selectedUrl);
-    return initial ? initial.params : urls[0].params;
-  });
+  // const urls = serverUrls();
+  // const [selectedUrl, setSelectedUrl] = useState(() => {
+  //   if (typeof window !== "undefined") {
+  //     const storedServer = localStorage.getItem("lastUsedServer");
+  //     if (storedServer) return storedServer;
+  //   }
+  //   return urls[0].url;
+  // });
+  // const [urlParams, setUrlParams] = useState(() => {
+  //   const initial = urls.find((item) => item.url === selectedUrl);
+  //   return initial ? initial.params : urls[0].params;
+  // });
   const params = useParams<{ type: string; id: string }>();
   const type = params.type;
   const id = Number(params.id);
@@ -223,24 +223,24 @@ export default function Watch() {
             const selected = urls.find((item) => item.url === e.target.value);
             if (selected) {
               setInitialProgress(String(watchProgress));
-              setSelectedUrl(selected.url);
-              setUrlParams(selected.params);
+              // setSelectedUrl(selected.url);
+              // setUrlParams(selected.params);
               localStorage.setItem("lastUsedServer", selected.url);
             }
           }}
-          value={selectedUrl}
+          // value={selectedUrl}
         >
-          {urls.map((item) => (
+          {/* {urls.map((item) => (
             <option key={item.id} value={item.url}>
               {item.name}
             </option>
-          ))}
+          ))} */}
         </select>
-        <iframe
+        {/* <iframe
           src={`${selectedUrl}/${type}/${id}${urlParams}${initialProgress}`}
           allowFullScreen={true}
           className="w-screen h-screen border-0"
-        ></iframe>
+        ></iframe> */}
       </div>
     </>
   );
