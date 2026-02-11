@@ -8,10 +8,15 @@
 
 ## Features
 - Browse movies and/or TV shows
+
 - Fast and lightweight frontend
+
 - Clean, modern UI
+
 - Mobile PWA
+
 - Saves Watch History
+
 - Ad-free
 
 ## Screenshots
@@ -76,4 +81,4 @@ Before starting :checkered_flag:, you need to have [Git](https://git-scm.com) an
 
   ```sh
   npm run dev
-```
+  ```
